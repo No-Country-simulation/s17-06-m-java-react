@@ -8,8 +8,7 @@ import { SignUp } from './components/signUp/SignUp';
 function App() { 
 
   return (
-    <>
-    <h1 className='text-red-500'>hola</h1>
+    <>    
       <BrowserRouter>
           <Routes>
               <Route
