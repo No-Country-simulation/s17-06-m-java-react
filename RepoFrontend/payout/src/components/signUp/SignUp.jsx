@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 const schema = Yup.object().shape({
     nombre: Yup.string()
                 .min(2, "El nombre es demasiado corto")
-                .max(30, "Máximo 20 caracteres")
+                .max(30, "Máximo 30 caracteres")
                 .required("Este campo es obligatorio"),
     email: Yup.string()                
                 .email("El email es inválido")
@@ -20,10 +20,10 @@ const schema = Yup.object().shape({
 })
 
 
+
+
+
 export const SignUp = () => { 
-
-
-
 
   return (
     <div className="container my-5">
@@ -55,6 +55,15 @@ export const SignUp = () => {
 
                         <Field placeholder="Confirma tu contraseña" className="form-control py-2" type="text" name="rPassword"/>
                         <ErrorMessage name="rPassword" component="p"/>
+
+                        <div>
+                            <Field type="checkbox" name="termsAccepted" />
+                            <label htmlFor="termsAccepted">
+                                Acepto los <a href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">Al registrarme acepto las politicas de privacidad</a>
+                            </label>
+                            <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
+                        </div>
+                        
 
                         <button type="submit" className="btn btn-success" disabled={!isValid || !dirty}>Enviar</button>
                     </Form>
