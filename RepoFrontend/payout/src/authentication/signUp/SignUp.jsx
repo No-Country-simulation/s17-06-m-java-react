@@ -33,8 +33,8 @@ const schema = Yup.object().shape({
 export const SignUp = () => { 
 
   return (
-    <div className="h-[100dvh] py-0 md:py-36 bg-secundario flex gap-14 justify-center">
-        <div className="w-[466px] h-[100dvh] md:h-[614px] py-11 px-16 bg-white rounded-[15px] shadow-down-dark-md">
+    <div className="h-full py-0 md:py-6 bg-secundario flex gap-14 justify-center ">
+        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-white rounded-[15px] shadow-down-dark-md">
             <h2 className="text-primario text-[26px] font-semibold font-['Montserrat'] leading-[63px] text-center pb-11">REGISTRO</h2>
 
             <Formik

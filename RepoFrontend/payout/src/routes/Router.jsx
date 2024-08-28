@@ -9,17 +9,17 @@ export const router = createBrowserRouter([
       element: (
           <App />
       ),
-      // children: [
-      //   { path: "/SignUp", element: <SignUp /> },
+      children: [
+        { path: "/SignUp", element: <SignUp /> },
         
-      // ],
+      ],
     },
-    {
-      path: "/signup",
-      element: (
-          <SignUp />
-      ),
-    },
+    // {
+    //   path: "/signup",
+    //   element: (
+    //       <SignUp />
+    //   ),
+    // },
    
   ]);
   
