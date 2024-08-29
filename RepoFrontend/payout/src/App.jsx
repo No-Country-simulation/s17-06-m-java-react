@@ -3,6 +3,7 @@ import './App.css'
 import './index.css'
 import { BrowserRouter, Routes, Route, Navigate, redirect } from "react-router-dom"
 import { SignUp } from './components/signUp/SignUp';
+import { Login } from "./components/Login/Login"
 
 
 function App() { 
@@ -15,6 +16,7 @@ function App() {
                     path="/register" element={
                       <div>
                         <SignUp/>
+                        <Login />
                       </div>
                     }
                   />

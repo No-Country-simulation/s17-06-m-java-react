@@ -1,0 +1,9 @@
+.custom-checkbox {
+    @apply w-4 h-4 border-2 border-gray-300 rounded-lg checked:border-violet-500 checked:bg-violet-500;
+  }
+  
+  .custom-checkbox:checked::before {
+    content: '';
+    @apply block w-3 h-3 bg-white rounded-sm;
+    border: 2px solid transparent;
+  }
