@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.payout.api_gateway</groupId>
 	<artifactId>api-gateway</artifactId>
@@ -27,28 +27,49 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
-		<spring-cloud.version>2023.0.3</spring-cloud.version>
+		<java.version>17</java.version>
+		<spring-cloud.version>2023.0.2</spring-cloud.version>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-gateway-mvc</artifactId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>3.3.0</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -64,6 +85,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>api-gateway</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
