@@ -4,6 +4,7 @@ import './SignUp.css'
 import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
+import CustomButton from "../components/CustomButton"
 
 
 const schema = Yup.object().shape({
@@ -35,7 +36,7 @@ export const SignUp = () => {
   return (
     <div className="h-full py-0 md:py-6 bg-secundario flex gap-14 justify-center ">
         <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-white rounded-[15px] shadow-down-dark-md">
-            <h2 className="text-primario text-[26px] font-semibold font-['Montserrat'] leading-[63px] text-center pb-11">REGISTRO</h2>
+            <h2 className="text-[26px] font-semibold leading-[63px] text-center pb-11">REGISTRO</h2>
 
             <Formik
                 initialValues={{
@@ -55,14 +56,14 @@ export const SignUp = () => {
                         {/* <Field placeholder="Nombre" className="py-8 border border-gray-300 rounded" type="text" name="nombre"/>
                         <ErrorMessage name="nombre" component="p"/> */}
 
-                        <Field placeholder="Email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="email"/>
-                        <ErrorMessage name="email" component="p"/>
+                        <Field placeholder="Email" className="custom-field" type="email" name="email"/>
+                        <ErrorMessage name="email" component="p" className="custom-error-message"/>
 
-                        <Field placeholder="Confirma tu email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="rEmail"/>
-                        <ErrorMessage name="rEmail" component="p"/>
+                        <Field placeholder="Confirma tu email" className="custom-field" type="email" name="rEmail"/>
+                        <ErrorMessage name="rEmail" component="p" className="custom-error-message"/>
 
-                        <Field placeholder="Tu contraseña" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="text" name="password"/>
-                        <ErrorMessage name="password" component="p"/>
+                        <Field placeholder="Tu contraseña" className="custom-field" type="text" name="password"/>
+                        <ErrorMessage name="password" component="p" className="custom-error-message"/>
 
                         {/* <Field placeholder="Confirma tu contraseña" className="form-control py-2" type="text" name="rPassword"/>
                         <ErrorMessage name="rPassword" component="p"/> */}
@@ -80,7 +81,7 @@ export const SignUp = () => {
                         </div>
                         
 
-                        <button type="submit" className="w-full py-3.5 px-4 bg-primario text-white rounded-lg text-xl font-['Montserrat'] font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" disabled={!isValid || !dirty}>Registrarme</button>
+                        <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover' texto={'Registrarse'} disabled={!isValid || !dirty}/>
                     </Form>
                     )}
                 </Formik>
@@ -88,8 +89,8 @@ export const SignUp = () => {
                 <div className="flex flex-col gap-4 items-center">
                     <p className="mt-4 text-sm">O continuar con: </p>
                     <div className="g-apple-buttons flex gap-3">
-                        <button className="border border-primario rounded-lg py-2.5 px-3.5"><img className="w-[32px] h-[32px]" src={google} alt="" /></button>
-                        <button className="border border-primario rounded-lg py-2.5 px-3.5"><img className="w-[32px] h-[32px]" src={apple} alt="" /></button>                        
+                        <button className="custom-social-button"><img className="w-[32px] h-[32px]" src={google} alt="" /></button>
+                        <button className="custom-social-button"><img className="w-[32px] h-[32px]" src={apple} alt="" /></button>                        
                     </div>
                     <div>
                         <p className="text-center text-sm text-gris">

@@ -1,4 +1,3 @@
-import React from 'react'
 import  payout  from '../assets/PAYOUT.png'
 import icon from '../assets/icon.png'
 import line from '../assets/line.png'
@@ -22,7 +21,7 @@ const Navbar = () => {
         <a>Precios</a>
         <a>Ayuda</a>
         <a>Iniciar sesion</a>
-        <a>crear cuenta</a>
+        <a>Crear cuenta</a>
       </div>
       </div>
     
