@@ -1,0 +1,5 @@
+
+
+.custom-button {
+    @apply w-full py-3.5 px-4 bg-primario text-white rounded-lg text-xl font-['Montserrat'] font-semibold;
+}

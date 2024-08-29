@@ -1,0 +1,25 @@
+/* Checkbox del formulario */
+.custom-checkbox {
+    @apply w-4 h-4 border-2 border-gray-300 rounded-lg checked:border-violet-500 checked:bg-violet-500;
+  }
+  
+  .custom-checkbox:checked::before {
+    content: '';
+    @apply block w-3 h-3 bg-white rounded-sm;
+    border: 2px solid transparent;
+  }
+
+/* Campos del formulario */
+.custom-field {
+  @apply py-2.5 pl-4 border border-primario rounded-lg text-sm;
+}
+
+/* Botones redes sociales */
+.custom-social-button {
+  @apply border border-primario rounded-lg py-2.5 px-3.5;
+}
+
+/* Estilos de los mensajes de error */
+.custom-error-message {
+  @apply text-danger text-sm;
+}
