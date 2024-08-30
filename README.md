@@ -7,25 +7,7 @@ Esta es una guía para el desarrollo de nuestra aplicación de billetera virtual
 **npm run test:** Prepara el proyecto para hacer pruebas de funcionalidad.
 
 ## Estructura del proyecto
-payout-app/
-├─ node_modules/
-├─ public/
-│  ├─ favicon.ico
-│  ├─ index.html
-├─ src/
-│  ├─ assets/
-│  ├─ api/
-│  ├─ authentication/
-│  ├─ components/
-│  ├─ contexts/
-│  ├─ App.css
-│  ├─ App.jsx
-│  ├─ global.css
-│  ├─ index.css
-│  ├─ main.jsx
-├─ .gitignore
-├─ package.json
-├─ package-lock.json
+![Payout](https://github.com/user-attachments/assets/18f27ffc-f561-4977-a499-af641a93fe03)
 
 ## Estilos
 Se trabajará los estilos con Tailwind CSS para tener una aplicación moderna, responsiva y adaptable a cualquier dispositivo.
