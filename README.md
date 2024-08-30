@@ -4,8 +4,14 @@
 
 <img src="" alt="logo PAYOUT" />
 
+
 ## 📖 Descripción del Proyecto
 
+PAYOUT es una billetera virtual que busca dar solución a 
+
+El objetivo de este proyecto es 
+
+Entre las funcionalidades principales de la aplicación encontramos, 
 
 
 ## 🖼️ Imágenes del Proyecto
