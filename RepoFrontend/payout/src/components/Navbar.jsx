@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import  payout  from '../assets/PAYOUT.png'
 import icon from '../assets/icon.png'
 import line from '../assets/line.png'
-
-
+import CustomButton from '../authentication/components/CustomButton';
+import '../authentication/components/CustomButton.css'
 
 const Navbar = () => {
   // Estado para manejar el menú hamburguesa
@@ -22,7 +22,7 @@ const Navbar = () => {
             <img className="h-[30px] ml-10 hidden md:block" src={icon} alt=""/>
             <img className="h-[18px] ml-2 hidden md:block" src={payout} alt=""/>
           </div>
-          <a className="hidden md:block">Personal</a> {/* Se oculta en móviles */}
+          <a className="hidden md:block underline text-primario">Personal</a> {/* Se oculta en móviles */}
           <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
         </div>
 
@@ -39,12 +39,12 @@ const Navbar = () => {
         </div>
 
         {/* Links del menú (se muestra en pantallas grandes) */}
-        <div className='hidden md:flex gap-6 mx-8'> 
+        <div className='hidden md:flex items-center gap-6 mx-8'> 
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
-          <a>Iniciar sesion</a>
-          <a href='/signup'>crear cuenta</a>
+          <a className='whitespace-nowrap text-primario'>Iniciar sesion</a>
+          <CustomButton  texto='Crear cuenta' className='nav-button' type='signup' />
         </div>
       </div>
 
@@ -64,6 +64,6 @@ const Navbar = () => {
       {/* Línea bajo el navbar */}
       <img className="w-full" src={line} alt=""/>
     </div>
-  );
+  );;
 }
-export default Navbar
+export default Navbar;
