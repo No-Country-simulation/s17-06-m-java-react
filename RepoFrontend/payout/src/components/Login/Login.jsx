@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
-import './SignUp.css'
+
 import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
@@ -9,7 +9,8 @@ import  image  from '../../assets/Signup-imagen.png'
 const schema = Yup.object().shape({ 
     email: Yup.string()                
                 .email("El email es inválido")
-                .required("Este campo es obligatorio"),
+                .required('El email es requerido'),
+                
     
     password: Yup.string()
                 .min(8, "La contraseña es demasiado corta")
@@ -22,7 +23,7 @@ const schema = Yup.object().shape({
 
 
 
-export const SignUp = () => { 
+export const Login = () => { 
 
   return (
     <div className="h-[100dvh] py-0 md:py-36 bg-secundario flex gap-14 justify-center">
@@ -36,7 +37,7 @@ export const SignUp = () => {
                    
                 }}
                 onSubmit={(values) => {
-                    console.log('Inicio de Seccion Exitoso:', values);
+                    console.log('Inicio de Sesion Exitoso:', values);
                 }}
                 validationSchema={schema}
             >
@@ -46,10 +47,8 @@ export const SignUp = () => {
                         <Field placeholder="Email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="email"/>
                         <ErrorMessage name="email" component="p"/>
 
-                        <Field placeholder="Confirma tu email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="rEmail"/>
-                        <ErrorMessage name="rEmail" component="p"/>
-
-                        <Field placeholder="Tu contraseña" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="text" name="password"/>
+                       
+                        <Field placeholder="contraseña" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="text" name="password"/>
                         <ErrorMessage name="password" component="p"/>
 
                        
@@ -62,7 +61,7 @@ export const SignUp = () => {
                         </div>
                         
 
-                        <button type="submit" className="w-full py-3.5 px-4 bg-primario text-white rounded-lg text-xl font-['Montserrat'] font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" disabled={!isValid || !dirty}>Iniciar Seccion</button>
+                        <button type="submit" className="w-full py-3.5 px-4 bg-primario text-white rounded-lg text-xl font-['Montserrat'] font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" disabled={!isValid || !dirty}>Iniciar Sesion</button>
 
                         <div className="flex items-center space-x-2">
                             <label className="text-xs" htmlFor="Olv">
