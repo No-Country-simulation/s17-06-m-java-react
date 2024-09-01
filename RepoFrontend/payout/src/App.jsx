@@ -13,9 +13,9 @@ function App() {
     <>
       <div className="flex flex-col h-screen">
         <Navbar />
-        <div className='min-h-[80vh]'>
+        
             <Outlet />
-        </div>        
+              
         <Footer/>
       </div>
     </>
