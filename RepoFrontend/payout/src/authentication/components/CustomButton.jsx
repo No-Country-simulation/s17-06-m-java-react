@@ -1,8 +1,16 @@
 import './CustomButton.css'
+import { useNavigate } from 'react-router-dom';
 
-const CustomButton = ({ texto }) => {
+const CustomButton = ({ texto = '', className, type }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const url = type === 'login' ? '/login' : '/signup';
+    navigate(url);
+  }
+
   return (
-    <button type="submit" className="custom-button">{texto}</button>
+    <button onClick={handleClick} className={`custom-button ${className}`}>{texto}</button>
   )
 }
 
