@@ -11,7 +11,7 @@
 
 /* Campos del formulario */
 .custom-field {
-  @apply py-2.5 pl-4 border border-primario rounded-lg text-sm;
+  @apply py-2.5 pl-4 border focus:outline-none focus:ring-1 focus:ring-primario border-primario rounded-lg text-sm;
 }
 
 /* Botones redes sociales */
