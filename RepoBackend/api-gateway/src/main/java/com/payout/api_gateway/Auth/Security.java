@@ -44,7 +44,7 @@ public class Security extends AbstractGatewayFilterFactory<Security> {
             }
 
             URI uri = UriComponentsBuilder
-                    .fromHttpUrl("http://api-gateway/auth/validate")
+                    .fromHttpUrl("http://api-gateway/validate")
                     .queryParam("token", token)
                     .build()
                     .toUri();

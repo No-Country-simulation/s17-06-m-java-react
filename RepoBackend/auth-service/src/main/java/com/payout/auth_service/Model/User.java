@@ -1,5 +1,7 @@
 package com.payout.auth_service.Model;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,13 +34,13 @@ public class User {
     private Integer status;
 
     @Column(name = "created_at", nullable = false)
-    private Long createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "updated_at", nullable = true)
-    private Long updatedAt;
+    private Timestamp updatedAt;
 
     @Column(name = "last_login", nullable = true)
-    private Long lastLogin;
+    private Timestamp lastLogin;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserDetail userDetail;

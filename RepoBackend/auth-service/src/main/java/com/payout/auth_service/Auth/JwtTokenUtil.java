@@ -1,7 +1,9 @@
 package com.payout.auth_service.Auth;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.Data;
 
@@ -80,5 +82,18 @@ public class JwtTokenUtil implements Serializable {
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    public String validateExternal(String token) {
+        try {
+            Jwts.parser().verifyWith(this.getPrivateKey()).build().parseSignedClaims(token);
+        } catch (Exception e) {
+            throw new JwtException("Invalid token");
+        }
+        return token;
+    }
+
+    public SecretKey getPrivateKey() {
+        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 }
