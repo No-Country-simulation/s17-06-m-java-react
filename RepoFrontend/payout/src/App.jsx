@@ -1,27 +1,23 @@
 import './App.css'
 import './index.css'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import { SignUp } from './components/signUp/SignUp';
-import { Login } from "./components/Login/Login";
+import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom';
+import { Footer } from './components/footer/Footer';
 
-function App() { 
+
+
+function App() {
+
   return (
-    <>    
-      <BrowserRouter>
-        <div>
-          <h1>Welcome</h1>
-          <button>
-            <Link to="/register">Go to Register</Link>
-          </button>
-          <button>
-            <Link to="/login">Go to Login</Link>
-          </button>
-        </div>
-        <Routes>
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+    <>
+      <div className="flex flex-col h-screen">
+        <Navbar />
+        
+            <Outlet />
+              
+        <Footer/>
+      </div>
+
     </>
   )
 }
