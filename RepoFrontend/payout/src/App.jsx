@@ -1,4 +1,3 @@
-
 import './App.css'
 import './index.css'
 import Navbar from './components/Navbar';
@@ -18,8 +17,9 @@ function App() {
               
         <Footer/>
       </div>
+
     </>
   )
 }
 
-export default App
+export default App;
