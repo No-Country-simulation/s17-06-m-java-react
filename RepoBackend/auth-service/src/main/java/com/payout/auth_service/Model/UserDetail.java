@@ -1,5 +1,7 @@
 package com.payout.auth_service.Model;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,10 +34,10 @@ public class UserDetail {
     private String address;
 
     @Column(name = "created_at", nullable = false)
-    private Long createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "updated_at", nullable = true)
-    private Long updatedAt;
+    private Timestamp updatedAt;
 
     @OneToOne
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_userdetail_user"))
