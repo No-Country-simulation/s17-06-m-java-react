@@ -3,9 +3,11 @@ import  payout  from '../assets/PAYOUT.png'
 import icon from '../assets/icon.png'
 import line from '../assets/line.png'
 import CustomButton from '../authentication/components/CustomButton';
-import '../authentication/components/CustomButton.css'
+import '../authentication/components/CustomButton.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate()
   // Estado para manejar el menú hamburguesa
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,8 +21,8 @@ const Navbar = () => {
       <div className='w-full h-[9.5vh] flex items-center justify-between'>
         <div className='flex items-center gap-6'>
           <div className='flex items-center'>
-            <img className="h-[30px] ml-10 hidden md:block" src={icon} alt=""/>
-            <img className="h-[18px] ml-2 hidden md:block" src={payout} alt=""/>
+            <img className="h-[30px] ml-10 hidden md:block cursor-pointer" src={icon} alt=" " onClick={() => navigate('/LandingPage')}/>
+            <img className="h-[18px] ml-2 hidden md:block cursor-pointer" src={payout} alt="" onClick={() => navigate('/LandingPage')}/>
           </div>
           <a className="hidden md:block underline text-primario">Personal</a> {/* Se oculta en móviles */}
           <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
@@ -43,8 +45,8 @@ const Navbar = () => {
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
-          <a className='whitespace-nowrap text-primario'>Iniciar sesion</a>
-          <CustomButton  texto='Crear cuenta' className='nav-button' type='signup' />
+          <a className='whitespace-nowrap text-primario' href='/login'>Iniciar sesion</a>
+          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className='nav-button' type='signup' />
         </div>
       </div>
 
