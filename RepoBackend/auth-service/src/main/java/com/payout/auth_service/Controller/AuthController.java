@@ -2,6 +2,9 @@ package com.payout.auth_service.Controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import java.util.Date;
+import org.springframework.http.HttpStatus;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +36,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<UserDto> save(@Valid @RequestBody UserDto userDto) throws Exception {
         User user = userService.save(convertToEntity(userDto));
-        return ResponseEntity.ok(convertToDto(user));
+        return new ResponseEntity<>(convertToDto(user), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
@@ -42,8 +45,11 @@ public class AuthController {
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(req.getEmail());
         final String token = jwtTokenUtil.generateToken(userDetails);
+        final Date expiresAt = jwtTokenUtil.getExpirationDateFromToken(token);
+        Long idUser = userService.findOneByEmail(req.getEmail()).getIdUser();
+        String email = userService.findOneByEmail(req.getEmail()).getEmail();
 
-        return ResponseEntity.ok(new JwtResponse(token));
+        return new ResponseEntity<>(new JwtResponse(token, idUser, email, expiresAt), HttpStatus.I_AM_A_TEAPOT);
     }
 
     private void authenticate(String username, String password) throws Exception {

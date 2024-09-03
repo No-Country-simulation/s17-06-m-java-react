@@ -18,4 +18,9 @@ public class UserImpl extends CrudImpl<User, Long> implements UserService {
     protected GenericRepository<User, Long> getRepository() {
         return userRepository;
     }
+
+    @Override
+    public User findOneByEmail(String email) {
+        return userRepository.findOneByEmail(email);
+    }
 }

@@ -1,8 +1,6 @@
 package com.payout.api_gateway.Auth;
 
 import java.net.URI;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
@@ -10,15 +8,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import com.payout.api_gateway.Config.Validator;
 import com.payout.api_gateway.Dto.RequestDTO;
 
 @Component
 public class Security extends AbstractGatewayFilterFactory<Security> {
-
-    @Autowired
-    private Validator validator;
 
     private final WebClient.Builder webClient;
 

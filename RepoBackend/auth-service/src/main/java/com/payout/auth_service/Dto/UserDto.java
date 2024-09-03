@@ -2,7 +2,6 @@ package com.payout.auth_service.Dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,18 +21,9 @@ public class UserDto {
     @NotNull
     private String password;
 
-    @NotNull
-    private String phone;
+    private Integer phone;
 
-    @NotNull
-    @Min(0)
     private Integer status;
-
-    private Long createdAt;
-
-    private Long updatedAt;
-
-    private Long lastLogin;
 
     @JsonManagedReference
     private UserDetailDto userDetail;
