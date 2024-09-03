@@ -2,7 +2,7 @@
 
 ## 🌐 Proyecto PAYOUT
 
-<img src="" alt="logo PAYOUT" />
+<img src="https://github.com/No-Country-simulation/s17-06-m-java-react/blob/develop/ASSET/PAYOUT-%201.png" alt="logo PAYOUT" />
 
 
 ## 📖 Descripción del Proyecto
@@ -14,13 +14,10 @@ Entre las funcionalidades principales de la aplicación encontramos: enviar, rec
 
 ## 🖼️ Imágenes del Proyecto
 
-![Vista Principal]
 <br>
-<img width="400" height= "200" src="" alt="vista principal PAYOUT" />
+<img width="400" height= "200" src="https://github.com/No-Country-simulation/s17-06-m-java-react/blob/develop/ASSET/1.png" alt="vista principal PAYOUT" />
 <br>
-![Vista Secundaria]
-<br>
-<img width="400" height= "200" src="" alt="vista segundaria PAYOUT  " />
+<img width="400" height= "200" src="https://github.com/No-Country-simulation/s17-06-m-java-react/blob/develop/ASSET/2.png" alt="vista segundaria PAYOUT  " />
 <br>
 
 ## 👥 Miembros del Equipo
