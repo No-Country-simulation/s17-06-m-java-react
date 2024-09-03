@@ -33,9 +33,9 @@ public class Security extends AbstractGatewayFilterFactory<Security> {
             RequestDTO requestDTO = new RequestDTO(exchange.getRequest().getPath().toString(),
                     exchange.getRequest().getMethod().toString());
 
-            if (validator.isPublicPath(requestDTO)) {
-                return chain.filter(exchange);
-            }
+            // if (validator.isPublicPath(requestDTO)) {
+            // return chain.filter(exchange);
+            // }
 
             String token = extractToken(exchange);
             if (token == null) {
@@ -44,7 +44,7 @@ public class Security extends AbstractGatewayFilterFactory<Security> {
             }
 
             URI uri = UriComponentsBuilder
-                    .fromHttpUrl("http://api-gateway/validate")
+                    .fromHttpUrl("http://api-gateway/validate?")
                     .queryParam("token", token)
                     .build()
                     .toUri();

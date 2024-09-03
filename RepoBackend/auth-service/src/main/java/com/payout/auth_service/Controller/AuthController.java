@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import com.payout.auth_service.Auth.JwtRequest;
 import com.payout.auth_service.Auth.JwtResponse;
 import com.payout.auth_service.Auth.JwtTokenUtil;
-import com.payout.auth_service.Auth.RequestDto;
 import com.payout.auth_service.Dto.UserDto;
 import com.payout.auth_service.Model.User;
 import com.payout.auth_service.Service.UserService;
@@ -57,8 +56,8 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/validate")
-    public ResponseEntity<String> validate(@RequestParam String token, @RequestBody RequestDto req) {
+    @GetMapping("/validate")
+    public ResponseEntity<String> validate(@RequestParam String token) {
         String validToken = jwtTokenUtil.validateExternal(token);
         return ResponseEntity.ok().header("Authorization", "Bearer " + validToken).body(validToken);
     }

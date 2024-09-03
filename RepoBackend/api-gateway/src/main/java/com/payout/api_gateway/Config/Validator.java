@@ -14,7 +14,15 @@ public class Validator {
     private List<RequestDTO> paths;
 
     public boolean isPublicPath(RequestDTO requestDTO) {
+        String requestUri = requestDTO.getUri();
+        String requestMethod = requestDTO.getMethod().toUpperCase();
+
         return paths.stream().anyMatch(
-                p -> Pattern.matches(p.getUri(), requestDTO.getUri()) && p.getMethod().equals(requestDTO.getMethod()));
+                p -> {
+                    String patternUri = p.getUri();
+                    String patternMethod = p.getMethod().toUpperCase();
+
+                    return Pattern.matches(patternUri, requestUri) && patternMethod.equals(requestMethod);
+                });
     }
 }
