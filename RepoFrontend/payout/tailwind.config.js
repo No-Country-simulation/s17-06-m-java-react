@@ -6,6 +6,7 @@ export default {
       colors: {        
         'primario': '#5C27BB',
         'secundario': '#E6EBFF',
+        'dark': '#121139',
         'celeste': '#4151e1',
         'gris': '#575757',
         'danger': 'red'
@@ -17,6 +18,12 @@ export default {
     },
     fontWeight: {
       semibold: 600
+    },
+    fontSize: {
+      'xxs': '0.6875rem',
+      'xs': '12px',
+      'sm': '14px',
+      'xl': '0.6875rem'
     }
   },
   plugins: [ ],

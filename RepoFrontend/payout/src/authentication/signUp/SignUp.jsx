@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
 import './SignUp.css'
@@ -6,6 +7,7 @@ import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
+
 
 
 const schema = Yup.object().shape({
@@ -34,16 +36,57 @@ const schema = Yup.object().shape({
 
 export const SignUp = () => { 
 
+    let navigate = useNavigate()
+    // const [email, setEmail] = useState(null);
+    // const [rEmail, setREmail] = useState(null);
+    // const [password, setPassword] = useState(null);
+
     const [showPassword, setShowPassword] = useState(false);
+    const [light, setLight] = useState(true)
 
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
 
+    const toggleTheme = () => {
+        setLight(!light);
+      };
+
+
+
+    const handleSubmit = async (values) => {   
+        console.log('Formulario enviado:', values) 
+
+        /* fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({              
+              mail: values.email,
+              repeatEmail: values.rEmail,
+              password: values.password
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              const token = data.token
+              localStorage.setItem('token', token)
+              navigate('/home')
+            })
+            .catch (error =>{
+              console.log(error)              
+            }) */
+    }
+
 
   return (
-    <div className="md:py-8 bg-secundario flex gap-14 justify-center ">
-        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-white rounded-[15px] shadow-down-dark-md">
+    <>
+    <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button>
+    <div className={`md:py-8 ${light? 'bg-secundario': 'bg-dark' }  flex lg:gap-14 xl:gap-14 justify-center items-center`}>
+        
+        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
             <h2 className="text-[26px] font-semibold leading-[63px] text-center pb-11">REGISTRO</h2>
 
             <Formik
@@ -54,9 +97,10 @@ export const SignUp = () => {
                     password: '',
                     /* rPassword: '' */
                 }}
-                onSubmit={(values) => {
+                /* onSubmit={(values) => {
                     console.log('Formulario enviado:', values);
-                }}
+                }} */
+                onSubmit={handleSubmit}
                 validationSchema={schema}
             >
                 {({ isValid, dirty }) => (
@@ -113,7 +157,7 @@ export const SignUp = () => {
                             <Field
                                 type="checkbox"
                                 name="termsAccepted"
-                                className="custom-checkbox"
+                                className=""
                             />
                             <label className="text-xs" htmlFor="termsAccepted">
                             Al registrarme acepto las <a className="text-celeste" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
@@ -149,7 +193,9 @@ export const SignUp = () => {
 
                 
         </div>
-        <img className="h-[614px] hidden md:block" src={image} alt="" />
+        <img className="hidden lg:block lg:h-[614px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
     </div>
+    </>
+    
   );
 };
