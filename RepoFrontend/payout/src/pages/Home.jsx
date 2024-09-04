@@ -9,7 +9,7 @@ import  intercambiar  from '../assets/intercambiar.png'
 
 const Home = () => {
   return (
-    <div className='bg-dark px-4 md:px-10 w-full'>
+    <section className='bg-dark px-4 md:px-10 w-full'>
 
         {/* BANNER NOMBRE DE USUARIO */}
 
@@ -231,7 +231,7 @@ const Home = () => {
                 </div>
             </div>
         </div> 
-    </div>
+    </section>
   )
 }
 
