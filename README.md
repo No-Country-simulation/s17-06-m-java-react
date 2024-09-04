@@ -7,9 +7,13 @@
 
 ## 📖 Descripción del Proyecto
 
-Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. El objetivo de nuestra plataforma es facilitar la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global.
+Payout es una plataforma de pagos, diseñada especialmente para viajeros frecuentes. Buscamos, que en el lugar del mundo en el que estés, puedas manejar tu dinero de manera fácil, rápida y segura.
 
-Entre las funcionalidades principales de la aplicación encontramos: enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.
+El objetivo de nuestra plataforma es facilitar la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativas, operaciones eficientes e infraestructura bancaria global.
+
+Entre las funcionalidades principales de la aplicación encontramos: enviar y recibir transferencias,  convertir dinero a la moneda de tu preferencia, consultar tu saldo y tus movimientos, realizar cobros y crear presupuestos para tu próximo viaje, todo esto de manera fácil y segura. 
+
+Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.
 
 
 ## 🖼️ Imágenes del Proyecto
