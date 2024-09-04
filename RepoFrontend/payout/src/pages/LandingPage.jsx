@@ -43,7 +43,7 @@ const cards = [
 
   return (
     <div>
-    <section className='h-[90vh] p-6 flex justify-between'>
+    <section className='md:h-[90vh] p-6 md:flex justify-between'>
     <div>
       <h1>Gestiona tus finanzas</h1>
       <p>desde cualquier rincon del mundo.</p>
@@ -51,12 +51,12 @@ const cards = [
       <p>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
       en una sola cuenta, siempre que lo necesites.</p>
     </div>
-    <img src={landingimg} alt='' className='w-[50%]'/>
+    <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
     </section>
 
-    <section className='h-[100vh] text-center bg-gris p-16'>
+    <section className='md:h-[100vh] text-center bg-gris p-6 md:p-16'>
       <h1 className='text-5xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>Descubre todos los beneficios de tu cuenta Payout</h1>
-      <div className='flex bg-celeste p-6 m-20 rounded-2xl'>
+      <div className='md:flex bg-celeste p-4 md:p-6 m-4 mt-6 md:m-20 rounded-2xl'>
         {cards.map((card) =>(
           <div className='bg-white flex p-4 m-3 h-[250px] rounded-2xl'>
           <div>
@@ -78,11 +78,11 @@ const cards = [
       <h1>Sobre PAYOUT</h1>
       <p className='m-8'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</p>
 
-      <div className='flex px-20 h-[500px]'>
-        <img src={celular} className='w-[600px]'/>
-        <div className='flex flex-col gap-10 justify-center p-4 items-center'>
-          <h2 className='font-black text-5xl text-left bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>Mantenemos tu información financiera segura y protegida</h2>
-          <img src={icon} className='w-[300px]'/>
+      <div className='md:flex md:px-20 md:h-[500px]'>
+        <img src={celular} className='w-[full] md:w-[600px]'/>
+        <div className='flex flex-col gap-10 justify-center md:p-4 items-center'>
+          <h2 className='font-black text-4xl md:text-5xl text-left bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>Mantenemos tu información financiera segura y protegida</h2>
+          <img src={icon} className='w-[200px] md:w-[300px] self-end'/>
         </div>
       </div>
       
