@@ -30,8 +30,9 @@ export default {
       'xs': '12px',
       'sm': '14px',
       'lg': '18px',
-      'xl': '20px',
-      '2xl': '24px',
+      'xl': '48px',
+      '2xl': '60px',
+      'base': '20px'
     }
   },
   plugins: [ function ({ addBase, theme, addComponents }) {
@@ -43,7 +44,6 @@ export default {
       'section p': { color: theme('colors.white')},
 
       /* Background color */
-      'body': { backgroundColor: theme('backgroundColor.dark')},
       
       /* Footer */
       'footer p': {
