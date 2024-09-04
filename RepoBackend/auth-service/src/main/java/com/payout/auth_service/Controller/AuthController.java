@@ -49,7 +49,7 @@ public class AuthController {
         Long idUser = userService.findOneByEmail(req.getEmail()).getIdUser();
         String email = userService.findOneByEmail(req.getEmail()).getEmail();
 
-        return new ResponseEntity<>(new JwtResponse(token, idUser, email, expiresAt), HttpStatus.I_AM_A_TEAPOT);
+        return new ResponseEntity<>(new JwtResponse(token, idUser, email, expiresAt), HttpStatus.OK);
     }
 
     private void authenticate(String username, String password) throws Exception {
