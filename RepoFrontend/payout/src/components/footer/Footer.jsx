@@ -11,14 +11,10 @@ import line from '../../assets/line.png'
 export const Footer = () => { 
 
   return (
-<<<<<<< HEAD
     <>
     <img className="w-full" src={line} alt=""/>
     <div className="py-3 px-2.5 md:px-16 lg:px-32 md:py-4 bg-secundario flex flex-col md:flex-row gap-4 md:gap-0  justify-between items-center w-full">
         
-=======
-    <div className="md:py-4 bg-secundario flex px-32 gap-10 justify-between items-center relative bottom-0 w-full">
->>>>>>> 9b605ae2929cc531200c91cc9171aa3b4d38ecb6
         <div className='flex gap-4 items-end'>
             <img src={icon} className='hidden md:block visible w-[33px] h-[27px]' alt="" />
             <img src={payout} className='w-[80px] md:w-[136px] md:h-[18px]' alt="" />
