@@ -3,7 +3,7 @@ export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
-      colors: {        
+      colors: {      
         'primario': '#5C27BB',
         'secundario': '#E6EBFF',
         'dark': '#121139',
@@ -13,6 +13,10 @@ export default {
         'danger': 'red',
         'verde' : '#50CFAF'
       },
+      backgroundColor: {
+        dark: '#121139',
+        light: '#E6EBFF',
+      }
     },
     fontFamily: {
       sans: ['Montserrat, sans-serif'],
