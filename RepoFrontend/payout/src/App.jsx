@@ -12,9 +12,9 @@ function App() {
     <>
       <div className="flex flex-col h-screen">
         <Navbar />
-        
-            <Outlet />
-              
+        <div className=' grow'>
+            <Outlet/>
+            </div>    
         <Footer/>
       </div>
 

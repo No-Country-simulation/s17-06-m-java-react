@@ -9,6 +9,8 @@ import uno from '../assets/1.png';
 import dos from '../assets/2.png';
 import tres from '../assets/3.png';
 import cuatro from '../assets/4.png';
+import celular from '../assets/celular.png'
+import icon from '../assets/iconpayout.png'
 
 const LandingPage = () => {
 const cards = [
@@ -51,17 +53,18 @@ const cards = [
     </div>
     <img src={landingimg} alt='' className='w-[50%]'/>
     </section>
-    <section className='h-[100vh]'>
-      <h1>Descubre todos los beneficios de tu cuenta Payout</h1>
-      <div className='flex'>
+
+    <section className='h-[100vh] text-center bg-gris p-16'>
+      <h1 className='text-5xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>Descubre todos los beneficios de tu cuenta Payout</h1>
+      <div className='flex bg-celeste p-6 m-20 rounded-2xl'>
         {cards.map((card) =>(
-          <div className='bg-slate-300 flex'>
+          <div className='bg-white flex p-4 m-3 h-[250px] rounded-2xl'>
           <div>
             <img src={card.imagen} alt='img'/>
             <h3>{card.titulo}</h3>
             <p>{card.texto}</p>
           </div>
-          <img src={card.numero} alt='numero'/>
+          <img src={card.numero} alt='numero' className='h-[30px]'/>
         </div>
         ))}
         
@@ -69,6 +72,20 @@ const cards = [
 
       </div>
 
+    </section>
+
+    <section className=' text-center p-8'>
+      <h1>Sobre PAYOUT</h1>
+      <p className='m-8'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</p>
+
+      <div className='flex px-20 h-[500px]'>
+        <img src={celular} className='w-[600px]'/>
+        <div className='flex flex-col gap-10 justify-center p-4 items-center'>
+          <h2 className='font-black text-5xl text-left bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>Mantenemos tu información financiera segura y protegida</h2>
+          <img src={icon} className='w-[300px]'/>
+        </div>
+      </div>
+      
     </section>
     </div>
   )
