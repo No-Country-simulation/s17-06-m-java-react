@@ -13,7 +13,7 @@ export const Footer = () => {
   return (
     <>
     <img className="w-full" src={line} alt=""/>
-    <div className="py-3 px-2.5 md:px-16 lg:px-32 md:py-4 bg-secundario flex flex-col md:flex-row gap-4 md:gap-0  justify-between items-center w-full">
+    <footer className="py-3 px-2.5 md:px-16 lg:px-32 md:py-4 bg-secundario flex flex-col md:flex-row gap-4 md:gap-0  justify-between items-center w-full">
         
         <div className='flex gap-4 items-end'>
             <img src={icon} className='hidden md:block visible w-[33px] h-[27px]' alt="" />
@@ -36,7 +36,7 @@ export const Footer = () => {
                 <p className='text-xxs md:text-xs'>Mapa de países</p>
             </div>
         </div>
-    </div>
+    </footer>
     </>
     
   );

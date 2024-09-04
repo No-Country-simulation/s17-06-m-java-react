@@ -24,7 +24,7 @@ const Navbar = () => {
             <img className="h-[30px] ml-10 hidden md:block cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
             <img className="h-[18px] ml-2 hidden md:block cursor-pointer" src={payout} alt="" onClick={() => navigate('/')}/>
           </div>
-          <a className="hidden md:block underline text-primario">Personal</a> {/* Se oculta en móviles */}
+          <a className="hidden md:block underline text-verde">Personal</a> {/* Se oculta en móviles */}
           <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
         </div>
 
@@ -45,14 +45,14 @@ const Navbar = () => {
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
-          <a className='whitespace-nowrap text-primario' href='/login'>Iniciar sesion</a>
+          <a className='whitespace-nowrap text-verde' href='/login'>Iniciar sesion</a>
           <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className='nav-button' type='signup' />
         </div>
       </div>
 
       {/* Menú desplegable para móviles */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} absolute top-[100%] left-0 w-full bg-white z-50`}> {/* Clases añadidas para el menú desplegable */}
-        <div className="flex flex-col items-start p-4">
+        <div className="flex flex-col items-start p-4 nav-text">
           <a className="py-1">Personal</a>
           <a className="py-1">Empresas</a>
           <a className="py-1">Funciones</a>

@@ -84,10 +84,10 @@ export const SignUp = () => {
   return (
     <>
     <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button>
-    <div className={`md:py-8 ${light? 'bg-secundario': 'bg-dark' }  flex lg:gap-14 xl:gap-14 justify-center items-center`}>
+    <div className={`md:py-8 ${light? 'bg-dark': 'bg-secundario' }  flex lg:gap-14 xl:gap-14 justify-center items-center`}>
         
-        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
-            <h2 className="text-[26px] font-semibold leading-[63px] text-center pb-11">REGISTRO</h2>
+        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-secundario md:rounded-[15px] shadow-down-dark-md">
+            <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
 
             <Formik
                 initialValues={{

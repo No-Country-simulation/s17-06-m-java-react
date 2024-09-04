@@ -19,9 +19,9 @@ const schema = Yup.object().shape({
 export const Login = () => {
 
     return (
-        <div className="h-[100dvh] py-0 md:py-36 bg-secundario flex gap-14 justify-center">
-            <div className="w-[466px] h-[100dvh] md:h-[614px] py-11 px-16 bg-white rounded-[15px] shadow-down-dark-md">
-                <h2 className="text-primario text-[26px] font-semibold font-['Montserrat'] leading-[63px] text-center pb-11">¡Bienvenido a Payout!</h2>
+        <body className="md:py-8 flex gap-14 justify-center">
+            <div className="w-[466px] h-[100dvh] md:h-[614px] bg-light py-11 px-16 rounded-[15px] shadow-down-dark-md">
+                <h2 className="text-primario text-[26px] leading-[63px] text-center pb-11">Inicia sesión o registrate</h2>
 
                 <Formik
                     initialValues={{
@@ -38,11 +38,11 @@ export const Login = () => {
                         <Form className="flex flex-col gap-4">
 
                             <Field placeholder="Email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="email" />
-                            <ErrorMessage name="email" component="p" />
+                            <ErrorMessage name="email" component="p" className="text-red-500" />
 
 
                             <Field placeholder="contraseña" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="text" name="password" />
-                            <ErrorMessage name="password" component="p" />
+                            <ErrorMessage name="password" component="p" className="text-red-500" />
 
 
 
@@ -76,6 +76,6 @@ export const Login = () => {
 
             </div>
             <img className="h-[614px] hidden md:block" src={image} alt="" />
-        </div>
+        </body>
     );
 };
