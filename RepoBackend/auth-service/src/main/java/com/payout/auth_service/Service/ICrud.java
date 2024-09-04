@@ -7,6 +7,8 @@ public interface ICrud<T, ID> {
 
     T update(T t, ID id) throws Exception;
 
+    T updateExternal(T t, ID id) throws Exception;
+
     List<T> readAll() throws Exception;
 
     T readById(ID id) throws Exception;

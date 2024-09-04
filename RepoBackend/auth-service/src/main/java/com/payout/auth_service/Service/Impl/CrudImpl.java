@@ -5,34 +5,84 @@ import java.util.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.beans.PropertyDescriptor;
 import com.payout.auth_service.Exception.ModelNotFoundException;
+import com.payout.auth_service.Model.User;
+import com.payout.auth_service.Model.UserDetail;
 import com.payout.auth_service.Repository.GenericRepository;
+import com.payout.auth_service.Repository.UserRepository;
 import com.payout.auth_service.Service.ICrud;
 
 public abstract class CrudImpl<T, ID> implements ICrud<T, ID> {
 
     protected abstract GenericRepository<T, ID> getRepository();
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public T save(T t) throws Exception {
+        if (t instanceof User) {
+            User user = (User) t;
+            UserDetail userDetail = user.getUserDetail();
+            String encryptedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encryptedPassword);
+            if (userDetail != null) {
+                userDetail.setUser(user);
+            }
+        }
         return getRepository().save(t);
     }
 
     @Override
     public T update(T t, ID id) throws Exception {
-        // Class<?> clazz = t.getClass();
-        // String className = clazz.getSimpleName();
-        // String methodName = "setId" + className;
-        // Method setIdMethod = clazz.getMethod(methodName, id.getClass());
-        // setIdMethod.invoke(t, id);
-        // getRepository().findById(id).orElseThrow(() -> new ModelNotFoundException("ID
-        // NOT FOUND: " + id));
-        // return getRepository().save(t);
         Optional<T> entity = getRepository().findById(id);
         T oldEntity = entity.orElseThrow(() -> new ModelNotFoundException("ID NOT FOUND: " + id));
         BeanUtils.copyProperties(t, oldEntity, getNullPropertyNames(t));
         return getRepository().save(oldEntity);
+    }
+
+    public User updateExternal(User newUser, Long id) throws Exception {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ModelNotFoundException("ID NOT FOUND: " + id));
+
+        if (newUser.getEmail() != null) {
+            existingUser.setEmail(newUser.getEmail());
+        }
+        if (newUser.getPassword() != null) {
+            existingUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        }
+        if (newUser.getPhone() != null) {
+            existingUser.setPhone(newUser.getPhone());
+        }
+        UserDetail newUserDetail = newUser.getUserDetail();
+        if (newUserDetail != null) {
+            UserDetail existingUserDetail = existingUser.getUserDetail();
+            if (existingUserDetail == null) {
+                existingUserDetail = new UserDetail();
+                existingUser.setUserDetail(existingUserDetail);
+                existingUserDetail.setUser(existingUser);
+            }
+            if (newUserDetail.getDni() != null) {
+                existingUserDetail.setDni(newUserDetail.getDni());
+            }
+            if (newUserDetail.getAddress() != null) {
+                existingUserDetail.setAddress(newUserDetail.getAddress());
+            }
+            if (newUserDetail.getName() != null) {
+                existingUserDetail.setName(newUserDetail.getName());
+            }
+            if (newUserDetail.getLastName() != null) {
+                existingUserDetail.setLastName(newUserDetail.getLastName());
+            }
+        }
+        return userRepository.save(existingUser);
     }
 
     @Override
