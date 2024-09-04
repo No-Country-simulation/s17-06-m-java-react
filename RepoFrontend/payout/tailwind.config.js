@@ -9,7 +9,9 @@ export default {
         'dark': '#121139',
         'celeste': '#4151e1',
         'gris': '#575757',
-        'danger': 'red'
+        'grisclaro': '#F4F4F4',
+        'danger': 'red',
+        'verde' : '#50CFAF'
       },
     },
     fontFamily: {
@@ -23,7 +25,9 @@ export default {
       'xxs': '0.6875rem',
       'xs': '12px',
       'sm': '14px',
-      'xl': '0.6875rem'
+      'lg': '18px',
+      'xl': '20px',
+      '2xl': '24px'
     }
   },
   plugins: [ ],
