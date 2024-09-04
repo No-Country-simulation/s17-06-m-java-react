@@ -1,28 +1,55 @@
-import './App.css'
-import './index.css'
+import './App.css';
+import './index.css';
 import Navbar from './components/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
-
-
+import Sidebar from './components/Sidebar';
+import { useState } from 'react';
 
 function App() {
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const location = useLocation();
+
+  const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
+  const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    navigate('/home');
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    navigate('/');
+  };
 
   return (
     <>
       <div className="flex flex-col h-screen">
+        {showNavbar && <Navbar />}
 
+        <div className="flex">
+          {isAuthenticated && <Sidebar className="md:w-1/5 md:h-screen" />}
+          <div className={`flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'}`}>
+            <Outlet />
+          </div>
+        </div>
 
-        <Navbar />
-        <div className=' grow'>
-            <Outlet/>
-            </div>    
+        {showFooter && <Footer />}
 
-        <Footer/>
+        {/* Botones de prueba para Login/Logout */}
+        <div className="fixed bottom-4 right-4 flex space-x-2">
+          <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded">
+            Login
+          </button>
+          <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">
+            Logout
+          </button>
+        </div>
       </div>
-
     </>
-  )
+  );
 }
 
 export default App;

@@ -21,8 +21,8 @@ const Navbar = () => {
       <div className='w-full h-[9.5vh] flex items-center justify-between'>
         <div className='flex items-center gap-6'>
           <div className='flex items-center'>
-            <img className="h-[30px] ml-10 hidden md:block cursor-pointer" src={icon} alt=" " onClick={() => navigate('/landingPage')}/>
-            <img className="h-[18px] ml-2 hidden md:block cursor-pointer" src={payout} alt="" onClick={() => navigate('/landingPage')}/>
+            <img className="h-[30px] ml-10 hidden md:block cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
+            <img className="h-[18px] ml-2 hidden md:block cursor-pointer" src={payout} alt="" onClick={() => navigate('/')}/>
           </div>
           <a className="hidden md:block underline text-primario">Personal</a> {/* Se oculta en móviles */}
           <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
