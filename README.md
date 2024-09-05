@@ -45,7 +45,7 @@ Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar d
 
 - Frontend: `React con react router` `context` `tailwind` `Javascript`
 - Backend: `Spring boot`  `srping security`  `MySQL` 
-- QA: `Postman` `Swagger` `Jira` 
+- QA: `Postman` `Swagger` `Jira` `XRay` 
 - UX/UI: `Figma`
 - Tipo de Proyecto: `Web Application`
 
@@ -56,7 +56,7 @@ Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar d
 - [Organización del Proyecto]()
 - [GitHub del Proyecto]()
 - [Video de Presentación]()
-- [Despliege de Backend]()
+- [Despliegue de Backend]()
 - [Sitio Web]()
 
 ### Algunos iconos
