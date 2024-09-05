@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <div className='md:h-full md:w-full'>
       {/* Sidebar en pantalla completa (solo para desktop) */}
-      <div className="hidden md:flex md:flex-col  h-full bg-white p-6">
+      <div className="hidden md:flex md:flex-col  h-full bg-white text-black p-6">
         <img src={payout} alt="logo" />
         <div className="h-full flex flex-col justify-center gap-10">
           <button>Inicio</button>

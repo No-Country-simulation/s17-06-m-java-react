@@ -106,7 +106,7 @@ export const Login = () => {
                             </div>
 
                             {/* BOTON SUBMIT */}
-                            <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover text-sm' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
+                            <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover text-sm dark:text-white' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
 
                             {/* AUN NO TIENES CUENTA? */}
                             <div className="flex gap-1.5 justify-center">
