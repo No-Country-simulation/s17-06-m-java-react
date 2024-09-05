@@ -48,7 +48,7 @@ const cards = [
       <h2>Gestiona tus finanzas</h2>
       <h3 className='text-extra font-bold'>desde cualquier rincon del mundo.</h3>
       <img src={tarjeta} alt='tarjeta' className='mt-8'/>
-      <h3 className='text-extra  w-3/5 self-start absolute bottom-0 '>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
+      <h3 className='text-extra  md:w-3/5 self-start md:absolute bottom-0 '>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
       en una sola cuenta, siempre que lo necesites.</h3>
     </div>
     <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
@@ -58,7 +58,7 @@ const cards = [
       <h2 className='text-5xl font-extrabold bg-gradient-to-r from-grisclaro to-verde bg-clip-text text-transparent'>Descubre todos los beneficios de tu cuenta Payout</h2>
       <div className='md:flex  bg-verde p-4 md:p-6 m-4 mt-6 md:m-20 rounded-2xl'>
         {cards.map((card) =>(
-          <div className='bg-white flex relative p-4 m-3 h-[250px] w-1/4 rounded-2xl'>
+          <div className='bg-white flex relative p-4 m-3 h-[250px] md:w-1/4 rounded-2xl'>
           <div className='text-left'>
             <img src={card.imagen} alt='img'/>
             <h3 className='font-bold'>{card.titulo}</h3>
