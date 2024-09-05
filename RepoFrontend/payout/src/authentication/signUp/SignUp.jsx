@@ -98,7 +98,7 @@ export const SignUp = () => {
                 validationSchema={schema}
             >
                 {({ isValid, dirty }) => (
-                    <Form className="flex flex-col gap-4">
+                    <Form className="flex flex-col gap-4 text-black">
                         {/* <Field placeholder="Nombre" className="py-8 border border-gray-300 rounded" type="text" name="nombre"/>
                         <ErrorMessage name="nombre" component="p"/> */}
 
@@ -109,7 +109,7 @@ export const SignUp = () => {
                         <ErrorMessage name="rEmail" component="p" className="custom-error-message"/>
 
                         <div className="relative">
-                            <Field placeholder="Tu contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
+                            <Field placeholder="Contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
                             <ErrorMessage name="password" component="p" className="custom-error-message"/>
 
                             <button
