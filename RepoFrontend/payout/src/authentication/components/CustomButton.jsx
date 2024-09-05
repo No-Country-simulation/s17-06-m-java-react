@@ -10,7 +10,7 @@ const CustomButton = ({ texto, className, type }) => {
   }
 
   return (
-    <button onClick={handleClick} className={`custom-button ${className}`}><p className='text-base'>{texto}</p></button>
+    <button onClick={handleClick} className={`custom-button ${className} dark:bg-primario`}><p className='text-base'>{texto}</p></button>
   )
 }
 

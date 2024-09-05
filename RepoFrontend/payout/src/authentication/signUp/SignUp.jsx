@@ -155,7 +155,7 @@ export const SignUp = () => {
                         </div>
                         
                         {/* BOTON REGISTRARSE */}
-                        <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover' texto={'Registrarse'} disabled={!isValid || !dirty} type='signup'/>
+                        <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover dark:text-white' texto={'Registrarse'} disabled={!isValid || !dirty} type='signup'/>
                     </Form>
                     )}
                 </Formik>
