@@ -21,8 +21,8 @@ const Navbar = () => {
       <div className='w-full h-[9.5vh] flex items-center justify-between'>
         <div className='flex items-center gap-6'>
           <div className='flex items-center'>
-            <img className="h-[30px] ml-10 hidden md:block cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
-            <img className="h-[18px] ml-2 hidden md:block cursor-pointer" src={payout} alt="" onClick={() => navigate('/')}/>
+            <img className="h-[30px] ml-10  cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
+            <img className="h-[18px] ml-2  cursor-pointer" src={payout} alt="" onClick={() => navigate('/')}/>
           </div>
           <a className="hidden md:block underline text-verde">Personal</a> {/* Se oculta en móviles */}
           <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
@@ -51,15 +51,19 @@ const Navbar = () => {
       </div>
 
       {/* Menú desplegable para móviles */}
-      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} absolute top-[100%] left-0 w-full bg-white z-50`}> {/* Clases añadidas para el menú desplegable */}
-        <div className="flex flex-col items-start p-4 nav-text">
-          <a className="py-1">Personal</a>
-          <a className="py-1">Empresas</a>
-          <a className="py-1">Funciones</a>
-          <a className="py-1">Precios</a>
-          <a className="py-1">Ayuda</a>
-          <a className="py-1">Iniciar sesion</a>
-          <a className="py-1" href='/signup'>crear cuenta</a>
+      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} absolute top-[100%] left-0 w-full  bg-white z-50`}> {/* Clases añadidas para el menú desplegable */}
+        <div className="flex flex-col items-center px-2 py-12 gap-10 nav-text">
+          <div className='flex gap-6'>
+          <a >Personal</a>
+          <a >Empresas</a>
+          </div>
+          <a >Funciones</a>
+          <a >Precios</a>
+          <a >Ayuda</a>
+          <div className='flex flex-col self-center gap-1'>
+          <a href='login'>Iniciar sesion</a>
+          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className='nav-button' type='signup' />
+          </div>
         </div>
       </div>
 

@@ -56,7 +56,7 @@ export default {
         color: theme('colors.white')
       },
       'a': {
-        color: '#fff',
+        color: 'black',
         fontWeight: theme('fontWeight.semibold')
       }
     })
