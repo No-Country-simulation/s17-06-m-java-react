@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
-  darkMode: 'class',
+  darkMode: 'media',
   theme: {
     extend: {
       colors: {      
@@ -20,7 +20,10 @@ export default {
           DEFAULT: '#E6EBFF',
           text: '#333'
         }
-      },
+      }
+    },
+    maxWidth: {
+      'full': '100vw',
     },
     fontFamily: {
       sans: ['Montserrat, sans-serif'],

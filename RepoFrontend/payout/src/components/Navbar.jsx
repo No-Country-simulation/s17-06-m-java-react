@@ -6,7 +6,7 @@ import CustomButton from '../authentication/components/CustomButton';
 import '../authentication/components/CustomButton.css';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ light }) => {
+const Navbar = () => {
   const navigate = useNavigate()
   // Estado para manejar el menú hamburguesa
   const [isOpen, setIsOpen] = useState(false);
@@ -41,19 +41,19 @@ const Navbar = ({ light }) => {
         </div>
 
         {/* Links del menú (se muestra en pantallas grandes) */}
-        <div className={`hidden md:flex items-center gap-6 mx-8 ${light ? 'bg-dark text-white' : 'bg-secundario-text-black'}`}> 
+        <div className={`hidden md:flex items-center gap-6 mx-8`}> 
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
-          <a className='whitespace-nowrap text-verde' href='/login'>Iniciar sesion</a>
-          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className="nav-button" type='signup' />
+          <a className='whitespace-nowrap' href='/login'>Iniciar sesion</a>
+          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' type='signup' class='light:bg-primario' className='bg-dark !text-white'/>
         </div>
       </div>
 
       {/* Menú desplegable para móviles */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} absolute top-[100%] left-0 w-full  bg-white z-50`}> {/* Clases añadidas para el menú desplegable */}
-        <div className="flex flex-col items-center px-2 py-12 gap-10 nav-text">
-          <div className="flex gap-6">
+        <div className="flex flex-col items-center px-2 py-12 gap-10 nav-text text-black">
+          <div className="flex gap-6 text-black">
           <a >Personal</a>
           <a >Empresas</a>
           </div>
