@@ -4,7 +4,7 @@ import icon from '../assets/icon.png'
 import line from '../assets/line.png'
 import CustomButton from '../authentication/components/CustomButton';
 import '../authentication/components/CustomButton.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -45,7 +45,7 @@ const Navbar = () => {
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
-          <a className='whitespace-nowrap' href='/login'>Iniciar sesion</a>
+          <Link className='whitespace-nowrap text-verde' to='/login'>Iniciar sesion</Link>
           <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' type='signup' class='light:bg-primario' className='bg-dark !text-white'/>
         </div>
       </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
           <a >Ayuda</a>
           <div className='flex flex-col self-center gap-1'>
           <a href='login'>Iniciar sesion</a>
-          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className='nav-button' type='signup' />
+          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' type='signup' />
           </div>
         </div>
       </div>

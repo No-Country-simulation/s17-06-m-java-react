@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
 import './SignUp.css'
@@ -173,10 +173,10 @@ export const SignUp = () => {
                         ¿Ya tienes cuenta?{" "}                    
                         </p>
                         <div className="flex justify-center">
-                            <a href="/login"
+                            <Link to='/login'
                                 className="text-primario text-sm text-center font-semibold underline leading-[21px]">
                                 Iniciar sesión
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

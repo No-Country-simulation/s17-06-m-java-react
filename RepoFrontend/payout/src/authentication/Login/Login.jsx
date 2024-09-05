@@ -6,6 +6,7 @@ import google from '../../assets/google.png'
 import apple from '../../assets/apple.png'
 import image from '../../assets/login-imagen.png'
 import CustomButton from "../components/CustomButton"
+import { Link } from "react-router-dom"
 
 
 
@@ -113,10 +114,10 @@ export const Login = () => {
                                 <p className="text-center text-sm text-gris">
                                 ¿aún no tienes cuenta? {" "}                    
                                 </p>
-                                <a href="/signup"
+                                <Link to="/signup"
                                     className="text-primario text-center text-sm font-semibold underline leading-[21px]">
                                     Registrate
-                                </a>
+                                </Link>
                             </div>
                         </Form>
                     )}
