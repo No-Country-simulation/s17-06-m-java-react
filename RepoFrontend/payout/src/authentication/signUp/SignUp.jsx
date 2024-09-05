@@ -153,7 +153,7 @@ export const SignUp = () => {
                                 name="termsAccepted"
                                 className=""
                             />
-                            <label className="text-xs" htmlFor="termsAccepted">
+                            <label className="text-xs text-black" htmlFor="termsAccepted">
                             Al registrarme acepto las <a className="text-celeste" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
                             </label>
                             <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
@@ -166,7 +166,7 @@ export const SignUp = () => {
                 </Formik>
 
                 <div className="flex flex-col gap-4 items-center">
-                    <p className="mt-4 text-sm">O continuar con: </p>
+                    <p className="mt-4 text-sm text-black">O continuar con: </p>
                     <div className="g-apple-buttons flex gap-3">
                         <button className="custom-social-button"><img className="w-[32px] h-[32px]" src={google} alt="" /></button>
                         <button className="custom-social-button"><img className="w-[32px] h-[32px]" src={apple} alt="" /></button>                        
