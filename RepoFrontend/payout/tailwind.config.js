@@ -12,6 +12,8 @@ export default {
         'grisclaro': '#F4F4F4',
         'danger': 'red',
         'verde' : '#50CFAF',
+        'violeta-grad': '#9130f4',
+        'azul-grad': '#4646f9',
         dark: {
           DEFAULT: '#121139',
           text: 'fff'
@@ -54,7 +56,6 @@ export default {
       'h1': { fontSize: theme('fontSize.2xl'), fontWeight: theme('fontWeight.bold'), color: theme('colors.white')},
       'h2': { fontSize: theme('fontSize.xl'), fontWeight: theme('fontWeight.semibold')},
       'h3': { fontSize: theme('fontSize.lg')},
-      'section p': { color: theme('colors.white')},
 
       /* Background color */
       
@@ -64,9 +65,6 @@ export default {
       }
     }),
     addComponents({
-      '.dark p, .secundario p': {
-        color: theme('colors.white')
-      },
       'a': {
         fontWeight: theme('fontWeight.semibold')
       }
