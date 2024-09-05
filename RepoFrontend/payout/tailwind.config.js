@@ -32,7 +32,8 @@ export default {
       'lg': '18px',
       'xl': '48px',
       '2xl': '60px',
-      'base': '20px'
+      'base': '20px',
+      'extra': '25px'
     }
   },
   plugins: [ function ({ addBase, theme, addComponents }) {
