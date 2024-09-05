@@ -19,8 +19,8 @@ const schema = Yup.object().shape({
 export const Login = () => {
 
     return (
-        <body className="md:py-8 flex gap-14 justify-center">
-            <div className="w-[466px] h-[100dvh] md:h-[614px] bg-light py-11 px-16 rounded-[15px] shadow-down-dark-md">
+        <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[100vh]">
+            <div className="w-[466px] h-[100dvh] md:h-[614px] bg-white py-11 px-16 rounded-[15px] shadow-down-dark-md">
                 <h2 className="text-primario text-[26px] leading-[63px] text-center pb-11">Inicia sesión o registrate</h2>
 
                 <Formik
@@ -52,7 +52,7 @@ export const Login = () => {
                                 </label>
 
                             </div>
-                            <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
+                            <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover text-sm' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
                             <div className="flex items-center space-x-2">
                                 <label className="text-xs" htmlFor="Olv">
                                     ¿aun no tienes cuenta? <a className="text-celeste" href="#">Registrate</a>
@@ -71,11 +71,8 @@ export const Login = () => {
                     </div>
 
                 </div>
-
-
-
             </div>
             <img className="h-[614px] hidden md:block" src={image} alt="" />
-        </body>
+        </div>
     );
 };

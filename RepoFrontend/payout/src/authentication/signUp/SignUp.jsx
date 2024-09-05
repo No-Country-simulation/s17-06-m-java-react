@@ -8,8 +8,6 @@ import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
 
-
-
 const schema = Yup.object().shape({
     /* nombre: Yup.string()
                 .min(2, "El nombre es demasiado corto")
@@ -30,10 +28,6 @@ const schema = Yup.object().shape({
                 
 })
 
-
-
-
-
 export const SignUp = () => { 
 
     let navigate = useNavigate()
@@ -42,16 +36,16 @@ export const SignUp = () => {
     // const [password, setPassword] = useState(null);
 
     const [showPassword, setShowPassword] = useState(false);
-    const [light, setLight] = useState(true)
+/*     const [light, setLight] = useState(true); */
 
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
 
-    const toggleTheme = () => {
+/*     const toggleTheme = () => {
         setLight(!light);
       };
-
+ */
 
 
     const handleSubmit = async (values) => {   
@@ -83,10 +77,10 @@ export const SignUp = () => {
 
   return (
     <>
-    <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button>
-    <div className={`md:py-8 ${light? 'bg-dark': 'bg-secundario' }  flex lg:gap-14 xl:gap-14 justify-center items-center`}>
+    {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
+    <div className="md:py-8 flex lg:gap-14 xl:gap-14 justify-center items-center">
         
-        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-secundario md:rounded-[15px] shadow-down-dark-md">
+        <div className="w-[466px] h-full md:h-[614px] py-11 px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
             <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
 
             <Formik
