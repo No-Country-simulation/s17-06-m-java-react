@@ -51,10 +51,10 @@ Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar d
 
 ## 🔗 Enlaces Importantes
 
-- [Documentación del Proyecto]()
-- [Guía de Estilo del Proyecto]()
-- [Organización del Proyecto]()
-- [GitHub del Proyecto]()
+- [Documentación del Proyecto](https://johitatarabelli.atlassian.net/wiki/x/awAC)
+- [Guía de Estilo del Proyecto](https://www.figma.com/design/xB4CwPqTeYdaiIXB4tsCRi/S17-06-m-java-react?node-id=711-3543&node-type=CANVAS&t=w009z7HgXkmAgYLY-0)
+- [Organización y gestión del Proyecto](https://johannatarabelli.atlassian.net/jira/software/projects/BILLETERA1/boards/3)
+- [GitHub del Proyecto](https://github.com/No-Country-simulation/s17-06-m-java-react)
 - [Video de Presentación]()
 - [Despliegue de Backend]()
 - [Sitio Web]()
