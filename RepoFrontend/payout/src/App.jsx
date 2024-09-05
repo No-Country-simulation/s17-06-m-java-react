@@ -5,6 +5,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
 import Sidebar from './components/Sidebar';
 import { useState } from 'react';
+import { ThemeButton } from './components/ThemeButton';
 
 function App() {
   const navigate = useNavigate();
@@ -28,9 +29,24 @@ function App() {
   const [light, setLight] = useState(true);
 
   // Alternar entre modo claro y oscuro
-  const toggleTheme = () => {
+  // const toggleTheme = () => {
+  //   setLight(!light);
+  // };
+
+
+
+  const handleActivate = () => {
     setLight(!light);
+    // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
   };
+
+  const handleDeactivate = () => {
+    setLight(!light);
+    // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
+  };
+
+
+
 
   return (
     <>
@@ -39,11 +55,12 @@ function App() {
 
         <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
           {isAuthenticated && <Sidebar className="md:w-1/5 md:h-screen" />}
-          <div className={`text-end flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
-        <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
-        >Tema</button>
-            <Outlet />
-          </div>
+            <div className={`text-end flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
+              <ThemeButton onActivate={handleActivate} onDeactivate={handleDeactivate} />
+              {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
+              >Tema</button> */}
+              <Outlet />
+            </div>
         </div>
 
         {showFooter && <Footer />}

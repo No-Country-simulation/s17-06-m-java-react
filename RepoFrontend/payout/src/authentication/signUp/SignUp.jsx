@@ -8,11 +8,9 @@ import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
 
-const schema = Yup.object().shape({
-    /* nombre: Yup.string()
-                .min(2, "El nombre es demasiado corto")
-                .max(30, "Máximo 30 caracteres")
-                .required("Este campo es obligatorio"), */
+
+
+const schema = Yup.object().shape({    
     email: Yup.string()                
                 .email("El email es inválido")
                 .required("Este campo es obligatorio"),
@@ -21,12 +19,10 @@ const schema = Yup.object().shape({
                 .required('Este campo es requerido'),
     password: Yup.string()
                 .min(8, "La contraseña es demasiado corta")
-                .required("Este campo es obligatorio"),
-    /* rPassword: Yup.string()
-                .oneOf([Yup.ref('password'), null], 'Las contraseñas no coinciden')
-                .required('Este campo es requerido'), */
-                
+                .required("Este campo es obligatorio"),                
 })
+
+
 
 export const SignUp = () => { 
 
@@ -84,12 +80,10 @@ export const SignUp = () => {
             <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
 
             <Formik
-                initialValues={{
-                    /* nombre: '', */
+                initialValues={{                    
                     email: '',
                     rEmail: '',
-                    password: '',
-                    /* rPassword: '' */
+                    password: '',                    
                 }}
                 /* onSubmit={(values) => {
                     console.log('Formulario enviado:', values);
@@ -98,16 +92,17 @@ export const SignUp = () => {
                 validationSchema={schema}
             >
                 {({ isValid, dirty }) => (
-                    <Form className="flex flex-col gap-4 text-black">
-                        {/* <Field placeholder="Nombre" className="py-8 border border-gray-300 rounded" type="text" name="nombre"/>
-                        <ErrorMessage name="nombre" component="p"/> */}
+                    <Form className="flex flex-col gap-4 text-black">                        
 
+                        {/* EMAIL */}
                         <Field placeholder="Email" className="custom-field" type="email" name="email"/>
                         <ErrorMessage name="email" component="p" className="custom-error-message"/>
 
+                        {/* CONFIRMA EMAIL */}
                         <Field placeholder="Confirma tu email" className="custom-field" type="email" name="rEmail"/>
                         <ErrorMessage name="rEmail" component="p" className="custom-error-message"/>
 
+                        {/* CONTRASEÑA */}
                         <div className="relative">
                             <Field placeholder="Contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
                             <ErrorMessage name="password" component="p" className="custom-error-message"/>
@@ -146,7 +141,7 @@ export const SignUp = () => {
                         </div>
                         
 
-
+                        {/* TERMINOS Y CONDICIONES */}
                         <div className="flex items-center space-x-2">
                             <Field
                                 type="checkbox"
@@ -159,12 +154,14 @@ export const SignUp = () => {
                             <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
                         </div>
                         
-
+                        {/* BOTON REGISTRARSE */}
                         <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover' texto={'Registrarse'} disabled={!isValid || !dirty} type='signup'/>
                     </Form>
                     )}
                 </Formik>
 
+
+                {/* REGISTRO GOOGLE APPLE */}
                 <div className="flex flex-col gap-4 items-center">
                     <p className="mt-4 text-sm text-black">O continuar con: </p>
                     <div className="g-apple-buttons flex gap-3">
@@ -177,7 +174,7 @@ export const SignUp = () => {
                         </p>
                         <div className="flex justify-center">
                             <a href="/login"
-                                className="text-primario text-center font-semibold underline leading-[21px]">
+                                className="text-primario text-sm text-center font-semibold underline leading-[21px]">
                                 Iniciar sesión
                             </a>
                         </div>
@@ -187,6 +184,8 @@ export const SignUp = () => {
 
                 
         </div>
+
+        {/* IMAGEN */}
         <img className="hidden lg:block lg:h-[614px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
     </div>
     </>

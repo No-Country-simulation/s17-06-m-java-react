@@ -4,8 +4,10 @@ import * as Yup from 'yup'
 import './Login.css'
 import google from '../../assets/google.png'
 import apple from '../../assets/apple.png'
-import image from '../../assets/Signup-imagen.png'
+import image from '../../assets/login-imagen.png'
 import CustomButton from "../components/CustomButton"
+
+
 
 const schema = Yup.object().shape({
     email: Yup.string()
@@ -16,6 +18,9 @@ const schema = Yup.object().shape({
         .min(8, "La contraseña es demasiado corta")
         .required("Este campo es obligatorio"),
 })
+
+
+
 
 export const Login = () => {
 
@@ -46,10 +51,11 @@ export const Login = () => {
                     {({ isValid, dirty }) => (
                         <Form className="flex flex-col gap-4 text-black">
 
+                            {/* INPUT EMAIL */}
                             <Field placeholder="Email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="email" />
                             <ErrorMessage name="email" component="p" className="text-red-500" />
 
-
+                            {/* INPUT CONTRASEÑA */}
                             <div className="relative">
                                 <Field placeholder="Contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
                                 <ErrorMessage name="password" component="p" className="custom-error-message"/>
@@ -88,20 +94,7 @@ export const Login = () => {
                             </div>
 
 
-                            {/* <div className="flex items-center space-x-2">
-                                <Field
-                                    type="checkbox"
-                                    name="termsAccepted"
-                                    className=""
-                                />
-                                <label className="text-xs text-black" htmlFor="termsAccepted">
-                                Al registrarme acepto las <a className="text-celeste" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
-                                </label>
-                                <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
-                            </div> */}
-
-
-
+                            {/* OLVIDASTE TU CONTRASEÑA? */}
                             <div className="flex items-center justify-center">
                                 <p className="text-center text-masxs text-gris">
                                 ¿olvidaste tu contraseña? {" "} <a href="/signup"
@@ -112,8 +105,10 @@ export const Login = () => {
                                 
                             </div>
 
+                            {/* BOTON SUBMIT */}
                             <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover text-sm' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
 
+                            {/* AUN NO TIENES CUENTA? */}
                             <div className="flex gap-1.5 justify-center">
                                 <p className="text-center text-sm text-gris">
                                 ¿aún no tienes cuenta? {" "}                    
@@ -127,6 +122,7 @@ export const Login = () => {
                     )}
                 </Formik>
 
+                {/* LOGIN GOOGLE APPLE */}
                 <div className="flex flex-col gap-4 items-center">
                     <p className="mt-9 text-sm text-black">O continuar con: </p>
                     <div className="g-apple-buttons flex gap-3">
@@ -136,7 +132,9 @@ export const Login = () => {
 
                 </div>
             </div>
-            <img className="h-[614px] hidden md:block" src={image} alt="" />
+
+            {/* IMAGEN */}
+            <img className="hidden lg:block lg:h-[614px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
         </div>
     );
 };
