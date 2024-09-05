@@ -23,7 +23,7 @@ const cards = [
   {
     titulo: 'Inmediato',
     imagen: reloj,
-    texto: 'etirá tu plata desde la App y recibala al instante. ',
+    texto: 'Retirá tu plata desde la App y recibala al instante. ',
     numero: dos,
   },
   {

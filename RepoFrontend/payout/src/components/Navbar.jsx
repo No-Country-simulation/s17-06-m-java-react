@@ -6,7 +6,7 @@ import CustomButton from '../authentication/components/CustomButton';
 import '../authentication/components/CustomButton.css';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ light }) => {
   const navigate = useNavigate()
   // Estado para manejar el menú hamburguesa
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div className="w-full h-[10vh] flex-col justify-center relative"> {/* Añadido "relative" para el contenedor principal */}
       {/* Contenedor principal del navbar */}
-      <div className='w-full h-[9.5vh] flex items-center justify-between'>
+      <div className="w-full h-[9.5vh] flex items-center justify-between">
         <div className='flex items-center gap-6'>
           <div className='flex items-center'>
             <img className="h-[30px] ml-10  cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
@@ -41,19 +41,19 @@ const Navbar = () => {
         </div>
 
         {/* Links del menú (se muestra en pantallas grandes) */}
-        <div className='hidden md:flex items-center gap-6 mx-8'> 
+        <div className={`hidden md:flex items-center gap-6 mx-8 ${light ? 'bg-dark text-white' : 'bg-secundario-text-black'}`}> 
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
           <a className='whitespace-nowrap text-verde' href='/login'>Iniciar sesion</a>
-          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className='nav-button' type='signup' />
+          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' className="nav-button" type='signup' />
         </div>
       </div>
 
       {/* Menú desplegable para móviles */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} absolute top-[100%] left-0 w-full  bg-white z-50`}> {/* Clases añadidas para el menú desplegable */}
         <div className="flex flex-col items-center px-2 py-12 gap-10 nav-text">
-          <div className='flex gap-6'>
+          <div className="flex gap-6">
           <a >Personal</a>
           <a >Empresas</a>
           </div>

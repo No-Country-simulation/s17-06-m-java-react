@@ -1,21 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {      
         'primario': '#5C27BB',
         'secundario': '#E6EBFF',
-        'dark': '#121139',
         'celeste': '#4151e1',
         'gris': '#575757',
         'grisclaro': '#F4F4F4',
         'danger': 'red',
-        'verde' : '#50CFAF'
+        'verde' : '#50CFAF',
+        dark: {
+          DEFAULT: '#121139',
+          text: 'fff'
+        },
+        light: {
+          DEFAULT: '#E6EBFF',
+          text: '#333'
+        }
       },
-      backgroundColor: {
-        light: '#E6EBFF',
-      }
     },
     fontFamily: {
       sans: ['Montserrat, sans-serif'],
@@ -56,7 +61,6 @@ export default {
         color: theme('colors.white')
       },
       'a': {
-        color: 'black',
         fontWeight: theme('fontWeight.semibold')
       }
     })

@@ -24,14 +24,24 @@ function App() {
     navigate('/');
   };
 
+  /* Dark Mode */
+  const [light, setLight] = useState(true);
+
+  // Alternar entre modo claro y oscuro
+  const toggleTheme = () => {
+    setLight(!light);
+  };
+
   return (
     <>
-      <div className="flex flex-col h-screen">
-        {showNavbar && <Navbar />}
+      <div className={`flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-secundario-text-black'}`}>
+        {showNavbar && <Navbar light={light} />}
 
-        <div className="flex">
+        <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
           {isAuthenticated && <Sidebar className="md:w-1/5 md:h-screen" />}
-          <div className={`flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'}`}>
+          <div className={`text-end flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
+        <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
+        >Tema</button>
             <Outlet />
           </div>
         </div>
