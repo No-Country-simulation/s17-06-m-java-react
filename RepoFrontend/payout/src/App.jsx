@@ -11,8 +11,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const location = useLocation();
 
-  const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
-  const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
+  const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
+  const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
 
   const handleLogin = () => {
     setIsAuthenticated(true);
