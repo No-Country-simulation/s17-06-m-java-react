@@ -34,7 +34,7 @@ export const Login = () => {
     };
 
     return (
-        <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[100vh]">
+        <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
             <div className="w-[466px] h-[100dvh] md:h-[614px] bg-white py-11 px-16 rounded-[15px] shadow-down-dark-md">
                 <h2 className="text-primario text-[26px] leading-[63px] text-center pb-11">¡Bienvenido a Payout!</h2>
 
@@ -53,7 +53,7 @@ export const Login = () => {
                         <Form className="flex flex-col gap-4 text-black">
 
                             {/* INPUT EMAIL */}
-                            <Field placeholder="Email" className="py-2.5 pl-4 border border-primario rounded-lg text-sm" type="email" name="email" />
+                            <Field placeholder="Email" className="py-2.5 pl-4 border border-primario custom-field rounded-lg text-sm" type="email" name="email" />
                             <ErrorMessage name="email" component="p" className="text-red-500" />
 
                             {/* INPUT CONTRASEÑA */}
@@ -107,7 +107,7 @@ export const Login = () => {
                             </div>
 
                             {/* BOTON SUBMIT */}
-                            <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover text-sm dark:text-white' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
+                            <CustomButton className='custom-button hover:bg-primario-hover focus:outline-none focus:bg-primario-hover text-sm dark:text-white' texto={'Iniciar sesion'} disabled={!isValid || !dirty} type='login' />
 
                             {/* AUN NO TIENES CUENTA? */}
                             <div className="flex gap-1.5 justify-center">

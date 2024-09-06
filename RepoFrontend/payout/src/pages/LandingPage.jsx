@@ -9,7 +9,7 @@ import uno from '../assets/1.png';
 import dos from '../assets/2.png';
 import tres from '../assets/3.png';
 import cuatro from '../assets/4.png';
-import celular from '../assets/celular.png'
+import celular from '../assets/mock-phone.png'
 import icon from '../assets/iconpayout.png'
 
 const LandingPage = () => {
@@ -74,7 +74,7 @@ const cards = [
 
     </section>
 
-    <section className=' text-center p-8 md:h-[90vh]'>
+    <section className=' text-center p-8 md:h-[100vh]'>
       <h2 className=''>Sobre PAYOUT</h2>
       <h3 className='mt-8 font-bold'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</h3>
 

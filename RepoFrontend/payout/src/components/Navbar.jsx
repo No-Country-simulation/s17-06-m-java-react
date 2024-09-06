@@ -46,7 +46,7 @@ const Navbar = () => {
           <a>Precios</a>
           <a>Ayuda</a>
           <Link className='whitespace-nowrap text-verde' to='/login'>Iniciar sesion</Link>
-          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' type='signup' class='light:bg-primario' className='bg-dark !text-white'/>
+          <button onClick={() => navigate('/signup')} className='rounded-lg py-1.5 px-3 bg-primario text-white font-semibold'>Crear cuenta</button>
         </div>
       </div>
 
@@ -62,7 +62,7 @@ const Navbar = () => {
           <a >Ayuda</a>
           <div className='flex flex-col self-center gap-1'>
           <a href='login'>Iniciar sesion</a>
-          <CustomButton  onClick={() => navigate('/signup')} texto='Crear cuenta' type='signup' />
+          <button  onClick={() => navigate('/signup')}>Crear cuenta</button>
           </div>
         </div>
       </div>

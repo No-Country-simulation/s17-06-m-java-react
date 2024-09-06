@@ -42,7 +42,7 @@ const Home = () => {
         {/* BANNER DESKTOP */}
         <div id='div-total-banner' className='hidden md:block md:flex md:flex-row justify-between items-center py-6 border-b w-full'>
             {/* HOLA */}
-            <p className="md:text-white md:font-semibold md:text-2xl">
+            <p className="dark:text-white md:font-semibold md:text-2xl">
                   ¡Hola, Rafael!</p>
             {/* ELEMENTOS DE LA DERECHA, CAMPANA, FOTO USER Y NOMBRES */}
             <div id='elementos-de-la-derecha' className='flex flex-row gap-8 items-center justify-between '>
@@ -56,7 +56,7 @@ const Home = () => {
                     </div>
                     {/* USERNAMES */}
                     <div id='texto-username' className=']'>
-                        <p className="text-white text-sm font-['Montserrat']">RAFAEL DIAZ</p>
+                        <p className="text-sm font-semibold">RAFAEL DIAZ</p>
                         <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
                     </div>
                 </div>                
@@ -69,7 +69,7 @@ const Home = () => {
 
         {/* CUERPO HOME */}
         <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
-            <p className='text-white font-semibold pb-4'>Tu cuenta Payout</p>
+            <p className='font-semibold pb-4 flex items-start'>Tu cuenta Payout</p>
 
             {/* FILA SALDOS */}
             <div id='para-poner-en-fila-las-tarjetas' className='flex w-full justify-between gap-6 overflow-hidden'>
@@ -113,7 +113,7 @@ const Home = () => {
                 </div>
             </div>
             
-            <p className='text-white font-semibold pt-10'>Qué deseas hacer?</p>
+            <p className='font-semibold pt-10 flex items-start'>Qué deseas hacer?</p>
 
 
 
@@ -170,23 +170,23 @@ const Home = () => {
 
 
         {/* SECCION TU ACTIVIDAD */}
-            <p className='text-white font-semibold pt-10'>Tu actividad</p>
-            <p className='text-white text-sm pt-2 pb-3'>Agosto</p>
+            <p className='font-semibold pt-10 flex items-start'>Tu actividad</p>
+            <p className='text-sm pt-2 pb-3 flex items-start'>Agosto</p>
 
             {/* LINEA */}
             <div id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
                 <div id='lado-izq' className='flex items-center gap-5'>
-                    <p className='text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                       </svg>
                     </p>
                     <div>
                         <p className='text-primario'>27AG02024 - 12.00</p>
-                        <p className='text-white'>Envío a José Luis</p>
+                        <p>Envío a José Luis</p>
                     </div>
                 </div>
                 <div id='lado-der' className='flex flex-col items-center gap-1.5'>
-                    <p className='text-white'>- 15.000 ARS</p>
+                    <p>- 15.000 ARS</p>
                     <div className='bg-verde w-[140px] rounded-2xl'>
                         <p className='text-dark text-xs text-center'>Envío realizado</p>
                     </div>
@@ -195,17 +195,17 @@ const Home = () => {
             {/* LINEA */}
             <div id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
                 <div id='lado-izq' className='flex items-center gap-5'>
-                    <p className='text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                       </svg>
                     </p>
                     <div>
                         <p className='text-primario'>27AG02024 - 12.00</p>
-                        <p className='text-white'>Envío a José Luis</p>
+                        <p>Envío a José Luis</p>
                     </div>
                 </div>
                 <div id='lado-der' className='flex flex-col items-center gap-1.5'>
-                    <p className='text-white'>- 15.000 ARS</p>
+                    <p>- 15.000 ARS</p>
                     <div className='bg-verde w-[140px] rounded-2xl'>
                         <p className='text-dark text-xs text-center'>Envío realizado</p>
                     </div>
@@ -214,17 +214,17 @@ const Home = () => {
             {/* LINEA */}
             <div id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
                 <div id='lado-izq' className='flex items-center gap-5'>
-                    <p className='text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                       </svg>
                     </p>
                     <div>
                         <p className='text-primario'>27AG02024 - 12.00</p>
-                        <p className='text-white'>Envío a José Luis</p>
+                        <p>Envío a José Luis</p>
                     </div>
                 </div>
                 <div id='lado-der' className='flex flex-col items-center gap-1.5'>
-                    <p className='text-white'>- 15.000 ARS</p>
+                    <p>- 15.000 ARS</p>
                     <div className='bg-verde w-[140px] rounded-2xl'>
                         <p className='text-dark text-xs text-center'>Envío realizado</p>
                     </div>

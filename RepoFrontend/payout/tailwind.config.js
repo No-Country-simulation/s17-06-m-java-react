@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {      
@@ -16,12 +16,13 @@ export default {
         'azul-grad': '#4646f9',
         dark: {
           DEFAULT: '#121139',
-          text: 'fff'
+          text: 'white'
         },
         light: {
           DEFAULT: '#E6EBFF',
-          text: '#333'
-        }
+          text: 'black'
+        },
+
       }
     },
     maxWidth: {
@@ -40,6 +41,7 @@ export default {
       'xs': '12px',
       'masxs': '13.9px',
       'sm': '14px',
+      'm': '16px',
       'lg': '18px',
       'xl': '48px',
       '2xl': '60px',

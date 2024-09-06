@@ -50,7 +50,7 @@ function App() {
 
   return (
     <>
-      <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-secundario-text-black'}`}>
+      <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
         {showNavbar && <Navbar light={light} />}
 
         <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
