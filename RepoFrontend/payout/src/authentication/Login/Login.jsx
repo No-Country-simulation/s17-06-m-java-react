@@ -34,8 +34,8 @@ export const Login = () => {
     };
 
     return (
-        <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[100vh]">
-            <div className="w-[466px] h-[100dvh] md:h-[614px] bg-white py-11 px-16 rounded-[15px] shadow-down-dark-md">
+        <div className="md:py-8 flex lg:gap-14 xl:gap-14 justify-center items-center">
+            <div className="w-[466px] h-full md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
                 <h2 className="text-primario text-[26px] leading-[63px] text-center pb-11">¡Bienvenido a Payout!</h2>
 
                 <Formik 

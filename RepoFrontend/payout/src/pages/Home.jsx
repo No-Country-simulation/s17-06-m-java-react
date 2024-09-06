@@ -3,8 +3,7 @@ import  notif  from '../assets/Notificaciones.png'
 import  userimage  from '../assets/userimage.png'
 import  arg  from '../assets/banderaArg.svg'
 /* import  upload  from '../assets/upload.png' */
-import  transfer  from '../assets/transfer.png'
-import  intercambiar  from '../assets/intercambiar.png'
+
 
 
 const Home = () => {
