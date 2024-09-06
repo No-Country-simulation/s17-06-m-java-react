@@ -76,7 +76,7 @@ export const SignUp = () => {
     {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
     <div className="md:py-8 flex lg:gap-14 xl:gap-14 justify-center items-center">
         
-        <div className="w-[466px] h-full md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
+        <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
             <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
 
             <Formik

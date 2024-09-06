@@ -19,9 +19,9 @@ const Sidebar = () => {
       {/* Footer con botones para vista móvil */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
         <div className="flex justify-around">
-          <button>Inicio</button>
-          <button>Cuenta</button>
-          <button>Perfil</button>
+          <button className='text-black'>Inicio</button>
+          <button  className='text-black'>Cuenta</button>
+          <button  className='text-black'>Perfil</button>
         </div>
       </div>
     </div>
