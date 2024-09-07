@@ -2,6 +2,9 @@ import { useState } from 'react';
 import React from 'react';
 import payout from '../assets/iconpayout.png';
 import AsideButton, {options} from './atoms/AsideButton';
+import home from './atoms/assets/house.svg';
+import account from './atoms/assets/credit-card.svg';
+import userIcon from './atoms/assets/user.svg';
 
 const Sidebar = () => {
 
@@ -36,9 +39,9 @@ const Sidebar = () => {
       {/* Footer con botones para vista móvil */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
         <div className="flex justify-around">
-          <button className='text-black'>Inicio</button>
-          <button  className='text-black'>Cuenta</button>
-          <button  className='text-black'>Perfil</button>
+          <button className='text-black'><img src={home} alt="Inicio" /></button>
+          <button  className='text-black'><img src={account} alt="Cuenta" /></button>
+          <button  className='text-black'><img src={userIcon} alt="Perfil" /></button>
         </div>
       </div>
     </div>

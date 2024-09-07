@@ -7,7 +7,8 @@ import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
-
+import InputField from "../components/InputField"
+import PasswordField from "../components/PasswordField"
 
 
 const schema = Yup.object().shape({    
@@ -77,7 +78,7 @@ export const SignUp = () => {
     <div className="md:py-8 flex lg:gap-14 xl:gap-14 justify-center items-center">
         
         <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
-            <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
+            <h2 className="text-[26px] leading-[63px] text-center text-primario">REGISTRO</h2>
 
             <Formik
                 initialValues={{                    
@@ -95,17 +96,14 @@ export const SignUp = () => {
                     <Form className="full flex flex-col gap-4 text-black">                        
 
                         {/* EMAIL */}
-                        <Field placeholder="Email" className="custom-field" type="email" name="email"/>
-                        <ErrorMessage name="email" component="p" className="custom-error-message"/>
+                        <InputField placeholder="Email" type='email' name='email' />
 
                         {/* CONFIRMA EMAIL */}
-                        <Field placeholder="Confirma tu email" className="custom-field" type="email" name="rEmail"/>
-                        <ErrorMessage name="rEmail" component="p" className="custom-error-message"/>
+                        <InputField placeholder="Confirma tu email" type="email" name="rEmail"/>
 
                         {/* CONTRASEÑA */}
                         <div className="relative">
-                            <Field placeholder="Contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
-                            <ErrorMessage name="password" component="p" className="custom-error-message"/>
+                            <PasswordField placeholder='Contraseña' name='password' />
 
                             <button
                                 type="button"
