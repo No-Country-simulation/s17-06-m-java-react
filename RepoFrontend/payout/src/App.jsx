@@ -50,12 +50,12 @@ function App() {
 
   return (
     <>
-      <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
+      <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-white text-black'}}`}>
         {showNavbar && <Navbar light={light} />}
 
         <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
           {isAuthenticated && <Sidebar className="md:w-1/5 md:h-screen" />}
-            <div className={`text-end flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
+            <div className={`text-end flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
               <ThemeButton onActivate={handleActivate} onDeactivate={handleDeactivate} />
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
               >Tema</button> */}

@@ -7,6 +7,7 @@ import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
+import { fetchSignUp } from "../../api/authApi"
 
 
 
@@ -46,37 +47,17 @@ export const SignUp = () => {
 
     const handleSubmit = async (values) => {   
         console.log('Formulario enviado:', values) 
-
-        /* fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify({              
-              mail: values.email,
-              repeatEmail: values.rEmail,
-              password: values.password
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              const token = data.token
-              localStorage.setItem('token', token)
-              navigate('/home')
-            })
-            .catch (error =>{
-              console.log(error)              
-            }) */
+        const datos = {mail: values.email, repeatEmail: values.rEmail, password: values.password}
+        fetchSignUp(datos.mail, datos.repeatEmail, datos.password )       
     }
 
 
   return (
     <>
     {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
-    <div className="md:py-8 flex lg:gap-14 xl:gap-14 justify-center items-center">
+    <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
         
-        <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
+        <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-8 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
             <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
 
             <Formik
@@ -92,7 +73,7 @@ export const SignUp = () => {
                 validationSchema={schema}
             >
                 {({ isValid, dirty }) => (
-                    <Form className="full flex flex-col gap-4 text-black">                        
+                    <Form className="flex flex-col gap-4 text-black">                        
 
                         {/* EMAIL */}
                         <Field placeholder="Email" className="custom-field" type="email" name="email"/>
@@ -148,8 +129,8 @@ export const SignUp = () => {
                                 name="termsAccepted"
                                 className=""
                             />
-                            <label className="text-xs text-black" htmlFor="termsAccepted">
-                            Al registrarme acepto las <a className="text-celeste" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
+                            <label className="text-xxs text-black" htmlFor="termsAccepted">
+                            Al registrarme acepto las <a className="text-celeste text-xxs" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
                             </label>
                             <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
                         </div>

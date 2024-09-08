@@ -7,6 +7,7 @@ import apple from '../../assets/apple.png'
 import image from '../../assets/login-imagen.png'
 import CustomButton from "../components/CustomButton"
 import { Link } from "react-router-dom"
+import { fetchLogin } from "../../api/authApi"
 
 
 
@@ -33,9 +34,16 @@ export const Login = () => {
       setShowPassword(!showPassword);
     };
 
+
+    const handleSubmit = async (values) => {   
+        console.log('Formulario enviado:', values) 
+        const datos = {mail: values.email, repeatEmail: values.rEmail, password: values.password}
+        fetchLogin(datos.mail, datos.repeatEmail, datos.password )       
+    }
+
     return (
         <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
-            <div className="w-full md:w-[466px] h-full md:h-[614px] bg-white py-11 px-16 rounded-[15px] shadow-down-dark-md">
+            <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-8 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
                 <h2 className="text-primario text-[26px] leading-[63px] text-center pb-11">¡Bienvenido a Payout!</h2>
 
                 <Formik 
@@ -44,9 +52,7 @@ export const Login = () => {
                         password: '',
 
                     }}
-                    onSubmit={(values) => {
-                        console.log('Inicio de Sesion Exitoso:', values);
-                    }}
+                    onSubmit={handleSubmit}
                     validationSchema={schema}
                 >
                     {({ isValid, dirty }) => (

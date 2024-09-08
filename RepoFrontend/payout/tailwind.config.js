@@ -47,10 +47,7 @@ export default {
       '2xl': '60px',
       'base': '20px',
       'extra': '25px'
-    },
-    maxWidth: {
-      'full': '100vw'
-    }
+    },    
   },
   plugins: [ function ({ addBase, theme, addComponents }) {
     addBase({
