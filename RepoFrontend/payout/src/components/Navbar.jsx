@@ -6,7 +6,7 @@ import CustomButton from '../authentication/components/CustomButton';
 import '../authentication/components/CustomButton.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ light }) => {
   const navigate = useNavigate()
   // Estado para manejar el menú hamburguesa
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +20,9 @@ const Navbar = () => {
       {/* Contenedor principal del navbar */}
       <div className="w-full h-[9.5vh] flex items-center justify-between">
         <div className='flex items-center gap-6'>
-          <div className='flex items-center'>
+          <div className='flex gap-3 items-center'>
             <img className="h-[30px] ml-10  cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
-            <img className="h-[18px] ml-2  cursor-pointer" src={payout} alt="" onClick={() => navigate('/')}/>
+            <Link className={`text-${light ? 'white' : 'primario'} font-serif text-payout font-light`}>Payout</Link> 
           </div>
           <a className="hidden md:block underline text-verde">Personal</a> {/* Se oculta en móviles */}
           <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
