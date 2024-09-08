@@ -34,7 +34,8 @@ export default {
     },
     fontWeight: {
       bold: 700,
-      semibold: 600
+      semibold: 600,
+      extrabold: 500
     },
     fontSize: {
       'xxs': '0.6875rem',
