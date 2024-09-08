@@ -1,13 +1,11 @@
-
 import  notif  from '../assets/Notificaciones.png'
 import  userimage  from '../assets/userimage.png'
-import  arg  from '../assets/banderaArg.svg'
-/* import  upload  from '../assets/upload.png' */
-import  transfer  from '../assets/transfer.png'
-import  intercambiar  from '../assets/intercambiar.png'
-
+import CoinCard, {infoSaldos} from '../components/CoinCard.jsx';
+import OperationButton, {operations} from '../components/atoms/OperationButton.jsx';
+import NotificationItem, {activitiesNotif} from '../components/atoms/NotificationItem.jsx';
 
 const Home = () => {
+  
   return (
     <section className='px-4 md:px-10 w-full'>
 
@@ -38,7 +36,6 @@ const Home = () => {
                         
         </div>
 
-
         {/* BANNER DESKTOP */}
         <div id='div-total-banner' className='hidden md:block md:flex md:flex-row justify-between items-center py-6 border-b w-full'>
             {/* HOLA */}
@@ -55,7 +52,7 @@ const Home = () => {
                             <img className='w-full h-full object-cover' src={userimage} alt="" />
                     </div>
                     {/* USERNAMES */}
-                    <div id='texto-username' className=']'>
+                    <div id='texto-username' className=''>
                         <p className="text-sm font-semibold">RAFAEL DIAZ</p>
                         <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
                     </div>
@@ -63,173 +60,53 @@ const Home = () => {
             </div>
         </div>
 
-
-
-        
-
         {/* CUERPO HOME */}
         <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
             <p className='font-semibold pb-4 flex items-start'>Tu cuenta PAYOUT</p>
 
             {/* FILA SALDOS */}
-            <div id='para-poner-en-fila-las-tarjetas' className='flex w-full justify-between gap-6 overflow-hidden'>
-                <div id='card1' className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
-                    {/* Banda superior blanca */}
-                    <div className="absolute top-0 left-0 w-full h-[50px] bg-white rounded-t-lg px-4 flex items-center gap-4">
-                      <img src={arg}  className='w-[40px] h-[40px]' alt="" />
-                      <p className='text-primario font-semibold'>Peso Argentino</p>
-                    </div>
-                    {/* Contenido del div principal */}
-                    <div className="pt-12">                  
-                      <p className="text-start text-white text-lg">$800.000,00 ARS</p>
-                      <p className="text-start text-white text-sm">CBU 0123456</p>
-                    </div>
-                </div>
-
-                <div id='card2' className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px]">
-                    {/* Banda superior blanca */}
-                    <div className="absolute top-0 left-0 w-full h-[50px] bg-white rounded-t-lg px-4 flex items-center gap-4">
-                      <img src={arg}  className='w-[40px] h-[40px]' alt="" />
-                      <p className='text-primario font-semibold'>Dólares estadounidenses</p>
-                    </div>
-                    {/* Contenido del div principal */}
-                    <div className="pt-12">                  
-                      <p className="text-start text-white text-lg">$800,00 USD</p>
-                      <p className="text-start text-white text-sm">CBU XXXX</p>
-                    </div>
-                </div>
-
-                <div id='card3' className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px]">
-                    {/* Banda superior blanca */}
-                    <div className="absolute top-0 left-0 w-full h-[50px] bg-white rounded-t-lg px-4 flex items-center gap-4">
-                      <img src={arg}  className='w-[40px] h-[40px]' alt="" />
-                      <p className='text-primario font-semibold'>Euros</p>
-                    </div>
-                    {/* Contenido del div principal */}
-                    <div className="pt-12">                  
-                      <p className="text-start text-white text-lg">$80,00 EUR</p>
-                      <p className="text-start text-white text-sm">CBU XXXX</p>
-                    </div>
-                </div>
-            </div>
-            
-            <p className='font-semibold pt-10 flex items-start'>¿Qué deseas hacer?</p>
+            <section id='para-poner-en-fila-las-tarjetas' className='flex w-full justify-between gap-6 overflow-hidden'>
+            {infoSaldos.map(({id, image, coin, saldo, cbu}) => (
+              <CoinCard 
+                key={id} 
+                image={image} 
+                coin={coin} 
+                saldo={saldo} 
+                cbu={cbu}  />
+              ))}
 
 
+            </section>
+              <p className='font-semibold pt-10 flex items-start'>¿Qué deseas hacer?</p>
 
             {/* FILA BOTONES BLANCOS */}
             <div id='para-poner-en-fila-botones' className='py-2 flex justify-between gap-6 overflow-hidden'>
-
               {/* BOTON BLANCO */}
-                <div className="w-[48px] h-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario">
-                  <p className='text-primario font-semibold'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                    </svg>
-                  </p>
-                  <p className='hidden md:text-primario md:font-semibold'>Ingresar</p>                  
-                </div>
-
-              {/* BOTON BLANCO */}
-                <div className="w-[48px] h-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario">
-                  <p className='text-primario font-semibold'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" style={{ transform: 'rotate(270deg)' }}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-
-                  </p>
-                  <p className='hidden md:text-primario md:font-semibold'>Transferir</p>                  
-                </div>
-
-              {/* BOTON BLANCO */}
-                <div className="w-[48px] h-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario">
-                  <p className='text-primario font-semibold'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                  </svg>
-                  </p>
-                  <p className='hidden md:text-primario md:font-semibold'>Convertir</p>                  
-                </div>
-
-              {/* BOTON BLANCO */}
-                <div className="w-[48px] h-[48px] md:w-[85px] md:h-[85px] md:min-w-[85px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario">
-                  <p className='text-primario'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-                  </p>                                  
-                </div>
-
-              
+              {operations.map(({id, image, texto}) => (
+                <OperationButton
+                  key={id}
+                  image={image}
+                  texto={texto}
+                />
+              ))}
             </div>
-
-
-
-        {/* SECCION TU ACTIVIDAD */}
-            <div className='pt-10 flex justify-between items-center'>
-                <p className='font-semibold '>Última actividad</p>
-                <p className='underline text-xs'>Ver toda mi actividad</p>
-            </div>            
-            {/* <p className='text-sm pt-2 pb-3 flex items-start'>Agosto</p> */}
+            {/* SECCION TU ACTIVIDAD */}
+            <p className='font-semibold pt-10 flex items-start'>Tu actividad</p>
+            <p className='text-sm pt-2 pb-3 flex items-start'>Agosto</p>
 
             {/* LINEA */}
-            <div id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-                <div id='lado-izq' className='flex items-center gap-2 md:gap-5'>
-                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                      </svg>
-                    </p>
-                    <div className='flex flex-col items-center'>
-                        <p className='text-primario text-xs md:text-base'>27AG02024 - 12.00</p>
-                        <p className='text-xs md:text-base'>Envío a José Luis</p>
-                    </div>
-                </div>
-                <div id='lado-der' className='flex flex-col items-center gap-1.5'>
-                    <p className='text-xs md:text-base'>- 15.000 ARS</p>
-                    <div className='bg-verde w-[140px] rounded-2xl'>
-                        <p className='text-dark text-xs text-center'>Envío realizado</p>
-                    </div>
-                </div>
-            </div>
+            <section id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
+                {activitiesNotif.map(({ id, datetime, actNotification, amount, activityType }) => (
+                    <NotificationItem key={id}
+                    datetime={datetime}
+                    actNotification={actNotification}
+                    amount={amount}
+                    activityType={activityType}
+                    />
+                ))}
+            </section>
             {/* LINEA */}
-            <div id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-                <div id='lado-izq' className='flex items-center gap-2 md:gap-5'>
-                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                      </svg>
-                    </p>
-                    <div className='flex flex-col items-center'>
-                        <p className='text-primario text-xs md:text-base'>27AG02024 - 12.00</p>
-                        <p className='text-xs md:text-base'>Envío a José Luis</p>
-                    </div>
-                </div>
-                <div id='lado-der' className='flex flex-col items-center gap-1.5'>
-                    <p className='text-xs md:text-base'>- 15.000 ARS</p>
-                    <div className='bg-verde w-[140px] rounded-2xl'>
-                        <p className='text-dark text-xs text-center'>Envío realizado</p>
-                    </div>
-                </div>
-            </div>
-            {/* LINEA */}
-            <div id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-                <div id='lado-izq' className='flex items-center gap-2 md:gap-5'>
-                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                      </svg>
-                    </p>
-                    <div className='flex flex-col items-center'>
-                        <p className='text-primario text-xs md:text-base'>27AG02024 - 12.00</p>
-                        <p className='text-xs md:text-base'>Envío a José Luis</p>
-                    </div>
-                </div>
-                <div id='lado-der' className='flex flex-col items-center gap-1.5'>
-                    <p className='text-xs md:text-base'>- 15.000 ARS</p>
-                    <div className='bg-verde w-[140px] rounded-2xl'>
-                        <p className='text-dark text-xs text-center'>Envío realizado</p>
-                    </div>
-                </div>
-            </div>
-
-            {/* TUS CONTACTOS PAYOUT*/}
-            <div className='pt-10 flex justify-between items-center'>
-                <p className='font-semibold '>Tus contactos Payout</p>                
-            </div>      
+            
         </div> 
     </section>
   )
