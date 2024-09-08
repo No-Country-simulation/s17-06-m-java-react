@@ -7,32 +7,42 @@ export const operations = [
     {
         id: 1,
         image: depositarIcon,
+        element: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+        </svg>, 
         texto: 'Ingresar'
     },
     {
         id: 2,
-        image: transferIcon,
+        element: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" style={{ transform: 'rotate(270deg)' }}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>,
         texto: 'Transferir'
     },
     {
         id: 3,
-        image: convertIcon,
+        element: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+      </svg>,
         texto: 'Convertir'
     },
-    {
+    /* {
         id: 4,
         image: plus,
-    },
+    }, */
 ]
 
-const OperationButton = ({ image, texto }) => {
+const OperationButton = ({texto, element }) => {
     return (
-        <div
-            className="size-[85px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-4 px-8 flex flex-col justify-center items-center border-4 border-primario gap-2">
-            <p className='text-primario font-semibold'>
-               <img src={image} alt={texto} />
-            </p>
-            <p className='md:text-primario md:font-semibold'>{texto}</p>
+        <div className='flex flex-col justify-center items-center gap-2'>
+            <div
+                className="size-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario gap-1 md:gap-2">
+                <p className='text-primario font-semibold'>
+                {element}
+                </p>
+                <p className='hidden md:block md:text-primario md:font-semibold'>{texto}</p>
+            </div>
+            <p className='md:hidden text-xs'>{texto}</p>
         </div>
     )
 }
