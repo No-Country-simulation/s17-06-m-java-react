@@ -2,6 +2,12 @@ import argIcon  from '../assets/banderaArg.svg';
 import usaIcon from './atoms/assets/usa.png';
 import euroIcon from './atoms/assets/euro.png';
 
+/**
+ * Array de información de saldos. Cada objeto en el array representa el saldo de una cuenta
+ * en una moneda específica, incluyendo la imagen de la bandera, el tipo de moneda, el saldo
+ * y el CBU asociado.
+ */
+
 export const infoSaldos = [
     {
         id: 1,
@@ -25,6 +31,30 @@ export const infoSaldos = [
         cbu: 'CBU XXXX'
     }
 ]
+
+/**
+ * Componente CoinCard
+ * 
+ * Renderiza una tarjeta que muestra la información financiera de una cuenta, incluyendo el saldo
+ * y el CBU. Cada tarjeta tiene una sección superior con el ícono de la moneda y el nombre de la divisa.
+ * 
+ * @component
+ * @param {Object} props - Propiedades que recibe el componente
+ * @param {string} props.image - Referencia a la URL de la imagen de la moneda a mostrar (bandera o símbolo de la divisa)
+ * @param {string} props.coin - Nombre de la moneda (e.g., "Peso Argentino", "Dólares estadounidenses")
+ * @param {string} props.saldo - El saldo disponible en la cuenta, incluyendo el formato de la moneda
+ * @param {string} props.cbu - El CBU asociado a la cuenta bancaria
+ * @returns {JSX.Element} Una tarjeta estilizada que muestra el saldo, moneda y CBU de una cuenta.
+ * 
+ * @example
+ * // Ejemplo de uso
+ * <CoinCard 
+ *   image={argIcon} 
+ *   coin="Peso Argentino" 
+ *   saldo="$800.000,00 ARS" 
+ *   cbu="CBU 0123456" 
+ * />
+ */
 
 const CoinCard = ({ image, coin, saldo, cbu }) => {
     return (

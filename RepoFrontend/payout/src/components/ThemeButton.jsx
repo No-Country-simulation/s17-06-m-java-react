@@ -1,8 +1,33 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Componente ThemeButton
+ * 
+ * Este componente representa un botón de alternancia (toggle) para activar y desactivar el tema de la página por defecto (dark mode). 
+ * El estado del botón cambia su apariencia visual y ejecuta las funciones `onActivate` y `onDeactivate` según su estado.
+ * 
+ * @component
+ * @param {Object} props - Propiedades que recibe el componente.
+ * @param {function} props.onActivate - Función que se ejecuta cuando el botón es activado (el estado del toggle es verdadero).
+ * @param {function} props.onDeactivate - Función que se ejecuta cuando el botón es desactivado (el estado del toggle es falso).
+ * @returns {JSX.Element} Un botón de alternancia que activa o desactiva una funcionalidad según su estado.
+ * 
+ * @example
+ * // Ejemplo de uso con funciones de activación y desactivación de tema
+ * <ThemeButton 
+ *   onActivate={() => console.log("Tema activado")} 
+ *   onDeactivate={() => console.log("Tema desactivado")} 
+ * />
+ */
+
 
 export const ThemeButton = ({ onActivate, onDeactivate }) => {
     const [isToggled, setIsToggled] = useState(false);
+
+    /**
+   * Maneja el evento de clic para alternar el estado del botón.
+   * Si el nuevo estado es activado, se llama a `onActivate`. Si es desactivado, se llama a `onDeactivate`.
+   */
 
     /* useEffect(() => {
         onDeactivate();

@@ -3,6 +3,11 @@ import transferIcon from './assets/transfer.svg';
 import convertIcon from './assets/convertIcon.svg';
 import plus from './assets/plus.svg';
 
+/**
+ * Array de operaciones disponibles. Cada objeto contiene un ícono SVG y un texto descriptivo
+ * que representa una acción, como ingresar, transferir o convertir dinero.
+ */
+
 export const operations = [
     {
         id: 1,
@@ -31,6 +36,26 @@ export const operations = [
         image: plus,
     }, */
 ]
+
+/**
+ * Componente OperationButton
+ * 
+ * Renderiza un botón estilizado que muestra un ícono representando una operación financiera y un texto
+ * descriptivo. Se ajusta según el tamaño de pantalla para mostrar más o menos detalles.
+ * 
+ * @component
+ * @param {Object} props - Propiedades que recibe el componente
+ * @param {string} props.texto - Texto descriptivo de la operación (e.g., "Ingresar", "Transferir")
+ * @param {JSX.Element} props.element - Ícono o SVG que representa gráficamente la operación
+ * @returns {JSX.Element} Un botón estilizado que muestra un ícono y texto relacionados a una operación.
+ * 
+ * @example
+ * // Ejemplo de uso
+ * <OperationButton 
+ *   texto="Ingresar" 
+ *   element={<svg xmlns="http://www.w3.org/2000/svg" ... />} 
+ * />
+ */
 
 const OperationButton = ({texto, element }) => {
     return (
