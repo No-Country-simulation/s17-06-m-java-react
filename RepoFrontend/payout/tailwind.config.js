@@ -54,7 +54,8 @@ export default {
       '2xl': '3.75rem',
       'base': '1.25rem',
       'extra': '1.56rem',
-      'payout': '1.88rem'
+      'payout': '1.88rem',
+      'h2': '2.5rem'
     },
     maxWidth: {
       'full': '100vw'
@@ -64,7 +65,7 @@ export default {
     addBase({
       /* Landing Page  */
       'h1': { fontSize: theme('fontSize.2xl'), fontWeight: theme('fontWeight.bold'), color: theme('colors.white')},
-      'h2': { fontSize: theme('fontSize.xl'), fontWeight: theme('fontWeight.semibold')},
+      'h2': { fontSize: theme('fontSize.payout'), fontWeight: theme('fontWeight.semibold')},
       'h3': { fontSize: theme('fontSize.lg')},
 
       /* Background color */
