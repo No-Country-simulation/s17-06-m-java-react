@@ -21,12 +21,12 @@ export const ThemeButton = ({ onActivate, onDeactivate }) => {
       };
   
     return (
-      <div className='relative hidden md:block'>
+      <div className='relative'>
         <button
         onClick={handleToggle}
-        className={`w-16 h-8 flex items-center rounded-full p-1 duration-300 ease-in-out absolute top-0 right-7 mt-2 mr-2 ${
+        className={`w-14 h-7 md:w-16 md:h-8 flex items-center rounded-full p-1 duration-300 ease-in-out absolute top-0 right-1 md:right-7 md:mt-2 md:mr-2 ${
           isToggled ? 'bg-verde' : 'bg-primario'
-        }`}
+        }  `}
         
         
       >

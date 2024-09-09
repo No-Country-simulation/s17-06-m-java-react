@@ -37,6 +37,7 @@ export default {
     fontWeight: {
       extralight: 200,
       light: 300,
+      medium: 500,
       bold: 700,
       semibold: 600
     },
@@ -51,7 +52,7 @@ export default {
       '2xl': '60px',
       'base': '20px',
       'extra': '25px',
-      'payout': '32px'
+      'payout': '30px'
     },
     maxWidth: {
       'full': '100vw'

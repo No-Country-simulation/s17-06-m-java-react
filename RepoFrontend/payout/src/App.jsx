@@ -51,15 +51,17 @@ function App() {
   return (
     <>
       <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
-        {showNavbar && <Navbar light={light} />}
+        {showNavbar && <Navbar light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}  />}
 
         <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
           {isAuthenticated && <Sidebar className="md:w-1/5 md:h-screen" />}
             <div className={`text-end flex-grow ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-secundario text-black'}`}>
-              <ThemeButton className='hidden md:block' onActivate={handleActivate} onDeactivate={handleDeactivate} />
+            <div className="hidden md:block">
+              <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
               >Tema</button> */}
-              <Outlet />
+              </div>
+              <Outlet/>
             </div>
         </div>
 
