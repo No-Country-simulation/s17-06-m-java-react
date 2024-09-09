@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {      
         'primario': '#5C27BB',
+        'primarioclaro': '#A483DF',
         'secundario': '#E6EBFF',
         'celeste': '#4151e1',
         'gris': '#575757',
