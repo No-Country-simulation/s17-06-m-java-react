@@ -9,8 +9,10 @@ import euroIcon from '../components/atoms/assets/euro.png';
 import OperationButton, {operations} from '../components/atoms/OperationButton.jsx';
 import NotificationItem, {activitiesNotif} from '../components/atoms/NotificationItem.jsx';
 
-const Home = () => {
+const Home = ({light}) => {
   
+
+  console.log('light de home', light)
   
     const carruselRef = useRef(null);
   
@@ -43,7 +45,7 @@ const Home = () => {
         {/* BANNER NOMBRE DE USUARIO */}
 
         {/* BANNER MOBILE */}
-        <div id='div-total-banner' className='md:hidden flex flex-row justify-between items-center py-6 border-b w-full'>             
+        <div id='div-total-banner' className='md:hidden flex flex-row justify-between items-center py-6 w-full'>             
             {/* FOTO Y USERNAME */}
             <div id='foto-y-username' className='flex flex-row gap-3 items-center'>
                 {/* FOTO */}
@@ -52,8 +54,8 @@ const Home = () => {
                 </div>
                 {/* USERNAMES */}
                 <div id='texto-username' className=']'>
-                    <p className="text-white text-sm font-['Montserrat']">RAFAEL DIAZ</p>
-                    <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
+                    <p className=" text-sm ">RAFAEL DIAZ</p>
+                    <p className="text-verde text-sm text-start">@Rafael</p>
                 </div>
             </div>
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
@@ -103,7 +105,7 @@ const Home = () => {
               className="flex w-full gap-6 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
             >
                 <div id="card1" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
-                    <div className="absolute top-0 left-0 w-full h-[50px] bg-white rounded-t-lg px-4 flex items-center gap-4">
+                    <div className='absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4'>
                         <img src={argIcon} className="w-[40px] h-[40px]" alt="" />
                         <p className="text-start text-primario font-semibold">Peso Argentino</p>
                     </div>
@@ -114,7 +116,7 @@ const Home = () => {
                 </div>
 
                 <div id="card2" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
-                  <div className="absolute top-0 left-0 w-full h-[50px] bg-white rounded-t-lg px-4 flex items-center gap-4">
+                  <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
                     <img src={usaIcon} className="w-[40px] h-[40px]" alt="" />
                     <p className="text-primario font-semibold">Dólares estadounidenses</p>
                   </div>
@@ -125,7 +127,7 @@ const Home = () => {
                 </div>
 
                 <div id="card3" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
-                  <div className="absolute top-0 left-0 w-full h-[50px] bg-white rounded-t-lg px-4 flex items-center gap-4">
+                  <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
                     <img src={euroIcon} className="w-[40px] h-[40px]" alt="" />
                     <p className="text-primario font-semibold">Euros</p>
                   </div>
@@ -190,8 +192,9 @@ const Home = () => {
 
             {/* LINEA */}
             <section id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-                {activitiesNotif.map(({ id, datetime, actNotification, amount, activityType }) => (
+                {activitiesNotif.map(({ id, element, datetime, actNotification, amount, activityType }) => (
                     <NotificationItem key={id}
+                    element= {element}
                     datetime={datetime}
                     actNotification={actNotification}
                     amount={amount}
