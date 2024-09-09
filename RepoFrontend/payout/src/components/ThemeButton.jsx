@@ -36,15 +36,18 @@ export const ThemeButton = ({ onActivate, onDeactivate }) => {
       const handleToggle = () => {
         setIsToggled((prevState) => {
           const newState = !prevState;
-          if (newState) {
-            onActivate();
+          const htmlElement = document.body
+          if (isToggled) {
+              htmlElement.classList.add('dark');
+              onActivate(); // Si tienes alguna función para activar
           } else {
-            onDeactivate();
+              htmlElement.classList.remove('dark');
+              onDeactivate(); // Si tienes alguna función para desactivar
           }
           return newState;
-        });
-      };
-  
+        }, [isToggled]) //Se ejecuta cada vez que cambia a toggle
+      }
+      
     return (
       <div className='relative'>
         <button

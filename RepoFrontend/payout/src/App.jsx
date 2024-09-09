@@ -59,7 +59,7 @@ function App() {
               <ThemeButton onActivate={handleActivate} onDeactivate={handleDeactivate} />
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
               >Tema</button> */}
-              <Outlet />
+              <Outlet className={`${light ? 'bg-dark text-white' : 'bg-white text-black'}`}  />
             </div>
         </div>
 
