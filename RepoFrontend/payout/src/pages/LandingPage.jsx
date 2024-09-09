@@ -42,8 +42,8 @@ const cards = [
 ]
 
   return (
-    <>
-    <section className='md:h-[90vh] p-12 md:flex justify-between'>
+    <div className='w-full'>
+    <section className='xl:h-[90vh] w-full p-12 md:flex justify-between'>
     <div className='flex flex-col items-center relative'>
       <h2>Gestiona tus finanzas</h2>
       <h3 className='text-extra font-bold'>desde cualquier rincon del mundo.</h3>
@@ -51,7 +51,7 @@ const cards = [
       <h3 className='text-extra  md:w-3/5 self-start md:absolute bottom-0 '>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
       en una sola cuenta, siempre que lo necesites.</h3>
     </div>
-    <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
+    <img src={landingimg} alt='' className='w-[40%] hidden md:block'/>
     </section>
 
     <section className='md:h-[100vh] text-center bg-dark p-6 md:p-16'>
@@ -87,7 +87,7 @@ const cards = [
       </div>
       
     </section>
-    </>
+    </div>
   )
 }
 
