@@ -25,6 +25,12 @@ public class UserDto {
 
     private Integer status;
 
+    private Boolean tfa;
+
+    private String tfaSecret;
+
+    private String secretImageUri;
+
     @JsonManagedReference
     private UserDetailDto userDetail;
 }

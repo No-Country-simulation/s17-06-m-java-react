@@ -5,8 +5,11 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.TrueFalseConverter;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +31,8 @@ public class User {
     @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
 
+    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).+$", message = "La contraseña debe tener al menos una letra mayúscula, una letra minúscula y un número")
     @Column(name = "password", length = 100, nullable = false)
     private String password;
 
@@ -48,6 +53,13 @@ public class User {
     @Column(name = "last_login", nullable = true)
     @CreationTimestamp(source = SourceType.DB)
     private Timestamp lastLogin;
+
+    @Column(name = "tfa", nullable = true)
+    @Convert(converter = TrueFalseConverter.class)
+    private Boolean tfa;
+
+    @Column(name = "tfa_secret", nullable = true)
+    private String tfaSecret;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserDetail userDetail;

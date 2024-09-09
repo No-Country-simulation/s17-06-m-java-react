@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.beans.PropertyDescriptor;
+
+import com.payout.auth_service.Config.Tfa.TwoFactorAuthenticationService;
 import com.payout.auth_service.Exception.ModelNotFoundException;
 import com.payout.auth_service.Model.User;
 import com.payout.auth_service.Model.UserDetail;
@@ -26,6 +28,9 @@ public abstract class CrudImpl<T, ID> implements ICrud<T, ID> {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private TwoFactorAuthenticationService twoFactorAuthenticationService;
+
     @Override
     public T save(T t) throws Exception {
         if (t instanceof User) {
@@ -33,6 +38,7 @@ public abstract class CrudImpl<T, ID> implements ICrud<T, ID> {
             UserDetail userDetail = user.getUserDetail();
             String encryptedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encryptedPassword);
+            user.setTfa(false);
             if (userDetail != null) {
                 userDetail.setUser(user);
             }
@@ -61,6 +67,9 @@ public abstract class CrudImpl<T, ID> implements ICrud<T, ID> {
         if (newUser.getPhone() != null) {
             existingUser.setPhone(newUser.getPhone());
         }
+        if (newUser.getTfa() != null) {
+            existingUser.setTfa(newUser.getTfa());
+        }
         UserDetail newUserDetail = newUser.getUserDetail();
         if (newUserDetail != null) {
             UserDetail existingUserDetail = existingUser.getUserDetail();
@@ -81,6 +90,13 @@ public abstract class CrudImpl<T, ID> implements ICrud<T, ID> {
             if (newUserDetail.getLastName() != null) {
                 existingUserDetail.setLastName(newUserDetail.getLastName());
             }
+        }
+
+        if (newUser.getTfa() != null && newUser.getTfa() == true) {
+            existingUser.setTfaSecret(twoFactorAuthenticationService.generateNewSecret());
+        } else if (newUser.getTfa() != null && newUser.getTfa() == false) {
+            existingUser.setTfaSecret("");
+            existingUser.setTfa(false);
         }
         return userRepository.save(existingUser);
     }
