@@ -24,8 +24,8 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
             <img className="h-[30px] ml-10  cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
             <Link to={'/'} className={`text-${light ? 'white' : 'primario'} font-serif text-payout font-light`}>PAYOUT</Link> 
           </div>
-          <a className="hidden md:block underline text-verde">Personal</a> {/* Se oculta en móviles */}
-          <a className="hidden md:block dark:text-white">Empresas</a> {/* Se oculta en móviles */}
+          <Link className="hidden md:block underline text-verde">Personal</Link> {/* Se oculta en móviles */}
+          <Link className="hidden md:block dark:text-white">Empresas</Link> {/* Se oculta en móviles */}
         </div>
 
         {/* Botón del menú hamburguesa (se muestra en móviles) */}

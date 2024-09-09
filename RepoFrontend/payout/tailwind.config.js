@@ -48,13 +48,13 @@ export default {
       'xs': '12px',
       'masxs': '13.9px',
       'sm': '14px',
-      'm': '16px',
-      'lg': '18px',
-      'xl': '48px',
-      '2xl': '60px',
-      'base': '20px',
-      'extra': '25px',
-      'payout': '30px'
+      'm': '1rem',
+      'lg': '1.13rem',
+      'xl': '3rem',
+      '2xl': '3.75rem',
+      'base': '1.25rem',
+      'extra': '1.56rem',
+      'payout': '1.88rem'
     },
     maxWidth: {
       'full': '100vw'
