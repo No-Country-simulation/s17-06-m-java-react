@@ -13,8 +13,8 @@ export default {
         'grisclaro': '#F4F4F4',
         'danger': 'red',
         'verde' : '#50CFAF',
-        'violeta-grad': '#9130f4',
-        'azul-grad': '#4646f9',
+        'violetagrad': '#9130f4',
+        'azulgrad': '#4646f9',
         dark: {
           DEFAULT: '#121139',
           text: 'white'

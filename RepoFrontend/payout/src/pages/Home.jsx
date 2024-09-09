@@ -52,7 +52,7 @@ const Home = () => {
                 </div>
                 {/* USERNAMES */}
                 <div id='texto-username' className=']'>
-                    <p className="text-white text-sm font-['Montserrat']">RAFAEL DIAZ</p>
+                    <p className="text-sm font-['Montserrat']">RAFAEL DIAZ</p>
                     <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
                 </div>
             </div>
