@@ -17,11 +17,13 @@ export default {
         'azulgrad': '#4646f9',
         dark: {
           DEFAULT: '#121139',
-          text: 'white'
+          text: 'white',
+          
         },
         light: {
           DEFAULT: '#E6EBFF',
-          text: 'black'
+          text: 'black',
+          primario: '#5C27BB',
         },
 
       }
@@ -34,6 +36,9 @@ export default {
       serif: ['Bruno Ace, sans-serif']
     },
     fontWeight: {
+      extralight: 200,
+      light: 300,
+      medium: 500,
       bold: 700,
       semibold: 600,
       extrabold: 500
@@ -48,8 +53,12 @@ export default {
       'xl': '48px',
       '2xl': '60px',
       'base': '20px',
-      'extra': '25px'
-    },    
+      'extra': '25px',
+      'payout': '30px'
+    },
+    maxWidth: {
+      'full': '100vw'
+    }
   },
   plugins: [ function ({ addBase, theme, addComponents }) {
     addBase({
