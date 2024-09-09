@@ -9,8 +9,10 @@ import euroIcon from '../components/atoms/assets/euro.png';
 import OperationButton, {operations} from '../components/atoms/OperationButton.jsx';
 import NotificationItem, {activitiesNotif} from '../components/atoms/NotificationItem.jsx';
 
-const Home = () => {
+const Home = ({light}) => {
   
+
+  console.log('light de home', light)
   
     const carruselRef = useRef(null);
   
@@ -43,7 +45,7 @@ const Home = () => {
         {/* BANNER NOMBRE DE USUARIO */}
 
         {/* BANNER MOBILE */}
-        <div id='div-total-banner' className='md:hidden flex flex-row justify-between items-center py-6 border-b w-full'>             
+        <div id='div-total-banner' className='md:hidden flex flex-row justify-between items-center py-6 w-full'>             
             {/* FOTO Y USERNAME */}
             <div id='foto-y-username' className='flex flex-row gap-3 items-center'>
                 {/* FOTO */}
@@ -190,8 +192,9 @@ const Home = () => {
 
             {/* LINEA */}
             <section id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-                {activitiesNotif.map(({ id, datetime, actNotification, amount, activityType }) => (
+                {activitiesNotif.map(({ id, element, datetime, actNotification, amount, activityType }) => (
                     <NotificationItem key={id}
+                    element= {element}
                     datetime={datetime}
                     actNotification={actNotification}
                     amount={amount}

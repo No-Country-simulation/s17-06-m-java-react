@@ -61,7 +61,8 @@ function App() {
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
               >Tema</button> */}
               </div>
-              <Outlet />
+              <Outlet  />
+
             </div>
         </div>
 
@@ -79,6 +80,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;
