@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import java.util.Arrays;
+import java.util.*;
 import com.payout.auth_service.Auth.JwtTokenDecoder;
 import com.payout.auth_service.Config.Tfa.TwoFactorAuthenticationService;
 import com.payout.auth_service.Dto.GenericResponse;
+import com.payout.auth_service.Dto.UserBasic;
 import com.payout.auth_service.Dto.UserDto;
 import com.payout.auth_service.Model.User;
 import com.payout.auth_service.Model.UserDetail;
@@ -49,14 +50,24 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse<UserDto>> readById(@PathVariable("id") Long id) throws Exception {
-        UserDto dto = convertToDto(userService.readById(id));
+    public ResponseEntity<GenericResponse<UserBasic>> readById(@PathVariable("id") Long id) throws Exception {
+        UserBasic dto = convertToDtoBasic(userService.readById(id));
 
         return ResponseEntity.ok(new GenericResponse<>(200, "success", Arrays.asList(dto)));
     }
 
+    @GetMapping("/search/{email}")
+    public ResponseEntity<List<UserBasic>> readByEmail(@PathVariable("email") String email) throws Exception {
+        List<UserBasic> list = userService.findByEmailLike(email).stream().map(this::convertToDtoBasic).toList();
+        return ResponseEntity.ok(list);
+    }
+
     private UserDto convertToDto(User obj) {
         return modelMapper.map(obj, UserDto.class);
+    }
+
+    private UserBasic convertToDtoBasic(User obj) {
+        return modelMapper.map(obj, UserBasic.class);
     }
 
     // private User convertToEntityAuth(UserDto dto) {
