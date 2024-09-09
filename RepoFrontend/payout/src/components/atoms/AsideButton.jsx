@@ -4,6 +4,10 @@ import userIcon from './assets/user.svg';
 import ayudaIcon from './assets/help-circle.svg';
 import loginIcon from './assets/log-in.svg';
 
+/**
+ * Array de opciones que contiene los íconos y nombres para el menú lateral.
+ * Cada opción tiene un identificador único, una imagen y un nombre que describe la acción o sección.
+ */
 
 export const options = [
     {
@@ -32,6 +36,30 @@ export const options = [
         name: 'Cerrar sesión'
     }
 ];
+
+/**
+ * Componente AsideButton
+ * 
+ * Renderiza un botón en una lista que puede mostrar un ícono y un texto. Cambia de estilo según si está 
+ * seleccionado o no y dispara una acción al hacer clic, redirigiendo al usuario a una sección específica de la página.
+ * 
+ * @component
+ * @param {Object} props - Propiedades que recibe el componente
+ * @param {string} props.image - Referencia a la URL de la imagen del ícono a mostrar junto al texto
+ * @param {string} props.text - Texto que se mostrará junto al ícono
+ * @param {boolean} props.isSelected - Determina si el botón está seleccionado, lo que cambiará su estilo
+ * @param {function} props.onClick - Función que se ejecutará cuando se haga clic en el botón
+ * @returns {JSX.Element} Un botón estilizado con un ícono y texto, que puede ser seleccionado o no.
+ * 
+ * @example
+ * // Ejemplo de uso
+ * <AsideButton 
+ *   image={inicioIcon} 
+ *   text="Inicio" 
+ *   isSelected={true} 
+ *   onClick={() => console.log('Inicio seleccionado')} 
+ * />
+ */
 
 const AsideButton = ({ image, text, isSelected, onClick }) => {
 

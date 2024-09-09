@@ -25,7 +25,7 @@ const Navbar = () => {
             <img className="h-[18px] ml-2  cursor-pointer" src={payout} alt="" onClick={() => navigate('/')}/>
           </div>
           <a className="hidden md:block underline text-verde">Personal</a> {/* Se oculta en móviles */}
-          <a className="hidden md:block">Empresas</a> {/* Se oculta en móviles */}
+          <a className="hidden md:block dark:text-white">Empresas</a> {/* Se oculta en móviles */}
         </div>
 
         {/* Botón del menú hamburguesa (se muestra en móviles) */}
@@ -41,12 +41,12 @@ const Navbar = () => {
         </div>
 
         {/* Links del menú (se muestra en pantallas grandes) */}
-        <div className={`hidden md:flex items-center gap-6 mx-8`}> 
+        <div className={`hidden md:flex items-center gap-6 mx-8 dark:text-white`}> 
           <a>Funciones</a>
           <a>Precios</a>
           <a>Ayuda</a>
           <Link className='whitespace-nowrap text-verde' to='/login'>Iniciar sesion</Link>
-          <button onClick={() => navigate('/signup')} className='rounded-lg py-1.5 px-3 bg-primario text-white font-semibold'>Crear cuenta</button>
+          <button onClick={() => navigate('/signup')} className='rounded-lg py-1.5 px-3 bg-primario dark:bg-white dark:text-verde text-white font-semibold'>Crear cuenta</button>
         </div>
       </div>
 

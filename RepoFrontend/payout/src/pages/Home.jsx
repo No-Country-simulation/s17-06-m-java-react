@@ -54,8 +54,8 @@ const Home = ({light}) => {
                 </div>
                 {/* USERNAMES */}
                 <div id='texto-username' className=']'>
-                    <p className=" text-sm ">RAFAEL DIAZ</p>
-                    <p className="text-verde text-sm text-start">@Rafael</p>
+                    <p className="text-sm font-['Montserrat']">RAFAEL DIAZ</p>
+                    <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
                 </div>
             </div>
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
@@ -105,7 +105,7 @@ const Home = ({light}) => {
               className="flex w-full gap-6 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
             >
                 <div id="card1" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
-                    <div className='absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4'>
+                    <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
                         <img src={argIcon} className="w-[40px] h-[40px]" alt="" />
                         <p className="text-start text-primario font-semibold">Peso Argentino</p>
                     </div>
@@ -142,12 +142,12 @@ const Home = ({light}) => {
             {/* FILA SALDOS DESKTOP*/}
             <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-6 overflow-hidden'>
             {infoSaldos.map(({id, image, coin, saldo, cbu}) => (
-              <CoinCard 
+              <CoinCard
                 key={id} 
                 image={image} 
                 coin={coin} 
                 saldo={saldo} 
-                cbu={cbu}  />
+                cbu={cbu} />
               ))}
             </section>
 

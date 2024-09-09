@@ -54,8 +54,8 @@ const cards = [
     <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
     </section>
 
-    <section className='md:h-[100vh] text-center bg-dark p-6 md:p-16'>
-      <h2 className='text-5xl font-extrabold bg-gradient-to-r from-grisclaro to-verde bg-clip-text text-transparent'>Descubre todos los beneficios de tu cuenta Payout</h2>
+    <section className='md:h-[100vh] text-center bg-dark dark:bg-grisclaro p-6 md:p-16'>
+      <h2 className='text-5xl font-extrabold bg-gradient-to-r from-grisclaro to-verde bg-clip-text text-transparent dark:bg-gradient-to-r dark:from-violetagrad dark:to-azulgrad'>Descubre todos los beneficios de tu cuenta Payout</h2>
       <div className='md:flex  bg-verde p-4 md:p-6 m-4 mt-6 md:m-20 rounded-2xl'>
         {cards.map((card) =>(
           <div className='bg-white flex relative p-4 m-3 h-[250px] md:w-1/4 rounded-2xl'>
