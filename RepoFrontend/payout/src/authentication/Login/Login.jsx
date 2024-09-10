@@ -9,6 +9,8 @@ import CustomButton from "../components/CustomButton"
 import { Link } from "react-router-dom"
 import InputField from "../components/InputField"
 import PasswordField from "../components/PasswordField"
+import { useNavigate } from "react-router-dom"
+
 
 
 
@@ -22,11 +24,12 @@ const schema = Yup.object().shape({
         .required("Este campo es obligatorio"),
 })
 
-
+const urlLogin = 'https://payout.redromsolutions.com/login'
 
 
 export const Login = () => {
 
+    let navigate = useNavigate()
 
     const [showPassword, setShowPassword] = useState(false);
 /*     const [light, setLight] = useState(true); */
@@ -38,8 +41,27 @@ export const Login = () => {
 
     const handleSubmit = async (values) => {   
         console.log('Formulario enviado:', values) 
-        const datos = {mail: values.email, repeatEmail: values.rEmail, password: values.password}
-        fetchLogin(datos.mail, datos.repeatEmail, datos.password )       
+        fetch(urlLogin, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({              
+              email:values.email,          
+              password: values.password
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              const token = data.token
+              localStorage.setItem('token', token)
+              navigate('/home')
+            })
+            .catch (error =>{
+              console.log(error)              
+            })
+           
     }
 
     return (
