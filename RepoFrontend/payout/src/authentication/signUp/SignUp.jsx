@@ -9,7 +9,7 @@ import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
 import InputField from "../components/InputField"
 import PasswordField from "../components/PasswordField"
-import { fetchSignUp } from "../../api/authApi"
+/* import { fetchSignUp } from "../../api/authApi" */
 
 
 const schema = Yup.object().shape({    
@@ -24,6 +24,7 @@ const schema = Yup.object().shape({
                 .required("Este campo es obligatorio"),                
 })
 
+const urlSignUp = 'https://payout.redromsolutions.com/register'
 
 
 export const SignUp = () => { 
@@ -48,8 +49,28 @@ export const SignUp = () => {
 
     const handleSubmit = async (values) => {   
         console.log('Formulario enviado:', values) 
-        const datos = {mail: values.email, repeatEmail: values.rEmail, password: values.password}
-        fetchSignUp(datos.mail, datos.repeatEmail, datos.password )
+        
+        fetch(urlSignUp, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    },
+                    body: JSON.stringify({              
+                      email: values.email,
+                      repeatEmail: values.repeatEmail,
+                      password: values.password
+                    }),
+                  })
+                    .then((res) => res.json())
+                    .then((data) => {
+                      const token = data.token
+                      localStorage.setItem('token', token)
+                      navigate('/home')
+                    })
+                    .catch (error =>{
+                      console.log(error)              
+                    })
              
     }
 
