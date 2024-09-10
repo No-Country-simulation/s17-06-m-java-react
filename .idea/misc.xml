@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/RepoBackend/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/admin-server/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/bank-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/budget-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/currency-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/transaction-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/bank-account-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/user-details-service/pom.xml" />
+        <option value="$PROJECT_DIR$/RepoBackend/budget-movement-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="corretto-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
