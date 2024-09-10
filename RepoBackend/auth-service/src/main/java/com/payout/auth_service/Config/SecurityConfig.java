@@ -57,6 +57,7 @@ public class SecurityConfig {
                         .requestMatchers(antMatcher("/register")).permitAll()
                         .requestMatchers(antMatcher("/validate")).permitAll()
                         .requestMatchers(antMatcher("/share/**")).permitAll()
+                        .requestMatchers(antMatcher("/actuator/health/**")).permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .exceptionHandling(e -> e.authenticationEntryPoint(jwtAuthenticationEntryPoint))
