@@ -50,11 +50,11 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse<UserBasic>> readById(@Valid @PathVariable("id") Long id,
+    public ResponseEntity<GenericResponse<?>> readById(@Valid @PathVariable("id") Long id,
             @RequestHeader("Authorization") String token) throws Exception {
-        UserBasic dto;
+        Object dto;
         if (id == 0) {
-            dto = convertToDtoBasic(userService.readById(JwtTokenDecoder.getUserId(token)));
+            dto = convertToDto(userService.readById(JwtTokenDecoder.getUserId(token)));
         } else {
             dto = convertToDtoBasic(userService.readById(id));
         }
