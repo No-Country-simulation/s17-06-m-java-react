@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Formik, Form} from "formik"
 import * as Yup from 'yup'
 import './Login.css'
 import google from '../../assets/google.png'
@@ -31,13 +31,8 @@ export const Login = () => {
 
     let navigate = useNavigate()
 
-    const [showPassword, setShowPassword] = useState(false);
-/*     const [light, setLight] = useState(true); */
-
-    const togglePasswordVisibility = () => {
-      setShowPassword(!showPassword);
-    };
-
+    
+    
 
     const handleSubmit = async (values) => {   
         console.log('Formulario enviado:', values) 

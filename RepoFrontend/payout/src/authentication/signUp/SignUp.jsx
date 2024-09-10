@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, NavLink, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
 import './SignUp.css'
@@ -7,8 +7,7 @@ import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
-import InputField from "../components/InputField"
-import PasswordField from "../components/PasswordField"
+
 
 
 
@@ -79,7 +78,7 @@ export const SignUp = () => {
 
 
   return (
-    <>
+    <div>
     {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
     <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
         
@@ -194,7 +193,7 @@ export const SignUp = () => {
 
                 {/* IMAGEN */}
                 <img className="hidden lg:block lg:h-[614px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
-            </div>
+        </div>
     </div>
     
   );
