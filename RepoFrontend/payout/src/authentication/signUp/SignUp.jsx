@@ -7,7 +7,8 @@ import  google  from '../../assets/google.png'
 import  apple  from '../../assets/apple.png'
 import  image  from '../../assets/Signup-imagen.png'
 import CustomButton from "../components/CustomButton"
-
+import InputField from "../components/InputField"
+import PasswordField from "../components/PasswordField"
 
 
 const schema = Yup.object().shape({    
@@ -46,65 +47,46 @@ export const SignUp = () => {
 
     const handleSubmit = async (values) => {   
         console.log('Formulario enviado:', values) 
-
-        /* fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify({              
-              mail: values.email,
-              repeatEmail: values.rEmail,
-              password: values.password
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              const token = data.token
-              localStorage.setItem('token', token)
-              navigate('/home')
-            })
-            .catch (error =>{
-              console.log(error)              
-            }) */
+        const datos = {mail: values.email, repeatEmail: values.rEmail, password: values.password}
+        fetchSignUp(datos.mail, datos.repeatEmail, datos.password )       
     }
 
 
   return (
-    <div className='block'>    
-            <div className="md:py-8 flex lg:gap-14 xl:gap-14 justify-center items-center">
-                
-                <div className="w-[466px] h-full md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
-                    <h2 className="text-[26px] leading-[63px] text-center pb-11 text-primario">REGISTRO</h2>
+    <>
+    {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
+    <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
+        
+        <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
+            <h2 className="text-[26px] leading-[63px] text-center text-primario">REGISTRO</h2>
 
-                    <Formik
-                        initialValues={{                    
-                            email: '',
-                            rEmail: '',
-                            password: '',                    
-                        }}
-                        /* onSubmit={(values) => {
-                            console.log('Formulario enviado:', values);
-                        }} */
-                        onSubmit={handleSubmit}
-                        validationSchema={schema}
-                    >
-                        {({ isValid, dirty }) => (
-                            <Form className="full flex flex-col gap-4 text-black">                        
+            <Formik
+                initialValues={{                    
+                    email: '',
+                    rEmail: '',
+                    password: '',                    
+                }}
+                /* onSubmit={(values) => {
+                    console.log('Formulario enviado:', values);
+                }} */
+                onSubmit={handleSubmit}
+                validationSchema={schema}
+            >
+                {({ isValid, dirty }) => (
+                    <Form className="full flex flex-col gap-4 text-black">                        
 
-                                {/* EMAIL */}
-                                <Field placeholder="Email" className="custom-field" type="email" name="email"/>
-                                <ErrorMessage name="email" component="p" className="custom-error-message"/>
+                        {/* EMAIL */}
+                        <Field placeholder="Email" className="custom-field" type="email" name="email"/>
+                        <ErrorMessage name="email" component="p" className="custom-error-message"/>
 
-                                {/* CONFIRMA EMAIL */}
-                                <Field placeholder="Confirma tu email" className="custom-field" type="email" name="rEmail"/>
-                                <ErrorMessage name="rEmail" component="p" className="custom-error-message"/>
+                        {/* CONFIRMA EMAIL */}
+                        <Field placeholder="Confirma tu email" className="custom-field" type="email" name="rEmail"/>
+                        <ErrorMessage name="rEmail" component="p" className="custom-error-message"/>
 
-                                {/* CONTRASEÑA */}
-                                <div className="relative">
-                                    <Field placeholder="Contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
-                                    <ErrorMessage name="password" component="p" className="custom-error-message"/>
+                        {/* CONTRASEÑA */}
+                        <div className="relative">
+                            <Field placeholder="Contraseña" className="w-full custom-field" type={showPassword ? "text" : "password"}name="password"/>
+                            <ErrorMessage name="password" component="p" className="custom-error-message"/>
 
                                     <button
                                         type="button"
@@ -140,24 +122,24 @@ export const SignUp = () => {
                                 </div>
                                 
 
-                                {/* TERMINOS Y CONDICIONES */}
-                                <div className="flex items-center space-x-2">
-                                    <Field
-                                        type="checkbox"
-                                        name="termsAccepted"
-                                        className=""
-                                    />
-                                    <label className="text-xs text-black" htmlFor="termsAccepted">
-                                    Al registrarme acepto las <a className="text-celeste" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
-                                    </label>
-                                    <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
-                                </div>
-                                
-                                {/* BOTON REGISTRARSE */}
-                                <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover dark:text-white' texto={'Registrarse'} disabled={!isValid || !dirty} type='signup'/>
-                            </Form>
-                            )}
-                        </Formik>
+                        {/* TERMINOS Y CONDICIONES */}
+                        <div className="flex items-center space-x-2">
+                            <Field
+                                type="checkbox"
+                                name="termsAccepted"
+                                className=""
+                            />
+                            <label className="text-xs text-black" htmlFor="termsAccepted">
+                            Al registrarme acepto las <a className="text-celeste" href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">politicas de privacidad</a>
+                            </label>
+                            <ErrorMessage name="termsAccepted" component="div" className="text-red-500" />
+                        </div>
+                        
+                        {/* BOTON REGISTRARSE */}
+                        <CustomButton className='hover:bg-primario-hover focus:outline-none focus:bg-primario-hover dark:text-white' texto={'Registrarse'} disabled={!isValid || !dirty} type='signup'/>
+                    </Form>
+                    )}
+                </Formik>
 
 
                         {/* REGISTRO GOOGLE APPLE */}
