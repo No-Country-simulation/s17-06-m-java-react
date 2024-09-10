@@ -1,4 +1,4 @@
-import { navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 const urlSignUp = 'https://payout.redromsolutions.com/register'
@@ -6,6 +6,7 @@ const urlLogin = 'https://payout.redromsolutions.com/login'
 
 /* FETCH SIGN UP */
 export const fetchSignUp = (email, rEmail, password) => {
+  const navigate =useNavigate()
     fetch(urlSignUp, {
         method: "POST",
         headers: {
