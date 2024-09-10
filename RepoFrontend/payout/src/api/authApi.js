@@ -1,8 +1,12 @@
+import { navigate } from "react-router-dom"
 
+
+const urlSignUp = 'https://payout.redromsolutions.com/register'
+const urlLogin = 'https://payout.redromsolutions.com/login'
 
 /* FETCH SIGN UP */
 export const fetchSignUp = (email, rEmail, password) => {
-    fetch(url, {
+    fetch(urlSignUp, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +31,7 @@ export const fetchSignUp = (email, rEmail, password) => {
 
 /* LOGIN */
 export const fetchLogin = (email, password) => {
-    fetch(url, {
+    fetch(urlLogin, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
