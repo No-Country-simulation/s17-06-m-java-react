@@ -8,6 +8,7 @@ import usaIcon from '../components/atoms/assets/usa.png';
 import euroIcon from '../components/atoms/assets/euro.png';
 import OperationButton, {operations} from '../components/atoms/OperationButton.jsx';
 import NotificationItem, {activitiesNotif} from '../components/atoms/NotificationItem.jsx';
+import { Link } from 'react-router-dom';
 
 const Home = ({light}) => {
   
@@ -188,7 +189,10 @@ const Home = ({light}) => {
 
             {/* SECCION TU ACTIVIDAD */}
             <p className='font-semibold pt-10 flex items-start'>Tu actividad</p>
+            <div className='flex justify-between w-full'>
             <p className='text-sm pt-2 pb-3 flex items-start'>Agosto</p>
+            <Link to={'/actividad'} className='font-light underline'>Ver toda mi actividad</Link>
+            </div>
 
             {/* LINEA */}
             <section id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
