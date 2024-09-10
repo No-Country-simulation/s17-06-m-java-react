@@ -15,6 +15,9 @@ function App() {
   const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
   const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
 
+  /* const deac */
+
+
   const handleLogin = () => {
     setIsAuthenticated(true);
     navigate('/home');
@@ -66,18 +69,18 @@ function App() {
             </div>
         </div>
 
-        {showFooter && <Footer />}
+            {showFooter && <Footer />}
 
-        {/* Botones de prueba para Login/Logout */}
-        <div className="fixed bottom-4 right-4 flex space-x-2">
-          <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded">
-            Login
-          </button>
-          <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">
-            Logout
-          </button>
+            {/* Botones de prueba para Login/Logout */}
+            <div className="fixed bottom-4 right-4 flex space-x-2">
+                <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded">
+                  Login
+                </button>
+                <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">
+                  Logout
+                </button>
+            </div>
         </div>
-      </div>
     </>
   );
 };

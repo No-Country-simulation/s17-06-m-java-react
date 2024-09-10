@@ -40,7 +40,7 @@ const Home = ({light}) => {
 
 
   return (
-    <section className='px-4 md:px-10 w-full'>
+    <section class='px-4 md:px-10 w-full'>
 
         {/* BANNER NOMBRE DE USUARIO */}
 
