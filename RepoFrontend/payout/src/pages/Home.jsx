@@ -157,7 +157,7 @@ const Home = ({light}) => {
             <p className='font-semibold pt-10 flex items-start'>¿Qué deseas hacer?</p>
 
             {/* FILA BOTONES BLANCOS */}
-            <div id='para-poner-en-fila-botones' className='py-2 flex justify-between gap-6'>
+            <div id='para-poner-en-fila-botones' className='py-2 flex justify-between gap-6 md:overflow-hidden'>
               {/* BOTON BLANCO */}
               {operations.map(({id, element, texto}) => (
                 <OperationButton
