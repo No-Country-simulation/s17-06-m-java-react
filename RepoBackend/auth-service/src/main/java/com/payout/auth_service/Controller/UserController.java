@@ -50,14 +50,19 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse<UserBasic>> readById(@PathVariable("id") Long id) throws Exception {
-        UserBasic dto = convertToDtoBasic(userService.readById(id));
-
+    public ResponseEntity<GenericResponse<UserBasic>> readById(@Valid @PathVariable("id") Long id,
+            @RequestHeader("Authorization") String token) throws Exception {
+        UserBasic dto;
+        if (id == 0) {
+            dto = convertToDtoBasic(userService.readById(JwtTokenDecoder.getUserId(token)));
+        } else {
+            dto = convertToDtoBasic(userService.readById(id));
+        }
         return ResponseEntity.ok(new GenericResponse<>(200, "success", Arrays.asList(dto)));
     }
 
     @GetMapping("/search/{email}")
-    public ResponseEntity<List<UserBasic>> readByEmail(@PathVariable("email") String email) throws Exception {
+    public ResponseEntity<List<UserBasic>> readByEmail(@Valid @PathVariable("email") String email) throws Exception {
         List<UserBasic> list = userService.findByEmailLike(email).stream().map(this::convertToDtoBasic).toList();
         return ResponseEntity.ok(list);
     }
