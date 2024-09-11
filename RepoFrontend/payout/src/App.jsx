@@ -8,21 +8,16 @@ import { ThemeButton } from './components/ThemeButton';
 
 function App() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const location = useLocation();
 
   const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
   const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
+  const showSidebar = !(
+    location.pathname === '/login' || 
+    location.pathname === '/signup' || 
+    location.pathname === '/'
+  );
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-    navigate('/home');
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    navigate('/');
-  };
 
   /* Dark Mode */
   const [light, setLight] = useState(true);

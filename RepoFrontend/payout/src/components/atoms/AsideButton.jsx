@@ -36,6 +36,7 @@ export const options = [
         id: 5,
         image: loginIcon,
         name: 'Cerrar sesión'
+       
     }
 ];
 

@@ -43,20 +43,30 @@ export const Login = () => {
               Accept: "application/json",
             },
             body: JSON.stringify({              
-              email:values.email,          
+              email: values.email,          
               password: values.password
             }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              const token = data.token
-              localStorage.setItem('token', token)
-              navigate('/home')
-            })
-            .catch (error =>{
-              console.log(error)              
-            })
-           
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.jwtToken) { // Verifica que el token exista
+                const token = data.jwtToken;
+                console.log('Token recibido:', token);
+                const expiresAt = new Date(data.expiresAt).getTime();
+                
+                // Guardar token y expiración en localStorage
+                localStorage.setItem('token', token);
+                console.log('Token guardado en localStorage:', localStorage.getItem('token')); // Verifica si se guarda correctamente
+                localStorage.setItem('expiresAt', expiresAt);
+    
+                navigate('/home');
+            } else {
+                console.log('Error: No se recibió el token.');
+            }
+        })
+        .catch(error => {
+            console.log(error);              
+        });
     }
 
     return (
