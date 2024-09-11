@@ -13,7 +13,8 @@ export const options = [
     {
         id: 1, 
         image: inicioIcon,
-        name: 'Inicio'
+        name: 'Inicio',
+        path:'/home'
     },
     {
         id: 2,
@@ -23,7 +24,8 @@ export const options = [
     {
         id: 3,
         image: userIcon,
-        name: 'Perfil'
+        name: 'Perfil',
+        path: '/perfil',
     },
     {
         id: 4,

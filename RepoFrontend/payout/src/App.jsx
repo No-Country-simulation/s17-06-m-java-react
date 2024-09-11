@@ -55,7 +55,7 @@ function App() {
 
         <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
           {isAuthenticated && <Sidebar />}
-            <div className={`text-end  ${isAuthenticated ? 'ml-0 w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+            <div className={`text-end  ${isAuthenticated ? 'ml-0 w-full md:w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
             <div className="hidden md:block">
               <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"

@@ -5,16 +5,18 @@ import AsideButton, {options} from './atoms/AsideButton';
 import home from './atoms/assets/house.svg';
 import account from './atoms/assets/credit-card.svg';
 import userIcon from './atoms/assets/user.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-
+const navigate = useNavigate()
   // Inicializamos el estado con el ID del primer botón (Inicio)
   const [selectedId, setSelectedId] = useState(options[0].id);
 
   // Función para manejar la selección de un botón
-  const handleButtonClick = (id) => {
+  const handleButtonClick = (id, path) => {
     
-    setSelectedId(id)
+    setSelectedId(id);
+    navigate(path)
     
     ;
   };
@@ -28,19 +30,19 @@ const Sidebar = () => {
       <div className="hidden md:flex md:flex-col  h-full bg-white text-black p-6">
         <img src={payout} alt="logo" />
         <div className="h-full flex flex-col justify-center gap-10">
-        {options.map(({ id, image, name }) => (
+        {options.map(({ id, image, name, path }) => (
             <AsideButton 
               key={id} 
               image={image} 
               text={name}
-              onClick={() => handleButtonClick(id)}
+              onClick={() => handleButtonClick(id, path)}
               isSelected={selectedId === id} />
           ))}
         </div>
       </div>
 
       {/* Footer con botones para vista móvil */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
+      <div className="md:hidden  fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
         <div className="flex justify-around">
           <button className='text-black'><img src={home} alt="Inicio" /></button>
           <button  className='text-black'><img src={account} alt="Cuenta" /></button>
