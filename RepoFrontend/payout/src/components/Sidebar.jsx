@@ -9,6 +9,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
 const navigate = useNavigate()
+
+const handleLogout = () => {
+  localStorage.removeItem('token');
+  navigate('/login'); // Redirige al login después de salir
+};
   // Inicializamos el estado con el ID del primer botón (Inicio)
   const [selectedId, setSelectedId] = useState(options[0].id);
 
@@ -16,7 +21,11 @@ const navigate = useNavigate()
   const handleButtonClick = (id, path) => {
     
     setSelectedId(id);
-    navigate(path)
+    if (id === 5) {
+      handleLogout();
+    } else {
+      navigate(path);
+    }
     
     ;
   };
@@ -27,7 +36,7 @@ const navigate = useNavigate()
   return (
     <div className=' md:w-1/5 md:h-full '>
       {/* Sidebar en pantalla completa (solo para desktop) */}
-      <div className="hidden md:flex md:flex-col  h-full bg-white text-black p-6">
+      <div className="hidden md:flex md:flex-col h-full bg-white text-black p-6">
         <img src={payout} alt="logo" />
         <div className="h-full flex flex-col justify-center gap-10">
         {options.map(({ id, image, name, path }) => (
