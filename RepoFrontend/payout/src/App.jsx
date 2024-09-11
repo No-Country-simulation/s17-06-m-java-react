@@ -3,7 +3,6 @@ import './index.css';
 import Navbar from './components/Navbar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
-import Sidebar from './components/Sidebar';
 import { useState } from 'react';
 import { ThemeButton } from './components/ThemeButton';
 
@@ -52,10 +51,7 @@ function App() {
     <>
       <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-bg-white text-black'}`}>
         {showNavbar && <Navbar light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>}
-
-        <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
-          {isAuthenticated && <Sidebar />}
-            <div className={`text-end  ${isAuthenticated ? 'ml-0 w-full md:w-4/5' : 'ml-auto'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+          
             <div className="hidden md:block">
               <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
@@ -64,7 +60,6 @@ function App() {
               <Outlet  />
 
             </div>
-        </div>
 
         {showFooter && <Footer />}
 
@@ -77,7 +72,6 @@ function App() {
             Logout
           </button>
         </div>
-      </div>
     </>
   );
 };
