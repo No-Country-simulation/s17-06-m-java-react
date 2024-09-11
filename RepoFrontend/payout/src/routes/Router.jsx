@@ -5,6 +5,7 @@ import { Login } from '../authentication/Login/Login';
 import Home from "../pages/Home";
 import LandingPage from "../pages/LandingPage";
 import Actividad from "../pages/Actividad";
+import { Perfil } from "../pages/Perfil";
 
 
 export const router = createBrowserRouter([
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
         { path: "/login", element: <Login /> },
         { path: "/", element: <LandingPage /> },
         { path: "/actividad", element: <Actividad /> },
+        { path: "/perfil", element: <Perfil/> },
         
       ],
     },

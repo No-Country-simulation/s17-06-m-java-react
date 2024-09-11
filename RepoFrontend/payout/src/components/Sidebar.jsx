@@ -13,7 +13,10 @@ const Sidebar = () => {
 
   // Función para manejar la selección de un botón
   const handleButtonClick = (id) => {
-    setSelectedId(id);
+    
+    setSelectedId(id)
+    
+    ;
   };
 
 
