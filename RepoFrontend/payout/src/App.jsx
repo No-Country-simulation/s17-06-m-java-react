@@ -18,6 +18,16 @@ function App() {
     location.pathname === '/'
   );
 
+  /* Funcion botones Login y Logout */
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    navigate('/home');
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    navigate('/');
+  };
 
   /* Dark Mode */
   const [light, setLight] = useState(true);
