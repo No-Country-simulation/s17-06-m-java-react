@@ -21,19 +21,22 @@ Para mejorar el rendimiento de la aplicación y optimizar los tiempos de carga d
 >  [Cloudflare images](https://blog.cloudflare.com/announcing-cloudflare-images/)
 
 ## Git
+### **_Reglas para el manejo de Git en el repositorio_**
+#### Flujo sugerido:
 
-El flujo de trabajo en este caso va a ser sobre la rama "_develop_" y posteriormente se implementarán los cambios de cada sprint en la rama *"_main_"*.
+1.  **Crear una rama** para cada tarea o característica en la que trabajas partiendo de la rama **_develop_**.
+2.  **Realizar y probar los cambios** en esa rama. 
+3. **Hacer los commits describiendo cada cambio en inglés** y sincronizar con la rama remota.
+4.  **Crear un pull request (PR)** para revisar y fusionar esos cambios en la rama principal.
+5.  **Fusionar la rama** una vez que se aprueba el PR:
+	5.1. **hacemos git checkout develop** 
+	5.2. **git pull** para verificar si hay cambios en la rama de otro integrante.
+	5.3. **git merge nombre-de-la-rama** Hacemos un merge de la rama creada a develop.
+6.  **Eliminar la rama** después de la fusión, tanto en local como en remoto.
 
 **_Formato de los commits_**
 - En cada actualización de cambios en la rama definimos los nombres en inglés.
 - uso de lenguaje imperativo: **_add_**, **_init_**, **_create_**, **_update_**, **_delete_**.
-
-**_Manejo de ramas individuales_**
-Para cada tarea asignada separamos desde *"develop"* una rama temporal con nombre de quien la crea o una palabra que describa la parte, característica o feature en la que vamos a trabajar. Por ejemplo: 
-> **name/login** o **create login**  
-> **name/signup** o **create signup**
->  **name/global-styles** o **create-global-styles**
->  **name/navbar** o **create navbar**
 
 Para ver más opciones de tipos de commits pueden ir a este [enlace](https://dev.to/achamorro_dev/conventional-commits-que-es-y-por-que-deberias-empezar-a-utilizarlo-23an).
 
@@ -50,5 +53,8 @@ Información adicional:
 * [**FETCH**](https://lenguajejs.com/javascript/peticiones-http/fetch/)
 * [**AXIOS**](https://axios-http.com/es/docs/intro)
 
+## Documentación de componentes
+Para documentar los componentes del proyecto vamos a utilizar el la herramienta JSDoc que es nativa de Javascript y permite una implementación sencilla y directa de la información sobre nuestro componente, definiendo sus propiedades y funcionalidades como guía para el desarrollador o desarrolladora que necesite conocer su forma de uso.
+
 ## Despliegue de la aplicación web
-Para el despliegue del frontend utilizaremos [Netlifly](https://www.netlify.com/).
+Para el despliegue del frontend utilizaremos [Vercel](https://vercel.com/).

@@ -42,27 +42,27 @@ const cards = [
 ]
 
   return (
-    <div className='w-full'>
-    <section className='xl:h-[90vh] w-full p-12 md:flex justify-between'>
-    <div className='flex flex-col items-center relative'>
-      <h2>Gestiona tus finanzas</h2>
-      <h3 className='text-extra font-bold'>desde cualquier rincon del mundo.</h3>
-      <img src={tarjeta} alt='tarjeta' className='mt-8'/>
-      <h3 className='text-extra  md:w-3/5 self-start md:absolute bottom-0 '>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
+    <>
+    <section className='lg:h-[90vh] p-6 lg:p-12 md:flex justify-between'>
+    <div className='flex flex-col h-[28rem] xl:h-[38rem] lg:items-center relative'>
+      <h2 className='lg:text-h2 xl:text-xl text-left'>Gestiona tus finanzas</h2>
+      <h3 className='xl:text-extra font-bold'>desde cualquier rincon del mundo.</h3>
+      <img src={tarjeta} alt='tarjeta' className='mt-6 lg:h-[20rem] xl:h-[25rem]'/>
+      <h3 className='xl:text-extra w-2/3  self-start absolute bottom-0  text-left'>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
       en una sola cuenta, siempre que lo necesites.</h3>
     </div>
-    <img src={landingimg} alt='' className='w-[40%] hidden md:block'/>
+    <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
     </section>
 
-    <section className='md:h-[100vh] text-center bg-dark p-6 md:p-16'>
-      <h2 className='text-5xl font-extrabold bg-gradient-to-r from-grisclaro to-verde bg-clip-text text-transparent'>Descubre todos los beneficios de tu cuenta Payout</h2>
-      <div className='md:flex  bg-verde p-4 md:p-6 m-4 mt-6 md:m-20 rounded-2xl'>
+    <section className='lg:h-[100vh] text-center bg-dark dark:bg-grisclaro p-6 lg:p-16'>
+      <h2 className='lg:text-h2 xl:text-5xl  font-extrabold bg-gradient-to-r from-grisclaro to-verde bg-clip-text text-transparent dark:bg-gradient-to-r dark:from-violetagrad dark:to-azulgrad'>Descubre todos los beneficios de tu cuenta Payout</h2>
+      <div className='lg:flex  bg-verde p-4 xl:p-6 m-4 mt-6 xl:m-20 rounded-2xl'>
         {cards.map((card) =>(
-          <div className='bg-white flex relative p-4 m-3 h-[250px] md:w-1/4 rounded-2xl'>
+          <div className='bg-white flex relative p-4 m-3 h-[15rem] lg:w-1/4 rounded-2xl'>
           <div className='text-left'>
             <img src={card.imagen} alt='img'/>
-            <h3 className='font-bold'>{card.titulo}</h3>
-            <p class='text-black w-3/4' >{card.texto}</p>
+            <h3 className='font-bold lg:text-sm xl:text-m text-black'>{card.titulo}</h3>
+            <p class='text-black lg:w-4/5 xl:w-3/4 lg:text-sm' >{card.texto}</p>
           </div>
           <img src={card.numero} alt='numero' className='absolute right-2 self-end h-[70px] '/>
         </div>
@@ -74,20 +74,20 @@ const cards = [
 
     </section>
 
-    <section className=' text-center p-8 md:h-[100vh]'>
-      <h2 className=''>Sobre PAYOUT</h2>
-      <h3 className='mt-8 font-bold'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</h3>
+    <section className=' text-center p-8 lg:h-[100vh]'>
+      <h2 className='lg:text-h2 xl:text-xl'>Sobre PAYOUT</h2>
+      <h3 className='mt-8 font-bold lg:text-m xl:text-lg'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</h3>
 
-      <div className='md:flex md:px-20 '>
-        <img src={celular} className='w-[full] md:w-[500px]'/>
-        <div className='flex flex-col gap-10 justify-center md:p-4 items-center'>
-          <h2 className='font-black text-xl tracking-tighter leading-tight md:text-4xl text-left bg-gradient-to-r from-primario to-verde bg-clip-text text-transparent'>Mantenemos tu información financiera segura y protegida</h2>
-          <img src={icon} className='w-[200px] md:w-[300px] self-end'/>
+      <div className='lg:flex lg:px-20 '>
+        <img src={celular} className='w-[full] lg:h-[20rem] xl:h-[30rem] '/>
+        <div className='flex flex-col gap-10 justify-center lg:p-4 items-center'>
+          <h2 className='font-black lg:text-payout xl:text-4xl tracking-tighter leading-tight  text-left bg-gradient-to-r from-primario to-verde bg-clip-text text-transparent'>Mantenemos tu información financiera segura y protegida</h2>
+          <img src={icon} className='w-[200px] xl:w-[300px] self-end'/>
         </div>
       </div>
       
     </section>
-    </div>
+    </>
   )
 }
 

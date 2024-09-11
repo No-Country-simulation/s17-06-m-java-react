@@ -19,17 +19,17 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
     <div className="w-full h-[10vh] flex-col justify-center relative">
       {/* Contenedor principal del navbar */}
       <div className="w-full h-[9.5vh] flex items-center justify-between">
-        <div className='flex items-center gap-6'>
+        <div className='flex items-center lg:gap-4 xl:gap-6'>
           <div className='flex gap-3 items-center'>
-            <img className="h-[30px] ml-10  cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
-            <Link to={'/'} className={`text-${light ? 'white' : 'primario'} font-serif text-payout font-light`}>PAYOUT</Link> 
+            <img className="h-[30px] ml-10 lg:ml-6 xl:ml-10  cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
+            <Link to={'/'} className={`text-${light ? 'white' : 'primario'} font-serif  text-payout lg:text-base xl:text-payout font-light`}>PAYOUT</Link> 
           </div>
-          <Link className="hidden md:block underline text-verde">Personal</Link> 
-          <Link className="hidden md:block">Empresas</Link> 
+          <Link className="hidden lg:block underline text-verde lg:text-sm xl:text-m ">Personal</Link> {/* Se oculta en móviles */}
+          <Link className="hidden lg:block dark:text-white lg:text-sm xl:text-m">Empresas</Link> {/* Se oculta en móviles */}
         </div>
 
         {/* Botón del menú hamburguesa (se muestra en móviles) */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button onClick={toggleMenu} className="p-2 rounded-md focus:outline-none">
             {isOpen ? (
               <span>&#x2715; {/* Icono de "cerrar" */}</span>
@@ -40,7 +40,7 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
         </div>
 
         {/* Links del menú (se muestra en pantallas grandes) */}
-        <div className={`hidden md:flex items-center gap-6 mx-8`}>
+        <div className={`hidden lg:flex items-center gap-6 mx-8 lg:text-sm xl:text-m`}>
           <Link>Funciones</Link>
           <Link>Transferencias</Link>
           <Link>Ayuda</Link>
@@ -60,8 +60,8 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
         strokeLinejoin="round"
       />
     </svg>
-          <Link className='whitespace-nowrap text-verde' to='/login'>Iniciar sesión</Link>
-          <button onClick={() => navigate('/signup')} className='rounded-lg py-1.5 px-3 bg-primario text-white font-semibold'>Crear cuenta</button>
+          <Link className='whitespace-nowrap text-verde lg:text-sm xl:text-m' to='/login'>Iniciar sesión</Link>
+          <button onClick={() => navigate('/signup')} className='whitespace-nowrap rounded-lg py-1.5 px-3 bg-primario text-white font-semibold lg:text-sm xl:text-m'>Crear cuenta</button>
         </div>
       </div>
 

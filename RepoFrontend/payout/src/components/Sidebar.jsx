@@ -1,27 +1,59 @@
+import { useState } from 'react';
 import React from 'react';
-import payout from '../assets/iconpayout.png'; 
+import payout from '../assets/iconpayout.png';
+import AsideButton, {options} from './atoms/AsideButton';
+import home from './atoms/assets/house.svg';
+import account from './atoms/assets/credit-card.svg';
+import userIcon from './atoms/assets/user.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+const navigate = useNavigate()
+  // Inicializamos el estado con el ID del primer botón (Inicio)
+  const [selectedId, setSelectedId] = useState(options[0].id);
+
+  // Función para manejar la selección de un botón
+  const handleButtonClick = (id, path) => {
+    
+    setSelectedId(id);
+    navigate(path)
+    if(id===5){
+      const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsAuthenticated(false);
+        navigate('/login'); // Redirige al login después de salir
+      };
+    }
+    
+    ;
+  };
+
+
+  /* Desestructuramos name e image de options para aplicar a los botones del sidebar */
+  
   return (
-    <div className='md:h-full md:w-full'>
+    <div className=' md:w-1/5 md:h-full '>
       {/* Sidebar en pantalla completa (solo para desktop) */}
       <div className="hidden md:flex md:flex-col h-full bg-white text-black p-6">
         <img src={payout} alt="logo" />
-        <div className="h-full flex flex-col justify-center gap-10  ">
-          <button>Inicio</button>
-          <button>Cuenta</button>
-          <button>Perfil</button>
-          <button>Ayuda</button>
-          <button>Cerrar sesión</button>
+        <div className="h-full flex flex-col justify-center gap-10">
+        {options.map(({ id, image, name, path }) => (
+            <AsideButton 
+              key={id} 
+              image={image} 
+              text={name}
+              onClick={() => handleButtonClick(id, path)}
+              isSelected={selectedId === id} />
+          ))}
         </div>
       </div>
 
       {/* Footer con botones para vista móvil */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
+      <div className="md:hidden  fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
         <div className="flex justify-around">
-          <button className='text-black'>Inicio</button>
-          <button  className='text-black'>Cuenta</button>
-          <button  className='text-black'>Perfil</button>
+          <button className='text-black'><img src={home} alt="Inicio" /></button>
+          <button  className='text-black'><img src={account} alt="Cuenta" /></button>
+          <button  className='text-black'><img src={userIcon} alt="Perfil" /></button>
         </div>
       </div>
     </div>
