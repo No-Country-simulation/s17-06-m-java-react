@@ -1,5 +1,5 @@
 import React from 'react';
-import ActivityItem, { activities } from '../components/atoms/ActivityItem.jsx';
+import ActivityItem, {activities} from '../components/atoms/Activityitem.jsx';
 
 
 const Actividad = () => {
