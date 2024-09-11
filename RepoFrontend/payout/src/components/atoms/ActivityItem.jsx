@@ -22,55 +22,8 @@ export const activities = [
         amount: '-5.500 ARS',
         activityType: 'Pago'
     },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    },
-    {
-        id: 3,
-        datetime: '24AGO2024 - 15.45',
-        actNotification: 'Pago a Amazon',
-        amount: '-5.500 ARS',
-        activityType: 'Pago'
-    }
+    
+    
 ];
 
 
@@ -86,9 +39,12 @@ const getIconByActivityType = (activityType) => {
             );
         case 'Depósito':
             return (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 6l-7.5 7.5L6 10" />
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 3.5H19C19.5304 3.5 20.0391 3.71071 20.4142 4.08579C20.7893 4.46086 21 4.96957 21 5.5V19.5C21 20.0304 20.7893 20.5391 20.4142 20.9142C20.0391 21.2893 19.5304 21.5 19 21.5H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 17.5L15 12.5L10 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 12.5H3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
+                
             );
         case 'Pago':
             return (

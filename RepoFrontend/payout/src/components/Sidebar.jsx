@@ -37,7 +37,7 @@ const Sidebar = () => {
       </div>
 
       {/* Footer con botones para vista móvil */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
+      <div className="md:hidden  fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
         <div className="flex justify-around">
           <button className='text-black'><img src={home} alt="Inicio" /></button>
           <button  className='text-black'><img src={account} alt="Cuenta" /></button>
