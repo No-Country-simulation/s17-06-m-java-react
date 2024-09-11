@@ -9,6 +9,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
 const navigate = useNavigate()
+
+const handleLogout = () => {
+  localStorage.removeItem('token');
+  navigate('/login'); // Redirige al login después de salir
+};
   // Inicializamos el estado con el ID del primer botón (Inicio)
   const [selectedId, setSelectedId] = useState(options[0].id);
 
@@ -16,13 +21,10 @@ const navigate = useNavigate()
   const handleButtonClick = (id, path) => {
     
     setSelectedId(id);
-    navigate(path)
-    if(id===5){
-      const handleLogout = () => {
-        localStorage.removeItem('token');
-        setIsAuthenticated(false);
-        navigate('/login'); // Redirige al login después de salir
-      };
+    if (id === 5) {
+      handleLogout();
+    } else {
+      navigate(path);
     }
     
     ;
