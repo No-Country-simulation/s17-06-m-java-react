@@ -16,7 +16,7 @@ const handleButtonClick = (id) => {
     const options = [
         {
             id: 1, 
-            name: 'Pagos'
+            name: 'Pagoss'
         },
         {
             id: 2,
