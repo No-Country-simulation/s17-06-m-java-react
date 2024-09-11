@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 const Home = ({light}) => {
   
-
+  const lastThreeActivities = activitiesNotif.slice(0, 3);
   console.log('light de home', light)
   
     const carruselRef = useRef(null);

@@ -1,36 +1,26 @@
 import React from 'react';
-import NotificationItem, { activitiesNotif } from '../components/atoms/NotificationItem.jsx';
-import { Link } from 'react-router-dom';
+import ActivityItem, { activities } from '../components/atoms/ActivityItem.jsx';
+
 
 const Actividad = () => {
     return (
+        <section className='px-4 md:px-10 w-full '>
+            <h2 className='font-semibold  py-4 text-right'>Mi Actividad</h2>
 
-        <section className='px-4 md:px-10 w-full'>
-
-                <p className='font-semibold pt-10 flex items-start'>Actividad</p>
-                
-                    <p className='text-sm pt-2 pb-3 flex items-start'>Agosto</p>
-                    
-                
-
-                {/* LINEA */}
-                <section id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-                    {activitiesNotif.map(({ id, element, datetime, actNotification, amount, activityType }) => (
-                        <NotificationItem key={id}
-                            element={element}
-                            datetime={datetime}
-                            actNotification={actNotification}
-                            amount={amount}
-                            activityType={activityType}
-                        />
-                    ))}
-                </section>
-                {/* LINEA */}
-
+            {/* Recorrer y renderizar cada actividad */}
             
+            {activities.map(({ id, datetime, actNotification, amount, activityType }) => (
+                <ActivityItem
+                    key={id}
+                    datetime={datetime}
+                    actNotification={actNotification}
+                    amount={amount}
+                    activityType={activityType}
+                />
+            ))}
+           
         </section>
-
-    )
+    );
 }
 
-export default Actividad
+export default Actividad;
