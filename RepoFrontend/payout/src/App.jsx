@@ -14,6 +14,7 @@ function App() {
   const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
   const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
 
+  /* Funcion botones Login y Logout */
   const handleLogin = () => {
     setIsAuthenticated(true);
     navigate('/home');
