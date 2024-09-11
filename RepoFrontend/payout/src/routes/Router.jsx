@@ -6,30 +6,64 @@ import Home from "../pages/Home";
 import LandingPage from "../pages/LandingPage";
 import Actividad from "../pages/Actividad";
 import { Perfil } from "../pages/Perfil";
-
+import { ProtectedRoute, PublicRoute } from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-          <App />
-      ),
-      children: [
-        {path: '/home', element: <Home/>},
-        { path: "/signup", element: <SignUp /> },
-        { path: "/login", element: <Login /> },
-        { path: "/", element: <LandingPage /> },
-        { path: "/actividad", element: <Actividad /> },
-        { path: "/perfil", element: <Perfil/> },
-        
-      ],
-    },
-    // {
-    //   path: "/signup",
-    //   element: (
-    //       <SignUp />
-    //   ),
-    // },
-   
-  ]);
-  
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      // Rutas públicas (login, landing, signup)
+      { 
+        path: '/', 
+        element: (
+          <PublicRoute>
+            <LandingPage />
+          </PublicRoute>
+        ) 
+      },
+      { 
+        path: '/login', 
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ) 
+      },
+      { 
+        path: '/signup', 
+        element: (
+          <PublicRoute>
+            <SignUp />
+          </PublicRoute>
+        ) 
+      },
+      
+      // Rutas protegidas (home, actividad, perfil)
+      { 
+        path: '/home', 
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/actividad', 
+        element: (
+          <ProtectedRoute>
+            <Actividad />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/perfil', 
+        element: (
+          <ProtectedRoute>
+            <Perfil />
+          </ProtectedRoute>
+        ) 
+      },
+    ],
+  },
+]);

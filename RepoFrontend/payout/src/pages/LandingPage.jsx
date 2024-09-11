@@ -51,7 +51,7 @@ const cards = [
       <h3 className='xl:text-extra w-2/3  self-start absolute bottom-0  text-left'>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
       en una sola cuenta, siempre que lo necesites.</h3>
     </div>
-    <img src={landingimg} alt='' className='w-[50%] hidden lg:block'/>
+    <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
     </section>
 
     <section className='lg:h-[100vh] text-center bg-dark dark:bg-grisclaro p-6 lg:p-16'>
