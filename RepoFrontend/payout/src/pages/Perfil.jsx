@@ -12,23 +12,29 @@ import PasswordField from "../authentication/components/PasswordField"
 
 
 const schema = Yup.object().shape({
-    /* nombre: Yup.string()
+    nombres: Yup.string()
                 .min(2, "El nombre es demasiado corto")
-                .max(30, "Máximo 30 caracteres")
-                .required("Este campo es obligatorio"), */
+                .max(30, "Máximo 40 caracteres")
+                .required("Este campo es obligatorio"),
+    apellidos: Yup.string()
+    .min(2, "El nombre es demasiado corto")
+    .max(30, "Máximo 40 caracteres")
+    .required("Este campo es obligatorio"),
+    teléfono: Yup.number()
+                .min(2, "El nombre es demasiado corto")
+                .max(30, "Máximo 20 caracteres")
+                .required("Este campo es obligatorio"),
+    fechadenacimiento: Yup.string()
+    .min(2, "El nombre es demasiado corto")
+    .max(30, "Máximo 20 caracteres")
+    .required("Este campo es obligatorio"),
     email: Yup.string()                
                 .email("El email es inválido")
                 .required("Este campo es obligatorio"),
-    rEmail: Yup.string()
-                .oneOf([Yup.ref('email'), null], 'Las direcciones de email no coinciden')
-                .required('Este campo es requerido'),
-    password: Yup.string()
-                .min(8, "La contraseña es demasiado corta")
-                .required("Este campo es obligatorio"),
-    /* rPassword: Yup.string()
-                .oneOf([Yup.ref('password'), null], 'Las contraseñas no coinciden')
-                .required('Este campo es requerido'), */
-                
+    username: Yup.string()
+    .min(2, "El nombre es demasiado corto")
+    .max(30, "Máximo 40 caracteres")
+    .required("Este campo es obligatorio"),                
 })
 
 
@@ -83,7 +89,7 @@ export const Perfil = () => {
                         {/* USERNAMES */}
                         <div id='texto-username' className=''>
                             <p className="text-sm font-semibold">RAFAEL DIAZ</p>
-                            <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
+                            <p className="text-start text-verde text-sm font-['Montserrat']">@Rafael</p>
                         </div>
                     </div>                
                 </div>
@@ -121,7 +127,7 @@ export const Perfil = () => {
                             onSubmit={(values) => {
                                 console.log('Formulario enviado:', values);
                             }}
-                            validationSchema={schema}
+                            /* validationSchema={schema} */
                         >
                             {({ isValid, dirty, submitForm, resetForm }) => (
                                 <>
@@ -143,13 +149,13 @@ export const Perfil = () => {
                                         <div className='block md:flex gap-6 w-full'>
                                             <div id='telefono' className='px-1 pt-1 md:pt-0'>
                                                 <p className='text-black text-start p-0'>Teléfono</p>
-                                                <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="telefono" />
+                                                <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="number" name="telefono" />
                                                 <ErrorMessage name="telefono" component="p" className='text-red-500' />
                                             </div>
 
                                             <div id='fechadenacimiento' className='px-1 pt-2 md:pt-0'>
-                                                <p className='text-black text-start p-0'>Fecha de nacimiento</p>
-                                                <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="fechadenacimiento" />
+                                                <p className='text-black text-start p-0'>Fecha de nacimiento (dd/mm/aaaa)</p>
+                                                <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="fechadenacimiento" placeholder="dd/mm/aaaa"/>
                                                 <ErrorMessage name="fechadenacimiento" component="p" className='text-red-500' />
                                             </div>
                                         </div>
@@ -170,8 +176,8 @@ export const Perfil = () => {
 
                                         {/* botones dentro de la tarjeta perfil PARA MOBILE */}
                                         <div className='mt-8 flex gap-4 items-center justify-end md:hidden'>
-                                            <p className='text-black'>Cancelar</p>
-                                            <button type="submit" className="py-1 px-4 bg-verde text-white rounded-lg text-base font-['Montserrat'] font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" disabled={!isValid || !dirty}>Guardar</button>
+                                            <p className='text-black' onClick={resetForm}>Cancelar</p>
+                                            <button type="submit" className="py-1 px-4 bg-verde text-white rounded-lg text-base font-['Montserrat'] font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" /* disabled={!isValid || !dirty} */>Guardar</button>
                                         </div>
                                     </Form>
 
