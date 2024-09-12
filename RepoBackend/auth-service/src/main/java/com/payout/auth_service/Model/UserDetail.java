@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.Date;
 import org.hibernate.annotations.SourceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,6 +38,10 @@ public class UserDetail {
 
     @Column(name = "address", length = 100, nullable = true)
     private String address;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "datebirth", nullable = true)
+    private Date datebirth;
 
     @Column(name = "created_at", nullable = true)
     @CreationTimestamp(source = SourceType.DB)

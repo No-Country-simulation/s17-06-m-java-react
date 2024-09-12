@@ -90,6 +90,9 @@ public abstract class CrudImpl<T, ID> implements ICrud<T, ID> {
             if (newUserDetail.getLastName() != null) {
                 existingUserDetail.setLastName(newUserDetail.getLastName());
             }
+            if (newUserDetail.getDatebirth() != null) {
+                existingUserDetail.setDatebirth(newUserDetail.getDatebirth());
+            }
         }
 
         if (newUser.getTfa() != null && newUser.getTfa() == true) {

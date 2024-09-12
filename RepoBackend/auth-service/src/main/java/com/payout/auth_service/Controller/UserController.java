@@ -96,6 +96,7 @@ public class UserController {
             userDetail.setName(userDto.getUserDetail().getName());
             userDetail.setLastName(userDto.getUserDetail().getLastName());
             userDetail.setAddress(userDto.getUserDetail().getAddress());
+            userDetail.setDatebirth(userDto.getUserDetail().getDatebirth());
             userDetail.setUser(user);
             user.setUserDetail(userDetail);
         }

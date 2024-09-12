@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import java.util.Date;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -21,6 +22,8 @@ public class UserDetailDto {
     private String lastName;
 
     private String address;
+
+    private Date datebirth;
 
     @JsonBackReference
     private UserDto user;
