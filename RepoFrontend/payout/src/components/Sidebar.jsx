@@ -35,7 +35,7 @@ const navigate = useNavigate()
   /* Desestructuramos name e image de options para aplicar a los botones del sidebar */
   
   return (
-    <div className=' md:w-1/5 md:h-full '>
+    <div className=' md:w-1/6 md:h-full '>
       {/* Sidebar en pantalla completa (solo para desktop) */}
       <div className="hidden md:flex md:flex-col h-full bg-white text-black p-6">
         <img src={payout} alt="logo" />
