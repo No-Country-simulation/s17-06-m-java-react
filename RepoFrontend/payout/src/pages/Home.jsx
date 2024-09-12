@@ -43,7 +43,7 @@ const Home = ({ light }) => {
 
   return (
     <div className='flex'>
-      <Sidebar />
+      
 
       <section className='px-4 md:px-10 w-full'>
 

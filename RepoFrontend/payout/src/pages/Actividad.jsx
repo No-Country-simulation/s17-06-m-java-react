@@ -1,6 +1,7 @@
 import React,  { useState } from 'react';
 import ActivityItem, { activities } from '../components/atoms/ActivityItem.jsx';
 import ActivityButton from '../components/atoms/ActivityButton.jsx';
+import Banner from '../components/Banner.jsx';
 
 
 const Actividad = () => {
@@ -30,6 +31,7 @@ const Actividad = () => {
     
         return (
             <section className='px-4 md:px-10 w-full '>
+                <Banner/>
                 <h2 className='font-semibold  py-4 text-left'>Mi Actividad</h2>
                 <section className='flex gap-4'>
     

@@ -5,6 +5,8 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
 import { useState } from 'react';
 import { ThemeButton } from './components/ThemeButton';
+import Sidebar from './components/Sidebar';
+
 
 function App() {
   const navigate = useNavigate();
@@ -18,16 +20,6 @@ function App() {
     location.pathname === '/'
   );
 
-  /* Funcion botones Login y Logout */
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-    navigate('/home');
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    navigate('/');
-  };
 
   /* Dark Mode */
   const [light, setLight] = useState(true);
@@ -56,7 +48,10 @@ function App() {
     <>
       <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-bg-white text-black'}`}>
         {showNavbar && <Navbar light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>}
-          
+
+        <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
+          {showSidebar && <Sidebar />}
+            <div className={`text-end  ${showSidebar ? 'ml-0 w-full md:w-4/5' : 'w-full'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
             <div className="hidden md:block">
               <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
               {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
@@ -65,18 +60,12 @@ function App() {
               <Outlet  />
 
             </div>
+        </div>
 
         {showFooter && <Footer />}
 
-        {/* Botones de prueba para Login/Logout */}
-        <div className="fixed bottom-4 right-4 flex space-x-2">
-          <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded">
-            Login
-          </button>
-          <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">
-            Logout
-          </button>
-        </div>
+        
+      </div>
     </>
   );
 };
