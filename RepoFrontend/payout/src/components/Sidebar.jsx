@@ -9,26 +9,27 @@ import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
 const navigate = useNavigate()
+  
 
-const handleLogout = () => {
-  localStorage.removeItem('token');
-  navigate('/login'); // Redirige al login después de salir
-};
-  // Inicializamos el estado con el ID del primer botón (Inicio)
-  const [selectedId, setSelectedId] = useState(options[0].id);
-
-  // Función para manejar la selección de un botón
-  const handleButtonClick = (id, path) => {
-    
-    setSelectedId(id);
-    if (id === 5) {
-      handleLogout();
-    } else {
-      navigate(path);
-    }
-    
-    ;
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login'); // Redirige al login después de salir
   };
+    // Inicializamos el estado con el ID del primer botón (Inicio)
+    const [selectedId, setSelectedId] = useState(options[0].id);
+  
+    // Función para manejar la selección de un botón
+    const handleButtonClick = (id, path) => {
+      
+      setSelectedId(id);
+      if (id === 5) {
+        handleLogout();
+      } else {
+        navigate(path);
+      }
+      
+      ;
+    };
 
 
   /* Desestructuramos name e image de options para aplicar a los botones del sidebar */
