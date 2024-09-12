@@ -50,7 +50,7 @@ export default {
       'sm': '14px',
       'm': '1rem',
       'lg': '1.13rem',
-      'xl': '3rem',
+      'xl': '20px',
       '2xl': '3.75rem',
       'base': '1.25rem',
       'extra': '1.56rem',

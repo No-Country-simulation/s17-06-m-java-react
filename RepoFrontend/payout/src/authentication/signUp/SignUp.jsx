@@ -57,8 +57,7 @@ export const SignUp = () => {
                       Accept: "application/json",
                     },
                     body: JSON.stringify({              
-                      email: values.email,
-                      repeatEmail: values.repeatEmail,
+                      email: values.email,                      
                       password: values.password
                     }),
                   })
