@@ -20,14 +20,13 @@ const schema = Yup.object().shape({
     .min(2, "El nombre es demasiado corto")
     .max(30, "Máximo 40 caracteres")
     .required("Este campo es obligatorio"),
-    teléfono: Yup.number()
-                .min(2, "El nombre es demasiado corto")
-                .max(30, "Máximo 20 caracteres")
-                .required("Este campo es obligatorio"),
-    fechadenacimiento: Yup.string()
+    telefono: Yup.string()
+        .matches(/^[0-9]+$/, 'El teléfono solo debe contener números')
+        .required('El teléfono es obligatorio'),
+    /* fechadenacimiento: Yup.string()
     .min(2, "El nombre es demasiado corto")
     .max(30, "Máximo 20 caracteres")
-    .required("Este campo es obligatorio"),
+    .required("Este campo es obligatorio"), */
     email: Yup.string()                
                 .email("El email es inválido")
                 .required("Este campo es obligatorio"),
@@ -127,7 +126,7 @@ export const Perfil = () => {
                             onSubmit={(values) => {
                                 console.log('Formulario enviado:', values);
                             }}
-                            /* validationSchema={schema} */
+                            validationSchema={schema}
                         >
                             {({ isValid, dirty, submitForm, resetForm }) => (
                                 <>
@@ -153,11 +152,11 @@ export const Perfil = () => {
                                                 <ErrorMessage name="telefono" component="p" className='text-red-500' />
                                             </div>
 
-                                            <div id='fechadenacimiento' className='px-1 pt-2 md:pt-0'>
+                                            {/* <div id='fechadenacimiento' className='px-1 pt-2 md:pt-0'>
                                                 <p className='text-black text-start p-0'>Fecha de nacimiento (dd/mm/aaaa)</p>
                                                 <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="fechadenacimiento" placeholder="dd/mm/aaaa"/>
                                                 <ErrorMessage name="fechadenacimiento" component="p" className='text-red-500' />
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <div className='block md:flex gap-6 w-full'>
@@ -169,19 +168,17 @@ export const Perfil = () => {
 
                                             <div id='usuario' className='px-1 pt-2 md:pt-0'>
                                                 <p className='text-black text-start p-0'>Nombre de usuario - Alias</p>
-                                                <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="usuario" />
-                                                <ErrorMessage name="usuario" component="p" className='text-red-500' />
+                                                <Field className="w-full md:w-[360px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="username" />
+                                                <ErrorMessage name="username" component="p" className='text-red-500' />
                                             </div>
                                         </div>
 
-                                        {/* botones dentro de la tarjeta perfil PARA MOBILE */}
+                                        {/* botones dentro de la tarjeta perfil*/}
                                         <div className='mt-8 flex gap-4 items-center justify-end md:hidden'>
                                             <p className='text-black' onClick={resetForm}>Cancelar</p>
-                                            <button type="submit" className="py-1 px-4 bg-verde text-white rounded-lg text-base font-['Montserrat'] font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" /* disabled={!isValid || !dirty} */>Guardar</button>
+                                            <button type="submit" onClick={submitForm} className="py-1 px-4 bg-verde text-white rounded-lg text-base font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" disabled={!isValid || !dirty}>Guardar</button>
                                         </div>
                                     </Form>
-
-                                    
                                 </>
                             )}
                         </Formik>
@@ -190,16 +187,16 @@ export const Perfil = () => {
                 {/* fin de div tarjeta perfil */}
                 
 
-                {/* BOTONES FUERA DEL DIV PRINCIPAL PARA DESKTOP*/}
-                <div className='hidden mt-4 md:flex gap-4 items-center justify-end'>
-                    {/* Usamos los métodos de Formik */}
+
+                {/* ESTO NO VA MAS */}
+                {/* BOTONES FUERA DEL DIV PRINCIPAL PARA DESKTOP */}
+                {/* <div className='hidden mt-4 md:flex gap-4 items-center justify-end'>
+                    
                     <p className='cursor-pointer' onClick={() => document.querySelector('form').reset()}>Cancelar</p>
-                    <button id='submit' type="submit" className="py-1 px-4 bg-verde text-white rounded-lg text-base font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" onClick={(e, values) => {e.preventDefault(); document.querySelector('form').submit(); console.log(values)} } /* disabled={!isValid || !dirty} */>
+                    <button id='submit' type="submit" className="py-1 px-4 bg-verde text-white rounded-lg text-base font-semibold hover:bg-primario-hover focus:outline-none focus:bg-primario-hover" onClick={(e, values) => {e.preventDefault(); document.querySelector('form').submit(); console.log(values)} } disabled={!isValid || !dirty}>
                         Guardar
                     </button>
-                </div>              
-
-
+                </div> */}   
 
             </div>
            
