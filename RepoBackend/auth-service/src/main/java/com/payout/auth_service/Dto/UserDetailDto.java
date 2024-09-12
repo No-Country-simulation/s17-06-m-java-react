@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.util.Date;
+import java.sql.Date;
 import lombok.NoArgsConstructor;
 
 @Data

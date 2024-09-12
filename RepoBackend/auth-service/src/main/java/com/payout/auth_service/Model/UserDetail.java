@@ -6,7 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Date;
+import java.sql.Date;
 import org.hibernate.annotations.SourceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
