@@ -1,8 +1,39 @@
-import React from 'react';
+
 import  notif  from '../assets/Notificaciones.png'
 import  userimage  from '../assets/userimage.png'
+import { useEffect, useState } from 'react';
+
+
+
+const urlInfoUserLogged = 'https://payout.redromsolutions.com/user/0'
+
+
 
 const Banner = () => {
+
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+
+
+    /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
+    useEffect(() => {
+        fetch(urlInfoUserLogged, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(data => data.json())
+            .then(data => {
+                const userData = data.data[0];
+                setName(userData.userDetail.name);
+                setLastName(userData.userDetail.lastName)
+            });
+    }, []);
+
+
+
   return (
     <section className=' w-full'>
 
@@ -18,8 +49,8 @@ const Banner = () => {
                 </div>
                 {/* USERNAMES */}
                 <div id='texto-username' className=']'>
-                    <p className="text-sm font-['Montserrat']">RAFAEL DIAZ</p>
-                    <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
+                    <p className="text-sm font-['Montserrat']">{name} {lastName}</p>
+                    <p className="text-start text-verde text-sm font-['Montserrat']">@Username</p>
                 </div>
             </div>
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
@@ -38,7 +69,7 @@ const Banner = () => {
         <div id='div-total-banner' className='hidden md:block md:flex md:flex-row justify-between items-center py-6 border-b w-full'>
             {/* HOLA */}
             <p className="dark:text-white md:font-semibold md:text-2xl">
-                  ¡Hola, Rafael!</p>
+                  ¡Hola, {name}!</p>
             {/* ELEMENTOS DE LA DERECHA, CAMPANA, FOTO USER Y NOMBRES */}
             <div id='elementos-de-la-derecha' className='flex flex-row gap-8 items-center justify-between '>
                 {/* CAMPANA */}
@@ -51,8 +82,8 @@ const Banner = () => {
                     </div>
                     {/* USERNAMES */}
                     <div id='texto-username' className=''>
-                        <p className="text-sm font-semibold">RAFAEL DIAZ</p>
-                        <p className="text-verde text-sm font-['Montserrat']">@Rafael</p>
+                        <p className="text-sm font-semibold">{name} {lastName}</p>
+                        <p className="text-start text-verde text-sm font-['Montserrat']">@Username</p>
                     </div>
                 </div>                
             </div>

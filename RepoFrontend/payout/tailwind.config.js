@@ -51,7 +51,7 @@ export default {
       'm': '1rem',
       'lg': '1.13rem',
       'xl': '20px',
-      '2xl': '3.75rem',
+      '2xl': '24px',
       'base': '1.25rem',
       'extra': '1.56rem',
       'payout': '1.88rem',
