@@ -1,5 +1,6 @@
 package com.payout.transaction_service.transaction_service.domain;
 
+import com.payout.transaction_service.transaction_service.enums.CurrencyType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,8 +27,8 @@ public class TransactionDetail {
     private LocalDateTime createAt;
 
     @Column(nullable = false)
-    private Long currencySource;
+    private CurrencyType currencySource;
 
     @Column(nullable = false)
-    private Long currencyTarget;
+    private CurrencyType currencyTarget;
 }

@@ -1,8 +1,9 @@
 package com.payout.transaction_service.transaction_service.controller;
 
-import com.payout.transaction_service.transaction_service.domain.Transaction;
+import com.payout.transaction_service.transaction_service.http.TransactionResponse;
 import com.payout.transaction_service.transaction_service.model.dto.TransactionDTO;
-import com.payout.transaction_service.transaction_service.model.dto.TransactionDetailDTO;
+import com.payout.transaction_service.transaction_service.model.dto.TransferRequestDTO;
+import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
 import com.payout.transaction_service.transaction_service.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,38 +18,44 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    @PostMapping("/create")
-    public ResponseEntity<TransactionDTO> createTransaction(@RequestBody TransactionDTO transactionDto) {
-        TransactionDTO createdTransaction = transactionService.createTransaction(transactionDto);
-        return ResponseEntity.ok(createdTransaction);
+    //  Ver historial de transacciones
+    @GetMapping("/history/{accountId}")
+    public ResponseEntity<List<TransactionDTO>> getTransactionHistory(@PathVariable Long accountId) {
+        List<TransactionDTO> transactionHistory = transactionService.getTransactionHistory(accountId);
+        return ResponseEntity.ok(transactionHistory);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
-        List<TransactionDTO> transactions = transactionService.getTransactions();
-        return ResponseEntity.ok(transactions);
+    // Consultar saldo
+    @GetMapping("/balance/{accountIdentifier}")
+    public ResponseEntity<Double> getAccountBalance(@PathVariable String accountIdentifier) {
+        // Identificar si es un alias o un CVU
+        Double balance = transactionService.getBalance(accountIdentifier);
+        return ResponseEntity.ok(balance);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<TransactionDTO> getTransactionById(@PathVariable Long id) {
-        TransactionDTO transaction = transactionService.getTransactionById(id);
-        return ResponseEntity.ok(transaction);
+    // Consultar información del cliente
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<UserBasic> getUserInfo(@PathVariable Long userId) {
+        UserBasic userInfo = transactionService.getUserInfo(userId);
+        return ResponseEntity.ok(userInfo);
     }
 
+    // Registrar una nueva transacción
     @PostMapping("/transfer")
-    public ResponseEntity<TransactionDetailDTO> transferMoney(
-            @RequestParam Long idSourceAccount,
-            @RequestParam Long idTargetAccount,
-            @RequestParam Double amount,
-            @RequestParam String type) {
+    public ResponseEntity<TransactionResponse> transferFunds(
+            @RequestBody TransferRequestDTO transferRequest,
+            @RequestHeader("Authorization") String token) {
 
-        TransactionDetailDTO transactionDetail = transactionService.processTransaction(idSourceAccount, idTargetAccount, amount, type);
-        return ResponseEntity.ok(transactionDetail);
-    }
-
-    @PostMapping("/send")
-    public ResponseEntity<Transaction> sendMoney(@RequestBody Transaction transaction) {
-        Transaction processedTransaction = transactionService.processTransaction(transaction);
-        return ResponseEntity.ok(processedTransaction);
+        // Realizar la transacción usando el token del usuario logueado
+        TransactionResponse transactionResponse = transactionService.performTransaction(
+                token,
+                transferRequest.getUserId(),
+                transferRequest.getSourceAccountIdentifier(),
+                transferRequest.getTargetAccountIdentifier(),
+                transferRequest.getAmount(),
+                transferRequest.getCurrencySource(),
+                transferRequest.getCurrencyTarget()
+        );
+        return ResponseEntity.ok(transactionResponse);
     }
 }
