@@ -49,7 +49,7 @@ export default {
       'masxs': '13.9px',
       'sm': '14px',
       'm': '1rem',
-      'lg': '1.13rem',
+      'lg': '18px',
       'xl': '20px',
       '2xl': '24px',
       'base': '1.25rem',
