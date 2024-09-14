@@ -1,12 +1,15 @@
 package com.payout.bank_account_service.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class BankAccount {
 
     @Id
@@ -40,83 +43,9 @@ public class BankAccount {
     @Column(nullable = false)
     private Double balance;
 
-    public Double getBalance() {
-        return balance;
-    }
+    @Column(nullable = false)
+    private String alias;
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public Long getIdBankAccount() {
-        return idBankAccount;
-    }
-
-    public void setIdBankAccount(Long idBankAccount) {
-        this.idBankAccount = idBankAccount;
-    }
-
-    public int getIdBank() {
-        return idBank;
-    }
-
-    public void setIdBank(int idBank) {
-        this.idBank = idBank;
-    }
-
-    public Long getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(Long bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
-    public String getTypeAccount() {
-        return typeAccount;
-    }
-
-    public void setTypeAccount(String typeAccount) {
-        this.typeAccount = typeAccount;
-    }
-
-    public int getIdCurrency() {
-        return idCurrency;
-    }
-
-    public void setIdCurrency(int idCurrency) {
-        this.idCurrency = idCurrency;
-    }
-
-    public LocalDateTime getLinkData() {
-        return linkData;
-    }
-
-    public void setLinkData(LocalDateTime linkData) {
-        this.linkData = linkData;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Long getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
+    @Column(nullable = false)
+    private Long cvu;
 }

@@ -52,4 +52,27 @@ public class BankAccountService {
     public void deleteBankAccount(Long id) {
         bankAccountRepository.deleteById(id);
     }
+
+    public Double getBalanceById(Long accountId) {
+        BankAccount account = bankAccountRepository.findById(accountId)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+        return account.getBalance();
+    }
+
+    public void updateBalance(Long accountId, Double newBalance) {
+        BankAccount account = bankAccountRepository.findById(accountId)
+                .orElseThrow(() -> new RuntimeException("Account not found with ID: " + accountId));
+        account.setBalance(newBalance);
+        bankAccountRepository.save(account);
+    }
+
+    public BankAccount findByAlias(String alias) {
+        return bankAccountRepository.findByAlias(alias)
+                .orElseThrow(() -> new RuntimeException("Account not found with alias: " + alias));
+    }
+
+    public BankAccount findByCvu(Long cvu) {
+        return bankAccountRepository.findByCvu(cvu)
+                .orElseThrow(() -> new RuntimeException("Account not found with CVU: " + cvu));
+    }
 }

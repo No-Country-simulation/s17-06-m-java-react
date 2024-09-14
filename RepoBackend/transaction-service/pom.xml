@@ -68,7 +68,29 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.2.0</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.payout.bank_account_service</groupId>
+            <artifactId>bank-account-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>nimbus-jose-jwt</artifactId>
+			<version>9.40</version>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>4.4.0</version>
+		</dependency>
+        <dependency>
+            <groupId>com.payout.auth_service</groupId>
+            <artifactId>auth-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

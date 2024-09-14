@@ -1,8 +1,10 @@
 package com.payout.bank_account_service.controllers;
 
+import com.payout.bank_account_service.dto.AccountBalanceResponse;
 import com.payout.bank_account_service.models.BankAccount;
 import com.payout.bank_account_service.services.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +15,8 @@ import java.util.Optional;
  * Controlador REST para gestionar las solicitudes relacionadas con cuentas bancarias.
  */
 @RestController
-@RequestMapping("bank_account")
+@RequestMapping("/bank_account")
 public class BankAccountController {
-
 
     @Autowired
     private BankAccountService bankAccountService;
@@ -49,5 +50,38 @@ public class BankAccountController {
     public ResponseEntity<Void> deleteBankAccount(@PathVariable Long id) {
         bankAccountService.deleteBankAccount(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/balance")
+    public ResponseEntity<AccountBalanceResponse> getAccountBalance(@PathVariable("id") Long accountId) {
+        Double balance = bankAccountService.getBalanceById(accountId);
+        return ResponseEntity.ok(new AccountBalanceResponse(accountId, balance));
+    }
+
+    @PostMapping("/updateBalance")
+    public ResponseEntity<String> updateAccountBalance(
+            @RequestParam Long accountId,
+            @RequestParam Double newBalance) {
+        try {
+            bankAccountService.updateBalance(accountId, newBalance);
+            return ResponseEntity.ok("Balance updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error updating balance: " + e.getMessage());
+        }
+    }
+
+    // Buscar cuenta por alias
+    @GetMapping("/find-by-alias")
+    public ResponseEntity<BankAccount> findByAlias(@RequestParam String alias) {
+        BankAccount account = bankAccountService.findByAlias(alias);
+        return ResponseEntity.ok(account);
+    }
+
+    // Buscar cuenta por CVU
+    @GetMapping("/find-by-cvu")
+    public ResponseEntity<BankAccount> findByCvu(@RequestParam Long cvu) {
+        BankAccount account = bankAccountService.findByCvu(cvu);
+        return ResponseEntity.ok(account);
     }
 }
