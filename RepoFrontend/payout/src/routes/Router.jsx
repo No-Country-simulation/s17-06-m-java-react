@@ -7,6 +7,7 @@ import LandingPage from "../pages/LandingPage";
 import Actividad from "../pages/Actividad";
 import { Perfil } from "../pages/Perfil";
 import { ProtectedRoute, PublicRoute } from "./ProtectedRoute";
+import { PrevPerfil } from "../pages/prevPerfil";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Actividad />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/prevperfil', 
+        element: (
+          <ProtectedRoute>
+            <PrevPerfil/>
           </ProtectedRoute>
         ) 
       },
