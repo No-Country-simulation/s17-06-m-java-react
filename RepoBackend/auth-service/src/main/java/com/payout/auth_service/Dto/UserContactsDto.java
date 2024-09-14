@@ -3,7 +3,6 @@ package com.payout.auth_service.Dto;
 import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
