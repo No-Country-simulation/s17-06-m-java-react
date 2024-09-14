@@ -9,7 +9,7 @@ const Transferencia = () => {
     const [transferenciaData, setTransferenciaData] = useState({});
     const navigate = useNavigate();
 
-    /* Maneja el cambio de etapa */
+    /* Maneja el boton de volver atras */
     const handleVolverAtras = () => {
         if (currentStep > 1) {
             setCurrentStep(currentStep - 1);
@@ -27,7 +27,7 @@ const Transferencia = () => {
     ];
 
     return (
-        <TransferenciaContext.Provider value={{ currentStep,setCurrentStep,transferenciaData,setTransferenciaData}}>
+        <TransferenciaContext.Provider value={{ currentStep, setCurrentStep,transferenciaData,setTransferenciaData}}>
         <section className='flex flex-col bg-secundario h-full dark:bg-dark text-black dark:text-white'>
             <header className='flex items-center px-2 bg-navbar-transfer w-full text-primario h-[15vh]'>
                 <ul className='flex h-[10vh] items-center w-full justify-between px-[5rem]'>
@@ -35,8 +35,8 @@ const Transferencia = () => {
                     <Stepper currentStep={currentStep} />
                     <NavLink to={'/home'} className='text-primario'>Salir</NavLink>
                 </ul>
-            </header>
-            <Outlet />
+            </header>            
+                <Outlet />
         </section>
         </TransferenciaContext.Provider>
     );

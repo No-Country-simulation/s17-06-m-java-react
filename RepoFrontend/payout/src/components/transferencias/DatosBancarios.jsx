@@ -1,7 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
-import { useState } from "react"
-import { Link, useNavigate, useOutletContext } from "react-router-dom"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { TransferenciaContext } from "../../contexts/TransferenciaContext"
 
 const schema = Yup.object().shape({
   'cvu/alias': Yup.string()
@@ -16,7 +17,7 @@ export const DatosBancarios = () => {
   });
 
   /* Gestiona el stepper */
-  const { currentStep, setCurrentStep } = useOutletContext();
+  const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
   const navigate = useNavigate();
   const handleContinuar = () => {
     setCurrentStep(3); 

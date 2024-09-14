@@ -4,6 +4,8 @@ import argIcon from './assets/banderaArg.svg';
 import usaIcon from './assets/usa.png';
 import euroIcon from './assets/euro.png'
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { TransferenciaContext } from '../../contexts/TransferenciaContext';
 
 // Opciones de divisas con íconos
 const currencyOptions = [
@@ -30,6 +32,14 @@ const CustomSelect = ({ options, field, form, ...props }) => (
 
 
 const Revision = () => {
+    const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
+    const handleContinuar = () => {
+        setCurrentStep(4);
+        navigate('/transferencia/pago-exitoso');
+
+        console.loh(currentStep)
+    };
+
     const navigate = useNavigate();
     return (
         
@@ -144,7 +154,7 @@ const Revision = () => {
 
                         {/* Botón de envío */}
                         <button
-                            onClick={() => navigate('/transferencia/pago-exitoso')}
+                            onClick={handleContinuar}
                             type="submit"
                             className="w-[40vw] py-3 mt-2 bg-verde text-white rounded-lg font-semibold hover:bg-green-600 transition duration-200"
                         >

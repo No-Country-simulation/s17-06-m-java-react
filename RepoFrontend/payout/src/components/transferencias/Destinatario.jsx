@@ -1,14 +1,18 @@
-import { Link } from "react-router-dom"
-import { useOutletContext, useNavigate } from "react-router-dom";
-
+import { Link, useOutletContext } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { TransferenciaContext } from "../../contexts/TransferenciaContext";
+import { useContext } from "react";
 const Destinatario = () => {
     /* Gestiona el stepper */
-    const { currentStep, setCurrentStep } = useOutletContext();
+    const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const navigate = useNavigate();
     const handleContinuar = () => {
         setCurrentStep(2);
         navigate('/transferencia/datos-bancarios');
     };
+
+    console.log(currentStep);
+
     return (
         <section className='flex flex-col w-full items-center gap-3 landscape:h-full'>
             <img src="" alt="" />
