@@ -15,6 +15,7 @@ export default {
         'verde' : '#50CFAF',
         'violetagrad': '#9130f4',
         'azulgrad': '#4646f9',
+        'navbar-transfer': '#F4F4F4',
         dark: {
           DEFAULT: '#121139',
           text: 'white',

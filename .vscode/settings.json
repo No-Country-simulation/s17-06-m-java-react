@@ -1,3 +1,5 @@
 {
-    "terminal.integrated.defaultProfile.windows": "Git Bash"
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true
 }

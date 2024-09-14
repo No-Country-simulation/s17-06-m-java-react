@@ -2,6 +2,7 @@ import depositarIcon from './assets/upload.svg';
 import transferIcon from './assets/transfer.svg';
 import convertIcon from './assets/convertIcon.svg';
 import plus from './assets/plus.svg';
+import {Link} from 'react-router-dom';
 
 /**
  * Array de operaciones disponibles. Cada objeto contiene un ícono SVG y un texto descriptivo
@@ -22,7 +23,8 @@ export const operations = [
         element: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" style={{ transform: 'rotate(270deg)' }}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
       </svg>,
-        texto: 'Transferir'
+        texto: 'Transferir',
+        path: '/transferencia/destinatario'
     },
     {
         id: 3,
@@ -57,9 +59,9 @@ export const operations = [
  * />
  */
 
-const OperationButton = ({texto, element }) => {
+const OperationButton = ({texto, element, path }) => {
     return (
-        <div className='flex flex-col justify-center items-center gap-2'>
+        <Link to={path} className='flex flex-col justify-center items-center gap-2 pointer-events'>
             <div
                 className="size-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario gap-1 md:gap-2">
                 <p className='text-primario font-semibold'>
@@ -68,7 +70,7 @@ const OperationButton = ({texto, element }) => {
                 <p className='hidden md:block md:text-primario md:font-semibold'>{texto}</p>
             </div>
             <p className='md:hidden text-xs'>{texto}</p>
-        </div>
+        </Link>
     )
 }
 

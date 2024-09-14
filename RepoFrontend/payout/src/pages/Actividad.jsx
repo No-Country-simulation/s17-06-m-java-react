@@ -1,5 +1,5 @@
 import React,  { useState } from 'react';
-import ActivityItem from '../components/atoms/Activityitem.jsx';
+import ActivityItem from '../components/atoms/ActivityItem.jsx';
 import ActivityButton from '../components/atoms/ActivityButton.jsx';
 import Banner from '../components/Banner.jsx';
 import { format } from 'date-fns';
