@@ -7,6 +7,7 @@ import LandingPage from "../pages/LandingPage";
 import Actividad from "../pages/Actividad";
 import { Perfil } from "../pages/Perfil";
 import { ProtectedRoute, PublicRoute } from "./ProtectedRoute";
+import { PrevPerfil } from '../components/prevPerfil/PrevPerfil';
 import Transferencia from "../pages/Transferencia";
 import Destinatario from "../components/transferencias/Destinatario";
 import DatosBancarios from "../components/transferencias/DatosBancarios";
