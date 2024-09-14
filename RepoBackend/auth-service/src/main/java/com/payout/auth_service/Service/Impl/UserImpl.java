@@ -29,4 +29,9 @@ public class UserImpl extends CrudImpl<User, Long> implements UserService {
     public List<User> findByEmailLike(String email) {
         return userRepository.findByEmailLike("%" + email + "%");
     }
+
+    @Override
+    public User findByIdUser(Long idUser) {
+        return userRepository.findByIdUser(idUser);
+    }
 }

@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDetailBasic {
+
+    private Long idUserContact;
+
     private String name;
 
     private String lastName;
