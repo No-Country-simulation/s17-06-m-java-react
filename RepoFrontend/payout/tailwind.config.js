@@ -53,6 +53,7 @@ export default {
       'lg': '18px',
       'xl': '20px',
       '2xl': '24px',
+      '3xl': '3rem',
       'base': '1.25rem',
       'extra': '1.56rem',
       'payout': '1.88rem',
