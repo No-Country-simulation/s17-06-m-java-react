@@ -13,12 +13,6 @@ import java.time.LocalDateTime;
 @Builder
 
 public class TransactionDTO {
-    /*private Long idTransaction;
-    private Long idSourceAccount;
-    private Long idTargetAccount;
-    private Double amount;
-    private LocalDateTime createAt;
-    private TransactionType type;*/
 
     private Long idTransaction;
     private Long idSourceAccount;

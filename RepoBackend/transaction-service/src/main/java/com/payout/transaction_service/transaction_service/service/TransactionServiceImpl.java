@@ -2,13 +2,15 @@ package com.payout.transaction_service.transaction_service.service;
 
 import com.payout.bank_account_service.dto.BankAccountDTO;
 import com.payout.bank_account_service.models.BankAccount;
+import com.payout.bank_account_service.services.BankAccountService;
 import com.payout.transaction_service.transaction_service.client.BankAccountClient;
 import com.payout.transaction_service.transaction_service.client.UserClient;
-import com.payout.transaction_service.transaction_service.domain.Transaction;
-import com.payout.transaction_service.transaction_service.domain.TransactionDetail;
+import com.payout.transaction_service.transaction_service.domain.TransactionPayout;
+import com.payout.transaction_service.transaction_service.domain.TransactionDetailPayout;
 import com.payout.transaction_service.transaction_service.enums.CurrencyType;
-import com.payout.transaction_service.transaction_service.http.TransactionResponse;
+import com.payout.transaction_service.transaction_service.model.dto.TransactionResponse;
 import com.payout.transaction_service.transaction_service.model.dto.TransactionDTO;
+import com.payout.transaction_service.transaction_service.model.dto.TransferRequestDTO;
 import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
 import com.payout.transaction_service.transaction_service.repository.TransactionDetailRepository;
 import com.payout.transaction_service.transaction_service.repository.TransactionRepository;
@@ -30,50 +32,36 @@ public class TransactionServiceImpl implements TransactionService {
     private final ModelMapper modelMapper;
     private final BankAccountClient bankServiceClient;
     private final UserClient userClient;
+    BankAccountService bankAccountService;
 
     @Override
-    public TransactionDTO createTransaction(TransactionDTO transactionDto) {
-        /*Transaction transaction = convertToEntity(transactionDto);
-        Transaction savedTransaction = transactionRepository.save(transaction);
-        return convertToDto(savedTransaction);*/
-
-        //****************************************************
+    public TransactionDTO createTransaction(TransferRequestDTO transferRequest) {
         // Comprobar si es alias o CVU para obtener la cuenta destino
         BankAccount targetAccount;
-        if (transactionDto.getAlias() != null && !transactionDto.getAlias().isEmpty()) {
+        if (transferRequest.getAliasOrCvu() != null && !transferRequest.getAliasOrCvu().isEmpty()) {
             // Buscar la cuenta por alias
-            targetAccount = bankAccountService.findByAlias(transactionDto.getAlias());
-        } else if (transactionDto.getCvu() != null) {
-            // Buscar la cuenta por CVU
-            targetAccount = bankAccountService.findByCvu(transactionDto.getCvu());
+            targetAccount = bankAccountService.findByAlias(transferRequest.getAliasOrCvu());
+
         } else {
             throw new IllegalArgumentException("Debe proporcionar un alias o CVU para la transacción.");
         }
 
         // Convertir DTO a entidad Transaction
-        Transaction transaction = convertToEntity(transactionDto);
-
-        // Asignar el ID de la cuenta destino
-        transaction.setIdTargetAccount(targetAccount.getId());
+        TransactionPayout transaction = new TransactionPayout();
+        transaction.setAmount(transferRequest.getAmount());
+        transaction.setIdTargetAccount(targetAccount.getIdBankAccount());
 
         // Guardar la transacción
-        Transaction savedTransaction = transactionRepository.save(transaction);
+        TransactionPayout savedTransaction = transactionRepository.save(transaction);
 
         // Retornar el DTO con la transacción guardada
         return convertToDto(savedTransaction);
     }
 
-    @Override
-    public List<TransactionDTO> getTransactionsByAccountId(Long accountId) {
-        List<Transaction> transactions = transactionRepository.findByIdSourceAccountOrIdTargetAccount(accountId, accountId);
-        return transactions.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
-    }
 
     @Override
     public List<TransactionDTO> getTransactionHistory(Long accountId) {
-        List<Transaction> transactions = transactionRepository.findByIdSourceAccountOrIdTargetAccount(accountId, accountId);
+        List<TransactionPayout> transactions = transactionRepository.findByIdSourceAccountOrIdTargetAccount(accountId, accountId);
         return transactions.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -99,21 +87,21 @@ public class TransactionServiceImpl implements TransactionService {
         }
 
         // Crear la transacción
-        Transaction transaction = new Transaction();
+        TransactionPayout transaction = new TransactionPayout();
         transaction.setIdSourceAccount(sourceAccount.getId());
         transaction.setIdTargetAccount(targetAccount.getId());
         transaction.setAmount(amount);
-        transaction.setCreateAt(LocalDateTime.now());
+        transaction.setCreatedAt(LocalDateTime.now());
         transactionRepository.save(transaction);
 
         // Crear y guardar los detalles de la transacción
-        TransactionDetail transactionDetail = new TransactionDetail();
+        TransactionDetailPayout transactionDetail = new TransactionDetailPayout();
         transactionDetail.setIdTransactionDetail(transaction.getIdTransaction());
         transactionDetail.setAmount(amount);
         transactionDetail.setFinalAmount(amount);  // Si hubiera comisión, ajusta aquí
-        transactionDetail.setCreateAt(LocalDateTime.now());
-        transactionDetail.setCurrencySource(CurrencyType.valueOf(currencySource));
-        transactionDetail.setCurrencyTarget(CurrencyType.valueOf(currencyTarget));
+        transactionDetail.setCreatedAt(LocalDateTime.now());
+        transactionDetail.setCurrencySource(String.valueOf(CurrencyType.valueOf(currencySource)));
+        transactionDetail.setCurrencyTarget(String.valueOf(CurrencyType.valueOf(currencyTarget)));
         transactionDetailRepository.save(transactionDetail);
 
         // Actualizar el saldo de las cuentas fuente y destino
@@ -157,12 +145,12 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     // Convertir entidades a DTOs
-    private TransactionDTO convertToDto(Transaction transaction) {
+    private TransactionDTO convertToDto(TransactionPayout transaction) {
         return modelMapper.map(transaction, TransactionDTO.class);
     }
 
     // Convertir DTOs a entidades
-    private Transaction convertToEntity(TransactionDTO transactionDto) {
-        return modelMapper.map(transactionDto, Transaction.class);
+    private TransactionPayout convertToEntity(TransactionDTO transactionDto) {
+        return modelMapper.map(transactionDto, TransactionPayout.class);
     }
 }

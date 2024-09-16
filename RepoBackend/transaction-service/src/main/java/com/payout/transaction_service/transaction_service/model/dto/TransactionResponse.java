@@ -1,4 +1,4 @@
-package com.payout.transaction_service.transaction_service.http;
+package com.payout.transaction_service.transaction_service.model.dto;
 
 import lombok.Builder;
 import lombok.Data;

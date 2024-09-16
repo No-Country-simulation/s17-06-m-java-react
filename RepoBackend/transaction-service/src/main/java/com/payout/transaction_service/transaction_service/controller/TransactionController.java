@@ -1,6 +1,6 @@
 package com.payout.transaction_service.transaction_service.controller;
 
-import com.payout.transaction_service.transaction_service.http.TransactionResponse;
+import com.payout.transaction_service.transaction_service.model.dto.TransactionResponse;
 import com.payout.transaction_service.transaction_service.model.dto.TransactionDTO;
 import com.payout.transaction_service.transaction_service.model.dto.TransferRequestDTO;
 import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
