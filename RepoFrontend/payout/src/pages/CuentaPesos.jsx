@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import argIcon  from '../assets/banderaArg.svg'
 
 
 
@@ -56,7 +57,11 @@ export const CuentaPesos = () => {
     return (
         <section className='md:px-10 w-full'>
             <div className='bg-primario text-white flex flex-col gap-4 justify-center items-center py-8'>
-                <p>Peso argentino</p>
+                <div className='flex gap-4 items-center'>
+                    <img src={argIcon} className='w-[40px] h-[40px]' alt='argIcon' />
+                    <p>Peso argentino</p>
+                </div>
+                
                 <div className='flex gap-4'>
                     <p className='text-xl font-semibold'>$800000 ARS</p>
                     <button
