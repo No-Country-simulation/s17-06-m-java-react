@@ -2,7 +2,7 @@ import { Stepper, Step, Typography } from "@material-tailwind/react";
 import MarkerStepper from "./MarkerStepper";
 
 export const Stepbar = ({ currentStep, setCurrentStep, handleContinuar }) => {
-  const steps = ["Destinatario", "Monto", "Revisión", "Pago"]; // Definimos los pasos
+  const steps = ["Destinatario", "CBU/CVU o Alias", "Monto", "Revisión", "Pago"]; // Definimos los pasos
 
   // Calcula la posición del MarkerStepper en función del paso activo
   const markerPosition = `${(currentStep * 98.3) / (steps.length - 1)}%`; // Posición basada en el número de pasos
@@ -37,7 +37,7 @@ export const Stepbar = ({ currentStep, setCurrentStep, handleContinuar }) => {
             >
               <div className="absolute -bottom-[2rem] flex w-full justify-center">
                 <Typography variant='h6' 
-                className={currentStep >= id ? '!text-primario' : 'text-gris'}>{step}</Typography>
+                className={`${currentStep >= id ? '!text-primario' : 'text-gris'} whitespace-nowrap `}>{step}</Typography>
               </div>
             </Step>
           </>

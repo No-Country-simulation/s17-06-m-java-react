@@ -103,7 +103,7 @@ const Monto = () => {
     const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const navigate = useNavigate();
     const handleContinuar = () => {
-        setCurrentStep(2);
+        setCurrentStep(3);
         navigate('/transferencia/revision');
     };
 

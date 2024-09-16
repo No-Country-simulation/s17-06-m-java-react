@@ -34,7 +34,7 @@ const CustomSelect = ({ options, field, form, ...props }) => (
 const Revision = () => {
     const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const handleContinuar = () => {
-        setCurrentStep(3);
+        setCurrentStep(4);
         navigate('/transferencia/pago-exitoso');
 
         console.loh(currentStep)
