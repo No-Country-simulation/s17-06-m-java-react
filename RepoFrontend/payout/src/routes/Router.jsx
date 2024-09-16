@@ -14,6 +14,8 @@ import DatosBancarios from "../components/transferencias/DatosBancarios";
 import Monto from "../components/transferencias/Monto";
 import Revision from "../components/transferencias/Revision";
 import PagoExitoso from "../components/transferencias/PagoExitoso";
+import { Cuenta } from "../pages/Cuenta";
+import { CuentaPesos } from "../pages/CuentaPesos";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +62,22 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Actividad />
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: '/cuenta',
+        element: (
+          <ProtectedRoute>
+            <Cuenta/>
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: '/cuentapesos',
+        element: (
+          <ProtectedRoute>
+            <CuentaPesos/>
           </ProtectedRoute>
         )
       },

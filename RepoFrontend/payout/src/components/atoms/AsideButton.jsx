@@ -19,13 +19,14 @@ export const options = [
     {
         id: 2,
         image: creditCardIcon,
-        name: 'Cuenta'
+        name: 'Cuenta',
+        path:'/cuenta'
     },
     {
         id: 3,
         image: userIcon,
         name: 'Perfil',
-        path: '/perfil',
+        path: '/prevperfil',
     },
     {
         id: 4,

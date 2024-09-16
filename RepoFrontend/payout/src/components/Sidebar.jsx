@@ -66,7 +66,7 @@ const navigate = useNavigate()
 
     {/* Botón Cuenta */}
     <NavLink 
-       to="/perfil" 
+       to="/cuenta" 
       className={({ isActive }) => isActive ? 'text-primario' : 'text-black'}
     >
       <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@ const navigate = useNavigate()
 
     {/* Botón Perfil */}
     <NavLink 
-      to="/perfil" 
+      to="/prevperfil" 
       className={({ isActive }) => isActive ? 'text-primario' : 'text-black'}
     >
       <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">

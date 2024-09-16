@@ -16,7 +16,7 @@ const Banner = () => {
 
 
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
-    useEffect(() => {
+    /* useEffect(() => {
         fetch(urlInfoUserLogged, {
             method: 'GET',
             headers: {
@@ -30,7 +30,7 @@ const Banner = () => {
                 setName(userData.userDetail.name);
                 setLastName(userData.userDetail.lastName)
             });
-    }, []);
+    }, []); */
 
 
 

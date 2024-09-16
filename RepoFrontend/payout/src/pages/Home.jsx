@@ -115,12 +115,12 @@ const Home = ({ light }) => {
           {/* FILA BOTONES BLANCOS */}
           <div id='para-poner-en-fila-botones' className='py-2 flex justify-between gap-6 md:overflow-hidden'>
             {/* BOTON BLANCO */}
-            {operations.map(({ id, element, texto, path }) => (
+            {operations.map(({ id, element, texto, path}) => (
               <OperationButton
                 key={id}
                 element={element}
                 texto={texto}
-                path={path}
+                path={path}                
               />
             ))}
 

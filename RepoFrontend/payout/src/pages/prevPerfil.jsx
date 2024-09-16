@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import  userimage  from '../assets/userimage.png'
 
-import  userVioleta  from '../components/atoms/assets/userVioleta.svg'
+import  userVioleta  from '../assets/userVioleta.svg'
 import  campanaVioleta  from '../components/atoms/assets/campanaVioleta.svg'
 import  ayudaVioleta  from '../components/atoms/assets/ayudaVioleta.svg'
 import  cerrarSesionVioleta  from '../components/atoms/assets/cerrarSesionVioleta.svg'

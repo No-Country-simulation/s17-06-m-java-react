@@ -59,7 +59,7 @@ export const operations = [
  * />
  */
 
-const OperationButton = ({texto, element, path }) => {
+const OperationButton = ({texto, element, path, color }) => {
     return (
         <Link to={path} className='flex flex-col justify-center items-center gap-2 pointer-events'>
             <div
@@ -69,7 +69,7 @@ const OperationButton = ({texto, element, path }) => {
                 </p>
                 <p className='hidden md:block md:text-primario md:font-semibold'>{texto}</p>
             </div>
-            <p className='md:hidden text-xs'>{texto}</p>
+            <p className={`${color} md:hidden text-xs`}>{texto}</p>
         </Link>
     )
 }
