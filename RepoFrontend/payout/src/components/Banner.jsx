@@ -2,6 +2,7 @@
 import  notif  from '../assets/Notificaciones.png'
 import  userimage  from '../assets/userimage.png'
 import { useEffect, useState } from 'react';
+import { ThemeButton } from './ThemeButton';
 
 
 
@@ -15,8 +16,28 @@ const Banner = () => {
     const [lastName, setLastName] = useState('');
 
 
+    const [light, setLight] = useState(true);
+
+  // Alternar entre modo claro y oscuro
+  // const toggleTheme = () => {
+  //   setLight(!light);
+  // };
+
+
+
+  const handleActivate = () => {
+    setLight(!light);
+    // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
+  };
+
+  const handleDeactivate = () => {
+    setLight(!light);
+    // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
+  };
+
+
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
-    /* useEffect(() => {
+    useEffect(() => {
         fetch(urlInfoUserLogged, {
             method: 'GET',
             headers: {
@@ -30,7 +51,7 @@ const Banner = () => {
                 setName(userData.userDetail.name);
                 setLastName(userData.userDetail.lastName)
             });
-    }, []); */
+    }, []);
 
 
 
@@ -49,10 +70,15 @@ const Banner = () => {
                 </div>
                 {/* USERNAMES */}
                 <div id='texto-username' className=']'>
-                    <p className="text-sm font-['Montserrat']">{name} {lastName}</p>
-                    <p className="text-start text-verde text-sm font-['Montserrat']">@Username</p>
+                    <p className="text-sm font-['Montserrat']">{name} {lastName}</p>                    
                 </div>
             </div>
+
+            {/* BOTON TEMA CLARO/OSCURO */}
+            <div className='md:hidden flex items-center'>
+                <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
+            </div>
+            
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
             <div className='flex gap-4'>
                 <img src={notif} className='md:hidden w-[24px] h-[24px] items-center' alt="" />
