@@ -89,6 +89,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>bank-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
