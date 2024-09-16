@@ -49,7 +49,7 @@ function App() {
       <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-bg-white text-black'}`}>
         {showNavbar && <Navbar light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>}
 
-        <div className={`flex ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
+        <div className={`flex flex-col-reverse justify-between lg:flex-row ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
           {showSidebar && <Sidebar />}
             <div className={`text-end  ${showSidebar ? 'ml-0 w-full md:w-5/6' : 'w-full'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
             <div className="hidden md:block">
