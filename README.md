@@ -44,20 +44,24 @@ Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar d
 ## 🛠️ Tecnologías Utilizadas
 
 - Frontend: `React con react router` `context` `tailwind` `Javascript`
-- Backend: `Spring boot`  `srping security`  `MySQL` 
-- QA: `Postman` `Swagger` `Jira` `XRay` 
+- Backend: `Spring boot`  `srping security`  `Despliegue de servicios en servidor Ubuntu 22.04` `Automatizacion del despliegue Jenkins`
+- QA: `Postman` `Swagger` 
 - UX/UI: `Figma`
 - Tipo de Proyecto: `Web Application`
+- Base de Datos: `MariaDB`
+- Gestion del Proyecto: `Jira`
 
 ## 🔗 Enlaces Importantes
 
-- [Documentación del Proyecto](https://johitatarabelli.atlassian.net/wiki/x/awAC)
-- [Guía de Estilo del Proyecto](https://www.figma.com/design/xB4CwPqTeYdaiIXB4tsCRi/S17-06-m-java-react?node-id=711-3543&node-type=CANVAS&t=w009z7HgXkmAgYLY-0)
+- [Documentación del Proyecto](https://johitatarabelli.atlassian.net/wiki/spaces/~7120209b84348375644d2897abedce685fc0d4/pages/131179)
+- [Guía de Estilo del Proyecto](https://www.figma.com/design/xB4CwPqTeYdaiIXB4tsCRi/S17-06-m-java-react?node-id=711-3543&node-type=canvas&t=pXE6iTpfe8MRh1YL-0)
 - [Organización y gestión del Proyecto](https://johannatarabelli.atlassian.net/jira/software/projects/BILLETERA1/boards/3)
 - [GitHub del Proyecto](https://github.com/No-Country-simulation/s17-06-m-java-react)
-- [Video de Presentación]()
+- [Diagrama ER](https://lucid.app/lucidchart/68bb1f67-e400-4470-9c10-306a7f78667d/edit?invitationId=inv_c99d1216-34b1-4fd6-b814-b66776942b1c&page=0_0#)
 - [Despliegue de Backend]()
-- [Sitio Web]()
+- [Video de Presentación]
+- [Discurso Promocional](https://johitatarabelli.atlassian.net/wiki/spaces/~7120209b84348375644d2897abedce685fc0d4/pages/4063233)
+- [Sitio Web](https://payout-wallet.vercel.app/)
 
 ### Algunos iconos
 
