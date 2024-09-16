@@ -3,7 +3,7 @@ import Select from 'react-select';
 import { useState, useContext } from "react";
 import { TransferenciaContext } from "../../contexts/TransferenciaContext.jsx";
 import * as Yup from 'yup';
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import argIcon from './assets/banderaArg.svg';
 import usaIcon from './assets/usa.png';
 import euroIcon from './assets/euro.png';
@@ -103,7 +103,7 @@ const Monto = () => {
     const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const navigate = useNavigate();
     const handleContinuar = () => {
-        setCurrentStep(4);
+        setCurrentStep(2);
         navigate('/transferencia/revision');
     };
 

@@ -1,15 +1,20 @@
-import { Link, useOutletContext } from "react-router-dom"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 import { TransferenciaContext } from "../../contexts/TransferenciaContext";
 import { useContext } from "react";
+
 const Destinatario = () => {
     /* Gestiona el stepper */
     const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const navigate = useNavigate();
+    
     const handleContinuar = () => {
-        setCurrentStep(2);
-        navigate('/transferencia/datos-bancarios');
-    };
+        if (location.state?.updateStepOnly) {
+                setCurrentStep(0); // Actualiza el paso actual sin mover el marcador
+            } else {
+                setCurrentStep(0);
+                navigate('/transferencia/datos-bancarios');
+            }
+        }
 
     console.log(currentStep);
 
@@ -52,4 +57,4 @@ const Destinatario = () => {
     )
 }
 
-export default Destinatario
+export default Destinatario;

@@ -20,7 +20,7 @@ export const DatosBancarios = () => {
   const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
   const navigate = useNavigate();
   const handleContinuar = () => {
-    setCurrentStep(3); 
+    setCurrentStep(1); 
     navigate('/transferencia/monto'); 
   };
 
