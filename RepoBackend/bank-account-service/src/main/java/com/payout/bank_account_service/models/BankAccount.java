@@ -15,38 +15,42 @@ public class BankAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_bankaccount")
     private Long idBankAccount; // ID único para cada cuenta bancaria (generado automáticamente)
 
-    @Column(nullable = false)
+    @Column(name = "id_bank",nullable = false)
     private int idBank; // ID del banco al que pertenece la cuenta
 
-    @Column(nullable = false)
+    @Column(name="bank_account",nullable = false)
     private Long bankAccount; // Número de cuenta bancaria
 
-    @Column(nullable = false)
+    @Column(name ="type_account",nullable = false)
     private String typeAccount; // Tipo de cuenta (e.g. ahorro, corriente)
 
-    @Column(nullable = false)
+    @Column(name ="id_currency",nullable = false)
     private int idCurrency; // ID de la moneda de la cuenta
 
-    @Column(nullable = false)
-    private LocalDateTime linkData; // Fecha y hora de enlace de datos (puede ser para transacciones)
+    @Column(name="link_date")
+    private LocalDateTime linkDate; // Fecha y hora de enlace de datos (puede ser para transacciones)
 
-    @Column(nullable = false)
+    @Column(name="created_at",nullable = false)
     private LocalDateTime createdAt; // Fecha y hora de creación de la cuenta
 
-    @Column(nullable = false)
+    @Column(name="updated_at",nullable = false)
     private LocalDateTime updatedAt; // Fecha y hora de la última actualización de la cuenta
 
-    @Column(nullable = false)
+    @Column(name="id_user",nullable = false)
     private Long idUser; // ID del usuario propietario de la cuenta
 
-    @Column(nullable = false)
+    @Column(name="balance",nullable = false)
     private Double balance;
 
-    @Column(nullable = false)
+    @Column(name="alias",nullable = false)
     private String alias;
 
-    @Column(nullable = false)
+    @Column(name="cvu",nullable = false)
     private Long cvu;
+
+    @Column(name="link_data")
+    private LocalDateTime linkData;
 }
