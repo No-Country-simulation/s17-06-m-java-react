@@ -120,15 +120,7 @@ export const Login = () => {
                     )}
                 </Formik>
 
-                {/* LOGIN GOOGLE APPLE */}
-                <div className="flex flex-col gap-4 items-center">
-                    <p className="mt-9 text-sm text-black">O continuar con: </p>
-                    <div className="g-apple-buttons flex gap-3">
-                        <button type='button' className="border border-primario rounded-lg py-2.5 px-3.5"><img className="w-[32px] h-[32px]" src={google} alt="" /></button>
-                        <button type='button' className="border border-primario rounded-lg py-2.5 px-3.5"><img className="w-[32px] h-[32px]" src={apple} alt="" /></button>
-                    </div>
-
-                </div>
+                
             </div>
 
             {/* IMAGEN */}

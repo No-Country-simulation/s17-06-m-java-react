@@ -61,9 +61,9 @@ const Banner = () => {
         {/* BANNER NOMBRE DE USUARIO */}
 
         {/* BANNER MOBILE */}
-        <div id='div-total-banner' className='md:hidden flex flex-row justify-between items-center py-6 w-full'>             
+        <div id='div-total-banner' className='md:hidden flex justify-between items-center py-6 w-full'>             
             {/* FOTO Y USERNAME */}
-            <div id='foto-y-username' className='flex flex-row gap-3 items-center'>
+            <div id='foto-y-username' className='flex gap-3 items-center'>
                 {/* FOTO */}
                 <div className="para-recortar-foto w-[32px] h-[32px] overflow-hidden rounded-full">
                         <img className='w-full h-full object-cover' src={userimage} alt="" />
@@ -75,10 +75,10 @@ const Banner = () => {
             </div>
 
             {/* BOTON TEMA CLARO/OSCURO */}
-            <div className='md:hidden flex items-center'>
+            {/* <div className='md:hidden flex items-center'>
                 <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
-            </div>
-            
+            </div> */}
+
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
             <div className='flex gap-4'>
                 <img src={notif} className='md:hidden w-[24px] h-[24px] items-center' alt="" />
@@ -108,8 +108,7 @@ const Banner = () => {
                     </div>
                     {/* USERNAMES */}
                     <div id='texto-username' className=''>
-                        <p className="text-sm font-semibold">{name} {lastName}</p>
-                        <p className="text-start text-verde text-sm font-['Montserrat']">@Username</p>
+                        <p className="text-sm font-semibold">{name} {lastName}</p>                        
                     </div>
                 </div>                
             </div>

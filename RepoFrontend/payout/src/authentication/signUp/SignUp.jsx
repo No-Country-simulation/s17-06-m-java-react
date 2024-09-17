@@ -131,24 +131,17 @@ export const SignUp = () => {
                 </Formik>
 
 
-                {/* REGISTRO GOOGLE APPLE */}
-                <div className="flex flex-col gap-4 items-center">
-                    <p className="mt-4 text-sm text-black">O continuar con: </p>
-                    <div className="g-apple-buttons flex gap-3">
-                        <button className="custom-social-button"><img className="w-[32px] h-[32px]" src={google} alt="" /></button>
-                        <button className="custom-social-button"><img className="w-[32px] h-[32px]" src={apple} alt="" /></button>                        
-                    </div>
-                    <div>
-                        <p className="text-center text-sm text-gris">
-                        ¿Ya tienes cuenta?{" "}                    
-                        </p>
-                        <div className="flex justify-center">
-                            <Link to='/login'
-                                className="text-primario text-sm text-center font-semibold underline leading-[21px]">
-                                Iniciar sesión
-                            </Link>
-                        </div>
-                    </div>
+                {/* YA TIENES CUENTA? */}
+                <div className="mt-4 flex flex-col gap-4 items-center">                    
+                    <p className="text-center text-sm text-gris">
+                    ¿Ya tienes cuenta?{" "}                    
+                    </p>
+                    <div className="flex justify-center">
+                        <Link to='/login'
+                            className="text-primario text-sm text-center font-semibold underline leading-[21px]">
+                            Iniciar sesión
+                        </Link>
+                    </div>                    
                 </div>
 
 

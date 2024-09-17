@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import argIcon  from '../assets/banderaArg.svg'
+import edit  from '../assets/edit.svg'
+import copy  from '../assets/copy.svg'
+import share  from '../assets/share.svg'
 
 
 
 import CoinCardCUENTA, { infoSaldos } from '../components/CoinCardCUENTA.jsx';
+import { Ojovisible } from '../components/icons/ojovisible.jsx';
+import { Ojotachado } from '../components/icons/ojotachado.jsx';
 /* import Banner from '../components/Banner'; */
 
 
@@ -55,48 +60,78 @@ export const CuentaPesos = () => {
 
 
     return (
-        <section className='md:px-10 w-full'>
-            <div className='bg-primario text-white flex flex-col gap-4 justify-center items-center py-8'>
-                <div className='flex gap-4 items-center'>
-                    <img src={argIcon} className='w-[40px] h-[40px]' alt='argIcon' />
-                    <p>Peso argentino</p>
+        <section className='md:px-10 w-full md:h-screen md:flex flex-col items-center justify-center'>
+                        
+
+            {/* contenedor tarjeta */}
+            <div className='flex flex-col justify-center w-full'>
+                {/* TARJETA VIOLETA ENTERA */}
+                <div className='bg-primario text-white flex flex-col gap-4 justify-center items-center py-6'>
+                    {/* BANDERA Y TEXTO MONEDA */}
+                    <div className='flex gap-4 items-center'>
+                        <img src={argIcon} className='w-[25px] h-[25px]' alt='argIcon' />
+                        <p>Peso argentino</p>
+                    </div>                    
+                    {/* SALDO */}
+                    <div className='flex gap-4'>
+                        <p className='text-xl font-semibold'>$800000 ARS</p>
+                        {/* BOTON VISIBILIDAD SALDO */}
+                        <button
+                            type="button"
+                            onClick={togglePasswordVisibility}
+                            className=" text-white " >
+                            {showPassword ? (
+                            <Ojovisible/>
+                            ) : (
+                            <Ojotachado/> 
+                            )}
+                        </button>
+                    </div>                
                 </div>
-                
-                <div className='flex gap-4'>
-                    <p className='text-xl font-semibold'>$800000 ARS</p>
-                    <button
-                        type="button"
-                        onClick={togglePasswordVisibility}
-                        className=" text-white "                
-                    >
-                        {showPassword ? (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            className="size-5">
-                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                            <path
-                            fillRule="evenodd"
-                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z"
-                            clipRule="evenodd"
-                            />
-                        </svg>
-                        ) : (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            className="size-5">
-                            <path d="M3.53 2.47a.75.75 0 00-1.06 1.06l18 18a.75.75 0 101.06-1.06l-18-18zM22.676 12.553a11.249 11.249 0 01-2.631 4.31l-3.099-3.099a5.25 5.25 0 00-6.71-6.71L7.759 4.577a11.217 11.217 0 014.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113z" />
-                            <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0115.75 12zM12.53 15.713l-4.243-4.244a3.75 3.75 0 004.244 4.243z" />
-                            <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 00-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 016.75 12z" />
-                        </svg>
-                        )}
-                    </button>
+                {/* informacion bancaria */}
+                <div className='bg-white py-4 px-4 text-black'>
+                    <h3 className='text-start text-sm font-semibold pb-4'>Datos de tu cuenta</h3>
+                    {/* contenedor lineas */}
+                    <div id='contenedor-lineas' className='flex flex-col gap-5 pb-5 border-b border-primario'>
+                        <div className='flex justify-between'>
+                            <p className='text-xs font-medium'>Tu Alias</p>
+                            <div className='flex gap-2'>
+                                <p className='text-xs font-semibold text-primario underline'>emma.payout</p>
+                                <img src={edit} alt="edit" />
+                            </div>                        
+                        </div>
+                        <div className='flex justify-between'>
+                            <p className='text-xs font-medium'>Tu CVU</p>
+                            <p className='text-xs font-semibold text-primario underline'>000123005677991233</p>
+                        </div>
+                        <div className='flex justify-between'>
+                            <p className='text-xs font-medium'>Nombre</p>
+                            <p className='text-xs font-semibold text-primario'>Rafael Diaz</p>
+                        </div>
+                        <div className='flex justify-between'>
+                            <p className='text-xs font-medium'>DNI</p>
+                            <p className='text-xs font-semibold text-primario'>39437128</p>
+                        </div>
+                        <div className='flex justify-between'>
+                            <p className='text-xs font-medium'>Entidad</p>
+                            <p className='text-xs font-semibold text-primario'>Payout</p>
+                        </div>
+                    </div>
+
+                    {/* COPIAR COMPARTIR */}
+                    <div className='pt-5 text-primario flex gap-3 justify-end'>
+                        <div className='flex gap-4 pr-3 border-r border-primario'>
+                            <p className='text-sm font-semibold'>Copiar</p>
+                            <img src={copy} alt="" />
+                        </div>
+                        <div className='flex gap-4'>
+                            <p className='text-sm font-semibold'>Compartir</p>
+                            <img src={share} alt="" />
+                        </div>
+                    </div> 
                 </div>
-                
             </div>
+            
         </section>
         
     );

@@ -50,8 +50,7 @@ export const PrevPerfil = () => {
 
 
     return (
-        <>
-            <div></div>
+        <>            
             <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
@@ -66,7 +65,7 @@ export const PrevPerfil = () => {
                     {/* USERNAMES */}
                     <div id='texto-username' className=''>
                         <p className="text-xl uppercase font-semibold pb-2">{name} {lastName}</p>
-                        <p className="text-center text-verde text-sm">@Username</p>
+                        
                     </div>
                 </div>
 
