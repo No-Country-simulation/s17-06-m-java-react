@@ -22,11 +22,12 @@ export const PrevPerfil = () => {
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
-
-
-
     const navigate = useNavigate()
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login'); // Redirige al login después de salir
+      };
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
     useEffect(() => {
         fetch(urlInfoUserLogged, {
@@ -101,7 +102,7 @@ export const PrevPerfil = () => {
                     </div>
                     {/* LINEA */}
                     <div className='flex justify-between py-5 mb-5 border-b border-primario'>
-                        <button className='flex gap-2' onClick={()=>navigate('')}>
+                        <button className='flex gap-2' onClick={()=>handleLogout()}>
                             <img src={cerrarSesionVioleta} alt="" />
                             <p className='font-semibold'>Cerrar Sesión</p>
                         </button>

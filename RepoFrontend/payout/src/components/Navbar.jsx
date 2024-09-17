@@ -30,7 +30,7 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
             <Link to={'/'} className={`text-${light ? 'white' : 'primario'} font-serif text-payout lg:text-base xl:text-payout font-light`}>PAYOUT</Link> 
           </div>
           <Link className="hidden lg:block underline text-verde lg:text-sm xl:text-m">Personal</Link> {/* Se oculta en móviles */}
-          <Link className="hidden lg:block dark:text-white lg:text-sm xl:text-m">Empresas</Link> {/* Se oculta en móviles */}
+          {/* <Link className="hidden lg:block dark:text-white lg:text-sm xl:text-m">Empresas</Link>  */}
         </div>
 
         <div className="lg:hidden">
@@ -44,8 +44,8 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
         </div>
 
         <div className={`hidden lg:flex items-center gap-6 mx-8 lg:text-sm xl:text-m`}>
-          <Link to='/funciones'>Funciones</Link>
-          <Link to='/transferencias'>Transferencias</Link>
+          {/* <Link to='/funciones'>Funciones</Link>
+          <Link to='/transferencias'>Transferencias</Link> */}
           <Link to='/ayuda'>Ayuda</Link>
           <img src={argentina} alt='pais' className='h-6'/>
           <svg
@@ -73,10 +73,10 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
           <div className="bg-white w-4/5 p-10 rounded-lg flex flex-col items-start gap-10 justify-center">
             <div className="flex w-full justify-between text-black ">
               <button >Personal</button>
-              <button >Empresas</button>
+              {/* <button >Empresas</button> */}
             </div>
-            <button  className="text-black font-medium">Funciones</button>
-            <button  className="text-black font-medium">Transferencias</button>
+            {/* <button  className="text-black font-medium">Funciones</button>
+            <button  className="text-black font-medium">Transferencias</button> */}
             <button  className="text-black font-medium">Ayuda</button>
             <div className='flex w-full justify-between'>
               <img src={argentina} alt='pais'/>

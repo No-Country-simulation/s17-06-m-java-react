@@ -44,11 +44,11 @@ const cards = [
   return (
     <>
     <section className='lg:h-[90vh] p-6 lg:p-12 md:flex justify-between'>
-    <div className='flex flex-col h-[28rem] xl:h-[38rem] lg:items-center relative'>
+    <div className='flex flex-col h-[29rem] xl:h-[38rem]  lg:items-center relative'>
       <h2 className='lg:text-h2 xl:text-3xl text-left'>Gestiona tus finanzas</h2>
       <h3 className='xl:text-extra font-bold'>desde cualquier rincon del mundo.</h3>
-      <img src={tarjeta} alt='tarjeta' className='mt-6 lg:h-[20rem] xl:h-[25rem]'/>
-      <h3 className='xl:text-extra w-2/3  self-start absolute bottom-0  text-left'>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
+      <img src={tarjeta} alt='tarjeta' className='mt-6 lg:h-[21rem] xl:h-[25rem]'/>
+      <h3 className='text-ml xl:text-extra w-[65%]  self-start absolute bottom-0 left-0 text-left'>Ahorra dinero al enviar, gastar y recibir pagos en diferentes divisas. Todo lo que necesitas,
       en una sola cuenta, siempre que lo necesites.</h3>
     </div>
     <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
