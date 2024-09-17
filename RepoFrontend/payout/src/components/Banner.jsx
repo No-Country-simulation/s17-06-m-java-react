@@ -39,7 +39,7 @@ const Banner = ({ onActivate, onDeactivate }) => {
 
 
     return (
-        <section className=' w-full'>
+        <section className=' w-full px-4 md:px-10'>
 
             {/* BANNER NOMBRE DE USUARIO */}
 
@@ -57,13 +57,13 @@ const Banner = ({ onActivate, onDeactivate }) => {
                     </div>
                 </div>
 
-              
+
                 {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
                 <div className='flex gap-4'>
-                      {/* BOTON TEMA CLARO/OSCURO */}
-                <div className='md:hidden '>
-                    <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
-                </div>
+                    {/* BOTON TEMA CLARO/OSCURO */}
+                    <div className='md:hidden '>
+                        <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
+                    </div>
 
                     <img src={notif} className='md:hidden w-[24px] h-[24px] items-center' alt="" />
                     <p className='text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -82,10 +82,10 @@ const Banner = ({ onActivate, onDeactivate }) => {
                     ¡Hola, {name}!</p>
                 {/* ELEMENTOS DE LA DERECHA, CAMPANA, FOTO USER Y NOMBRES */}
                 <div id='elementos-de-la-derecha' className='flex flex-row gap-8 items-center justify-between '>
-                    {/* CAMPANA */}
-                    <img src={notif} className='hidden md:w-[24px] md:h-[24px] items-center' alt="" />
+                    
                     {/* FOTO Y USERNAME */}
-                    <div id='foto-y-username' className='flex flex-row gap-3 items-center'>
+                    <div id='foto-y-username' className='flex w-full gap-3 items-center '>
+                        
                         {/* FOTO */}
                         <div className="para-recortar-foto w-[32px] h-[32px] overflow-hidden rounded-full">
                             <img className='w-full h-full object-cover' src={userimage} alt="" />

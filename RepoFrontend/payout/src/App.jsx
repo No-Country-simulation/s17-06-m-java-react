@@ -14,6 +14,7 @@ function App() {
 
   const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
   const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
+  const showThemeButton = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
   
 
 
@@ -46,7 +47,7 @@ function App() {
           
             
             <div className="hidden md:block">
-              <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
+             {showThemeButton && <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />} 
               </div>
 
               <Outlet context={{ light, onActivate: handleActivate, onDeactivate: handleDeactivate }}/>

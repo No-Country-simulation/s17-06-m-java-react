@@ -78,9 +78,9 @@ export const SignUp = () => {
   return (
     <>
     {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
-    <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
+    <div className="md:py-8 lg:px-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
         
-        <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
+        <div className="w-full md:w-[466px] h-[90vh] lg:h-[500px] xl:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
             <h2 className="text-[26px] leading-[63px] text-center text-primario">REGISTRO</h2>
 
             <Formik
@@ -149,7 +149,7 @@ export const SignUp = () => {
         </div>
 
         {/* IMAGEN */}
-        <img className="hidden lg:block lg:h-[614px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
+        <img className="hidden lg:block lg:h-[500px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
     </div>
     </>
     

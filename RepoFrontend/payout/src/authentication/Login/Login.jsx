@@ -70,9 +70,9 @@ export const Login = () => {
     }
 
     return (
-        <div className="md:py-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh]">
-            <div className="w-full md:w-[466px] h-[90vh] md:h-[614px] py-11 px-8 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
-                <h2 className="text-primario text-[26px] leading-[63px] text-center pb-11">¡Bienvenido a Payout!</h2>
+        <div className="md:py-8 lg:px-8 flex xl:gap-14 lg:gap-14 justify-center ">
+            <div className="w-full md:w-[466px] h-[90vh] lg:h-[500px] xl:h-[614px] py-11 px-8 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
+                <h2 className="text-primario text-[26px] leading-[63px] text-center pb-9">¡Bienvenido a Payout!</h2>
 
                 <Formik 
                     initialValues={{
@@ -124,7 +124,7 @@ export const Login = () => {
             </div>
 
             {/* IMAGEN */}
-            <img className="hidden lg:block lg:h-[614px] xl:block xl:h-[614px] 2xl:block 2xl:h-[614px]" src={image} alt="" />
+            <img className="hidden lg:block lg:h-[500px]  xl:h-[614px]  2xl:h-[614px]" src={image} alt="" />
         </div>
     );
 };
