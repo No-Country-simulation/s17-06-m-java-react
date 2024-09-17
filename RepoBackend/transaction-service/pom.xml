@@ -84,12 +84,12 @@
 			<artifactId>java-jwt</artifactId>
 			<version>4.4.0</version>
 		</dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.payout.auth_service</groupId>
             <artifactId>auth-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 	<dependencyManagement>
 		<dependencies>
