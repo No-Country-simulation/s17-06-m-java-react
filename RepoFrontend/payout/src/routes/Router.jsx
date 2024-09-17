@@ -55,6 +55,9 @@ export const router = createBrowserRouter([
       // Rutas protegidas anidadas en 'Home'
       {
         path: '/',
+        /* element: 
+            <HomeApp />
+          , */
         element: (
           <ProtectedRoute>
             <HomeApp />

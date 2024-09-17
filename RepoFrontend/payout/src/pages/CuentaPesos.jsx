@@ -10,6 +10,7 @@ import share  from '../assets/share.svg'
 import CoinCardCUENTA, { infoSaldos } from '../components/CoinCardCUENTA.jsx';
 import { Ojovisible } from '../components/icons/ojovisible.jsx';
 import { Ojotachado } from '../components/icons/ojotachado.jsx';
+import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack.jsx';
 /* import Banner from '../components/Banner'; */
 
 
@@ -66,15 +67,22 @@ export const CuentaPesos = () => {
             {/* contenedor tarjeta */}
             <div className='flex flex-col justify-center w-full'>
                 {/* TARJETA VIOLETA ENTERA */}
-                <div className='bg-primario text-white flex flex-col gap-4 justify-center items-center py-6'>
+                <div className='relative bg-primario text-white flex flex-col gap-4 justify-center items-center py-6'>
                     {/* BANDERA Y TEXTO MONEDA */}
+                    <button className='position absolute top-6 left-1' onClick={()=>navigate(-1)}>
+                        <FlechaTriangulitoBack/>
+                    </button>
                     <div className='flex gap-4 items-center'>
                         <img src={argIcon} className='w-[25px] h-[25px]' alt='argIcon' />
                         <p>Peso argentino</p>
                     </div>                    
                     {/* SALDO */}
                     <div className='flex gap-4'>
-                        <p className='text-xl font-semibold'>$800000 ARS</p>
+                        {showPassword? 
+                        <p className='text-xl font-semibold'>$800000 ARS</p>:
+                        <p className='text-xl font-semibold'>****** ARS</p>
+                        }
+                        
                         {/* BOTON VISIBILIDAD SALDO */}
                         <button
                             type="button"

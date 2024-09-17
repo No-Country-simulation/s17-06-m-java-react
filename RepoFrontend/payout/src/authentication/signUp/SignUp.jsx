@@ -59,9 +59,13 @@ export const SignUp = () => {
                     body: JSON.stringify({              
                       email: values.email,                      
                       password: values.password
-                    }),
+                    }),                    
                   })
-                    .then((res) => res.json())
+                    .then((res) => {res.json()
+                
+                    console.log('res.json', res.json)
+                }
+                )
                     .then((data) => {
                       const token = data.token
                       localStorage.setItem('token', token)

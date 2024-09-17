@@ -15,6 +15,19 @@ const Banner = ({ onActivate, onDeactivate }) => {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
 
+    const [light, setLight] = useState(true);
+
+
+
+    const handleActivate = () => {
+      setLight(!light);
+      // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
+    };
+  
+    const handleDeactivate = () => {
+      setLight(!light);
+      // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
+    };
 
  
 
@@ -59,7 +72,7 @@ const Banner = ({ onActivate, onDeactivate }) => {
 
             {/* BOTON TEMA CLARO/OSCURO */}
             <div className='md:hidden flex items-center'>
-            <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
+            <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
             </div>
             
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}
