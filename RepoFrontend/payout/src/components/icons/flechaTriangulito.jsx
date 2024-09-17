@@ -7,3 +7,5 @@ export const FlechaTriangulito = () => {
 
     )
   }
+
+export default FlechaTriangulito;

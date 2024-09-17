@@ -34,6 +34,13 @@ const currencyOptions = [
 const CustomSelect = ({ options, field, form, ...props }) => (
     <Select
         options={options}
+        styles={{
+            control: (base) => ({
+                ...base,
+                border: 'none',
+                boxShadow: 'none'
+            }),
+        }}
         formatOptionLabel={(option) => (
             <div className="flex items-center">
                 <img className="mr-2 w-5 h-5" src={option.icon} />
@@ -129,14 +136,14 @@ const Monto = () => {
                 validationSchema={schema}
             >
                 {({ values, handleSubmit, setFieldValue }) => (
-                    <Form className="flex flex-col w-full items-center gap-5 mt-[6vh]">
-                        <h3 className="text-center font-bold text-2xl">¿Cuánto estás enviando?</h3>
+                    <Form className="flex flex-col w-full items-center gap-5 mt-[10vh] md:mt-[2vh]">
+                        <h3 className="text-center font-bold text-xl md:text-2xl">¿Cuánto estás enviando?</h3>
                         {/* Campo para el monto a enviar */}
                         <div className="mb-2 text-start">
                             <label htmlFor="amountSend" className="block font-semibold mb-2">
                                 Envías exactamente
                             </label>
-                            <div className="flex items-center bg-white rounded-lg p-2 w-[40vw]">
+                            <div className="flex items-center bg-white rounded-lg p-2 w-[90vw] md:w-[40vw]">
                                 <Field
                                     name="amountSend"
                                     type="number"
@@ -157,7 +164,7 @@ const Monto = () => {
                             <label htmlFor="amountReceive" className="block font-semibold mb-2">
                                 El destinatario recibe
                             </label>
-                            <div className="flex items-center bg-white rounded-lg p-2 w-[40vw]">
+                            <div className="flex items-center bg-white rounded-lg p-2 w-[90vw] md:w-[40vw]">
                                 <Field
                                     name="amountReceive"
                                     type="number"
@@ -174,12 +181,14 @@ const Monto = () => {
                         </div>
                         <div className="flex flex-col gap-2 items-start">
                             <label className="font-semibold">Pagando con</label>
-                            <div className="flex input-container bg-white text-black w-[40vw] py-5 rounded-lg items-center justify-between px-3">
+                            <div className="flex input-container bg-white text-black text-xs md:text-m w-[90vw] md:w-[40vw] py-5 rounded-lg items-center justify-between px-3" style={{ zIndex: '2' }}>
                                 <BankAccountField onChangeAccount={handleChangeAccount} />
                             </div>
                             <ErrorMessage name="cvu/alias" component="p" className='custom-error-message' />
                         </div>
-                        <button onClick={handleContinuar} className='bg-verde text-white text-center rounded-lg w-[40vw] py-3 hover:bg-green-600 transition duration-200'>Continuar</button>
+                        <div className="flex">
+                            <button onClick={handleContinuar} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
+                        </div>
                     </Form>
                 )}
             </Formik>

@@ -2,32 +2,42 @@ import { Stepper, Step, Typography } from "@material-tailwind/react";
 import MarkerStepper from "./MarkerStepper";
 
 export const Stepbar = ({ currentStep, setCurrentStep, handleContinuar }) => {
-  const steps = ["Destinatario", "Datos bancarios", "Monto", "Revisión", "Pago"]; // Definimos los pasos
+  const steps = ["Destinatario", "Cuenta", "Monto", "Revisión", "Pago"]; // Definimos los pasos
 
   // Calcula la posición del MarkerStepper en función del paso activo
-  const markerPosition = `${(currentStep * 98.5) / (steps.length - 1)}%`; // Posición basada en el número de pasos
+  const markerPosition = `${(currentStep / (steps.length - .93)) * 100}%`;
+  const markerPositionMobile = `${(currentStep / (steps.length - .88)) * 100}%`;
+
 
   return (
-    <div className="flex w-full py-4 px-20 font-semibold relative">
+    <div className="flex justify-between py-8 font-semibold w-[80vw] mx-[5vw] md:w-full md:mx-10">
       <Stepper
         activeStep={currentStep}
-        className="flex"
-        lineClassName="border-b-[3px] w-full border-gris/50"
-        activeLineClassName={`border-primario transition-all duration-700 ease-in-out`}
+        className="flex w-[400px] md:w-full"
+        lineClassName="border-b-[3px] w-full border-white/75 md:border-gris/25"
+        activeLineClassName={`border-primario md:border-primario transition-all duration-700 ease-in-out`}
       >
         {steps.map((step, id) => (
           <>
             <div
-              className="absolute transition-all duration-700"
-              style={{ left: markerPosition }}
+              className="hidden md:block absolute transition-all duration-700 ease-in-out"
+              style={{ left: markerPosition, top: '50%', 'z-index': '1' }}
+            >
+              <MarkerStepper className={'absolute -top-7 -right-1 -left-1'} />
+            </div>
+            <div
+              className="md:hidden absolute transition-all duration-700"
+              style={{ left: markerPositionMobile, top: '50%', 'z-index': '1' }}
             >
               <MarkerStepper className={'absolute -top-7 -right-1 -left-1'} />
             </div>
             <Step
               key={id}
-              className={`h-3 w-3 cursor-pointer ${currentStep >= id ? '!bg-primario !text-primario' : 'bg-gris text-gris/75'}`}
-              activeClassName="!bg-primario !text-primario"
-              completedClassName="!bg-primario !text-primario"
+              className={`h-3 w-3 cursor-pointer ${currentStep >= id ? '!bg-primario !text-white' : '!bg-white !text-white'} 
+              ${currentStep >= id ? 'md:!bg-primario !text-white' : 'md:!bg-gris/75 !text-white'} transition-all duration-1000 ease-in-out`}
+              style={{ fontSize: '14px' }}
+              activeClassName="!bg-primario"
+              completedClassName="!bg-primario"
               onClick={() => {
                 setCurrentStep(id);
                 if (id === currentStep + 1) {
@@ -38,7 +48,7 @@ export const Stepbar = ({ currentStep, setCurrentStep, handleContinuar }) => {
               <div className="absolute -bottom-[2rem] flex w-full justify-center">    
                             
                 <Typography variant='h6'
-                className={`${currentStep >= id ? '!text-primario' : 'text-gris'} whitespace-nowrap text-md`}>{step}</Typography>
+                className={`text-white md:text-primario whitespace-nowrap text-md mb-2`}>{step}</Typography>
               </div>
             </Step>
           </>
