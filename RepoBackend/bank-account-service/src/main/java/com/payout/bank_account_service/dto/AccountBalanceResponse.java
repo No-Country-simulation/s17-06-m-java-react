@@ -14,5 +14,7 @@ public class AccountBalanceResponse {
     private Long cvu;
 
     public AccountBalanceResponse(Long accountId, Double balance) {
+        this.accountId = accountId;
+        this.balance = balance;
     }
 }

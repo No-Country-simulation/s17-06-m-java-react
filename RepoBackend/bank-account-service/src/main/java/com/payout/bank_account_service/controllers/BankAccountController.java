@@ -26,6 +26,8 @@ public class BankAccountController {
         return bankAccountService.getAllBankAccounts();
     }
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<BankAccount> getBankAccountById(@PathVariable Long id) {
         Optional<BankAccount> bankAccount = bankAccountService.getBankAccountById(id);
@@ -84,4 +86,18 @@ public class BankAccountController {
         BankAccount account = bankAccountService.findByCvu(cvu);
         return ResponseEntity.ok(account);
     }
+
+    @GetMapping("/byuser/{id}")
+    public ResponseEntity<List<BankAccount>> getAllBankAccountsByIdUser(@PathVariable Long id) {
+        return ResponseEntity.ok(bankAccountService.getAllBankAccountsByIdUser(id));
+    }
+
+    @GetMapping("/bytoken")
+    public ResponseEntity<List<BankAccount>> getAllBankAccountsByToken(@RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(bankAccountService.getAllByToken(token));
+    }
+
+
+
+
 }
