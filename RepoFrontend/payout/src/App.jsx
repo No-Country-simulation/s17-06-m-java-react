@@ -20,11 +20,6 @@ function App() {
   /* Dark Mode */
   const [light, setLight] = useState(true);
 
-  // Alternar entre modo claro y oscuro
-  // const toggleTheme = () => {
-  //   setLight(!light);
-  // };
-
 
 
   const handleActivate = () => {
@@ -37,17 +32,7 @@ function App() {
     // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
   };
 
-//   <div className={`flex flex-col-reverse justify-between lg:flex-row ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
-//   {showSidebar && <Sidebar />}
-//     <div className={`text-end  ${showSidebar ? 'ml-0 w-full md:w-5/6' : 'w-full'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
-//     <div className="hidden md:block">
-//       <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
-//       </div>
 
-//       <Outlet  />
-
-//     </div>
-// </div>
 
 
 
