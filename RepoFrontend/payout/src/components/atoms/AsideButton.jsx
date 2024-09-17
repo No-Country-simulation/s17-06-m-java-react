@@ -70,7 +70,7 @@ const AsideButton = ({ image, text, isSelected, onClick }) => {
 return (
     <li className='list-none'>
       <button onClick={onClick} // Agregamos el evento onClick 
-      className={`flex items-center gap-2 px-4 py-2 w-full text-left flex justify-start font-extrabold hover:bg-grisclaro hover:rounded-3xl
+      className={`flex items-center gap-2 px-4 py-2 w-3/4 text-left flex justify-start font-extrabold hover:bg-grisclaro hover:rounded-3xl
         ${isSelected
           ? "bg-white text-black font-semibold rounded-3xl shadow-md hover:bg-grisclaro focus:outline-none focus:ring-5 focus:ring-gris focus:ring-opacity-50"
           : "text-black" // Sin diseño para no seleccionado
