@@ -14,20 +14,11 @@ function App() {
 
   const showNavbar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
   const showFooter = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup';
-  const showSidebar = !(
-    location.pathname === '/login' || 
-    location.pathname === '/signup' || 
-    location.pathname === '/'
-  );
+  
 
 
   /* Dark Mode */
   const [light, setLight] = useState(true);
-
-  // Alternar entre modo claro y oscuro
-  // const toggleTheme = () => {
-  //   setLight(!light);
-  // };
 
 
 
@@ -44,24 +35,25 @@ function App() {
 
 
 
+
   return (
     <>
-      <div className={`app flex flex-col h-screen ${light ? 'bg-dark text-white' : 'bg-bg-white text-black'}`}>
+      <div className={`app flex flex-col h-screen justify-between ${light ? 'bg-dark text-white' : 'bg-bg-white text-black'}`}>
         {showNavbar && <Navbar light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>}
+        <div className={` ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
 
-        <div className={`flex flex-col-reverse justify-between lg:flex-row ${light ? 'bg-dark text-white' : 'bg-secundario text-black'} flex-grow`}>
-          {showSidebar && <Sidebar />}
-            <div className={`text-end  ${showSidebar ? 'ml-0 w-full md:w-5/6' : 'w-full'} ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div className={`text-end h-full  ${light ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+          
+            
             <div className="hidden md:block">
               <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
-              {/* <button onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white"
-              >Tema</button> */}
               </div>
-              <Outlet  />
 
-            </div>
+              <Outlet light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>
+
+            
         </div>
-
+        </div>
         {showFooter && <Footer />}
 
         
