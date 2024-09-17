@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import { createBrowserRouter } from "react-router-dom";
 import { SignUp } from '../authentication/signUp/SignUp';
 import { Login } from '../authentication/Login/Login';
 import Home from "../pages/Home";
-import LandingPage from "../pages/LandingPage";
+import LandingPage from "../pages/LandingPage"; 
 import Actividad from "../pages/Actividad";
 import { Perfil } from "../pages/Perfil";
 import { ProtectedRoute, PublicRoute } from "./ProtectedRoute";
@@ -16,134 +16,100 @@ import Revision from "../components/transferencias/Revision";
 import PagoExitoso from "../components/transferencias/PagoExitoso";
 import { Cuenta } from "../pages/Cuenta";
 import { CuentaPesos } from "../pages/CuentaPesos";
+import HomeApp from '../pages/HomeApp'
+
+
+
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App />, // App sirve como el layout para rutas públicas
     children: [
-      // Rutas públicas (login, landing, signup)
+      // Rutas públicas (anidadas en App)
       {
         path: '/',
         element: (
           <PublicRoute>
             <LandingPage />
           </PublicRoute>
-        )
+        ),
       },
       {
-        path: '/login',
+        path: 'login',
         element: (
           <PublicRoute>
             <Login />
           </PublicRoute>
-        )
+        ),
       },
       {
-        path: '/signup',
+        path: 'signup',
         element: (
           <PublicRoute>
             <SignUp />
           </PublicRoute>
-        )
+        ),
       },
 
-      // Rutas protegidas (home, actividad, perfil)
+      // Rutas protegidas (anidadas en Home)
       {
-        path: '/home',
+        path: '/',
         element: (
           <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        )
-      },
-      {
-        path: '/actividad',
-        element: (
-          <ProtectedRoute>
-            <Actividad />
-          </ProtectedRoute>
-        )
-      },
-      {
-        path: '/cuenta',
-        element: (
-          <ProtectedRoute>
-            <Cuenta/>
-          </ProtectedRoute>
-        )
-      },
-      {
-        path: '/cuentapesos',
-        element: (
-          <ProtectedRoute>
-            <CuentaPesos/>
-          </ProtectedRoute>
-        )
-      },
-      { 
-        path: '/prevperfil', 
-        element: (
-          <ProtectedRoute>
-            <PrevPerfil/>
-          </ProtectedRoute>
-        ) 
-      },
-      {
-        path: '/perfil',
-        element: (
-          <ProtectedRoute>
-            <Perfil />
-          </ProtectedRoute>
-        )
-      },
-      {
-        path: '/transferencia',
-        element: (
-          <ProtectedRoute>
-            <Transferencia />
+            <HomeApp />
           </ProtectedRoute>
         ),
         children: [
           {
-            path: 'destinatario',
-            element: (
-              <ProtectedRoute>
-                <Destinatario />
-              </ProtectedRoute>
-            )
+            path: 'home',
+            element: <Home />
           },
           {
-            path: 'datos-bancarios',
-            element: (
-              <ProtectedRoute>
-                <DatosBancarios />
-              </ProtectedRoute>
-            )
+            path: 'actividad',
+            element: <Actividad />
           },
           {
-            path: 'monto',
-            element: (
-              <ProtectedRoute>
-                <Monto />
-              </ProtectedRoute>
-            )
+            path: 'cuenta',
+            element: <Cuenta />
           },
           {
-            path: 'revision',
-            element: (
-              <ProtectedRoute>
-                <Revision />
-              </ProtectedRoute>
-            )
+            path: 'cuentapesos',
+            element: <CuentaPesos />
+          },
+          { 
+            path: 'prevperfil',
+            element: <PrevPerfil />
           },
           {
-            path: 'pago-exitoso',
-            element: (
-              <ProtectedRoute>
-                <PagoExitoso />
-              </ProtectedRoute>
-            )
+            path: 'perfil',
+            element: <Perfil />
+          },
+          {
+            path: 'transferencia',
+            element: <Transferencia />,
+            children: [
+              {
+                path: 'destinatario',
+                element: <Destinatario />
+              },
+              {
+                path: 'datos-bancarios',
+                element: <DatosBancarios />
+              },
+              {
+                path: 'monto',
+                element: <Monto />
+              },
+              {
+                path: 'revision',
+                element: <Revision />
+              },
+              {
+                path: 'pago-exitoso',
+                element: <PagoExitoso />
+              }
+            ]
           }
         ]
       }
