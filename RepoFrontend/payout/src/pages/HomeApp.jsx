@@ -21,7 +21,7 @@ function HomeApp({ light, onActivate, onDeactivate }) {
 
           
 
-              <Outlet  />
+              <Outlet onActivate={onActivate} onDeactivate={onDeactivate}  />
 
             </div>
         

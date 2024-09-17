@@ -49,7 +49,7 @@ function App() {
               <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
               </div>
 
-              <Outlet light={light} />
+              <Outlet light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>
 
             
         </div>

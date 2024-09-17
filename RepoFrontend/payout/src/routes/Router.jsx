@@ -24,9 +24,9 @@ import HomeApp from '../pages/HomeApp'
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />, // App sirve como el layout para rutas públicas
+    element: <App />, // App es el layout principal para todas las rutas
     children: [
-      // Rutas públicas (anidadas en App)
+      // Rutas públicas
       {
         path: '/',
         element: (
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
         ),
       },
 
-      // Rutas protegidas (anidadas en Home)
+      // Rutas protegidas anidadas en 'Home'
       {
         path: '/',
         element: (
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'home',
-            element: <Home />
+            element: <Home/>
           },
           {
             path: 'actividad',

@@ -10,30 +10,13 @@ const urlInfoUserLogged = 'https://payout.redromsolutions.com/user/0'
 
 
 
-const Banner = () => {
+const Banner = ({ onActivate, onDeactivate }) => {
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
 
 
-    const [light, setLight] = useState(true);
-
-  // Alternar entre modo claro y oscuro
-  // const toggleTheme = () => {
-  //   setLight(!light);
-  // };
-
-
-
-  const handleActivate = () => {
-    setLight(!light);
-    // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
-  };
-
-  const handleDeactivate = () => {
-    setLight(!light);
-    // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
-  };
+ 
 
 
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
@@ -76,7 +59,7 @@ const Banner = () => {
 
             {/* BOTON TEMA CLARO/OSCURO */}
             <div className='md:hidden flex items-center'>
-                <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
+            <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
             </div>
             
             {/* CAMPANA Y SIGNO DE PREGUNTA MOBILE */}

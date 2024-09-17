@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar.jsx';
 import Banner from '../components/Banner.jsx'
 
-const Home = ({ light }) => {
+const Home = ({  light, onActivate, onDeactivate } ) => {
 
   const lastThreeActivities = activitiesNotif.slice(0, 3);
   console.log('light de home', light)
@@ -48,7 +48,7 @@ const Home = ({ light }) => {
 
       <section className='px-4 md:px-10 w-full'>
 
-        <Banner/>
+        <Banner onActivate={onActivate} onDeactivate={onDeactivate} />
         {/* CUERPO HOME */}
         <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
           <p className='font-semibold pb-4 flex items-start'>Tu cuenta PAYOUT</p>
