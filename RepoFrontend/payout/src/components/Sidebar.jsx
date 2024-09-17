@@ -39,7 +39,7 @@ const navigate = useNavigate()
       {/* Sidebar en pantalla completa (solo para desktop) */}
       <div className="hidden md:flex md:flex-col h-full bg-white text-black p-6">
         <img src={payout} alt="logo" />
-        <div className="h-full flex flex-col justify-center gap-10">
+        <div className="h-full flex flex-col justify-center gap-10 absolute">
         {options.map(({ id, image, name, path }) => (
             <AsideButton 
               key={id} 
