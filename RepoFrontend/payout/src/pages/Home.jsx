@@ -9,13 +9,12 @@ import euroIcon from '../components/atoms/assets/euro.png';
 import OperationButton, { operations } from '../components/atoms/OperationButton.jsx';
 import NotificationItem, { activitiesNotif } from '../components/atoms/NotificationItem.jsx';
 import { Link } from 'react-router-dom';
-import Sidebar from '../components/Sidebar.jsx';
-import Banner from '../components/Banner.jsx'
 
-const Home = ({  light, onActivate, onDeactivate } ) => {
 
+const Home = ( ) => {
+  
   const lastThreeActivities = activitiesNotif.slice(0, 3);
-  console.log('light de home', light)
+
 
   const carruselRef = useRef(null);
 
@@ -48,7 +47,7 @@ const Home = ({  light, onActivate, onDeactivate } ) => {
 
       <section className='px-4 md:px-10 w-full'>
 
-        <Banner onActivate={onActivate} onDeactivate={onDeactivate} />
+        
         {/* CUERPO HOME */}
         <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
           <p className='font-semibold pb-4 flex items-start'>Tu cuenta PAYOUT</p>

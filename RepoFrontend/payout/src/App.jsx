@@ -1,7 +1,7 @@
 import './App.css';
 import './index.css';
 import Navbar from './components/Navbar';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate  } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
 import { useState } from 'react';
 import { ThemeButton } from './components/ThemeButton';
@@ -49,7 +49,7 @@ function App() {
               <ThemeButton  onActivate={handleActivate} onDeactivate={handleDeactivate} />
               </div>
 
-              <Outlet light={light} onActivate={handleActivate} onDeactivate={handleDeactivate}/>
+              <Outlet context={{ light, onActivate: handleActivate, onDeactivate: handleDeactivate }}/>
 
             
         </div>
