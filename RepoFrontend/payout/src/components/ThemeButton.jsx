@@ -59,8 +59,8 @@ export const ThemeButton = ({ onActivate, onDeactivate }) => {
         
       >
         <div
-          className={` w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
-            isToggled ? 'translate-x-8 bg-primario' : 'bg-verde'
+          className={`w-5 h-5 md:w-6 md:h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
+            isToggled ? 'translate-x-7 md:translate-x-8 bg-primario' : 'bg-verde'
           }`}
           
         ></div>

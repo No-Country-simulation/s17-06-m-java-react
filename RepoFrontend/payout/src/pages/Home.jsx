@@ -57,7 +57,7 @@ const Home = ( ) => {
           <div
             {...handlers}
             ref={carruselRef}
-            className="flex w-full gap-6 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
+            className="flex w-full gap-3 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
           >
             <div id="card1" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
               <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
@@ -95,7 +95,7 @@ const Home = ( ) => {
 
 
           {/* FILA SALDOS DESKTOP*/}
-          <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-6 overflow-hidden'>
+          <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-3 overflow-hidden'>
             {infoSaldos.map(({ id, image, coin, saldo, cbu }) => (
               <CoinCard
                 key={id}

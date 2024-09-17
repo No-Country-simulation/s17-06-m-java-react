@@ -7,7 +7,7 @@ import  addUser  from '../assets/AddUser.png'
 
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
-import Banner from '../components/Banner';
+
 
 
 
@@ -141,7 +141,7 @@ export const Perfil = () => {
     return (
         <section className='px-4 md:px-10 w-full'>
 
-        <Banner/>
+       
 
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='py-6 pb-10 px-3'>
