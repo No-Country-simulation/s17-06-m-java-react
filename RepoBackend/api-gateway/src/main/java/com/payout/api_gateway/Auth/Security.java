@@ -26,10 +26,6 @@ public class Security extends AbstractGatewayFilterFactory<Security> {
             RequestDTO requestDTO = new RequestDTO(exchange.getRequest().getPath().toString(),
                     exchange.getRequest().getMethod().toString());
 
-            // if (validator.isPublicPath(requestDTO)) {
-            // return chain.filter(exchange);
-            // }
-
             String token = extractToken(exchange);
             if (token == null) {
                 exchange.getResponse().setStatusCode(HttpStatus.BAD_REQUEST);
