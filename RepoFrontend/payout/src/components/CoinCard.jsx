@@ -62,7 +62,7 @@ const CoinCard = ({ image, coin, saldo, cbu }) => {
                 {/* Banda superior blanca */}
                 <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
                     <img src={image} className='w-[40px] h-[40px]' alt={coin} />
-                    <p className='text-primario font-semibold'>{coin}</p>
+                    <p className= 'text-start text-primario font-semibold'>{coin}</p>
                 </div>
                 {/* Contenido del div principal */}
                 <div className="pt-12 flex flex-col items-start">
