@@ -31,24 +31,24 @@ public class BankAccountService {
 
 
     private final String[] adjetivos = {
-            "Valiente", "Silencioso", "Astuto", "Poderoso", "Rápido",
-            "Leal", "Feroz", "Brillante", "Audaz", "Amable",
-            "Salvaje", "Agudo", "Veloz", "Sabio", "Afortunado",
-            "Intrépido", "Sereno", "Noble"
+            "valiente", "silencioso", "astuto", "poderoso", "rapido",
+            "leal", "feroz", "arillante", "audaz", "amable",
+            "salvaje", "agudo", "veloz", "sabio", "afortunado",
+            "intrépido", "sereno", "noble"
     };
 
     private final String[] sustantivos = {
-            "Tigre", "Águila", "Dragón", "Lobo", "Cóndor",
-            "León", "Serpiente", "Tiburón", "Pantera",
-            "Búho", "Fénix", "Halcón", "Jaguar", "Rayo",
-            "Montaña", "Río", "Estrella", "Sol", "Luna"
+            "tigre", "aguila", "dragon", "lobo", "cóndor",
+            "León", "Serpiente", "Tiburón", "pantera",
+            "buho", "fenix", "halcon", "jaguar", "rayo",
+            "montaña", "rio", "estrella", "sol", "luna"
     };
 
     private final String[] colores = {
-            "Rojo", "Azul", "Verde", "Amarillo", "Blanco",
-            "Negro", "Morado", "Gris", "Naranja", "Carmesí",
-            "Dorado", "Plateado", "Turquesa", "Violeta",
-            "Celeste", "Coral", "Cian", "Magenta", "Ocre"
+            "rojo", "azul", "verde", "amarillo", "blanco",
+            "negro", "morado", "gris", "naranja", "carmesi",
+            "dorado", "plateado", "turquesa", "violeta",
+            "celeste", "coral", "cian", "magenta", "ocre"
     };
 
     public List<BankAccount> getAllBankAccounts() {
