@@ -17,6 +17,8 @@ import PagoExitoso from "../components/transferencias/PagoExitoso";
 import { Cuenta } from "../pages/Cuenta";
 import { CuentaPesos } from "../pages/CuentaPesos";
 import HomeApp from '../pages/HomeApp'
+import { AyudaPrincipal } from "../components/ayuda/AyudaPrincipal";
+import { FAQ } from "../components/ayuda/FAQ";
 
 
 
@@ -79,6 +81,14 @@ export const router = createBrowserRouter([
           {
             path: 'cuentapesos',
             element: <CuentaPesos />
+          },
+          {
+            path: 'help',
+            element: <AyudaPrincipal/>
+          },
+          {
+            path: 'faq',
+            element: <FAQ/>
           },
           { 
             path: 'prevperfil',

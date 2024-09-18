@@ -121,20 +121,7 @@ const Home = ( ) => {
                 texto={texto}
                 path={path}                
               />
-            ))}
-
-            {/* BOTON BLANCO SIGNO + */}
-            <div className='flex flex-col justify-center items-center gap-2'>
-              <div className="w-[48px] h-[48px] md:w-[85px] md:h-[85px] md:min-w-[85px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario">
-                <p className='text-primario'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                </p>
-                {/* <p className='hidden md:block md:text-primario md:font-semibold'>XXX</p>  */}
-              </div>
-              <p className='md:hidden text-xs'>XXX</p>
-            </div>
-
+            ))} 
           </div>
 
 

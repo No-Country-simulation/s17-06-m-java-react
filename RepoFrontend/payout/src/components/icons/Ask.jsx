@@ -8,4 +8,4 @@ export const Ask = () => {
     )
   }
 
-export default FlechaTriangulito;
+export default Ask;
