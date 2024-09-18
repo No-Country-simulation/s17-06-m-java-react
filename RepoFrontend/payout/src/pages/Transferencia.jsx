@@ -40,10 +40,10 @@ const Transferencia = () => {
 
     return (
         <TransferenciaContext.Provider value={{ currentStep, setCurrentStep }}>
-            <section className='flex flex-col md:bg-secundario dark:bg-dark md:text-black dark:text-white h-full'>
+            <section className='flex flex-col light:bg-secundario dark:text-white h-full'>
                 <header className='flex items-center justify-between bg-dark w-full text-white h-[6vh] md:h-[15vh] md:bg-navbar-transfer md:text-primario'>
                     <section className='flex md:h-[10vh] items-center w-full justify-between px-[2rem]'>
-                        <button onClick={handleVolverAtras} className='text-primario whitespace-nowrap font-semibold hidden md:flex'>Volver atrás</button>
+                        <button onClick={handleVolverAtras} className='text-primario whitespace-nowrap font-semibold hidden md:flex handle-step'>Volver atrás</button>
                         <div className='w-full mt-[10rem] md:mt-5 md:w-[50vw] flex'>
                             <Stepbar currentStep={currentStep} setCurrentStep={setCurrentStep} handleContinuar={handleContinuar} />
                         </div>
@@ -51,7 +51,7 @@ const Transferencia = () => {
                         {/* BANNER MOBILE */}
                         <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
                             <section className='flex'>
-                                <button onClick={handleVolverAtras} className='flex text-white whitespace-nowrap font-semibold'>
+                                <button onClick={handleVolverAtras} className='flex text-white whitespace-nowrap font-semibold handle-step'>
                                     <p className='w-6 h-6 absolute left-2 flex items-center'>
                                         <span className='left-7 absolute'>Transferir</span>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

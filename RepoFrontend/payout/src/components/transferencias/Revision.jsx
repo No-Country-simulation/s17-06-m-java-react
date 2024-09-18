@@ -4,7 +4,7 @@ import argIcon from './assets/banderaArg.svg';
 import usaIcon from './assets/usa.png';
 import euroIcon from './assets/euro.png'
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TransferenciaContext } from '../../contexts/TransferenciaContext';
 
 // Opciones de divisas con íconos
@@ -37,14 +37,40 @@ const Revision = () => {
         setCurrentStep(4);
         navigate('/transferencia/pago-exitoso');
 
-        console.loh(currentStep)
+        console.log(currentStep)
     };
 
     const navigate = useNavigate();
+
+    const [datos, setDatos] = useState({});
+    const { datosBancarios, monto } = useContext(TransferenciaContext);
+
+    useEffect(() => {
+        const obtenerDatos = async () => {
+            const response = await fetch('https://payout.redromsolutions.com/transferencia', {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    identifier: datosBancarios.identifier,
+                    amountSend: monto.amountSend,
+                    currencySend: monto.currencySend,
+                    amountReceive: monto.amountReceive,
+                    currencyReceive: monto.currencyReceive,
+                }),
+            });
+
+            if (response.ok) {
+                const datosObtenidos = await response.json();
+                setDatos(datosObtenidos);
+            } else {
+                console.error(await response.json());
+            }
+        };
+
+        obtenerDatos();
+    }, [datosBancarios, monto]);
+
     return (
-
-        /* Donde pongo el comando para ocultar la barra de scroll */
-
 
         <section className='h-full'>
             <Formik
@@ -57,11 +83,12 @@ const Revision = () => {
                     cuentaBancaria: '',
                     alias: '',
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values, { setSubmitting }) => {
                     console.log(values);
+                    setSubmitting(false);
                 }}
             >
-                {({ setFieldValue }) => (
+                {({ isSubmitting, setFieldValue }) => (
                     <Form className="flex flex-col items-center justify-center text-start p-8 rounded-lg mt-[5vh] md:mt-0">
                         <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">¿Corresponden estos datos a la cuenta?</h2>
 
@@ -155,6 +182,7 @@ const Revision = () => {
                         {/* Botón de envío */}
                         <div className='flex'>
                             <button
+                                disabled={isSubmitting}
                                 onClick={handleContinuar}
                                 type="submit"
                                 className="w-[90vw] md:w-[40vw] py-3 mt-3 md:mt-2 bg-primario md:bg-verde text-white rounded-2xl md:rounded-lg font-semibold hover:bg-green-600 transition duration-200"
@@ -166,7 +194,8 @@ const Revision = () => {
                 )}
             </Formik>
         </section>
-    );
+    )
 };
 
 export default Revision;
+

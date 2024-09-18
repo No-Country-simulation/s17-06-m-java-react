@@ -33,22 +33,24 @@ export const Stepbar = ({ currentStep, setCurrentStep, handleContinuar }) => {
             </div>
             <Step
               key={id}
-              className={`h-3 w-3 cursor-pointer ${currentStep >= id ? '!bg-primario !text-white' : '!bg-white !text-white'} 
+              className={`h-3 w-3 ${currentStep >= id ? '!bg-primario !text-white' : '!bg-white !text-white'} 
               ${currentStep >= id ? 'md:!bg-primario !text-white' : 'md:!bg-gris/75 !text-white'} transition-all duration-1000 ease-in-out`}
               style={{ fontSize: '14px' }}
               activeClassName="!bg-primario"
               completedClassName="!bg-primario"
-              onClick={() => {
-                setCurrentStep(id);
-                if (id === currentStep + 1) {
-                  handleContinuar();
+              onClick={(e) => {
+                if (e.target.classList.contains('handle-step')) {
+                  setCurrentStep(id);
+                  if (id === currentStep + 1) {
+                    handleContinuar();
+                  };
                 }
               }}
             >
-              <div className="absolute -bottom-[2rem] flex w-full justify-center">    
-                            
+              <div className="absolute -bottom-[2rem] flex w-full justify-center">
+
                 <Typography variant='h6'
-                className={`text-white md:text-primario whitespace-nowrap text-md mb-2`}>{step}</Typography>
+                  className={`text-white md:text-primario whitespace-nowrap text-md mb-2`}>{step}</Typography>
               </div>
             </Step>
           </>
