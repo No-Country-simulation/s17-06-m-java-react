@@ -1,6 +1,6 @@
 package com.payout.transaction_service.transaction_service.client;
 
-import com.payout.bank_account_service.dto.BankAccountDTO;
+import com.payout.transaction_service.transaction_service.model.dto.BankBasic;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +18,10 @@ public interface BankAccountClient {
                               @RequestParam Double newBalance);
 
     @GetMapping("/find-by-alias")
-    BankAccountDTO findByAlias(@RequestParam String alias);
+    BankBasic findByAlias(@RequestParam String alias);
 
     @GetMapping("/find-by-cvu")
-    BankAccountDTO findByCvu(@RequestParam Long cvu);
+    BankBasic findByCvu(@RequestParam Long cvu);
 
 
 

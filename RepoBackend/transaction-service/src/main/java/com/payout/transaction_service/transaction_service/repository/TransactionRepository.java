@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface TransactionRepository extends JpaRepository <TransactionPayout, Long> {
     List<TransactionPayout> findByIdSourceAccountOrIdTargetAccount(Long idSourceAccount, Long idTargetAccount);
-    /*List<Transaction> findByUserId(Long userId);*/
+    List<TransactionPayout> findByUserId(Long userId);
+
+    /*List<TransactionPayout> findAllByIdUser(Long userId);*/
 }

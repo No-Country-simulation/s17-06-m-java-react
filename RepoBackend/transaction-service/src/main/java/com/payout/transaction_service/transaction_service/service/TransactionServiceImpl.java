@@ -1,17 +1,11 @@
 package com.payout.transaction_service.transaction_service.service;
 
-import com.payout.bank_account_service.dto.BankAccountDTO;
-import com.payout.bank_account_service.models.BankAccount;
-import com.payout.bank_account_service.services.BankAccountService;
 import com.payout.transaction_service.transaction_service.client.BankAccountClient;
 import com.payout.transaction_service.transaction_service.client.UserClient;
 import com.payout.transaction_service.transaction_service.domain.TransactionPayout;
 import com.payout.transaction_service.transaction_service.domain.TransactionDetailPayout;
 import com.payout.transaction_service.transaction_service.enums.CurrencyType;
-import com.payout.transaction_service.transaction_service.model.dto.TransactionResponse;
-import com.payout.transaction_service.transaction_service.model.dto.TransactionDTO;
-import com.payout.transaction_service.transaction_service.model.dto.TransferRequestDTO;
-import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
+import com.payout.transaction_service.transaction_service.model.dto.*;
 import com.payout.transaction_service.transaction_service.repository.TransactionDetailRepository;
 import com.payout.transaction_service.transaction_service.repository.TransactionRepository;
 import com.payout.transaction_service.transaction_service.utilities.InsufficientFundsException;
@@ -32,39 +26,26 @@ public class TransactionServiceImpl implements TransactionService {
     private final ModelMapper modelMapper;
     private final BankAccountClient bankServiceClient;
     private final UserClient userClient;
-    BankAccountService bankAccountService;
 
     @Override
-    public TransactionDTO createTransaction(TransferRequestDTO transferRequest) {
-        // Comprobar si es alias o CVU para obtener la cuenta destino
-        BankAccount targetAccount;
-        if (transferRequest.getAliasOrCvu() != null && !transferRequest.getAliasOrCvu().isEmpty()) {
-            // Buscar la cuenta por alias
-            targetAccount = bankAccountService.findByAlias(transferRequest.getAliasOrCvu());
+    public List<TransactionResponse> getTransactionHistory(Long userId) {
+        // Consultar el historial de transacciones desde el repositorio
+        List<TransactionPayout> transactions = transactionRepository.findByUserId(userId);
 
-        } else {
-            throw new IllegalArgumentException("Debe proporcionar un alias o CVU para la transacción.");
-        }
-
-        // Convertir DTO a entidad Transaction
-        TransactionPayout transaction = new TransactionPayout();
-        transaction.setAmount(transferRequest.getAmount());
-        transaction.setIdTargetAccount(targetAccount.getIdBankAccount());
-
-        // Guardar la transacción
-        TransactionPayout savedTransaction = transactionRepository.save(transaction);
-
-        // Retornar el DTO con la transacción guardada
-        return convertToDto(savedTransaction);
+        // Convertir las transacciones a DTOs o Responses
+        return transactions.stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
     }
 
-
-    @Override
-    public List<TransactionDTO> getTransactionHistory(Long accountId) {
-        List<TransactionPayout> transactions = transactionRepository.findByIdSourceAccountOrIdTargetAccount(accountId, accountId);
-        return transactions.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+    private TransactionResponse convertToResponse(TransactionPayout transaction) {
+        return TransactionResponse.builder()
+                .transactionId(transaction.getIdTransaction())
+                .sourceAccountId(transaction.getIdSourceAccount())
+                .targetAccountId(transaction.getIdTargetAccount())
+                .amount(transaction.getAmount())
+                .createdAt(transaction.getCreatedAt())
+                .build();
     }
 
     @Override
@@ -73,10 +54,10 @@ public class TransactionServiceImpl implements TransactionService {
         UserBasic user = userClient.findByUserId(userId);
 
         // Verificar si el sourceAccountIdentifier es CVU (numérico) o alias (alfanumérico)
-        BankAccountDTO sourceAccount = identifyAccount(sourceAccountIdentifier);
+        BankBasic sourceAccount = identifyAccount(sourceAccountIdentifier);
 
         // Verificar si el targetAccountIdentifier es CVU o alias
-        BankAccountDTO targetAccount = identifyAccount(targetAccountIdentifier);
+        BankBasic targetAccount = identifyAccount(targetAccountIdentifier);
 
         // Obtener el saldo de la cuenta fuente
         Double balance = sourceAccount.getBalance();
@@ -88,8 +69,8 @@ public class TransactionServiceImpl implements TransactionService {
 
         // Crear la transacción
         TransactionPayout transaction = new TransactionPayout();
-        transaction.setIdSourceAccount(sourceAccount.getId());
-        transaction.setIdTargetAccount(targetAccount.getId());
+        transaction.setIdSourceAccount(sourceAccount.getIdBankAccount());
+        transaction.setIdTargetAccount(targetAccount.getIdBankAccount());
         transaction.setAmount(amount);
         transaction.setCreatedAt(LocalDateTime.now());
         transactionRepository.save(transaction);
@@ -105,15 +86,15 @@ public class TransactionServiceImpl implements TransactionService {
         transactionDetailRepository.save(transactionDetail);
 
         // Actualizar el saldo de las cuentas fuente y destino
-        bankServiceClient.updateAccountBalance(sourceAccount.getId(), balance - amount);
-        bankServiceClient.updateAccountBalance(targetAccount.getId(), targetAccount.getBalance() + amount);
+        bankServiceClient.updateAccountBalance(sourceAccount.getIdBankAccount(), balance - amount);
+        bankServiceClient.updateAccountBalance(targetAccount.getIdBankAccount(), targetAccount.getBalance() + amount);
 
         // Crear la respuesta de la transacción
         return TransactionResponse.builder()
                 .userName(user.getFirstName() + " " + user.getLastName())
                 .transactionId(transaction.getIdTransaction())
-                .sourceAccountId(sourceAccount.getId())
-                .targetAccountId(targetAccount.getId())
+                .sourceAccountId(sourceAccount.getIdBankAccount())
+                .targetAccountId(targetAccount.getIdBankAccount())
                 .amount(amount)
                 .balance(balance - amount)  // Saldo luego de la transacción
                 .targetAccountCvu(targetAccount.getCvu())
@@ -129,14 +110,14 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Double getBalance(String accountIdentifier) {
         // Identificar si es CVU o alias
-        BankAccountDTO account = identifyAccount(accountIdentifier);
+        BankBasic account = identifyAccount(accountIdentifier);
         // Obtener el balance de la cuenta
         return account.getBalance();
     }
 
-    private BankAccountDTO identifyAccount(String accountIdentifier) {
+    private BankBasic identifyAccount(String accountIdentifier) {
         // Si el identificador es completamente numérico y tiene 22 dígitos, es un CVU
-        if (accountIdentifier.matches("\\d{22}")) {
+        if (accountIdentifier.matches("\\d{19}")) {
             return bankServiceClient.findByCvu(Long.parseLong(accountIdentifier));
         } else {
             // Si no, se considera un alias

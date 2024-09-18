@@ -1,10 +1,10 @@
 package com.payout.transaction_service.transaction_service.controller;
 
 import com.payout.transaction_service.transaction_service.model.dto.TransactionResponse;
-import com.payout.transaction_service.transaction_service.model.dto.TransactionDTO;
 import com.payout.transaction_service.transaction_service.model.dto.TransferRequestDTO;
 import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
 import com.payout.transaction_service.transaction_service.service.TransactionService;
+import com.payout.transaction_service.transaction_service.utilities.JWTTokenDecoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +18,15 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    //  Ver historial de transacciones
-    @GetMapping("/history/{accountId}")
-    public ResponseEntity<List<TransactionDTO>> getTransactionHistory(@PathVariable Long accountId) {
-        List<TransactionDTO> transactionHistory = transactionService.getTransactionHistory(accountId);
+    // Endpoint para obtener el historial de transacciones
+    @GetMapping("/history")
+    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(@RequestHeader("Authorization") String token) {
+        // Extraer el userId del token usando JWTTokenDecoder
+        Long userId = JWTTokenDecoder.getUserId(token);
+
+        // Llamar al servicio para obtener el historial de transacciones
+        List<TransactionResponse> transactionHistory = transactionService.getTransactionHistory(userId);
+
         return ResponseEntity.ok(transactionHistory);
     }
 
@@ -40,22 +45,24 @@ public class TransactionController {
         return ResponseEntity.ok(userInfo);
     }
 
-    // Registrar una nueva transacción
+    // Endpoint para realizar una transferencia
     @PostMapping("/transfer")
-    public ResponseEntity<TransactionResponse> transferFunds(
-            @RequestBody TransferRequestDTO transferRequest,
-            @RequestHeader("Authorization") String token) {
+    public ResponseEntity<TransactionResponse> transfer(@RequestHeader("Authorization") String token,
+                                                        @RequestBody TransferRequestDTO request) {
+        // Extraer el userId del token (asumiendo que tienes una utilidad para esto)
+        Long userId = JWTTokenDecoder.getUserId(token);
 
-        // Realizar la transacción usando el token del usuario logueado
-        TransactionResponse transactionResponse = transactionService.performTransaction(
+        // Llamar al servicio de transacciones para realizar la transferencia
+        TransactionResponse response = transactionService.performTransaction(
                 token,
-                transferRequest.getUserId(),
-                transferRequest.getSourceAccountIdentifier(),
-                transferRequest.getTargetAccountIdentifier(),
-                transferRequest.getAmount(),
-                transferRequest.getCurrencySource(),
-                transferRequest.getCurrencyTarget()
+                userId,
+                request.getSourceAccountIdentifier(),
+                request.getTargetAccountIdentifier(),
+                request.getAmount(),
+                request.getCurrencySource(),
+                request.getCurrencyTarget()
         );
-        return ResponseEntity.ok(transactionResponse);
+
+        return ResponseEntity.ok(response);
     }
 }

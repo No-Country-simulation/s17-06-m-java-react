@@ -14,16 +14,16 @@ public class TransactionDetailPayout {
     private Long idTransactionDetail; // ID único del detalle de la transacción (clave primaria)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_transaction", nullable = false)
+    @JoinColumn(name = "id_transaction")
     private TransactionPayout transaction; // Relación con la entidad Transaction
 
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount")
     private Double amount; // Monto involucrado en esta transacción específica
 
     @Column(name = "final_amount")
     private Double finalAmount; // Monto final después de tarifas o conversiones (si aplica)
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt; // Fecha y hora de creación del detalle
 
     @Column(name = "currency_source", length = 10)
