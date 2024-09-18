@@ -58,7 +58,7 @@ Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar d
 - [GitHub del Proyecto](https://github.com/No-Country-simulation/s17-06-m-java-react)
 - [Diagrama ER](https://lucid.app/lucidchart/68bb1f67-e400-4470-9c10-306a7f78667d/edit?invitationId=inv_c99d1216-34b1-4fd6-b814-b66776942b1c&page=0_0#)
 - [Despliegue de Backend]()
-- [Video de Presentación]()
+- [Diapositivas de Presentación](https://johitatarabelli.atlassian.net/wiki/x/JoAU)
 - [Discurso Promocional](https://johitatarabelli.atlassian.net/wiki/spaces/~7120209b84348375644d2897abedce685fc0d4/pages/4063233)
 - [Sitio Web](https://payout-wallet.vercel.app/)
 
