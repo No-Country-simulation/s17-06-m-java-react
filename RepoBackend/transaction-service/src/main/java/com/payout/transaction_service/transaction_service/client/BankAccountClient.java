@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "bank-account-service", url = "https://localhost:7076/bank_account")
+@FeignClient(name = "bank-account-service", url = "http://localhost:7090/bank_account")
 public interface BankAccountClient {
 
     @GetMapping("/{id}/balance")

@@ -5,6 +5,7 @@ import com.payout.transaction_service.transaction_service.client.UserClient;
 import com.payout.transaction_service.transaction_service.domain.TransactionPayout;
 import com.payout.transaction_service.transaction_service.domain.TransactionDetailPayout;
 import com.payout.transaction_service.transaction_service.enums.CurrencyType;
+import com.payout.transaction_service.transaction_service.enums.TransactionType;
 import com.payout.transaction_service.transaction_service.model.dto.*;
 import com.payout.transaction_service.transaction_service.repository.TransactionDetailRepository;
 import com.payout.transaction_service.transaction_service.repository.TransactionRepository;
@@ -51,8 +52,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TransactionResponse performTransaction(String token, Long userId, String sourceAccountIdentifier, String targetAccountIdentifier, Double amount, String currencySource, String currencyTarget) {
         // Consultar la información del usuario desde el auth-service
-        UserBasic user = userClient.findByUserId(userId);
-
+        GenericResponse<UserBasic> genericResponse = userClient.readById(0L,token);
+        Long idUser = genericResponse.getData().get(0).getIdUser();
+        GenericResponse<UserBasic> genericResponseData = userClient.readById(idUser,token);
+        UserBasic user = genericResponseData.getData().get(0);
         // Verificar si el sourceAccountIdentifier es CVU (numérico) o alias (alfanumérico)
         BankBasic sourceAccount = identifyAccount(sourceAccountIdentifier);
 
@@ -72,12 +75,15 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setIdSourceAccount(sourceAccount.getIdBankAccount());
         transaction.setIdTargetAccount(targetAccount.getIdBankAccount());
         transaction.setAmount(amount);
+        transaction.setSourceCvu(sourceAccount.getCvu());
+        transaction.setTargetCvu(targetAccount.getCvu());
         transaction.setCreatedAt(LocalDateTime.now());
+        transaction.setType(TransactionType.TRANSFERENCIA);
         transactionRepository.save(transaction);
 
         // Crear y guardar los detalles de la transacción
         TransactionDetailPayout transactionDetail = new TransactionDetailPayout();
-        transactionDetail.setIdTransactionDetail(transaction.getIdTransaction());
+        transactionDetail.setTransaction(transaction);
         transactionDetail.setAmount(amount);
         transactionDetail.setFinalAmount(amount);  // Si hubiera comisión, ajusta aquí
         transactionDetail.setCreatedAt(LocalDateTime.now());
