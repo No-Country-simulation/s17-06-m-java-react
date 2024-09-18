@@ -72,7 +72,7 @@ const Actividad = () => {
             
             {/* Botones para filtrar actividades y el buscador */}
             <section className='flex flex-col-reverse md:flex-row justify-between items-center  mb-6'>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 md:gap-4'>
                     {options.map(({ id, name, filterType }) => (
                         <ActivityButton
                             key={id}
@@ -84,16 +84,17 @@ const Actividad = () => {
                 </div>
                 
                 {/* Buscador */}
+                <div className='flex items-center border bg-white rounded-3xl w-full md:w-[300px]'>
                 
-                    <FaSearch className='  text-black' />
+                    <FaSearch className=' ml-4 text-primario' />
                     <input
                         type='text'
                         value={searchQuery}
                         onChange={handleSearch}
                         placeholder='Buscar por tipo o número'
-                        className='pl-10 pr-4 py-2 text-black border rounded-3xl w-full md:w-80 focus:outline-none focus:border-gray-500'
+                        className='pl-5 pr-5 py-2 text-black rounded-3xl w-80 focus:outline-none '
                     />
-              
+              </div>
             </section>
 
             {/* Renderizado de actividades agrupadas por fecha */}
