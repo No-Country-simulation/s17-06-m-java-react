@@ -60,7 +60,7 @@ const BankAccountField = ({ onChangeAccount }) => {
 
     const fetchAmountDetails = useCallback(async () => {
         if (value) {
-            const response = await fetch('https://payout.redromsolutions.com/transferencia', {
+            const response = await fetch('https://payout.redromsolutions.com/transfer/v1', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ identifier: value }),
@@ -103,9 +103,23 @@ const BankAccountField = ({ onChangeAccount }) => {
 const Monto = () => {
     const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const navigate = useNavigate();
-    const handleContinuar = () => {
-        setCurrentStep(3);
-        navigate('/transferencia/revision');
+
+    const handleSubmit = async (values, { setSubmitting }) => {
+        const response = await fetch('/api/transaction/v1/transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+        });
+
+        if (response.ok) {
+            setCurrentStep(3);
+            navigate('/transferencia/revision', { replace: true });
+        } else {
+            console.error('Error:', response.status, response.statusText);
+            setSubmitting(false);
+        }
     };
 
     const [initialValues, setInitialValues] = useState({
@@ -127,7 +141,7 @@ const Monto = () => {
         <section className="flex flex-col gap-4 h-full">
             <Formik
                 initialValues={initialValues}
-                onSubmit={() => console.log('Formulario enviado: ', initialValues)}
+                onSubmit={handleSubmit}
                 validationSchema={schema}
             >
                 {({ values }) => (
@@ -182,7 +196,8 @@ const Monto = () => {
                             <ErrorMessage name="cuentaBancaria" component="p" className='custom-error-message' />
                         </div>
                         <div className="flex">
-                            <button onClick={handleContinuar} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
+
+                            <button onClick={() => handleSubmit()} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
                         </div>
                     </Form>
                 )}

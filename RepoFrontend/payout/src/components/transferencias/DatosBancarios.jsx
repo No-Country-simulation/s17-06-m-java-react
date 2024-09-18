@@ -5,18 +5,18 @@ import { useNavigate } from "react-router-dom"
 import { TransferenciaContext } from "../../contexts/TransferenciaContext"
 
 const schema = Yup.object().shape({
-/*   identifier: Yup.string()
+  identifier: Yup.string()
   .required('Este campo es obligatorio')
   .test('is-valid', 'El valor ingresado no es válido.', (value) => {
     // Validación para CBU
-    const isCBU = /^\d{22}$/.test(value);
+    const isCBU = /^\d{19}$/.test(value);
     // Validacón para CVU
-    const isCVU = /^\d{22}$/.test(value);
+    const isCVU = /^\d{19}$/.test(value);
     //Validación para Alias
     const isAlias = /^[a-zA-Z0-9.-]{6,20}$/.test(value);
 
     return isCBU || isCVU || isAlias;
-  }), */
+  }),
 })
 
 export const DatosBancarios = () => {
@@ -30,7 +30,7 @@ export const DatosBancarios = () => {
   };
 
   const handleSubmit = async ({ identifier }) => {
-/*     const url = 'https://payout.redromsolutions.com/transferencia';
+    const url = 'https://payout.redromsolutions.com/transaction/v1/transfer';
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -42,7 +42,7 @@ export const DatosBancarios = () => {
       handleContinuar();
     } else {
       console.error(await response.json());
-    } */
+    }
   };
 
   return (
@@ -50,7 +50,7 @@ export const DatosBancarios = () => {
         <Formik
           initialValues={{ identifier: '' }}
           validationSchema={schema}
-          onSubmit={console.log('envio')}
+          onSubmit={handleSubmit}
         >
           {({ errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <Form className="flex flex-col gap-6 items-center mt-[10vh] w-full">
@@ -75,7 +75,8 @@ export const DatosBancarios = () => {
                 </div>
               </div>
               <div className="flex">
-              <button type="button" onClick={handleContinuar} className='mt-[21vh] md:mt-0 bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 hover:bg-green-600 transition duration-200'>Continuar</button>
+              <button type="submit" onClick={() => handleSubmit()} 
+              className='mt-[21vh] md:mt-0 bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 hover:bg-green-600 transition duration-200'>Continuar</button>
               </div>
             </Form>
           )}
