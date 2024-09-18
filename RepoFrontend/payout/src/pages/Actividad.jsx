@@ -71,8 +71,8 @@ const Actividad = () => {
             <h3 className='font-semibold py-4 text-left'>Mi Actividad</h3>
             
             {/* Botones para filtrar actividades y el buscador */}
-            <section className='flex flex-col-reverse md:flex-row justify-between items-center  mb-6'>
-                <div className='flex gap-2 md:gap-4'>
+            <section className='flex flex-col-reverse md:flex-row justify-between md:items-center  mb-6 gap-4'>
+                <div className='flex justify-between gap-2 md:gap-4'>
                     {options.map(({ id, name, filterType }) => (
                         <ActivityButton
                             key={id}
