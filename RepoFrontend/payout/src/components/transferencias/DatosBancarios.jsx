@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { TransferenciaContext } from "../../contexts/TransferenciaContext"
 
 const schema = Yup.object().shape({
-  identifier: Yup.string()
+/*   identifier: Yup.string()
   .required('Este campo es obligatorio')
   .test('is-valid', 'El valor ingresado no es válido.', (value) => {
     // Validación para CBU
@@ -16,7 +16,7 @@ const schema = Yup.object().shape({
     const isAlias = /^[a-zA-Z0-9.-]{6,20}$/.test(value);
 
     return isCBU || isCVU || isAlias;
-  }),
+  }), */
 })
 
 export const DatosBancarios = () => {
@@ -29,39 +29,30 @@ export const DatosBancarios = () => {
     navigate('/transferencia/monto'); 
   };
 
-  const handleSubmit = async (values) => {
-    const url = 'https://payout.redromsolutions.com/transferencia';
-    const data = {
-      identifier: values.identifier,
-      example: 'hola' // Hardcode de hola
-    };
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      const json = await response.json();
-      if (response.ok) {
-        console.log(json);
-      } else {
-        console.error(json);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const handleSubmit = async ({ identifier }) => {
+/*     const url = 'https://payout.redromsolutions.com/transferencia';
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ identifier }),
+    });
+
+    if (response.ok) {
+      await response.json();
+      handleContinuar();
+    } else {
+      console.error(await response.json());
+    } */
   };
 
   return (
       <section className="flex flex-col gap-4">
         <Formik
           initialValues={{ identifier: '' }}
-          onSubmit={handleSubmit}
           validationSchema={schema}
+          onSubmit={console.log('envio')}
         >
-          {({ values, handleSubmit }) => (
+          {({ errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <Form className="flex flex-col gap-6 items-center mt-[10vh] w-full">
               <div className="flex flex-col md:justify-center md:px-0 items-center gap-6 bg-grisclaro md:bg-white rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] h-[40vh]">
                 <article className="mt-[4rem] md:mt-0 flex items-center justify-center">
@@ -77,12 +68,14 @@ export const DatosBancarios = () => {
                 </article>
                 <div className="flex flex-col items-start gap-2">
                   <label htmlFor="cvu/alias" className="text-primario font-bold text-sm">CBU/CVU o Alias</label>
-                  <Field className="md:w-[18vw] w-[70vw] text-black m-0 py-2 border md:bg-secundario shadow-md rounded-2xl md:rounded-lg text-sm px-2 outline-none" id="cvu/alias" type="text" name="cvu/alias" />
-                  <ErrorMessage name="cvu/alias" component="p" className='custom-error-message' />
+                  <Field 
+                  className="md:w-[18vw] w-[70vw] text-black m-0 py-2 border md:bg-secundario shadow-md rounded-2xl md:rounded-lg text-sm px-2 outline-none" 
+                  id="identifier" type="text" name="identifier" placeholder='Ingrese su CBU, CVU o Alias' onChange={handleChange} onBlur={handleBlur} />
+                  <ErrorMessage name="identifier" component="p" className='custom-error-message' />
                 </div>
               </div>
               <div className="flex">
-              <button onClick={handleContinuar} className='mt-[21vh] md:mt-0 bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 hover:bg-green-600 transition duration-200'>Continuar</button>
+              <button type="button" onClick={handleContinuar} className='mt-[21vh] md:mt-0 bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 hover:bg-green-600 transition duration-200'>Continuar</button>
               </div>
             </Form>
           )}
