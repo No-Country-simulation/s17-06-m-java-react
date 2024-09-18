@@ -54,8 +54,7 @@ export const Perfil = () => {
         apellidos: '',
         telefono: '',
         direccion: '',
-        email: '',
-        username: ''
+        email: ''        
     });    
 
     
@@ -80,8 +79,7 @@ export const Perfil = () => {
                     apellidos: userData.userDetail.lastName,
                     telefono: userData.phone,
                     direccion: userData.userDetail.address,
-                    email: userData.email,
-                    username: ''
+                    email: userData.email                    
                 });
             });
     }, []);
@@ -202,12 +200,7 @@ export const Perfil = () => {
                                                 <p className='text-black text-start p-0'>Dirección</p>
                                                 <Field className="w-full md:w-[300px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="direccion" />
                                                 <ErrorMessage name="direccion" component="p" className='text-red-500' />
-                                            </div>
-                                            <div id='usuario' className='px-1 pt-2 md:pt-0'>
-                                                <p className='text-black text-start p-0'>Nombre de usuario</p>
-                                                <Field className="w-full md:w-[300px] text-black m-0 py-1  md:py-1.5 pl-4 border border-gris rounded-lg text-sm" type="text" name="username"/>
-                                                <ErrorMessage name="username" component="p" className='text-red-500' />
-                                            </div>
+                                            </div>                                            
                                         </div>
             
                                         
