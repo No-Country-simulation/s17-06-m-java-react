@@ -1,6 +1,7 @@
 package com.payout.bank_account_service.controllers;
 
 import com.payout.bank_account_service.dto.AccountBalanceResponse;
+import com.payout.bank_account_service.dto.UserBasic;
 import com.payout.bank_account_service.models.BankAccount;
 import com.payout.bank_account_service.services.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +96,11 @@ public class BankAccountController {
     @GetMapping("/bytoken")
     public ResponseEntity<List<BankAccount>> getAllBankAccountsByToken(@RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(bankAccountService.getAllByToken(token));
+    }
+
+    @GetMapping("/datauser/{identifier}")
+    public ResponseEntity<UserBasic> getAllBankAccountsByIdentifier(@RequestHeader("Authorization") String token,@PathVariable String identifier) {
+        return ResponseEntity.ok(bankAccountService.getAllBankAccountsByIdentifier(identifier,token));
     }
 
 

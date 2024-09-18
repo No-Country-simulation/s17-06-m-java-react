@@ -1,5 +1,6 @@
 package com.payout.bank_account_service.services;
 
+import com.payout.bank_account_service.Exceptions.BankAccountNotFoundException;
 import com.payout.bank_account_service.dto.GenericResponse;
 import com.payout.bank_account_service.dto.UserBasic;
 import com.payout.bank_account_service.feingClient.UserClient;
@@ -7,6 +8,8 @@ import com.payout.bank_account_service.models.BankAccount;
 import com.payout.bank_account_service.repositories.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -105,13 +108,18 @@ public class BankAccountService {
     }
 
     public BankAccount findByAlias(String alias) {
-        return bankAccountRepository.findByAlias(alias)
-                .orElseThrow(() -> new RuntimeException("Account not found with alias: " + alias));
+        Optional<BankAccount> optionalBankAccount = bankAccountRepository.findByAlias(alias);
+        if (optionalBankAccount.isEmpty()){
+            throw new BankAccountNotFoundException("Account not found with alias: " + alias);
+        }
+        return optionalBankAccount.get();
+        //return bankAccountRepository.findByAlias(alias)
+                //.orElseThrow(() -> new RuntimeException("Account not found with alias: " + alias));
     }
 
     public BankAccount findByCvu(Long cvu) {
         return bankAccountRepository.findByCvu(cvu)
-                .orElseThrow(() -> new RuntimeException("Account not found with CVU: " + cvu));
+                .orElseThrow(() -> new BankAccountNotFoundException("Account not found with CVU: " + cvu));
     }
 
     private long generarNumeroAleatorio(Long primerDigito,int longitud) {
@@ -135,5 +143,24 @@ public class BankAccountService {
     public List<BankAccount> getAllByToken(String token) {
         GenericResponse<UserBasic> genericResponse = userClient.readById(0L,token);
         return bankAccountRepository.findAllByIdUser(genericResponse.getData().get(0).getIdUser());
+    }
+
+    public UserBasic getAllBankAccountsByIdentifier(String identifier,String token) {
+        if (identifier.matches("\\d{19}")) {
+             Optional<BankAccount> optionalBankaAccout = bankAccountRepository.findByCvu(Long.parseLong(identifier));
+             if(optionalBankaAccout.isEmpty()){
+                 throw new BankAccountNotFoundException("Account not found with CVU: " + identifier);
+             }
+             GenericResponse<UserBasic> genericResponse = userClient.readById(optionalBankaAccout.get().getIdUser(), token);
+                return genericResponse.getData().get(0);
+        } else {
+            // Si no, se considera un alias
+            Optional<BankAccount> optionalBankaAccout = bankAccountRepository.findByAlias(identifier);
+            if(optionalBankaAccout.isEmpty()){
+                throw new BankAccountNotFoundException("Account not found with alias: " + identifier);
+            }
+            GenericResponse<UserBasic> genericResponse = userClient.readById(optionalBankaAccout.get().getIdUser(), token);
+            return genericResponse.getData().get(0);
+        }
     }
 }
