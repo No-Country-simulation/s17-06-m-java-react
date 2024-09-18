@@ -63,8 +63,8 @@ public class BankAccountService {
     public BankAccount createBankAccount(BankAccount bankAccount) {
         bankAccount.setCreatedAt(LocalDateTime.now());
         bankAccount.setUpdatedAt(LocalDateTime.now());
-        bankAccount.setBankAccount(generarNumeroAleatorio(19));
-        bankAccount.setCvu(generarNumeroAleatorio(19));
+        bankAccount.setBankAccount(generarNumeroAleatorio(3L,19));
+        bankAccount.setCvu(generarNumeroAleatorio(7L,19));
         bankAccount.setBalance(0.0);
         bankAccount.setAlias(this.generarAliasAleatorio());
         return bankAccountRepository.save(bankAccount);
@@ -114,11 +114,14 @@ public class BankAccountService {
                 .orElseThrow(() -> new RuntimeException("Account not found with CVU: " + cvu));
     }
 
-    private long generarNumeroAleatorio(int longitud) {
-        long numero = 0L;
-        for (int i = 0; i < longitud; i++) {
+    private long generarNumeroAleatorio(Long primerDigito,int longitud) {
+        long numero = primerDigito;
+        //StringBuilder numero = new StringBuilder(primerDigito.toString());
+        for (int i = 1; i < longitud; i++) {
             numero = numero * 10 + random.nextInt(10);
+            //numero.append(random.nextInt(10));
         }
+        //return Long.parseLong(numero.toString());
         return numero;
     }
 
