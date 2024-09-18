@@ -10,7 +10,7 @@ const ActivityButton = ({  text, isSelected, onClick }) => {
           : "bg-white  text-black font-semibold rounded-3xl shadow-md hover:bg-grisclaro focus:outline-none focus:ring-5 focus:ring-gris focus:ring-opacity-50" // Sin diseño para no seleccionado
       }`}>
         
-        <span class='px-2 py-1'>{text}</span>
+        <span class='px-2 py-1 text-xs md:text-m'>{text}</span>
       </button>
     </li>
   )
