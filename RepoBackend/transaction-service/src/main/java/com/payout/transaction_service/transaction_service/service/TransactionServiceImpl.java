@@ -79,6 +79,11 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setTargetCvu(targetAccount.getCvu());
         transaction.setCreatedAt(LocalDateTime.now());
         transaction.setType(TransactionType.TRANSFERENCIA);
+        transaction.setSourceAlias(sourceAccount.getAlias());
+        transaction.setTargetAlias(targetAccount.getAlias());
+        transaction.setTargetUserFullName(user.getFirstName() + " " + user.getLastName());
+        transaction.setUserId(idUser);
+        transaction.setCreatedAt(LocalDateTime.now());
         transactionRepository.save(transaction);
 
         // Crear y guardar los detalles de la transacción
@@ -105,6 +110,8 @@ public class TransactionServiceImpl implements TransactionService {
                 .balance(balance - amount)  // Saldo luego de la transacción
                 .targetAccountCvu(targetAccount.getCvu())
                 .targetAccountAlias(targetAccount.getAlias())
+                .createdAt(LocalDateTime.now())
+                .userId(idUser)
                 .build();
     }
 
