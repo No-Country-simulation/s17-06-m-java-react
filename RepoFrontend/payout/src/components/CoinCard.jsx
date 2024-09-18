@@ -58,11 +58,11 @@ export const infoSaldos = [
 
 const CoinCard = ({ image, coin, saldo, cbu }) => {
     return (
-            <div className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
+            <div className="lg:w-[250px] xl:w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4  flex-shrink-0">
                 {/* Banda superior blanca */}
                 <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
                     <img src={image} className='w-[40px] h-[40px]' alt={coin} />
-                    <p className='text-primario font-semibold'>{coin}</p>
+                    <p className= 'text-start text-primario font-semibold'>{coin}</p>
                 </div>
                 {/* Contenido del div principal */}
                 <div className="pt-12 flex flex-col items-start">

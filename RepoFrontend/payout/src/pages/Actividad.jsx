@@ -58,7 +58,7 @@ const Actividad = () => {
         const options = [
             {
                 id: 1, 
-                name: 'Pagoss'
+                name: 'Pagos'
             },
             {
                 id: 2,

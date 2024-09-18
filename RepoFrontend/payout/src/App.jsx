@@ -23,15 +23,11 @@ function App() {
 
 
 
-  const handleActivate = () => {
-    setLight(!light);
+  const handleActivate = () => setLight(true);
     // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
-  };
 
-  const handleDeactivate = () => {
-    setLight(!light);
+  const handleDeactivate = () => setLight(false);
     // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
-  };
 
 
 

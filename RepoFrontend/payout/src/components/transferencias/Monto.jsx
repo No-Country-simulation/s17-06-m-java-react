@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import Select from 'react-select';
-import { useState, useContext } from "react";
+import { useState, useContext, useCallback, useEffect } from "react";
 import { TransferenciaContext } from "../../contexts/TransferenciaContext.jsx";
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
@@ -11,16 +11,19 @@ import DatosBancarios from "./DatosBancarios";
 import BankModal from "./BankModal.jsx"
 
 const schema = Yup.object().shape({
-    envia: Yup.string()
-        .min('El mìnimo de envío es el equivalente a $10 USD')
+    amount: Yup.number()
+        .typeError('Ingrese un monto válido')
+        .positive('El monto debe ser mayor a cero')
+        .min(10, 'El mìnimo de envío es el equivalente a $10 USD')
         .required('Este campo es requerido'),
-    recibe: Yup.string()
-        .min('El mìnimo de envío es el equivalente a $10 USD')
+    currency: Yup.string()
+        .oneOf(['ARS', 'USD', 'EUR'])
         .required('Este campo es requerido'),
-    cuentaBancaria: Yup.string()
+    accountNumber: Yup.string()
         .required('Este campo es requerido')
         .typeError('Ha habido un error, vuelva a intentarlo.'),
 })
+
 
 // Opciones de divisas con íconos
 const currencyOptions = [
@@ -52,24 +55,30 @@ const CustomSelect = ({ options, field, form, ...props }) => (
     />
 );
 
-/* Componente para la cuenta bancaria */
 const BankAccountField = ({ onChangeAccount }) => {
-    const [field] = useField('cuentaBancaria');
+    const [field, { value }] = useField('cuentaBancaria');
 
-    /* Modal para cambiar datos de la cuenta bancaria */
-    const [showModal, setShowModal] = useState(false);
+    const fetchAmountDetails = useCallback(async () => {
+        if (value) {
+            const response = await fetch('https://payout.redromsolutions.com/transfer/v1', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ identifier: value }),
+            });
 
-    const toggleModal = () => {
-        setShowModal(!showModal);
-    };
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('amountSend', data.amountSend);
+                localStorage.setItem('currencySend', data.currencySend);
+                localStorage.setItem('amountReceive', data.amountReceive);
+                localStorage.setItem('currencyReceive', data.currencyReceive);
+            }
+        }
+    }, [value]);
 
-    const renderModal = () => {
-        return (
-            <BankModal onClose={toggleModal}>
-                <DatosBancarios />
-            </BankModal>
-        );
-    };
+    useEffect(() => {
+        fetchAmountDetails();
+    }, [fetchAmountDetails]);
 
     return (
         <>
@@ -77,9 +86,9 @@ const BankAccountField = ({ onChangeAccount }) => {
                 <svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 41H40M4.11111 34.615H37.8889M8.33333 34.615V23.9732M16.7778 34.615V23.9732M25.2222 34.615V23.9732M33.6667 34.615V23.9732M21 11.2177L21.0156 11.2034M40 17.5882L25.4882 4.58347C23.9 3.16033 23.106 2.44878 22.2101 2.17854C21.4205 1.94049 20.5795 1.94049 19.7899 2.17854C18.894 2.44878 18.1 3.16033 16.5119 4.58347L2 17.5882H40Z" stroke="#A483DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <span className="font-semibold">{field.value || 'Cuenta bancaria ingresada'}</span>
+                <span className="font-semibold">{value || 'Cuenta bancaria ingresada'}</span>
             </div>
-            <button type="button" className="bg-gray-200 text-primario p-2 rounded-3xl" onClick={toggleModal}>
+            <button type="button" className="bg-gray-200 text-primario p-2 rounded-3xl" onClick={onChangeAccount}>
                 <div className="flex items-center gap-2">
                     <span>Cambiar</span>
                     <svg width="10" height="10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,46 +96,46 @@ const BankAccountField = ({ onChangeAccount }) => {
                     </svg>
                 </div>
             </button>
-            {showModal && renderModal()}
         </>
     );
 };
 
 const Monto = () => {
+    const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (values, { setSubmitting }) => {
+        const response = await fetch('/api/transaction/v1/transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+        });
+
+        if (response.ok) {
+            setCurrentStep(3);
+            navigate('/transferencia/revision', { replace: true });
+        } else {
+            console.error('Error:', response.status, response.statusText);
+            setSubmitting(false);
+        }
+    };
+
     const [initialValues, setInitialValues] = useState({
-        /* Selecciona una divisa */
         amountSend: '',
         currencySend: 'ARS',
         amountReceive: '',
         currencyReceive: 'USD',
-
-        /* Selecciona una cuenta */
-        envia: '',
-        recibe: '',
         cuentaBancaria: '',
     });
 
-    /* Gestiona el stepper */
-    const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
-    const navigate = useNavigate();
-    const handleContinuar = () => {
-        setCurrentStep(3);
-        navigate('/transferencia/revision');
-    };
-
-
-    const handleSubmit = (values) => {
-        console.log('Formulario enviado:', values)
-    }
-
     const handleChangeAccount = () => {
-        setInitialValues({
-            ...initialValues,
+        setInitialValues(prevState => ({
+            ...prevState,
             cuentaBancaria: 'Cuenta cambiada',
-        })
-        console.log('Cuenta cambiada');
-    }
-
+        }));
+    };
 
     return (
         <section className="flex flex-col gap-4 h-full">
@@ -135,7 +144,7 @@ const Monto = () => {
                 onSubmit={handleSubmit}
                 validationSchema={schema}
             >
-                {({ values, handleSubmit, setFieldValue }) => (
+                {({ values }) => (
                     <Form className="flex flex-col w-full items-center gap-5 mt-[10vh] md:mt-[2vh]">
                         <h3 className="text-center font-bold text-xl md:text-2xl">¿Cuánto estás enviando?</h3>
                         {/* Campo para el monto a enviar */}
@@ -184,10 +193,11 @@ const Monto = () => {
                             <div className="flex input-container bg-white text-black text-xs md:text-m w-[90vw] md:w-[40vw] py-5 rounded-lg items-center justify-between px-3" style={{ zIndex: '2' }}>
                                 <BankAccountField onChangeAccount={handleChangeAccount} />
                             </div>
-                            <ErrorMessage name="cvu/alias" component="p" className='custom-error-message' />
+                            <ErrorMessage name="cuentaBancaria" component="p" className='custom-error-message' />
                         </div>
                         <div className="flex">
-                            <button onClick={handleContinuar} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
+
+                            <button onClick={() => handleSubmit()} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
                         </div>
                     </Form>
                 )}
@@ -196,4 +206,4 @@ const Monto = () => {
     )
 }
 
-export default Monto
+export default Monto;

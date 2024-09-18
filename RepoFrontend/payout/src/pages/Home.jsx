@@ -57,7 +57,7 @@ const Home = ( ) => {
           <div
             {...handlers}
             ref={carruselRef}
-            className="flex w-full gap-6 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
+            className="flex w-full gap-3 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
           >
             <div id="card1" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
               <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
@@ -95,7 +95,7 @@ const Home = ( ) => {
 
 
           {/* FILA SALDOS DESKTOP*/}
-          <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-6 overflow-hidden'>
+          <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-3 overflow-hidden'>
             {infoSaldos.map(({ id, image, coin, saldo, cbu }) => (
               <CoinCard
                 key={id}
@@ -121,20 +121,7 @@ const Home = ( ) => {
                 texto={texto}
                 path={path}                
               />
-            ))}
-
-            {/* BOTON BLANCO SIGNO + */}
-            <div className='flex flex-col justify-center items-center gap-2'>
-              <div className="w-[48px] h-[48px] md:w-[85px] md:h-[85px] md:min-w-[85px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario">
-                <p className='text-primario'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                </p>
-                {/* <p className='hidden md:block md:text-primario md:font-semibold'>XXX</p>  */}
-              </div>
-              <p className='md:hidden text-xs'>XXX</p>
-            </div>
-
+            ))} 
           </div>
 
 

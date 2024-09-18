@@ -7,7 +7,11 @@ import  campanaVioleta  from '../components/atoms/assets/campanaVioleta.svg'
 import  ayudaVioleta  from '../components/atoms/assets/ayudaVioleta.svg'
 import  cerrarSesionVioleta  from '../components/atoms/assets/cerrarSesionVioleta.svg'
 
+import  notif  from '../assets/Notificaciones.png'
 import { FlechaTriangulito } from '../components/icons/flechaTriangulito';
+
+import { Ask } from '../components/icons/ask';
+import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack';
 
 
 
@@ -50,7 +54,25 @@ export const PrevPerfil = () => {
 
 
     return (
-        <>            
+        <>    
+        {/* BANNER MOBILE*/}        
+            <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
+                <section className='flex'>
+                    <button onClick={()=>navigate(-1)} className='flex text-white whitespace-nowrap font-semibold'>
+                        <p className='w-6 h-6 absolute left-2 flex items-center'>
+                            <span className='left-7 absolute'>Perfil</span>
+                            <FlechaTriangulitoBack/>
+                        </p>
+                    </button>
+                    <div className='absolute right-4 flex gap-4'>
+                        <img src={notif} className='w-[24px] h-[24px] items-center' alt="" />
+                        <p className='text-white '>
+                            <Ask/>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
             <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
@@ -93,7 +115,7 @@ export const PrevPerfil = () => {
 
                     {/* LINEA AYUDA */}
                     <div className='flex justify-between py-5 border-b border-primario'>                       
-                        <button className='flex gap-2' onClick={()=>navigate('')}>
+                        <button className='flex gap-2' onClick={()=>navigate('/help')}>
                             <img src={ayudaVioleta} alt="" />
                             <p className='font-semibold'>Ayuda</p>
                         </button>

@@ -10,7 +10,7 @@ function HomeApp() {
   const navigate = useNavigate();
   const location = useLocation();
   const { light, onActivate, onDeactivate } = useOutletContext();
-  const showBanner = location.pathname === '/home' || location.pathname === '/actividad' ;
+  const showBanner = location.pathname === '/home' || location.pathname === '/actividad' || location.pathname === '/perfil' ;
 
   return (
     <>
