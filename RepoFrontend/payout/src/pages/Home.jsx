@@ -192,7 +192,7 @@ const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
                 
             {Object.keys(groupedActivities).map(date => (
                 <div className='flex flex-col' key={date}>
-                    <h3 className='self-start py-2'>{date}</h3>
+                    <h3 className='self-start py-1'>{date}</h3>
                     {groupedActivities[date].map(({ idTransaction, sourceName, targetName, amount, createdAt, type }) => (
                         <ActivityItem
                             key={idTransaction}
