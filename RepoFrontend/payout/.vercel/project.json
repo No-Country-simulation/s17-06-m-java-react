@@ -1,0 +1,9 @@
+{
+    "orgId":"team_kj9TTwnXb5oaJGmO5sXUn2lP","projectId":"prj_2543JtzvutzQnQYflhhrMmMCfLdv",
+    "git": {
+        "deploymentEnabled": {
+            "main": false,
+            "develop": true
+        }
+    }
+}

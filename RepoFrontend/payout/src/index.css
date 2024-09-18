@@ -2,27 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-h1, h2 {
-    font-family: theme('fontFamily.sans');
-    @apply text-primario;
-}
-
 @layer utilities {
     .shadow-up-md {
         box-shadow: 0px -4px 4px 0px rgba(8, 8, 8, 0.20);
     }
+
     .shadow-down-dark-md {
         box-shadow: 0px 5px 4px 0px rgba(8, 8, 8, 0.20);
     }
+
     .shadow-up-dark-md {
-        box-shadow: 0px -4px 4px 0px rgba(8, 8, 8, 0.20);        
+        box-shadow: 0px -4px 4px 0px rgba(8, 8, 8, 0.20);
     }
-  
+
     .leading-custom {
-        line-height: 1.3rem; /* 20.8px */
-      }
+        line-height: 1.3rem;
+        /* 20.8px */
+    }
+
     .shadow-combined {
         box-shadow: inset 0px 4px 4px 0px rgba(8, 8, 8, 0.101), 0px 4px 4px 0px rgba(8, 8, 8, 0.20);
     }
-  }
 
+    /* Custom Button */
+    .custom-button {
+        @apply w-full py-3.5 px-4 bg-primario text-white rounded-lg text-xl font-['Montserrat'] font-semibold;
+    }
+    
+    /* Estilos para el botón de la barra de navegación */
+    .nav-button {
+        @apply px-4 py-2 rounded-lg text-sm bg-white;
+    }
+}
