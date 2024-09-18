@@ -58,16 +58,16 @@ const ActivityItem = ({ name, activityType, amount, time }) => {
     const activity = formatActivityType(activityType);
 
     return (
-        <div className='flex justify-between py-3 border-b border-primario'>
+        <div className='flex justify-between py-3 border-b border-primarioclaro'>
             <div className='flex items-center gap-5'>
                 <p>{icon}</p>
                 <div className='text-start'>
-                    <p className='font-bold'>{name}</p>
-                    <p className='text-primario font-medium'>{activity}</p>
+                    <p className='font-semibold'>{name}</p>
+                    <p className='text-primarioclaro font-medium'>{activity}</p>
                 </div>
             </div>
             <div className='flex flex-col items-end gap-1.5'>
-                <p className='font-bold'>{amount}</p>
+                <p className='font-semibold'>{amount}</p>
                 <p className='text-xs text-verde'>{time}</p>
             </div>
         </div>

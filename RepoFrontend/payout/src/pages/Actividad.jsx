@@ -2,34 +2,9 @@ import React,  { useState } from 'react';
 import ActivityItem from '../components/atoms/ActivityItem.jsx';
 import ActivityButton from '../components/atoms/ActivityButton.jsx';
 import { format } from 'date-fns';
+import {activities} from '../api/activityApi.js'
 
-const activities = [
-    
-    {
-        idTransaction: 1,
-        sourceName: 'Jose Luis',
-        targetName: 'Emma Garcia',
-        amount: -100.0,
-        createdAt: '2024-09-11T10:15:30',
-        type: 'TRANSFER'
-    },
-    {
-        idTransaction: 2,
-        sourceName: 'Jose Luis',
-        targetName: 'Amazon',
-        amount: -50.0,
-        createdAt: '2024-09-11T12:30:45',
-        type: 'PAYMENT'
-    },
-    {
-        idTransaction: 3,
-        sourceName: 'Emma Garcia',
-        targetName: 'Jose Luis',
-        amount: 200.0,
-        createdAt: '2024-09-10T09:45:00',
-        type: 'DEPOSIT'
-    }
-];
+
 
 // Función para agrupar actividades por fecha
 const groupActivitiesByDate = (activities) => {
