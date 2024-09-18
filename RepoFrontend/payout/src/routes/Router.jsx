@@ -19,6 +19,8 @@ import { CuentaPesos } from "../pages/CuentaPesos";
 import HomeApp from '../pages/HomeApp'
 import { AyudaPrincipal } from "../components/ayuda/AyudaPrincipal";
 import { FAQ } from "../components/ayuda/FAQ";
+import { CuentaDolares } from "../pages/CuentaDolares";
+import { CuentaEuros } from "../pages/CuentaEuros";
 
 
 
@@ -81,6 +83,14 @@ export const router = createBrowserRouter([
           {
             path: 'cuentapesos',
             element: <CuentaPesos />
+          },
+          {
+            path: 'cuentadolares',
+            element: <CuentaDolares/>
+          },
+          {
+            path: 'cuentaeuros',
+            element: <CuentaEuros/>
           },
           {
             path: 'help',

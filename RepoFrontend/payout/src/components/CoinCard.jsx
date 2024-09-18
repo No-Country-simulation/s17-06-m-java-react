@@ -1,6 +1,16 @@
 import argIcon  from '../assets/banderaArg.svg';
 import usaIcon from './atoms/assets/usa.png';
 import euroIcon from './atoms/assets/euro.png';
+import { useEffect, useState } from 'react';
+
+
+
+
+
+/* let montoPesos
+let montoDolares
+let montoEuros */
+
 
 /**
  * Array de información de saldos. Cada objeto en el array representa el saldo de una cuenta
@@ -8,27 +18,28 @@ import euroIcon from './atoms/assets/euro.png';
  * y el CBU asociado.
  */
 
+
 export const infoSaldos = [
     {
         id: 1,
         image: argIcon,
         coin:  'Peso Argentino',
-        saldo: '$800.000,00 ARS',
-        cbu: 'CBU 0123456'
+        /* saldo: `$ ${montoPesos} ARS` , */
+        /* cbu: 'CBU 0123456' */
     },
     {
         id: 2,
         image: usaIcon,
         coin:  'Dólares estadounidenses',
-        saldo: '$800,00 USD',
-        cbu: 'CBU XXXX'
+        /* saldo: `$ ${montoDolares} USD`, */
+        /* cbu: 'CBU XXXX' */
     },
     {
         id: 3,
         image: euroIcon,
         coin:  'Euros',
-        saldo: '$80,00 EUR',
-        cbu: 'CBU XXXX'
+        /* saldo: `€ ${montoEuros} EUR`, */
+        /* cbu: 'CBU XXXX' */
     }
 ]
 
@@ -56,7 +67,68 @@ export const infoSaldos = [
  * />
  */
 
-const CoinCard = ({ image, coin, saldo, cbu }) => {
+
+const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
+
+
+const CoinCard = ({ image, coin, /* saldo, cbu */ }) => {
+
+
+    const [montoPesos, setMontoPesos] = useState(''); 
+    const [montoDolares, setMontoDolares] = useState('');
+    const [montoEuros, setMontoEuros] = useState('');   
+
+    const [CVUPesos, setCVUPesos] = useState(''); 
+    const [CVUDolares, setCVUDolares] = useState('');
+    const [CVUEuros, setCVUEuros] = useState('');   
+    
+    
+
+    
+    
+    
+      /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
+    useEffect(() => {
+        fetch(urlBankInfo, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(data => data.json())
+            .then(data => {                
+                setMontoPesos(data[0].balance);
+                setMontoDolares(data[1].balance);
+                setMontoEuros(data[2].balance)
+                setCVUPesos(data[0].cvu);
+                setCVUDolares(data[1].cvu);
+                setCVUEuros(data[2].cvu)
+                console.log(data)
+            });
+    }, []);
+
+
+    let saldo;
+    if (coin === 'Peso Argentino') {
+        saldo = `$ ${montoPesos} ARS`;
+    } else if (coin === 'Dólares estadounidenses') {
+        saldo = `$ ${montoDolares} USD`;
+    } else if (coin === 'Euros') {
+        saldo = `€ ${montoEuros} EUR`;
+    }
+
+    let cvu;
+    if (coin === 'Peso Argentino') {
+        cvu = `CVU ${CVUPesos}`;
+    } else if (coin === 'Dólares estadounidenses') {
+        cvu = `CVU ${CVUDolares}`;
+    } else if (coin === 'Euros') {
+        cvu = `CVU ${CVUEuros}`;
+    }
+
+
+
     return (
             <div className="lg:w-[250px] xl:w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4  flex-shrink-0">
                 {/* Banda superior blanca */}
@@ -66,8 +138,8 @@ const CoinCard = ({ image, coin, saldo, cbu }) => {
                 </div>
                 {/* Contenido del div principal */}
                 <div className="pt-12 flex flex-col items-start">
-                    <p className="text-white text-lg">{saldo}</p>
-                    <p className="text-white text-sm">{cbu}</p>
+                    <p className="text-white text-sm">{saldo}</p>
+                    <p className="text-white text-sm">{cvu}</p>
                 </div>
             </div>
     )

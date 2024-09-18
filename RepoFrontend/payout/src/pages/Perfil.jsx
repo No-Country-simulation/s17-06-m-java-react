@@ -74,13 +74,28 @@ export const Perfil = () => {
             .then(data => data.json())
             .then(data => {
                 const userData = data.data[0];
-                setInitialValues({
+                console.log('data perfil', data)
+                if (userData.userDetail) {
+                    setInitialValues({
+                        nombres: userData.userDetail.name,
+                        apellidos: userData.userDetail.lastName,
+                        telefono: userData.phone,
+                        direccion: userData.userDetail.address,
+                        email: userData.email                    
+                    });
+                } else {
+                    setInitialValues({                        
+                        email: userData.email                    
+                    });
+                }
+
+                /* setInitialValues({
                     nombres: userData.userDetail.name,
                     apellidos: userData.userDetail.lastName,
                     telefono: userData.phone,
                     direccion: userData.userDetail.address,
                     email: userData.email                    
-                });
+                }); */
             });
     }, []);
 

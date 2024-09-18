@@ -58,7 +58,7 @@ export const PrevPerfil = () => {
         {/* BANNER MOBILE*/}        
             <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
                 <section className='flex'>
-                    <button onClick={()=>navigate(-1)} className='flex text-white whitespace-nowrap font-semibold'>
+                    <button onClick={()=>navigate('/home')} className='flex text-white whitespace-nowrap font-semibold'>
                         <p className='w-6 h-6 absolute left-2 flex items-center'>
                             <span className='left-7 absolute'>Perfil</span>
                             <FlechaTriangulitoBack/>
@@ -76,7 +76,7 @@ export const PrevPerfil = () => {
             <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
-            <div id='cuerpo-vista-home' className='w-full'>
+            <div id='cuerpo-vista-home' className='w-full md:w-auto'>
 
                 {/* FOTO, NOMBRE Y USUARIO */}
                 <div id='foto-y-username' className='flex flex-col gap-3 items-center pb-10'>
@@ -93,7 +93,7 @@ export const PrevPerfil = () => {
 
 
                 {/* TARJETA PERFIL */}
-                <div id='tarjeta-perfil' className='px-8 py-8 w-full bg-grisclaro rounded-3xl  shadow-down-dark-md text-primario'>
+                <div id='tarjeta-perfil' className='px-8 py-8 w-full md:w-[500px] bg-grisclaro rounded-3xl  shadow-down-dark-md text-primario'>
 
                     {/* LINEA DATOS PERSONALES */}
                     <div className='flex justify-between py-5 border-b border-primario'>                        

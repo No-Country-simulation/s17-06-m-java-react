@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import notif from '../assets/Notificaciones.png'
 import userimage from '../assets/userimage.png'
@@ -40,7 +41,40 @@ const Home = ( ) => {
     trackMouse: true, // También habilita el arrastre con el mouse para pruebas en escritorio
   });
 
+const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
 
+  const [montoPesos, setMontoPesos] = useState(''); 
+    const [montoDolares, setMontoDolares] = useState('');
+    const [montoEuros, setMontoEuros] = useState('');   
+
+    const [CVUPesos, setCVUPesos] = useState(''); 
+    const [CVUDolares, setCVUDolares] = useState('');
+    const [CVUEuros, setCVUEuros] = useState('');   
+
+  /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
+  useEffect(() => {
+    fetch(urlBankInfo, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+        .then(data => data.json())
+        .then(data => {                
+            setMontoPesos(data[0].balance);
+            setMontoDolares(data[1].balance);
+            setMontoEuros(data[2].balance)
+            setCVUPesos(data[0].cvu);
+            setCVUDolares(data[1].cvu);
+            setCVUEuros(data[2].cvu)
+            console.log(data)
+        });
+}, []);
+
+
+
+  
   return (
     <div className='flex'>
       
@@ -65,8 +99,8 @@ const Home = ( ) => {
                 <p className="text-start text-primario font-semibold">Peso Argentino</p>
               </div>
               <div className="pt-12">
-                <p className="text-start text-white text-lg">$800.000,00 ARS</p>
-                <p className="text-start text-white text-sm">CBU 0123456</p>
+                <p className="text-start text-white text-lg">${montoPesos} ARS</p>
+                <p className="text-start text-white text-sm">CVU ${CVUPesos}</p>
               </div>
             </div>
 
@@ -76,8 +110,8 @@ const Home = ( ) => {
                 <p className="text-primario font-semibold">Dólares estadounidenses</p>
               </div>
               <div className="pt-12">
-                <p className="text-start text-white text-lg">$800,00 USD</p>
-                <p className="text-start text-white text-sm">CBU XXXX</p>
+              <p className="text-start text-white text-lg">${montoDolares} USD</p>
+              <p className="text-start text-white text-sm">CVU ${CVUDolares}</p>
               </div>
             </div>
 
@@ -87,8 +121,8 @@ const Home = ( ) => {
                 <p className="text-primario font-semibold">Euros</p>
               </div>
               <div className="pt-12">
-                <p className="text-start text-white text-lg">$80,00 EUR</p>
-                <p className="text-start text-white text-sm">CBU 0123456</p>
+              <p className="text-start text-white text-lg">€{montoEuros} EUR</p>
+              <p className="text-start text-white text-sm">CVU ${CVUDolares}</p>
               </div>
             </div>
           </div>

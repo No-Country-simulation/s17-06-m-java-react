@@ -31,7 +31,8 @@ export const options = [
     {
         id: 4,
         image: ayudaIcon,
-        name: 'Ayuda'
+        name: 'Ayuda',
+        path: '/help'
     },
     {
         id: 5,
