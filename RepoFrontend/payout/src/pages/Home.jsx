@@ -9,13 +9,12 @@ import euroIcon from '../components/atoms/assets/euro.png';
 import OperationButton, { operations } from '../components/atoms/OperationButton.jsx';
 import NotificationItem, { activitiesNotif } from '../components/atoms/NotificationItem.jsx';
 import { Link } from 'react-router-dom';
-import Sidebar from '../components/Sidebar.jsx';
-import Banner from '../components/Banner.jsx'
 
-const Home = ({  light, onActivate, onDeactivate } ) => {
 
+const Home = ( ) => {
+  
   const lastThreeActivities = activitiesNotif.slice(0, 3);
-  console.log('light de home', light)
+
 
   const carruselRef = useRef(null);
 
@@ -48,7 +47,7 @@ const Home = ({  light, onActivate, onDeactivate } ) => {
 
       <section className='px-4 md:px-10 w-full'>
 
-        <Banner onActivate={onActivate} onDeactivate={onDeactivate} />
+        
         {/* CUERPO HOME */}
         <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
           <p className='font-semibold pb-4 flex items-start'>Tu cuenta PAYOUT</p>
@@ -58,7 +57,7 @@ const Home = ({  light, onActivate, onDeactivate } ) => {
           <div
             {...handlers}
             ref={carruselRef}
-            className="flex w-full gap-6 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
+            className="flex w-full gap-3 overflow-x-scroll scrollbar-hide scroll-smooth md:hidden"
           >
             <div id="card1" className="w-[320px] h-[127px] bg-primario rounded-2xl relative py-4 px-4 min-w-[320px] flex-shrink-0">
               <div className="absolute top-0 left-0 w-full h-[50px] dark:bg-white bg-grisclaro rounded-t-lg px-4 flex items-center gap-4">
@@ -96,7 +95,7 @@ const Home = ({  light, onActivate, onDeactivate } ) => {
 
 
           {/* FILA SALDOS DESKTOP*/}
-          <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-6 overflow-hidden'>
+          <section id='para-poner-en-fila-las-tarjetas' className='hidden md:flex w-full justify-between gap-3 overflow-hidden'>
             {infoSaldos.map(({ id, image, coin, saldo, cbu }) => (
               <CoinCard
                 key={id}
