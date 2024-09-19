@@ -45,7 +45,7 @@ const Revision = () => {
     const [datos, setDatos] = useState({});
     const { datosBancarios, monto } = useContext(TransferenciaContext);
 
-    useEffect(() => {
+    /* useEffect(() => {
         const obtenerDatos = async () => {
             const response = await fetch('https://payout.redromsolutions.com/transferencia', {
                 method: 'GET',
@@ -69,7 +69,7 @@ const Revision = () => {
 
         obtenerDatos();
     }, [datosBancarios, monto]);
-
+ */
     return (
 
         <section className='h-full'>
@@ -101,7 +101,7 @@ const Revision = () => {
                                 <Field
                                     name="nombre"
                                     type="text"
-                                    placeholder="@nombre"
+                                    value="Victor Molinas"
                                     className="w-full px-2 py-2 text-black focus:outline-none"
                                 />
                             </div>
@@ -114,16 +114,11 @@ const Revision = () => {
                             </label>
                             <div className="flex items-center bg-white rounded-lg p-2 w-[90vw] md:w-[40vw]">
                                 <Field
+                                    value="1000 ARS"      
                                     name="amountSend"
-                                    type="number"
-                                    placeholder="$0"
+                                    type="text"
+                                    placeholder="$"
                                     className="w-full px-2 py-2 text-black focus:outline-none"
-                                />
-                                <Field
-                                    name="currencySend"
-                                    component={CustomSelect}
-                                    options={currencyOptions}
-                                    className="w-64 ml-2 text-black font-semibold"
                                 />
                             </div>
                         </div>
@@ -135,16 +130,11 @@ const Revision = () => {
                             </label>
                             <div className="flex items-center bg-white rounded-lg p-2 w-[90vw] md:w-[40vw]">
                                 <Field
+                                    value='1000 ARS'
                                     name="amountReceive"
-                                    type="number"
+                                    type="text"
                                     placeholder="$0"
                                     className="w-full px-2 py-2 text-gray-800 focus:outline-none"
-                                />
-                                <Field
-                                    name="currencyReceive"
-                                    component={CustomSelect}
-                                    options={currencyOptions}
-                                    className="w-64 ml-2 text-black font-semibold"
                                 />
                             </div>
                         </div>
@@ -158,7 +148,7 @@ const Revision = () => {
                                 <Field
                                     name="cuentaBancaria"
                                     type="text"
-                                    placeholder="**** **** **** ****"
+                                    value='1128801662594826600'
                                     className="w-full px-2 py-2 text-black focus:outline-none"
                                 />
                             </div>
@@ -171,6 +161,7 @@ const Revision = () => {
                             </label>
                             <div className="flex items-center bg-white rounded-lg p-2 w-[90vw] md:w-[40vw]">
                                 <Field
+                                value='Sabio.Estrella.Rojo'
                                     name="alias"
                                     type="text"
                                     placeholder="Alias"
