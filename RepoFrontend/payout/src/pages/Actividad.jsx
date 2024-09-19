@@ -1,35 +1,9 @@
-import React,  { useState } from 'react';
+import React, { useState } from 'react';
 import ActivityItem from '../components/atoms/ActivityItem.jsx';
 import ActivityButton from '../components/atoms/ActivityButton.jsx';
 import { format } from 'date-fns';
-
-const activities = [
-    
-    {
-        idTransaction: 1,
-        sourceName: 'Jose Luis',
-        targetName: 'Emma Garcia',
-        amount: -100.0,
-        createdAt: '2024-09-11T10:15:30',
-        type: 'TRANSFER'
-    },
-    {
-        idTransaction: 2,
-        sourceName: 'Jose Luis',
-        targetName: 'Amazon',
-        amount: -50.0,
-        createdAt: '2024-09-11T12:30:45',
-        type: 'PAYMENT'
-    },
-    {
-        idTransaction: 3,
-        sourceName: 'Emma Garcia',
-        targetName: 'Jose Luis',
-        amount: 200.0,
-        createdAt: '2024-09-10T09:45:00',
-        type: 'DEPOSIT'
-    }
-];
+import { activities } from '../api/activityApi.js';
+import { FaSearch } from 'react-icons/fa'; // Icono de lupa
 
 // Función para agrupar actividades por fecha
 const groupActivitiesByDate = (activities) => {
@@ -43,55 +17,91 @@ const groupActivitiesByDate = (activities) => {
     }, {});
 };
 
-
 const Actividad = () => {
-    
-    const groupedActivities = groupActivitiesByDate(activities);
-    // Inicializamos el estado con el ID del primer botón (Inicio)
-    const [selectedId, setSelectedId] = useState(0);
-    
-    // Función para manejar la selección de un botón
-    const handleButtonClick = (id) => {
-      setSelectedId(id);
+    const [filteredActivities, setFilteredActivities] = useState(activities);
+    const [selectedId, setSelectedId] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // Opciones de filtro con sus tipos correspondientes
+    const options = [
+        {
+            id: 1,
+            name: 'Pagos',
+            filterType: 'PAYMENT',
+        },
+        {
+            id: 2,
+            name: 'Transferencias',
+            filterType: 'TRANSFER',
+        },
+        {
+            id: 3,
+            name: 'Ingresos de dinero',
+            filterType: 'DEPOSIT',
+        },
+    ];
+
+    // Función para manejar la selección de un botón y filtrar/desactivar el filtro
+    const handleButtonClick = (filterType, id) => {
+        if (selectedId === id) {
+            setFilteredActivities(activities);
+            setSelectedId(null);
+        } else {
+            const filtered = activities.filter(activity => activity.type === filterType);
+            setFilteredActivities(filtered);
+            setSelectedId(id);
+        }
     };
-    
-        const options = [
-            {
-                id: 1, 
-                name: 'Pagos'
-            },
-            {
-                id: 2,
-                name: 'Transferencias'
-            },
-            {
-                id: 3,
-                name: 'Ingresos de dinero'
-            },
-        ]
-    
-        return (
-            <section className='px-4 md:px-10 w-full  '>
+
+    // Función para manejar la búsqueda por palabras clave (tipo o número de transacción)
+    const handleSearch = (event) => {
+        const query = event.target.value.toLowerCase();
+        setSearchQuery(query);
+        const filtered = activities.filter(({ idTransaction, type }) => 
+            type.toLowerCase().includes(query) || idTransaction.toString().includes(query)
+        );
+        setFilteredActivities(filtered);
+    };
+
+    // Agrupamos las actividades filtradas por fecha
+    const groupedActivities = groupActivitiesByDate(filteredActivities);
+
+    return (
+        <section className='px-4 md:px-10 w-full'>
+            <h3 className='font-semibold py-4 text-left'>Mi Actividad</h3>
+            
+            {/* Botones para filtrar actividades y el buscador */}
+            <section className='flex flex-col-reverse md:flex-row justify-between md:items-center  mb-6 gap-4'>
+                <div className='flex justify-between gap-2 md:gap-4'>
+                    {options.map(({ id, name, filterType }) => (
+                        <ActivityButton
+                            key={id}
+                            text={name}
+                            onClick={() => handleButtonClick(filterType, id)}
+                            isSelected={selectedId === id}
+                        />
+                    ))}
+                </div>
                 
-                <h2 className='font-semibold  py-4 text-left'>Mi Actividad</h2>
-                <section className='flex gap-4 mb-6'>
-    
-                {options.map(({ id, name }) => (
-                <ActivityButton 
-                  key={id}  
-                  text={name}
-                  onClick={() => handleButtonClick(id)}
-                  isSelected={selectedId === id} />
-              ))}
-    
-                </section>
-    
-                {/* Recorrer y renderizar cada actividad */}
+                {/* Buscador */}
+                <div className='flex items-center border bg-white rounded-3xl w-full md:w-[300px]'>
                 
-                {Object.keys(groupedActivities).map(date => (
+                    <FaSearch className=' ml-4 text-primario' />
+                    <input
+                        type='text'
+                        value={searchQuery}
+                        onChange={handleSearch}
+                        placeholder='Buscar por tipo o número'
+                        className='pl-5 pr-5 py-2 text-black rounded-3xl w-80 focus:outline-none '
+                    />
+              </div>
+            </section>
+
+            {/* Renderizado de actividades agrupadas por fecha */}
+            {Object.keys(groupedActivities).map(date => (
                 <div className='flex flex-col' key={date}>
                     <h3 className='self-start py-2'>{date}</h3>
-                    {groupedActivities[date].map(({ idTransaction, sourceName, targetName, amount, createdAt, type }) => (
+                    {groupedActivities[date].map(({ idTransaction, sourceName, amount, createdAt, type }) => (
                         <ActivityItem
                             key={idTransaction}
                             name={sourceName}
@@ -102,9 +112,8 @@ const Actividad = () => {
                     ))}
                 </div>
             ))}
-               
-            </section>
-        );
-    }
-    
-    export default Actividad;
+        </section>
+    );
+};
+
+export default Actividad;

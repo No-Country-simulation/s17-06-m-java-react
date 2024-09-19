@@ -1,21 +1,39 @@
 import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
-import notif from '../assets/Notificaciones.png'
-import userimage from '../assets/userimage.png'
 import CoinCard, { infoSaldos } from '../components/CoinCard.jsx';
 import argIcon from '../assets/banderaArg.svg';
 import usaIcon from '../components/atoms/assets/usa.png';
 import euroIcon from '../components/atoms/assets/euro.png';
 import OperationButton, { operations } from '../components/atoms/OperationButton.jsx';
-import NotificationItem, { activitiesNotif } from '../components/atoms/NotificationItem.jsx';
+import {activities} from '../api/activityApi.js'
+import ActivityItem from '../components/atoms/ActivityItem.jsx';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 
+
+  // Función para agrupar actividades por fecha y mostrar las últimas tres
+  const groupLastTwoActivities = (activities) => {
+    // Ordenamos las actividades por fecha de forma descendente
+    const sortedActivities = activities.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    
+    // Tomamos las últimas tres actividades
+    const lastTwoActivities = sortedActivities.slice(0, 2);
+  
+    // Agrupamos las tres actividades por fecha
+    return lastTwoActivities.reduce((acc, activity) => {
+      const date = format(new Date(activity.createdAt), 'dd MMM yyyy');
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(activity);
+      return acc;
+    }, {});
+  };
 
 const Home = ( ) => {
-  
-  const lastThreeActivities = activitiesNotif.slice(0, 3);
 
-
+  const groupedActivities =  groupLastTwoActivities(activities);
   const carruselRef = useRef(null);
 
   // Función para manejar el desplazamiento
@@ -40,7 +58,40 @@ const Home = ( ) => {
     trackMouse: true, // También habilita el arrastre con el mouse para pruebas en escritorio
   });
 
+const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
 
+  const [montoPesos, setMontoPesos] = useState(''); 
+    const [montoDolares, setMontoDolares] = useState('');
+    const [montoEuros, setMontoEuros] = useState('');   
+
+    const [CVUPesos, setCVUPesos] = useState(''); 
+    const [CVUDolares, setCVUDolares] = useState('');
+    const [CVUEuros, setCVUEuros] = useState('');   
+
+  /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
+  useEffect(() => {
+    fetch(urlBankInfo, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+        .then(data => data.json())
+        .then(data => {                
+            setMontoPesos(data[0].balance);
+            setMontoDolares(data[1].balance);
+            setMontoEuros(data[2].balance)
+            setCVUPesos(data[0].cvu);
+            setCVUDolares(data[1].cvu);
+            setCVUEuros(data[2].cvu)
+            console.log(data)
+        });
+}, []);
+
+
+
+  
   return (
     <div className='flex'>
       
@@ -65,8 +116,8 @@ const Home = ( ) => {
                 <p className="text-start text-primario font-semibold">Peso Argentino</p>
               </div>
               <div className="pt-12">
-                <p className="text-start text-white text-lg">$800.000,00 ARS</p>
-                <p className="text-start text-white text-sm">CBU 0123456</p>
+                <p className="text-start text-white text-lg">${montoPesos} ARS</p>
+                <p className="text-start text-white text-sm">CVU ${CVUPesos}</p>
               </div>
             </div>
 
@@ -76,8 +127,8 @@ const Home = ( ) => {
                 <p className="text-primario font-semibold">Dólares estadounidenses</p>
               </div>
               <div className="pt-12">
-                <p className="text-start text-white text-lg">$800,00 USD</p>
-                <p className="text-start text-white text-sm">CBU XXXX</p>
+              <p className="text-start text-white text-lg">${montoDolares} USD</p>
+              <p className="text-start text-white text-sm">CVU ${CVUDolares}</p>
               </div>
             </div>
 
@@ -87,8 +138,8 @@ const Home = ( ) => {
                 <p className="text-primario font-semibold">Euros</p>
               </div>
               <div className="pt-12">
-                <p className="text-start text-white text-lg">$80,00 EUR</p>
-                <p className="text-start text-white text-sm">CBU 0123456</p>
+              <p className="text-start text-white text-lg">€{montoEuros} EUR</p>
+              <p className="text-start text-white text-sm">CVU ${CVUDolares}</p>
               </div>
             </div>
           </div>
@@ -137,15 +188,21 @@ const Home = ( ) => {
           </div>
 
           {/* LINEA */}
-          <section id='linea-completa' className='pt-3 display flex justify-between pb-3 border-b border-primario w-full'>
-            {activitiesNotif.map(({ id, element, datetime, actNotification, amount, activityType }) => (
-              <NotificationItem key={id}
-                element={element}
-                datetime={datetime}
-                actNotification={actNotification}
-                amount={amount}
-                activityType={activityType}
-              />
+          <section id='linea-completa' className=' w-full'>
+                
+            {Object.keys(groupedActivities).map(date => (
+                <div className='flex flex-col' key={date}>
+                    <h3 className='self-start py-1'>{date}</h3>
+                    {groupedActivities[date].map(({ idTransaction, sourceName, targetName, amount, createdAt, type }) => (
+                        <ActivityItem
+                            key={idTransaction}
+                            name={sourceName}
+                            activityType={type}
+                            amount={`${amount > 0 ? '+' : ''}${amount} ARS`}
+                            time={format(new Date(createdAt), 'HH:mm')}
+                        />
+                    ))}
+                </div>
             ))}
           </section>
           {/* LINEA */}

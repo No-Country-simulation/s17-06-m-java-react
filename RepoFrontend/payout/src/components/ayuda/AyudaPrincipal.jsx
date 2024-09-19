@@ -20,9 +20,9 @@ export const AyudaPrincipal = () => {
     return (
         <>
         {/* BANNER MOBILE*/}        
-        <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
+        <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
             <section className='flex'>
-                <button onClick={()=>navigate(-1)} className='flex text-white whitespace-nowrap font-semibold'>
+                <button onClick={()=>navigate('/prevperfil')} className='flex text-white whitespace-nowrap font-semibold'>
                     <p className='w-6 h-6 absolute left-2 flex items-center'>
                         <span className='left-7 absolute'>Ayuda</span>
                         <FlechaTriangulitoBack/>
@@ -37,7 +37,7 @@ export const AyudaPrincipal = () => {
             </section>
         </div>
 
-        <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
+        <section className='w-full flex flex-col items-center justify-center h-[90vh] md:h-full px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='w-full'>                
@@ -56,7 +56,7 @@ export const AyudaPrincipal = () => {
                 
 
                 {/* TARJETA */}
-                <button onClick={()=>navigate('')} id='tarjeta-perfil' className='px-5 py-8 w-full bg-grisclaro text-primario flex items-center gap-4 mb-5'>
+                <button onClick={()=>navigate('/contacto')} id='tarjeta-perfil' className='px-5 py-8 w-full bg-grisclaro text-primario flex items-center gap-4 mb-5'>
                     <img src={Ayuda2} alt="" />
                     <div>
                         <p className='text-start text-lg font-semibold'>Chatear con Payout</p>

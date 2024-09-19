@@ -1,36 +1,34 @@
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import Select from 'react-select';
-import { useState, useContext, useCallback, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import { TransferenciaContext } from "../../contexts/TransferenciaContext.jsx";
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import argIcon from './assets/banderaArg.svg';
 import usaIcon from './assets/usa.png';
 import euroIcon from './assets/euro.png';
-import DatosBancarios from "./DatosBancarios";
-import BankModal from "./BankModal.jsx"
+import BankModal from "./BankModal.jsx";
+import ArgIconDefault from "./ArgIconDefault.jsx";
 
+// Esquema de validación
 const schema = Yup.object().shape({
     amount: Yup.number()
         .typeError('Ingrese un monto válido')
         .positive('El monto debe ser mayor a cero')
-        .min(10, 'El mìnimo de envío es el equivalente a $10 USD')
+        .min(10, 'El mínimo de envío es el equivalente a $10 USD')
         .required('Este campo es requerido'),
     currency: Yup.string()
         .oneOf(['ARS', 'USD', 'EUR'])
         .required('Este campo es requerido'),
     accountNumber: Yup.string()
-        .required('Este campo es requerido')
-        .typeError('Ha habido un error, vuelva a intentarlo.'),
-})
-
+        .notRequired('Este campo es requerido')
+});
 
 // Opciones de divisas con íconos
 const currencyOptions = [
     { value: 'ARS', label: 'ARS', icon: argIcon },
     { value: 'USD', label: 'USD', icon: usaIcon },
-    { value: 'EUR', label: 'EUR', icon: euroIcon },
-    // Agrega más divisas aquí
+    { value: 'EUR', label: 'EUR', icon: euroIcon }
 ];
 
 // Componente campo select con íconos
@@ -41,12 +39,14 @@ const CustomSelect = ({ options, field, form, ...props }) => (
             control: (base) => ({
                 ...base,
                 border: 'none',
-                boxShadow: 'none'
+                boxShadow: 'none',
+                indicatorSeparator: () => none,
+                dropdownIndicator: () => none,
             }),
         }}
         formatOptionLabel={(option) => (
             <div className="flex items-center">
-                <img className="mr-2 w-5 h-5" src={option.icon} />
+                <img className="mr-2 w-5 h-5" src={option.icon} alt="currency-icon" />
                 {option.label}
             </div>
         )}
@@ -56,95 +56,87 @@ const CustomSelect = ({ options, field, form, ...props }) => (
 );
 
 const BankAccountField = ({ onChangeAccount }) => {
-    const [field, { value }] = useField('cuentaBancaria');
+    const [field] = useField('accountNumber');
+    const [bankAccount, setBankAccount] = useState(null);
+    const [amount] = useField('amount');
+    const [currency] = useField('currency');
 
-    const fetchAmountDetails = useCallback(async () => {
-        if (value) {
-            const response = await fetch('https://payout.redromsolutions.com/transfer/v1', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ identifier: value }),
-            });
+ /*    const fetchAmountDetails = useCallback(async () => {
+        if (field.value && amount.value && currency.value) {
+            const requestBody = {
+                sourceAccountIdentifier: "Silencioso.Sol.Negro",
+                targetAccountIdentifier: field.value,
+                amount: amount.value.toString(),
+                currencySource: currency.value,
+                currencyTarget: "ARS"
+            };
 
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('amountSend', data.amountSend);
-                localStorage.setItem('currencySend', data.currencySend);
-                localStorage.setItem('amountReceive', data.amountReceive);
-                localStorage.setItem('currencyReceive', data.currencyReceive);
+            try {
+                const response = await fetch('https://payout.redromsolutions.com/transaction/v1/transfer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify(requestBody),
+                });
+
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('amountSend', data.amountSend);
+                    localStorage.setItem('currencySend', data.currencySend);
+                    localStorage.setItem('amountReceive', data.amountReceive);
+                    localStorage.setItem('currencyReceive', data.currencyReceive);
+                    onChangeAccount && onChangeAccount(data);
+                } else {
+                    console.error('Error en la respuesta:', response.status);
+                }
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
             }
         }
-    }, [value]);
+    }, [field.value, amount.value, currency.value, onChangeAccount]);
 
     useEffect(() => {
         fetchAmountDetails();
-    }, [fetchAmountDetails]);
+    }, [fetchAmountDetails]); */
 
     return (
         <>
             <div className="flex items-center gap-3 px-3">
                 <svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 41H40M4.11111 34.615H37.8889M8.33333 34.615V23.9732M16.7778 34.615V23.9732M25.2222 34.615V23.9732M33.6667 34.615V23.9732M21 11.2177L21.0156 11.2034M40 17.5882L25.4882 4.58347C23.9 3.16033 23.106 2.44878 22.2101 2.17854C21.4205 1.94049 20.5795 1.94049 19.7899 2.17854C18.894 2.44878 18.1 3.16033 16.5119 4.58347L2 17.5882H40Z" stroke="#A483DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M2 41H40M4.11111 34.615H37.8889M8.33333 34.615V23.9732M16.7778 34.615V23.9732M25.2222 34.615V23.9732M33.6667 34.615V23.9732M21 11.2177L21.0156 11.2034M40 17.5882L25.4882 4.58347C23.9 3.16033 23.106 2.44878 22.2101 2.17854C21.4205 1.94049 20.5795 1.94049 19.7899 2.17854C18.894 2.44878 18.1 3.16033 16.5119 4.58347L2 17.5882H40Z" stroke="#A483DF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="font-semibold">{value || 'Cuenta bancaria ingresada'}</span>
+                <span className="font-semibold">{'Cuenta: Victor Molinas'}</span>
             </div>
-            <button type="button" className="bg-gray-200 text-primario p-2 rounded-3xl" onClick={onChangeAccount}>
-                <div className="flex items-center gap-2">
-                    <span>Cambiar</span>
-                    <svg width="10" height="10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.2749 38.65C13.1234 38.5867 12.9839 38.4979 12.8624 38.3875C12.7452 38.2713 12.6522 38.133 12.5888 37.9807C12.5253 37.8284 12.4926 37.665 12.4926 37.5C12.4926 37.335 12.5253 37.1716 12.5888 37.0193C12.6522 36.867 12.7452 36.7287 12.8624 36.6125C12.9839 36.5021 13.1234 36.4133 13.2749 36.35C13.4231 36.2796 13.5859 36.2453 13.7499 36.25C14.0814 36.25 14.3994 36.3817 14.6338 36.6161C14.8682 36.8505 14.9999 37.1685 14.9999 37.5C14.9999 37.8315 14.8682 38.1495 14.6338 38.3839C14.3994 38.6183 14.0814 38.75 13.7499 38.75C13.5865 38.748 13.4252 38.7141 13.2749 38.65ZM15.7124 32.975L18.6624 29.225C18.8679 28.9648 19.1684 28.7968 19.4978 28.7581C19.8272 28.7195 20.1584 28.8132 20.4186 29.0187C20.6789 29.2243 20.8468 29.5248 20.8855 29.8542C20.9242 30.1835 20.8304 30.5148 20.6249 30.775L17.6749 34.525C17.4693 34.7852 17.1688 34.9532 16.8395 34.9919C16.5101 35.0305 16.1789 34.9368 15.9186 34.7312C15.6584 34.5257 15.4905 34.2252 15.4518 33.8958C15.4131 33.5665 15.5068 33.2352 15.7124 32.975ZM21.6124 25.475L25.9124 20L12.7624 3.275C12.5568 3.01475 12.4631 2.68352 12.5018 2.35416C12.5405 2.0248 12.7084 1.72429 12.9686 1.51875C13.2289 1.31321 13.5601 1.21946 13.8895 1.25814C14.2188 1.29682 14.5193 1.46475 14.7249 1.725L28.4749 19.225C28.6493 19.4457 28.7441 19.7187 28.7441 20C28.7441 20.2813 28.6493 20.5543 28.4749 20.775L23.5624 27.025C23.3568 27.2852 23.0563 27.4532 22.727 27.4919C22.3976 27.5305 22.0664 27.4368 21.8061 27.2312C21.5459 27.0257 21.378 26.7252 21.3393 26.3958C21.3006 26.0665 21.3943 25.7352 21.5999 25.475H21.6124Z" fill="#5C27BB" />
-                    </svg>
-                </div>
-            </button>
         </>
     );
-};
+}
 
-const Monto = () => {
+const BankForm = () => {
     const { currentStep, setCurrentStep } = useContext(TransferenciaContext);
     const navigate = useNavigate();
 
-    const handleSubmit = async (values, { setSubmitting }) => {
-        const response = await fetch('/api/transaction/v1/transfer', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
-        });
-
-        if (response.ok) {
+    const handleSubmit = () => {
+/*             // Aquí puedes hacer la llamada a la API con los datos
+            console.log('Datos del formulario:', values);
+            // Simulación de espera
+            await new Promise(r => setTimeout(r, 1000)); */
+            // Navegar a la siguiente página
             setCurrentStep(3);
-            navigate('/transferencia/revision', { replace: true });
-        } else {
-            console.error('Error:', response.status, response.statusText);
-            setSubmitting(false);
-        }
-    };
-
-    const [initialValues, setInitialValues] = useState({
-        amountSend: '',
-        currencySend: 'ARS',
-        amountReceive: '',
-        currencyReceive: 'USD',
-        cuentaBancaria: '',
-    });
-
-    const handleChangeAccount = () => {
-        setInitialValues(prevState => ({
-            ...prevState,
-            cuentaBancaria: 'Cuenta cambiada',
-        }));
+            navigate('/transferencia/revision');
     };
 
     return (
-        <section className="flex flex-col gap-4 h-full">
+        <>
             <Formik
-                initialValues={initialValues}
-                onSubmit={handleSubmit}
+                initialValues={{ amount: '', currency: 'ARS', accountNumber: '' }}
                 validationSchema={schema}
+                onSubmit={handleSubmit}
             >
-                {({ values }) => (
+                {({ isSubmitting }) => (
                     <Form className="flex flex-col w-full items-center gap-5 mt-[10vh] md:mt-[2vh]">
                         <h3 className="text-center font-bold text-xl md:text-2xl">¿Cuánto estás enviando?</h3>
                         {/* Campo para el monto a enviar */}
@@ -191,19 +183,37 @@ const Monto = () => {
                         <div className="flex flex-col gap-2 items-start">
                             <label className="font-semibold">Pagando con</label>
                             <div className="flex input-container bg-white text-black text-xs md:text-m w-[90vw] md:w-[40vw] py-5 rounded-lg items-center justify-between px-3" style={{ zIndex: '2' }}>
-                                <BankAccountField onChangeAccount={handleChangeAccount} />
+                                <BankAccountField />
                             </div>
-                            <ErrorMessage name="cuentaBancaria" component="p" className='custom-error-message' />
+                            <ErrorMessage name="accountNumber" component="p" className='custom-error-message' />
                         </div>
                         <div className="flex">
 
-                            <button onClick={() => handleSubmit()} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
+                            <button onClick={handleSubmit} className='mt-[16vh] bg-primario md:bg-verde text-white text-center rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] py-3 md:mt-0 hover:bg-green-600 transition duration-200'>Continuar</button>
                         </div>
                     </Form>
                 )}
             </Formik>
-        </section>
-    )
-}
+        </>
+    );
+};
 
-export default Monto;
+export default BankForm;
+
+/* 
+Transferencia que funciona
+    {
+    "userId": 79,
+    "userName": "Victor Molinas",
+    "transactionId": 59,
+    "sourceAccountId": 88,
+    "targetAccountId": 83,
+    "amount": 3000,
+    "balance": 34200,
+    "targetAccountCvu": 1128801662594826600,
+    "targetAccountAlias": "Sabio.Estrella.Rojo",
+    "createdAt": "2024-09-18T23:31:47.502344867",
+    "type": null,
+    "targetName": null
+}
+*/

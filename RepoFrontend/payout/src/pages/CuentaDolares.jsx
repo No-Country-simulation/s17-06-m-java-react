@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import argIcon  from '../assets/banderaArg.svg'
+
+import usaIcon from '../components/atoms/assets/usa.png'
+
 import edit  from '../assets/edit.svg'
 import copy  from '../assets/copy.svg'
 import share  from '../assets/share.svg'
@@ -22,7 +24,7 @@ const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
 
 
 
-export const CuentaPesos = () => {
+export const CuentaDolares = () => {
 
     const navigate = useNavigate()
 
@@ -30,8 +32,8 @@ export const CuentaPesos = () => {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     /* const [DNI, setDNI] = useState('') */
-    const [montoPesos, setMontoPesos] = useState(''); 
-    const [CVUPesos, setCVUPesos] = useState(''); 
+    const [montoDolares, setMontoDolares] = useState(''); 
+    const [CVUDolares, setCVUDolares] = useState(''); 
     const [alias, setAlias] = useState('')
 
 
@@ -44,7 +46,6 @@ export const CuentaPesos = () => {
 
 
     
-
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
     useEffect(() => {
         fetch(urlInfoUserLogged, {
@@ -67,23 +68,23 @@ export const CuentaPesos = () => {
 
 
 
-        /* FETCH PARA TRAER INFO BANCARIA */
-        useEffect(() => {
-            fetch(urlBankInfo, {
-                method: 'GET',
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            })
-                .then(data => data.json())
-                .then(data => {                
-                    setMontoPesos(data[0].balance)
-                    setAlias(data[0].alias)                    
-                    setCVUPesos(data[0].cvu);                    
-                    console.log(data)
-                });
-        }, []);
+    /* FETCH PARA TRAER INFO BANCARIA */
+    useEffect(() => {
+        fetch(urlBankInfo, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(data => data.json())
+            .then(data => {                
+                setMontoDolares(data[1].balance)
+                setAlias(data[1].alias)                    
+                setCVUDolares(data[1].cvu);                    
+                console.log(data)
+            });
+    }, []);
 
 
 
@@ -100,14 +101,14 @@ export const CuentaPesos = () => {
                         <FlechaTriangulitoBack/>
                     </button>
                     <div className='flex gap-4 items-center'>
-                        <img src={argIcon} className='w-[25px] h-[25px]' alt='argIcon' />
-                        <p>Peso argentino</p>
+                        <img src={usaIcon} className='w-[25px] h-[25px]' alt='eurIcon' />
+                        <p>Dólares estadounidenses</p>
                     </div>                    
                     {/* SALDO */}
                     <div className='flex gap-4'>
                         {showPassword? 
-                        <p className='text-xl font-semibold'>${montoPesos} ARS</p>:
-                        <p className='text-xl font-semibold'>****** ARS</p>
+                        <p className='text-xl font-semibold'>${montoDolares} USD</p>:
+                        <p className='text-xl font-semibold'>****** USD</p>
                         }
                         
                         {/* BOTON VISIBILIDAD SALDO */}
@@ -137,7 +138,7 @@ export const CuentaPesos = () => {
                         </div>
                         <div className='flex justify-between'>
                             <p className='text-xs font-medium'>Tu CVU</p>
-                            <p className='text-xs font-semibold text-primario underline'>{CVUPesos}</p>
+                            <p className='text-xs font-semibold text-primario underline'>{CVUDolares}</p>
                         </div>
                         <div className='flex justify-between'>
                             <p className='text-xs font-medium'>Nombre</p>

@@ -12,6 +12,7 @@ import { FlechaTriangulito } from '../components/icons/flechaTriangulito';
 
 import { Ask } from '../components/icons/ask';
 import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack';
+import { ThemeButton } from '../components/ThemeButton';
 
 
 
@@ -32,6 +33,22 @@ export const PrevPerfil = () => {
         localStorage.removeItem('token');
         navigate('/login'); // Redirige al login después de salir
       };
+
+      /* const [light, setLight] = useState(true); */
+
+      /* const { light, onActivate, onDeactivate } = useOutletContext(); */
+
+      /* const handleActivate = () => {
+        setLight(!light);
+        // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
+      };
+    
+      const handleDeactivate = () => {
+        setLight(!light);
+        // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
+      }; */
+
+
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
     useEffect(() => {
         fetch(urlInfoUserLogged, {
@@ -54,17 +71,20 @@ export const PrevPerfil = () => {
 
 
     return (
-        <>    
+        <div className='md:pt-14'>    
         {/* BANNER MOBILE*/}        
-            <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
+            <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
                 <section className='flex'>
-                    <button onClick={()=>navigate(-1)} className='flex text-white whitespace-nowrap font-semibold'>
+                    <button onClick={()=>navigate('/home')} className='flex text-white whitespace-nowrap font-semibold'>
                         <p className='w-6 h-6 absolute left-2 flex items-center'>
                             <span className='left-7 absolute'>Perfil</span>
                             <FlechaTriangulitoBack/>
                         </p>
                     </button>
                     <div className='absolute right-4 flex gap-4'>
+                        {/* <div className='md:hidden '>
+                            <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
+                        </div> */}
                         <img src={notif} className='w-[24px] h-[24px] items-center' alt="" />
                         <p className='text-white '>
                             <Ask/>
@@ -73,10 +93,10 @@ export const PrevPerfil = () => {
                 </section>
             </div>
 
-            <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
+            <section className='w-full flex flex-col items-center justify-center h-[90vh] md:h-full px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
-            <div id='cuerpo-vista-home' className='w-full'>
+            <div id='cuerpo-vista-home' className='w-full md:w-auto'>
 
                 {/* FOTO, NOMBRE Y USUARIO */}
                 <div id='foto-y-username' className='flex flex-col gap-3 items-center pb-10'>
@@ -93,7 +113,7 @@ export const PrevPerfil = () => {
 
 
                 {/* TARJETA PERFIL */}
-                <div id='tarjeta-perfil' className='px-8 py-8 w-full bg-grisclaro rounded-3xl  shadow-down-dark-md text-primario'>
+                <div id='tarjeta-perfil' className='px-8 py-8 w-full md:w-[500px] bg-grisclaro rounded-3xl  shadow-down-dark-md text-primario'>
 
                     {/* LINEA DATOS PERSONALES */}
                     <div className='flex justify-between py-5 border-b border-primario'>                        
@@ -133,7 +153,7 @@ export const PrevPerfil = () => {
 
             </div>            
             </section>
-        </>
+        </div>
         
     );
 }

@@ -37,7 +37,7 @@ const schema = Yup.object().shape({
                 /* .required("Este campo es obligatorio") */,    
     username: Yup.string()
     .min(2, "El nombre es demasiado corto")
-    .max(30, "Máximo 40 caracteres")
+    .max(40, "Máximo 40 caracteres")
     /* .required("Este campo es obligatorio") */,                
 })
 
@@ -74,13 +74,28 @@ export const Perfil = () => {
             .then(data => data.json())
             .then(data => {
                 const userData = data.data[0];
-                setInitialValues({
+                console.log('data perfil', data)
+                if (userData.userDetail) {
+                    setInitialValues({
+                        nombres: userData.userDetail.name,
+                        apellidos: userData.userDetail.lastName,
+                        telefono: userData.phone,
+                        direccion: userData.userDetail.address,
+                        email: userData.email                    
+                    });
+                } else {
+                    setInitialValues({                        
+                        email: userData.email                    
+                    });
+                }
+
+                /* setInitialValues({
                     nombres: userData.userDetail.name,
                     apellidos: userData.userDetail.lastName,
                     telefono: userData.phone,
                     direccion: userData.userDetail.address,
                     email: userData.email                    
-                });
+                }); */
             });
     }, []);
 

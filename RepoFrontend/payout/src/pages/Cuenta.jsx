@@ -55,14 +55,14 @@ export const Cuenta = () => {
                 <p className='text-start font-semibold pb-4'>Tu cuenta PAYOUT</p>
                 <p className='text-start'>Todas tus cuentas en un lugar</p>
             </div>
-            <div className='flex flex-col items-center'>
+            {/* <div className='flex flex-col items-center'>
                 <div className='inline-flex py-1 px-3 items-center justify-center gap-4 border-2 border-verde rounded-3xl text-verde'>
                     <div className='inline-flex items-center justify-center w-5 h-5 border-2 border-verde rounded-full text-verde'>
                         <p className='text-lg font-semibold'>+</p>
                     </div>                
                     <p>Abrir cuenta nueva</p>
                 </div>
-            </div>
+            </div> */}
             
 
             {/* COLUMNAS SALDOS DESKTOP Y MOBILE*/}
