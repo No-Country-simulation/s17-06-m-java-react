@@ -24,4 +24,5 @@ public class TransactionResponse {
     private String targetAccountAlias;
     private LocalDateTime createdAt;
     private TransactionType type;
+    private String targetName;
 }

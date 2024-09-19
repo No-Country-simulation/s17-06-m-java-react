@@ -54,6 +54,7 @@ public class TransactionServiceImpl implements TransactionService {
                 .targetAccountAlias(transaction.getTargetAlias())
                 .createdAt(LocalDateTime.now())
                 .type(transaction.getType())
+                .targetName(transaction.getTargetUserFullName())
                 .build();
     }
 
