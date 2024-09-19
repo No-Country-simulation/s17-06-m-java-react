@@ -12,7 +12,6 @@ import com.payout.transaction_service.transaction_service.repository.Transaction
 import com.payout.transaction_service.transaction_service.utilities.InsufficientFundsException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -32,21 +31,28 @@ public class TransactionServiceImpl implements TransactionService {
     private final UserClient userClient;
 
     @Override
-    public List<TransactionPayout> getTransactionHistory(Long userId) {
+    public List<TransactionResponse> getTransactionHistory(Long userId) {
         // Consultar el historial de transacciones desde el repositorio
         List<TransactionPayout> transactions = transactionRepository.findByUserId(userId);
-        //desplegaaaa
+        List<TransactionResponse> transactionResponses = transactions.stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
         // Convertir las transacciones a DTOs o Responses
-        return transactions;
+        return transactionResponses;
     }
 
-    private TransactionDTO convertToResponse(TransactionPayout transaction) {
-        return TransactionDTO.builder()
-                .idTransaction(transaction.getIdTransaction())
-                .idSourceAccount(transaction.getIdSourceAccount())
-                .idTargetAccount(transaction.getIdTargetAccount())
+    private TransactionResponse convertToResponse(TransactionPayout transaction) {
+        return TransactionResponse.builder()
+                .userId(transaction.getUserId())
+                .userName(transaction.getSourceUserFullName())
+                .transactionId(transaction.getIdTransaction())
+                .sourceAccountId(transaction.getIdSourceAccount())
+                .targetAccountId(transaction.getIdTargetAccount())
                 .amount(transaction.getAmount())
-                .createAt(LocalDateTime.now())
+                .balance(transaction.getAmount())
+                .targetAccountCvu(transaction.getTargetCvu())
+                .targetAccountAlias(transaction.getTargetAlias())
+                .createdAt(LocalDateTime.now())
                 .type(transaction.getType())
                 .build();
     }

@@ -1,5 +1,6 @@
 package com.payout.transaction_service.transaction_service.model.dto;
 
+import com.payout.transaction_service.transaction_service.enums.TransactionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,4 +23,5 @@ public class TransactionResponse {
     private Long targetAccountCvu;
     private String targetAccountAlias;
     private LocalDateTime createdAt;
+    private TransactionType type;
 }

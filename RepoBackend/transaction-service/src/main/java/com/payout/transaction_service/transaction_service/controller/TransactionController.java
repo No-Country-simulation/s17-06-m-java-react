@@ -22,12 +22,12 @@ public class TransactionController {
 
     // Endpoint para obtener el historial de transacciones
     @GetMapping("/history")
-    public ResponseEntity<List<TransactionPayout>> getTransactionHistory(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(@RequestHeader("Authorization") String token) {
         // Extraer el userId del token usando JWTTokenDecoder
         Long userId = JWTTokenDecoder.getUserId(token);
 
         // Llamar al servicio para obtener el historial de transacciones
-        List<TransactionPayout> transactionHistory = transactionService.getTransactionHistory(userId);
+        List<TransactionResponse> transactionHistory = transactionService.getTransactionHistory(userId);
 
         return ResponseEntity.ok(transactionHistory);
     }

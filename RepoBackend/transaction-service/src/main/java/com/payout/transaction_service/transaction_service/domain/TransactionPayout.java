@@ -52,8 +52,8 @@ public class TransactionPayout {
     private String targetUserFullName; // Nombre completo del destinatario
 
     // Relación uno-a-muchos con TransactionDetail
-    @OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TransactionDetailPayout> transactionDetails; // Lista de detalles de transacción
+    @OneToOne(mappedBy = "transaction", cascade = CascadeType.ALL, orphanRemoval = true)
+    private TransactionDetailPayout transactionDetails; // Lista de detalles de transacción
 
     @Column(name = "user_id")
     private Long userId;
