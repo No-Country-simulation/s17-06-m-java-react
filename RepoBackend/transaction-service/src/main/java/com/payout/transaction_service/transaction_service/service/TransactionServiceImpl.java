@@ -11,6 +11,8 @@ import com.payout.transaction_service.transaction_service.repository.Transaction
 import com.payout.transaction_service.transaction_service.repository.TransactionRepository;
 import com.payout.transaction_service.transaction_service.utilities.InsufficientFundsException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
@@ -29,23 +32,22 @@ public class TransactionServiceImpl implements TransactionService {
     private final UserClient userClient;
 
     @Override
-    public List<TransactionResponse> getTransactionHistory(Long userId) {
+    public List<TransactionPayout> getTransactionHistory(Long userId) {
         // Consultar el historial de transacciones desde el repositorio
         List<TransactionPayout> transactions = transactionRepository.findByUserId(userId);
 
         // Convertir las transacciones a DTOs o Responses
-        return transactions.stream()
-                .map(this::convertToResponse)
-                .collect(Collectors.toList());
+        return transactions;
     }
 
-    private TransactionResponse convertToResponse(TransactionPayout transaction) {
-        return TransactionResponse.builder()
-                .transactionId(transaction.getIdTransaction())
-                .sourceAccountId(transaction.getIdSourceAccount())
-                .targetAccountId(transaction.getIdTargetAccount())
+    private TransactionDTO convertToResponse(TransactionPayout transaction) {
+        return TransactionDTO.builder()
+                .idTransaction(transaction.getIdTransaction())
+                .idSourceAccount(transaction.getIdSourceAccount())
+                .idTargetAccount(transaction.getIdTargetAccount())
                 .amount(transaction.getAmount())
-                .createdAt(transaction.getCreatedAt())
+                .createAt(LocalDateTime.now())
+                .type(transaction.getType())
                 .build();
     }
 
@@ -58,6 +60,7 @@ public class TransactionServiceImpl implements TransactionService {
         UserBasic user = genericResponseData.getData().get(0);
         // Verificar si el sourceAccountIdentifier es CVU (numérico) o alias (alfanumérico)
         BankBasic sourceAccount = identifyAccount(sourceAccountIdentifier);
+        UserBasic target = bankServiceClient.getAllBankAccountsByIdentifier(token, targetAccountIdentifier);
 
         // Verificar si el targetAccountIdentifier es CVU o alias
         BankBasic targetAccount = identifyAccount(targetAccountIdentifier);
@@ -81,9 +84,10 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setType(TransactionType.TRANSFERENCIA);
         transaction.setSourceAlias(sourceAccount.getAlias());
         transaction.setTargetAlias(targetAccount.getAlias());
-        transaction.setTargetUserFullName(user.getFirstName() + " " + user.getLastName());
+        transaction.setSourceUserFullName(user.getUserDetail().getName()+" "+user.getUserDetail().getLastName());
         transaction.setUserId(idUser);
         transaction.setCreatedAt(LocalDateTime.now());
+        transaction.setTargetUserFullName(target.getUserDetail().getName()+" "+target.getUserDetail().getLastName());
         transactionRepository.save(transaction);
 
         // Crear y guardar los detalles de la transacción
@@ -102,7 +106,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         // Crear la respuesta de la transacción
         return TransactionResponse.builder()
-                .userName(user.getFirstName() + " " + user.getLastName())
+                .userName(user.getUserDetail().getName() + " " + user.getUserDetail().getLastName())
                 .transactionId(transaction.getIdTransaction())
                 .sourceAccountId(sourceAccount.getIdBankAccount())
                 .targetAccountId(targetAccount.getIdBankAccount())

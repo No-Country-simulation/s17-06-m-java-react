@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class TransferRequestDTO {
-    private String aliasOrCvu;
+    /*private String aliasOrCvu;*/
     private Long userId;
     private String sourceAccountIdentifier;
     private String targetAccountIdentifier;

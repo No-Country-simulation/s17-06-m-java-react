@@ -1,5 +1,7 @@
 package com.payout.transaction_service.transaction_service.controller;
 
+import com.payout.transaction_service.transaction_service.domain.TransactionPayout;
+import com.payout.transaction_service.transaction_service.model.dto.TransactionDTO;
 import com.payout.transaction_service.transaction_service.model.dto.TransactionResponse;
 import com.payout.transaction_service.transaction_service.model.dto.TransferRequestDTO;
 import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
@@ -20,12 +22,12 @@ public class TransactionController {
 
     // Endpoint para obtener el historial de transacciones
     @GetMapping("/history")
-    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<List<TransactionPayout>> getTransactionHistory(@RequestHeader("Authorization") String token) {
         // Extraer el userId del token usando JWTTokenDecoder
         Long userId = JWTTokenDecoder.getUserId(token);
 
         // Llamar al servicio para obtener el historial de transacciones
-        List<TransactionResponse> transactionHistory = transactionService.getTransactionHistory(userId);
+        List<TransactionPayout> transactionHistory = transactionService.getTransactionHistory(userId);
 
         return ResponseEntity.ok(transactionHistory);
     }

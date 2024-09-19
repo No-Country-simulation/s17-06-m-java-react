@@ -1,11 +1,12 @@
 package com.payout.transaction_service.transaction_service.client;
 
 import com.payout.transaction_service.transaction_service.model.dto.BankBasic;
+import com.payout.transaction_service.transaction_service.model.dto.UserBasic;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @FeignClient(name = "bank-account-service", url = "http://localhost:7090/bank_account")
 public interface BankAccountClient {
@@ -24,5 +25,13 @@ public interface BankAccountClient {
     BankBasic findByCvu(@RequestParam Long cvu);
 
 
+    @GetMapping("/bytoken")
+    ResponseEntity<List<BankBasic>> getAllBankAccountsByToken(@RequestHeader("Authorization") String token);
 
+
+    @GetMapping("/byuser/{id}")
+    ResponseEntity<List<BankBasic>> getAllBankAccountsByIdUser(@PathVariable Long id);
+
+    @GetMapping("/datauser/{identifier}")
+    UserBasic getAllBankAccountsByIdentifier(@RequestHeader("Authorization") String token, @PathVariable String identifier);
 }
