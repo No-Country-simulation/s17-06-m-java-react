@@ -12,6 +12,7 @@ import { FlechaTriangulito } from '../components/icons/flechaTriangulito';
 
 import { Ask } from '../components/icons/ask';
 import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack';
+import { ThemeButton } from '../components/ThemeButton';
 
 
 
@@ -32,6 +33,22 @@ export const PrevPerfil = () => {
         localStorage.removeItem('token');
         navigate('/login'); // Redirige al login después de salir
       };
+
+      /* const [light, setLight] = useState(true); */
+
+      /* const { light, onActivate, onDeactivate } = useOutletContext(); */
+
+      /* const handleActivate = () => {
+        setLight(!light);
+        // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
+      };
+    
+      const handleDeactivate = () => {
+        setLight(!light);
+        // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
+      }; */
+
+
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
     useEffect(() => {
         fetch(urlInfoUserLogged, {
@@ -65,6 +82,9 @@ export const PrevPerfil = () => {
                         </p>
                     </button>
                     <div className='absolute right-4 flex gap-4'>
+                        {/* <div className='md:hidden '>
+                            <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
+                        </div> */}
                         <img src={notif} className='w-[24px] h-[24px] items-center' alt="" />
                         <p className='text-white '>
                             <Ask/>

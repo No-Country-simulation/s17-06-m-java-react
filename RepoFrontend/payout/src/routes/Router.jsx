@@ -21,6 +21,7 @@ import { AyudaPrincipal } from "../components/ayuda/AyudaPrincipal";
 import { FAQ } from "../components/ayuda/FAQ";
 import { CuentaDolares } from "../pages/CuentaDolares";
 import { CuentaEuros } from "../pages/CuentaEuros";
+import { Contacto } from "../components/ayuda/Contacto";
 
 
 
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
           {
             path: 'faq',
             element: <FAQ/>
+          },
+          {
+            path: 'contacto',
+            element: <Contacto/>
           },
           { 
             path: 'prevperfil',

@@ -19,9 +19,9 @@ export const FAQ = () => {
     return (
         <>
         {/* BANNER MOBILE*/}        
-        <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
+        <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
             <section className='flex'>
-                <button onClick={()=>navigate(-1)} className='flex text-white whitespace-nowrap font-semibold'>
+                <button onClick={()=>navigate('/help')} className='flex text-white whitespace-nowrap font-semibold'>
                     <p className='w-6 h-6 absolute left-2 flex items-center'>
                         <span className='left-7 absolute'>Preguntas frecuentes</span>
                         <FlechaTriangulitoBack/>
