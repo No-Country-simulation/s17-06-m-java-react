@@ -37,7 +37,7 @@ export const AyudaPrincipal = () => {
             </section>
         </div>
 
-        <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
+        <section className='w-full flex flex-col items-center justify-center h-[90vh] md:h-full px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='w-full'>                

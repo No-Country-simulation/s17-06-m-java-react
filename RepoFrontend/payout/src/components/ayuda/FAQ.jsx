@@ -4,9 +4,6 @@ import { FlechaTriangulitoBack } from '../icons/flechaTriangulitoBack';
 import Ask from '../icons/ask';
 
 import  notif  from '../../assets/Notificaciones.png'
-import  Flechagrande  from '../../assets/Flechagrande.svg'
-import  Ayuda1  from '../../assets/Ayuda1.svg'
-import  Ayuda2  from '../../assets/Ayuda2.svg'
 
 
 
@@ -17,7 +14,7 @@ export const FAQ = () => {
 
 
     return (
-        <>
+        <div className="md:py-8">
         {/* BANNER MOBILE*/}        
         <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
             <section className='flex'>
@@ -36,7 +33,7 @@ export const FAQ = () => {
             </section>
         </div>
 
-        <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
+        <section className='w-full flex flex-col items-center justify-center h-[90vh] md:h-full px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='w-full'>                
@@ -72,7 +69,7 @@ export const FAQ = () => {
 
             </div>            
         </section>
-        </>
+        </div>
         
     );
 }

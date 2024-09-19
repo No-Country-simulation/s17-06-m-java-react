@@ -71,9 +71,9 @@ export const PrevPerfil = () => {
 
 
     return (
-        <>    
+        <div className='md:pt-14'>    
         {/* BANNER MOBILE*/}        
-            <div id='div-total-banner' className='md:hidden flex justify-between items-center w-full'>
+            <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
                 <section className='flex'>
                     <button onClick={()=>navigate('/home')} className='flex text-white whitespace-nowrap font-semibold'>
                         <p className='w-6 h-6 absolute left-2 flex items-center'>
@@ -93,7 +93,7 @@ export const PrevPerfil = () => {
                 </section>
             </div>
 
-            <section className='w-full flex flex-col items-center justify-center h-screen px-6 md:px-10'>        
+            <section className='w-full flex flex-col items-center justify-center h-[90vh] md:h-full px-6 md:px-10'>        
 
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='w-full md:w-auto'>
@@ -153,7 +153,7 @@ export const PrevPerfil = () => {
 
             </div>            
             </section>
-        </>
+        </div>
         
     );
 }
