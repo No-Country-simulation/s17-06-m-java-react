@@ -60,14 +60,5 @@ Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar d
 
 [![My Skills](https://skillicons.dev/icons?i=spring,react,tailwind,figma&theme=dark)](https://skillicons.dev)
 
-
-Para comunicarnos con la API del backend utilizamos Fetch y Axios.
-Información adicional:
-* [**FETCH**](https://lenguajejs.com/javascript/peticiones-http/fetch/)
-* [**AXIOS**](https://axios-http.com/es/docs/intro)
-
-## Documentación de componentes
-Para documentar los componentes del proyecto vamos a utilizar el la herramienta JSDoc que es nativa de Javascript y permite una implementación sencilla y directa de la información sobre nuestro componente, definiendo sus propiedades y funcionalidades como guía para el desarrollador o desarrolladora que necesite conocer su forma de uso.
-
 ## Despliegue de la aplicación web
 Para el despliegue del frontend utilizaremos [Vercel](https://vercel.com/).
