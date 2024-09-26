@@ -54,7 +54,7 @@ const cards = [
     <img src={landingimg} alt='' className='w-[50%] hidden md:block'/>
     </section>
 
-    <section className='lg:h-[100vh] text-center bg-dark dark:bg-grisclaro p-6 lg:p-16'>
+    <section className='lg:h-[100vh] text-center bg-dark dark:bg-grisclaro p-6 lg:p-16 xl:mt-[5px]'>
       <h2 className='lg:text-h2 xl:text-3xl  font-extrabold bg-gradient-to-r from-grisclaro to-verde bg-clip-text text-transparent dark:bg-gradient-to-r dark:from-violetagrad dark:to-azulgrad'>Descubre todos los beneficios de tu cuenta Payout</h2>
       <div className='lg:flex  bg-verde p-4 xl:p-6 m-4 mt-6 xl:m-20 rounded-2xl'>
         {cards.map((card) =>(
@@ -79,7 +79,7 @@ const cards = [
       <h3 className='mt-8 font-bold lg:text-m xl:text-lg'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</h3>
 
       <div className='lg:flex lg:px-20 '>
-        <img src={celular} className='w-[full] lg:h-[20rem] xl:h-[30rem] '/>
+        <img src={celular} className='w-[full] lg:h-[20rem] xl:h-[25rem] '/>
         <div className='flex flex-col gap-10 justify-center lg:p-4 items-center'>
           <h2 className='font-black lg:text-payout xl:text-4xl tracking-tighter leading-tight  text-left bg-gradient-to-r from-primario to-verde bg-clip-text text-transparent'>Mantenemos tu información financiera segura y protegida</h2>
           <img src={icon} className='w-[200px] xl:w-[300px] self-end'/>
