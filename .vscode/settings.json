@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "IDX.aI.enableInlineCompletion": true,
     "IDX.aI.enableCodebaseIndexing": true
+=======
+    "java.configuration.updateBuildConfiguration": "interactive"
+>>>>>>> origin/backend
 }
