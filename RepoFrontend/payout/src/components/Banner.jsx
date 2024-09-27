@@ -52,7 +52,7 @@ const Banner = ({ onActivate, onDeactivate }) => {
 
 
     return (
-        <section className=' w-full px-4 md:px-10'>
+        <section className=' w-full px-4 md:px-10 dark:bg-dark dark:text-white'>
 
             {/* BANNER NOMBRE DE USUARIO */}
 

@@ -94,7 +94,7 @@ export const operationsEuros = [
 const OperationButtonCUENTA = ({texto, element, path }) => {
     return (
         <Link to={path} className='flex flex-col justify-center items-center pointer-events'>
-            <div className="size-[32px] bg-white rounded-full py-5 px-5 flex flex-col justify-center items-center border-4 border-primario gap-1 ">
+            <div className="size-[32px] bg-white dark:bg-grisclaro rounded-full py-5 px-5 flex flex-col justify-center items-center border-4 border-primario gap-1 ">
                 <p className='text-primario font-semibold'>
                 {element}
                 </p>                

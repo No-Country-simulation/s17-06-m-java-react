@@ -71,7 +71,7 @@ export const PrevPerfil = () => {
 
 
     return (
-        <div className='md:pt-14'>    
+        <div className='md:pt-14 dark:bg-dark dark:text-white'>    
         {/* BANNER MOBILE*/}        
             <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
                 <section className='flex'>

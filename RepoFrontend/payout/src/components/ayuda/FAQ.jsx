@@ -14,7 +14,7 @@ export const FAQ = () => {
 
 
     return (
-        <div className="md:py-8">
+        <div className="md:pt-20">
         {/* BANNER MOBILE*/}        
         <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
             <section className='flex'>

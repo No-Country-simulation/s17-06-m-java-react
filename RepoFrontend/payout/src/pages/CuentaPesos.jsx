@@ -124,7 +124,7 @@ export const CuentaPesos = () => {
                     </div>                
                 </div>
                 {/* informacion bancaria */}
-                <div className='bg-white py-4 px-4 text-black'>
+                <div className='dark:bg-white bg-grisclaro py-4 px-4 text-black'>
                     <h3 className='text-start text-sm font-semibold pb-4'>Datos de tu cuenta</h3>
                     {/* contenedor lineas */}
                     <div id='contenedor-lineas' className='flex flex-col gap-5 pb-5 border-b border-primario'>

@@ -152,7 +152,7 @@ export const Perfil = () => {
 
 
     return (
-        <section className='px-4 md:px-10 w-full'>
+        <section className='px-4 md:px-10 md:pt-10 w-full dark:bg-dark dark:text-white'>
 
        
 

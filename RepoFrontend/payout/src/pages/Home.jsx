@@ -93,7 +93,7 @@ const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
 
   
   return (
-    <div className='flex'>
+    <div className='flex dark:bg-dark dark:text-white'>
       
 
       <section className='px-4 md:px-10 w-full'>

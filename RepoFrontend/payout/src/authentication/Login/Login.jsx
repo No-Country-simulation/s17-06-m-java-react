@@ -70,7 +70,7 @@ export const Login = () => {
     }
 
     return (
-        <div className="md:py-8 lg:px-8 flex xl:gap-14 lg:gap-14 justify-center ">
+        <div className="md:py-8 lg:px-8 flex xl:gap-14 lg:gap-14 justify-center dark:bg-dark dark:text-white">
             <div className="w-full md:w-[466px] h-[90vh] lg:h-[500px] xl:h-[614px] py-11 px-8 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
                 <h2 className="text-primario text-[26px] leading-[63px] text-center pb-9">¡Bienvenido a Payout!</h2>
 

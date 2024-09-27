@@ -20,17 +20,17 @@ function App() {
 
   /* Dark Mode */
   const [light, setLight] = useState(() => {
-    const isDarkTheme = localStorage.getItem('theme') === 'dark'; // Comprueba si el tema actual es oscuro
-    document.documentElement.classList.toggle('dark', isDarkTheme); // Añade o quita la clase 'dark' según el tema
-    return isDarkTheme; // Devuelve true si el tema es oscuro
+    const isDarkTheme = localStorage.getItem('theme') !== 'dark'; // Comprueba si el tema actual es claro
+    document.documentElement.classList.toggle('dark', !isDarkTheme); // Añade o quita la clase 'dark' según el tema
+    return !isDarkTheme; // Devuelve true si el tema es oscuro
   });
 
 
 
-  const handleActivate = () => setLight(!light);
+  const handleActivate = () => setLight(true);
   // Aquí puedes poner la lógica que quieres ejecutar cuando se activa
 
-  const handleDeactivate = () => setLight(!light);
+  const handleDeactivate = () => setLight(false);
   // Aquí puedes poner la lógica que quieres ejecutar cuando se desactiva
 
 

@@ -47,7 +47,7 @@ export const Cuenta = () => {
 
 
     return (
-        <section className='px-4  md:px-10 mb-4 w-full'>
+        <section className='px-4  md:px-10 mb-4 w-full dark:bg-dark dark:text-white'>
 
             {/* <Banner/> */}
             {/* CUERPO HOME */}

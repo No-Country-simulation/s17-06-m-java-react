@@ -22,7 +22,7 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
   };
 
   return (
-    <div className="w-full h-[10vh] flex-col justify-center relative">
+    <div className="w-full h-[10vh] flex-col justify-center relative dark:bg-dark dark:text-white">
       <div className="w-full h-[9.5vh] flex items-center justify-between">
         <div className='flex items-center lg:gap-4 xl:gap-6'>
           <div className='flex gap-3 items-center'>

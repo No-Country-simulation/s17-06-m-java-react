@@ -43,7 +43,7 @@ const cards = [
 
   return (
     <>
-    <section className='lg:h-[90vh] p-6 lg:p-13 md:flex justify-between'>
+    <section className='lg:h-[90vh] p-6 lg:p-13 md:flex justify-between dark:bg-dark dark:text-white'>
     <div className='flex flex-col h-[29rem] xl:h-[38rem] lg:items-center relative'>
       <h2 className='lg:text-h2 xl:text-3xl text-left'>Gestiona tus finanzas</h2>
       <h3 className='xl:text-extra font-bold'>desde cualquier rincon del mundo.</h3>
@@ -74,7 +74,7 @@ const cards = [
 
     </section>
 
-    <section className=' text-center p-8 lg:h-[100vh]'>
+    <section className=' text-center p-8 lg:h-[100vh] dark:bg-dark dark:text-white'>
       <h2 className='lg:text-h2 xl:text-3xl'>Sobre PAYOUT</h2>
       <h3 className='mt-8 font-bold lg:text-m xl:text-lg'>Payout es la plataforma de pagos líder a nivel mundial, diseñada especialmente para viajeros frecuentes. Facilitamos la gestión de tus finanzas mientras te desplazas por el mundo. Con nuestra sólida tecnología, cumplimiento normativo, operaciones eficientes e infraestructura bancaria global, Payout te permite enviar, recibir y convertir dinero de manera fácil y segura. Simplificamos el manejo de tus pagos internacionales para que puedas disfrutar de tus viajes sin preocupaciones.</h3>
 
