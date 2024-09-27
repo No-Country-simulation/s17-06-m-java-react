@@ -1,3 +1,33 @@
+import axios from 'axios';
+
+// Función para obtener el historial de transacciones
+export const getTransactionHistory = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('No se encontró el token de autenticación');
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios.get('https://payout.redromsolutions.com/transaction/v1/history', config);
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error(`Error en la respuesta: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error obteniendo el historial de transacciones:', error);
+    return null;
+  }
+};
+
+
 export const activities = [
     
     {

@@ -1,5 +1,9 @@
 {
     "rewrites": [
-        { "source": "/(.*)", "destinatario": "/" }
+      { "source": "/(.*)", "destination": "/" }
+    ],
+    "redirects": [
+      { "source": "/:path+", "destination": "/index.html", "statusCode": 200 }
     ]
-}
+  }
+  

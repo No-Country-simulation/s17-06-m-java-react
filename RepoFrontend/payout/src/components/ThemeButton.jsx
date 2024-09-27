@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * Componente ThemeButton
@@ -22,49 +22,42 @@ import { useState, useEffect } from 'react';
 
 
 export const ThemeButton = ({ onActivate, onDeactivate }) => {
-    const [isToggled, setIsToggled] = useState(false);
+  const isToggled = localStorage.getItem('theme') === 'dark';
 
-    /**
-   * Maneja el evento de clic para alternar el estado del botón.
-   * Si el nuevo estado es activado, se llama a `onActivate`. Si es desactivado, se llama a `onDeactivate`.
-   */
+  /**
+ * Maneja el evento de clic para alternar el estado del botón.
+ * Si el nuevo estado es activado, se llama a `onActivate`. Si es desactivado, se llama a `onDeactivate`.
+  */
+  const handleToggle = useCallback(() => {
+      const newState = !isToggled;
+      const htmlElement = document.documentElement;
 
-    /* useEffect(() => {
+      if (newState) {
+        htmlElement.classList.add('dark');
+        onActivate();
+        localStorage.setItem('theme', 'dark');
+      } else {
+        htmlElement.classList.remove('dark');
         onDeactivate();
-      }, [onDeactivate]); */
-      
-      const handleToggle = () => {
-        setIsToggled((prevState) => {
-          const newState = !prevState;
-          const htmlElement = document.body
-          if (isToggled) {
-              htmlElement.classList.add('dark');
-              onActivate(); // Si tienes alguna función para activar
-          } else {
-              htmlElement.classList.remove('dark');
-              onDeactivate(); // Si tienes alguna función para desactivar
-          }
-          return newState;
-        }, [isToggled]) //Se ejecuta cada vez que cambia a toggle
+        localStorage.setItem('theme', 'light');
       }
-      
-    return (
-      <div className='relative'>
-        <button
+    }, [isToggled, onActivate, onDeactivate]);
+
+  return (
+    <div className='relative'>
+      <button
         onClick={handleToggle}
-        className={`w-14 h-7 xl:w-16 xl:h-8 flex items-center rounded-full p-1 duration-300 ease-in-out absolute top-0 right-1 md:right-7 md:mt-2 md:mr-2 ${
-          isToggled ? 'bg-verde' : 'bg-primario'
-        }  `}
-        
-        
+        className={`w-14 h-7 xl:w-16 xl:h-8 flex items-center rounded-full p-1 duration-300 ease-in-out absolute top-0 right-1 md:right-7 md:mt-2 md:mr-2 ${isToggled ? 'bg-verde' : 'bg-primario'
+          }  `}
+
+
       >
         <div
-          className={`w-5 h-5 md:w-6 md:h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
-            isToggled ? 'translate-x-7 md:translate-x-8 bg-primario' : 'bg-verde'
-          }`}
-          
+          className={`w-5 h-5 md:w-6 md:h-6 rounded-full shadow-md transform duration-300 ease-in-out ${isToggled ? 'translate-x-7 md:translate-x-8 bg-primario' : 'bg-verde'
+            }`}
+
         ></div>
       </button>
-      </div>
-    );
-};
+    </div>
+  );
+}

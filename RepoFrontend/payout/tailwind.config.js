@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-export const withMT = require("@material-tailwind/react/utils/withMT");
 
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
@@ -63,9 +62,6 @@ export default {
       'payout': '1.88rem',
       'h2': '2.5rem'
     },
-    maxWidth: {
-      'full': '100vw'
-    }
   },
   plugins: [ function ({ addBase, theme, addComponents }) {
     addBase({
