@@ -10,8 +10,8 @@ import share  from '../assets/share.svg'
 
 
 import CoinCardCUENTA, { infoSaldos } from '../components/CoinCardCUENTA.jsx';
-import { Ojovisible } from '../components/icons/ojovisible.jsx';
-import { Ojotachado } from '../components/icons/ojotachado.jsx';
+import { Ojovisible } from '../components/icons/Ojovisible.jsx';
+import { Ojotachado } from '../components/icons/Ojotachado.jsx';
 import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack.jsx';
 /* import Banner from '../components/Banner'; */
 

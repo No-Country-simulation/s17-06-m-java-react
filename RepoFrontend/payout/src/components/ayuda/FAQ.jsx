@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { FlechaTriangulitoBack } from '../icons/flechaTriangulitoBack';
-import Ask from '../icons/ask';
+import Ask from '../icons/Ask';
 
 import  notif  from '../../assets/Notificaciones.png'
 

@@ -10,7 +10,7 @@ import  cerrarSesionVioleta  from '../components/atoms/assets/cerrarSesionViolet
 import  notif  from '../assets/Notificaciones.png'
 import { FlechaTriangulito } from '../components/icons/flechaTriangulito';
 
-import { Ask } from '../components/icons/ask';
+import { Ask } from '../components/icons/Ask';
 import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack';
 import { ThemeButton } from '../components/ThemeButton';
 

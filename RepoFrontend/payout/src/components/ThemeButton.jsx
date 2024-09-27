@@ -22,7 +22,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 
 export const ThemeButton = ({ onActivate, onDeactivate }) => {
-  const isToggled = localStorage.getItem('theme') === 'dark';
+  const isToggled = localStorage.getItem('theme') === 'light';
 
   /**
  * Maneja el evento de clic para alternar el estado del botón.
@@ -33,13 +33,13 @@ export const ThemeButton = ({ onActivate, onDeactivate }) => {
       const htmlElement = document.documentElement;
 
       if (newState) {
-        htmlElement.classList.add('dark');
+        htmlElement.classList.add('light');
         onActivate();
-        localStorage.setItem('theme', 'dark');
-      } else {
-        htmlElement.classList.remove('dark');
-        onDeactivate();
         localStorage.setItem('theme', 'light');
+      } else {
+        htmlElement.classList.remove('light');
+        onDeactivate();
+        localStorage.setItem('theme', 'dark');
       }
     }, [isToggled, onActivate, onDeactivate]);
 
