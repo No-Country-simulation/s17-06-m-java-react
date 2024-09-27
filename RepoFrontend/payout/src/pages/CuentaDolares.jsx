@@ -10,8 +10,8 @@ import share  from '../assets/share.svg'
 
 
 import CoinCardCUENTA, { infoSaldos } from '../components/CoinCardCUENTA.jsx';
-import { Ojovisible } from '../components/icons/ojovisible.jsx';
-import { Ojotachado } from '../components/icons/ojotachado.jsx';
+import { Ojovisible } from '../components/icons/Ojovisible.jsx';
+import { Ojotachado } from '../components/icons/Ojotachado.jsx';
 import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack.jsx';
 /* import Banner from '../components/Banner'; */
 
@@ -125,7 +125,7 @@ export const CuentaDolares = () => {
                     </div>                
                 </div>
                 {/* informacion bancaria */}
-                <div className='bg-white py-4 px-4 text-black'>
+                <div className='dark:bg-white bg-grisclaro py-4 px-4 text-black'>
                     <h3 className='text-start text-sm font-semibold pb-4'>Datos de tu cuenta</h3>
                     {/* contenedor lineas */}
                     <div id='contenedor-lineas' className='flex flex-col gap-5 pb-5 border-b border-primario'>

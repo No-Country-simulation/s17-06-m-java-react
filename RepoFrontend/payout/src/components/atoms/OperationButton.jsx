@@ -67,7 +67,7 @@ const OperationButton = ({texto, element, path, color }) => {
     return (
         <Link to={path} className='flex flex-col justify-center items-center gap-2 pointer-events'>
             <div
-                className="size-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] bg-white rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario gap-1 md:gap-2">
+                className="size-[48px] md:w-[210px] md:h-[85px] md:min-w-[210px] dark:bg-white bg-grisclaro rounded-full md:rounded-3xl py-6 px-6 flex flex-col justify-center items-center border-4 border-primario gap-1 md:gap-2">
                 <p className='text-primario font-semibold'>
                 {element}
                 </p>

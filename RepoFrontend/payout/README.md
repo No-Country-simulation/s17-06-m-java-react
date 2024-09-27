@@ -78,5 +78,6 @@ Para documentar los componentes del proyecto vamos a utilizar la herramienta JSD
 Para el despliegue del frontend utilizaremos [Vercel](https://vercel.com/).
 #### Comando para hacer un despliegue directo de la aplicación
 ```
+npm run build
 npx vercel --prod
 ```

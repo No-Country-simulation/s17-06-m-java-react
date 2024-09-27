@@ -1,7 +1,7 @@
 import { ErrorMessage, useField } from 'formik';
 import { useState } from 'react';
-import { Ojovisible } from '../../components/icons/ojovisible';
-import { Ojotachado } from '../../components/icons/ojotachado';
+import { Ojovisible } from '../../components/icons/Ojovisible';
+import { Ojotachado } from '../../components/icons/Ojotachado';
 
 /**
  * Componente PasswordField

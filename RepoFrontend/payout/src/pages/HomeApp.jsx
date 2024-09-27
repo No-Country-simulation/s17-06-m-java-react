@@ -17,7 +17,7 @@ function HomeApp() {
     <>
      
 
-        <div className={`flex flex-col-reverse justify-between md:flex-row h-full`}>
+        <div className={`flex flex-col-reverse justify-between md:flex-row h-full dark:bg-dark dark:text-white`}>
           <Sidebar className='md:w-1/6 h-full'/>
             <div className='text-end ml-0 w-full md:w-5/6' >
             {showBanner && <Banner onActivate={onActivate} onDeactivate={onDeactivate}/>}

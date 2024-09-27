@@ -10,7 +10,7 @@ import  cerrarSesionVioleta  from '../components/atoms/assets/cerrarSesionViolet
 import  notif  from '../assets/Notificaciones.png'
 import { FlechaTriangulito } from '../components/icons/flechaTriangulito';
 
-import { Ask } from '../components/icons/ask';
+import { Ask } from '../components/icons/Ask';
 import { FlechaTriangulitoBack } from '../components/icons/flechaTriangulitoBack';
 import { ThemeButton } from '../components/ThemeButton';
 
@@ -71,7 +71,7 @@ export const PrevPerfil = () => {
 
 
     return (
-        <div className='md:pt-14'>    
+        <div className='md:pt-14 dark:bg-dark dark:text-white'>    
         {/* BANNER MOBILE*/}        
             <div id='div-total-banner' className='pt-4 md:hidden flex justify-between items-center w-full'>
                 <section className='flex'>

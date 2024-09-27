@@ -40,7 +40,7 @@ const Transferencia = () => {
 
     return (
         <TransferenciaContext.Provider value={{ currentStep, setCurrentStep }}>
-            <section className='flex flex-col light:bg-secundario dark:bg-dark dark:text-white h-full'>
+            <section className='flex flex-col bg-secundario dark:bg-dark dark:text-white h-full'>
                 <header className='flex items-center justify-between bg-dark w-full text-white h-[6vh] md:h-[15vh] md:bg-navbar-transfer md:text-primario'>
                     <section className='flex md:h-[10vh] items-center w-full justify-between px-[2rem]'>
                         <button onClick={handleVolverAtras} className='text-primario whitespace-nowrap font-semibold hidden md:flex handle-step'>Volver atrás</button>
