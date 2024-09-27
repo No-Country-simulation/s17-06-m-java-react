@@ -21,33 +21,28 @@ import { useState, useCallback } from 'react';
  */
 
 
-export const ThemeButton = ({ onActivate, onDeactivate }) => {
-
-  const [isDark, setIsDark] = useState(localStorage.getItem('theme') !== 'light');
+export const ThemeButton = ({ isDarkMode, onToggle }) => {
 
   /**
  * Maneja el evento de clic para alternar el estado del botón.
  * Si el nuevo estado es activado, se llama a `onActivate`. Si es desactivado, se llama a `onDeactivate`.
   */
   const handleToggle = useCallback(() => {
-      const newTheme = isDark ? 'light' : 'dark';
-      setIsDark(!isDark);
-      localStorage.setItem('theme', newTheme);
-      setIsDark(!isDark);
-      document.documentElement.classList.toggle('dark', !isDark);
-  }, [isDark])
+      onToggle();
+      document.documentElement.classList.toggle('dark', !isDarkMode);
+  }, [isDarkMode, onToggle]);
 
   return (
     <div className='relative'>
       <button
         onClick={handleToggle}
-        className={`w-14 h-7 xl:w-16 xl:h-8 flex items-center rounded-full p-1 duration-300 ease-in-out absolute top-0 right-1 md:right-7 md:mt-2 md:mr-2 ${isDark ? 'bg-verde' : 'bg-primario'
+        className={`w-14 h-7 xl:w-16 xl:h-8 flex items-center rounded-full p-1 duration-300 ease-in-out absolute top-0 right-1 md:right-7 md:mt-2 md:mr-2 ${isDarkMode ? 'bg-verde' : 'bg-primario'
           }  `}
 
 
       >
         <div
-          className={`w-5 h-5 md:w-6 md:h-6 rounded-full shadow-md transform duration-300 ease-in-out ${isDark ? 'translate-x-7 md:translate-x-8 bg-primario' : 'bg-verde'
+          className={`w-5 h-5 md:w-6 md:h-6 rounded-full shadow-md transform duration-300 ease-in-out ${isDarkMode ? 'translate-x-7 md:translate-x-8 bg-primario' : 'bg-verde'
             }`}
 
         ></div>
