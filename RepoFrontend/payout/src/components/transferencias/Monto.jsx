@@ -40,8 +40,8 @@ const CustomSelect = ({ options, field, form, ...props }) => (
                 ...base,
                 border: 'none',
                 boxShadow: 'none',
-                indicatorSeparator: () => none,
-                dropdownIndicator: () => none,
+                indicatorSeparator: () => null,
+                dropdownIndicator: () => null,
             }),
         }}
         formatOptionLabel={(option) => (
@@ -60,48 +60,6 @@ const BankAccountField = ({ onChangeAccount }) => {
     const [bankAccount, setBankAccount] = useState(null);
     const [amount] = useField('amount');
     const [currency] = useField('currency');
-
- /*    const fetchAmountDetails = useCallback(async () => {
-        if (field.value && amount.value && currency.value) {
-            const requestBody = {
-                sourceAccountIdentifier: "Silencioso.Sol.Negro",
-                targetAccountIdentifier: field.value,
-                amount: amount.value.toString(),
-                currencySource: currency.value,
-                currencyTarget: "ARS"
-            };
-
-            try {
-                const response = await fetch('https://payout.redromsolutions.com/transaction/v1/transfer', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    },
-                    body: JSON.stringify(requestBody),
-                });
-
-
-                if (response.ok) {
-                    const data = await response.json();
-                    localStorage.setItem('amountSend', data.amountSend);
-                    localStorage.setItem('currencySend', data.currencySend);
-                    localStorage.setItem('amountReceive', data.amountReceive);
-                    localStorage.setItem('currencyReceive', data.currencyReceive);
-                    onChangeAccount && onChangeAccount(data);
-                } else {
-                    console.error('Error en la respuesta:', response.status);
-                }
-            } catch (error) {
-                console.error('Error en la solicitud:', error);
-            }
-        }
-    }, [field.value, amount.value, currency.value, onChangeAccount]);
-
-    useEffect(() => {
-        fetchAmountDetails();
-    }, [fetchAmountDetails]); */
 
     return (
         <>
