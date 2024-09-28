@@ -104,7 +104,6 @@ const CoinCard = ({ image, coin, /* saldo, cbu */ }) => {
                 setCVUPesos(data[0].cvu);
                 setCVUDolares(data[1].cvu);
                 setCVUEuros(data[2].cvu)
-                console.log(data)
             });
     }, []);
 

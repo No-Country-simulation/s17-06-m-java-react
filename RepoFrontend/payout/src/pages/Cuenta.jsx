@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-
-
-
+import { useState } from 'react';
+import { useNavigate, useOutletContext } from "react-router-dom";
 import CoinCardCUENTA, { infoSaldos } from '../components/CoinCardCUENTA.jsx';
-/* import Banner from '../components/Banner'; */
-
-
-
-
+import { ThemeButton } from '../components/ThemeButton.jsx';
 
 const urlInfoUserLogged = 'https://payout.redromsolutions.com/user/0'
 
-
-
 export const Cuenta = () => {
-
-    
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
 
-
-
     const navigate = useNavigate()
+
+    const { onToggle, isDarkMode } = useOutletContext(); // Traemos las propiedades del botón de tema y las agregamos al ThemeButton
 
     /* FETCH PARA TRAER LA INFO DE BASE DE DATOS Y LLENAR LOS CAMPOS */
     /* useEffect(() => {
@@ -42,16 +31,15 @@ export const Cuenta = () => {
             });
     }, []); */
 
-
-
-
-
     return (
         <section className='px-4  md:px-10 mb-4 w-full dark:bg-dark dark:text-white'>
 
             {/* <Banner/> */}
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
+                <div className='absolute top-6 right-6'>
+                    <ThemeButton onToggle={onToggle} isDarkMode={isDarkMode} />
+                </div>
                 <p className='text-start font-semibold pb-4'>Tu cuenta PAYOUT</p>
                 <p className='text-start'>Todas tus cuentas en un lugar</p>
             </div>

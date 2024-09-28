@@ -2,12 +2,10 @@ import { useState } from 'react';
 import icon from '../assets/icon.png';
 import line from '../assets/line.png';
 import argentina from '../assets/banderaArg.png';
-import CustomButton from '../authentication/components/CustomButton';
-import '../authentication/components/CustomButton.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { ThemeButton } from '../components/ThemeButton';
 
-const Navbar = ({ light, onActivate, onDeactivate }) => {
+const Navbar = ({ isDarkMode, onToggle }) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +25,7 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
         <div className='flex items-center lg:gap-4 xl:gap-6'>
           <div className='flex gap-3 items-center'>
             <img className="h-[30px] ml-10 lg:ml-6 xl:ml-10 cursor-pointer" src={icon} alt=" " onClick={() => navigate('/')}/>
-            <Link to={'/'} className={`text-${light ? 'white' : 'primario'} font-serif text-payout lg:text-base xl:text-payout font-light`}>PAYOUT</Link> 
+            <Link to={'/'} className={`text-${isDarkMode ? 'white' : 'primario'} font-serif text-payout lg:text-base xl:text-payout font-light`}>PAYOUT</Link> 
           </div>
           <Link className="hidden lg:block underline text-verde lg:text-sm xl:text-m">Personal</Link> {/* Se oculta en móviles */}
           {/* <Link className="hidden lg:block dark:text-white lg:text-sm xl:text-m">Empresas</Link>  */}
@@ -54,7 +52,7 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={`${light ? 'stroke-white' : 'stroke-primario'}`}
+            className={`${isDarkMode ? 'stroke-white' : 'stroke-primario'}`}
           >
             <path
               d="M6 9L12 15L18 9"
@@ -99,11 +97,11 @@ const Navbar = ({ light, onActivate, onDeactivate }) => {
             
             <div className="flex justify-between w-full max-h-min items-start">
               <p className="text-black font-medium">Modo</p>
-              <ThemeButton onActivate={onActivate} onDeactivate={onDeactivate} />
+              <ThemeButton onToggle={onToggle} />
             </div>
 
             <div className='flex flex-col self-center items-center gap-6'>
-              <button onClick={() => handleNavigate('/login')} className={`text-${light ? 'verde' : 'primario'}`}>Iniciar sesión</button>
+              <button onClick={() => handleNavigate('/login')} className={`text-${isDarkMode ? 'verde' : 'primario'}`}>Iniciar sesión</button>
               <button onClick={() => handleNavigate('/signup')} className='rounded-lg py-1.5 px-3 bg-primario text-white font-semibold'>Crear cuenta</button>
             </div>
             <button onClick={toggleMenu} className="mt-4 text-red-600">

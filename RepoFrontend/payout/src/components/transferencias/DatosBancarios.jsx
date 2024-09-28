@@ -83,12 +83,12 @@ export const DatosBancarios = () => {
       >
         {() => (
           <Form className="flex flex-col gap-6 items-center mt-[10vh] w-full">
-            <div className="flex flex-col md:justify-center md:px-0 items-center gap-6 bg-grisclaro rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] h-[40vh]">
+            <div className="flex flex-col md:justify-center md:px-0 items-center gap-6 dark:bg-grisclaro bg-grisclaro rounded-2xl md:rounded-lg w-[90vw] md:w-[40vw] h-[40vh]">
               <article className="mt-[4rem] md:mt-0 flex items-center justify-center">
                 <h3 className="text-black text-m md:text-2xl font-bold text-center whitespace-nowrap">Introduzca los datos bancarios</h3>
               </article>
               <div className="flex flex-col items-start gap-2">
-                <label htmlFor="targetAccountIdentifier" className="text-primario font-bold text-sm">CBU/CVU o Alias</label>
+                <label htmlFor="targetAccountIdentifier" className="dark:text-primario text-black font-bold text-sm">CBU/CVU o Alias</label>
                 <Field
                   className="md:w-[18vw] w-[70vw] text-black m-0 py-2 border md:bg-secundario shadow-md rounded-2xl md:rounded-lg text-sm px-2 outline-none"
                   id="targetAccountIdentifier" type="text" name="targetAccountIdentifier" placeholder='Ingrese su CBU, CVU o Alias' />

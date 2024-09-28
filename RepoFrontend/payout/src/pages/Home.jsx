@@ -85,7 +85,6 @@ const urlBankInfo = 'https://payout.redromsolutions.com/bank_account/bytoken'
             setCVUPesos(data[0].cvu);
             setCVUDolares(data[1].cvu);
             setCVUEuros(data[2].cvu)
-            console.log(data)
         });
 }, []);
 

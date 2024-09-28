@@ -77,7 +77,7 @@ return (
           : "text-black" // Sin diseño para no seleccionado
       }`}>
         {image && <img className='h-5 w-5' src={image} alt={text} />}
-        <span class='px-2 py-1'>{text}</span>
+        <span className='px-2 py-1'>{text}</span>
       </button>
     </li>
     );
