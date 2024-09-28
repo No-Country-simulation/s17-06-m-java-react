@@ -37,7 +37,7 @@ export const Cuenta = () => {
             {/* <Banner/> */}
             {/* CUERPO HOME */}
             <div id='cuerpo-vista-home' className='py-6 pb-10 w-full'>
-                <div className='absolute top-6 right-6'>
+                <div className='absolute top-6 right-6 md:hidden'>
                     <ThemeButton onToggle={onToggle} isDarkMode={isDarkMode} />
                 </div>
                 <p className='text-start font-semibold pb-4'>Tu cuenta PAYOUT</p>
