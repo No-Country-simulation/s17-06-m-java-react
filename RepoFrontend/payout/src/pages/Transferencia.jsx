@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { TransferenciaContext } from '../contexts/TransferenciaContext';
 import { ThemeButton } from '../components/ThemeButton';
 
-const Transferencia = () => {
+const Transferencia = ({ children }) => {
     /* Gestiona el stepper */
     const [currentStep, setCurrentStep] = useState(0); // Estado para el stepper
+    const [alias, setAlias] = useState(''); // Estado para el alias
     const navigate = useNavigate();
     const { onToggle, isDarkMode } = useOutletContext(); // Traemos ambas propiedades y se las pasamos al ThemeButton para que funcione correctamente
 
@@ -40,7 +41,7 @@ const Transferencia = () => {
     ];
 
     return (
-        <TransferenciaContext.Provider value={{ currentStep, setCurrentStep }}>
+        <TransferenciaContext.Provider value={{ currentStep, setCurrentStep, alias, setAlias }}>
             <section className='flex flex-col bg-secundario dark:bg-dark md:bg-secundario dark:text-white h-[95vh]'>
                 <header className='flex items-center justify-between w-full h-[6vh] md:h-[15vh] bg-navbar-transfer text-primario'>
                     <section className='flex md:h-[10vh] items-center w-full justify-between px-[2rem] md:bg-navbar-transfer bg-secundario dark:bg-navbar-transfer'>
@@ -80,6 +81,7 @@ const Transferencia = () => {
                     </section>
                 </header>
                 <div className='mt-[5vh]'>
+                    {children}
                     <Outlet />
                 </div>
             </section>
