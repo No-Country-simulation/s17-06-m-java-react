@@ -1,14 +1,12 @@
-import { Formik, Form, Field, ErrorMessage, useField } from "formik";
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import Select from 'react-select';
-import { useState, useContext, useEffect, useCallback } from "react";
+import { useContext } from "react";
 import { TransferenciaContext } from "../../contexts/TransferenciaContext.jsx";
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import argIcon from './assets/banderaArg.svg';
 import usaIcon from './assets/usa.png';
 import euroIcon from './assets/euro.png';
-import BankModal from "./BankModal.jsx";
-import ArgIconDefault from "./ArgIconDefault.jsx";
 
 // Esquema de validación
 const schema = Yup.object().shape({
@@ -20,8 +18,7 @@ const schema = Yup.object().shape({
     currency: Yup.string()
         .oneOf(['ARS', 'USD', 'EUR'])
         .required('Este campo es requerido'),
-    accountNumber: Yup.string()
-        .notRequired('Este campo es requerido')
+    alias: Yup.string()
 });
 
 // Opciones de divisas con íconos
@@ -55,11 +52,8 @@ const CustomSelect = ({ options, field, form, ...props }) => (
     />
 );
 
-const BankAccountField = ({ onChangeAccount }) => {
-    const [field] = useField('accountNumber');
-    const [bankAccount, setBankAccount] = useState(null);
-    const [amount] = useField('amount');
-    const [currency] = useField('currency');
+const BankAccountField = () => {
+    const { values, handleChange } = useFormikContext();
 
     return (
         <>
@@ -67,7 +61,14 @@ const BankAccountField = ({ onChangeAccount }) => {
                 <svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 41H40M4.11111 34.615H37.8889M8.33333 34.615V23.9732M16.7778 34.615V23.9732M25.2222 34.615V23.9732M33.6667 34.615V23.9732M21 11.2177L21.0156 11.2034M40 17.5882L25.4882 4.58347C23.9 3.16033 23.106 2.44878 22.2101 2.17854C21.4205 1.94049 20.5795 1.94049 19.7899 2.17854C18.894 2.44878 18.1 3.16033 16.5119 4.58347L2 17.5882H40Z" stroke="#A483DF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="font-semibold">{'Cuenta: Victor Molinas'}</span>
+                <Field
+                    className="w-full h-10 pl-3 text-sm font-semibold text-black bg-white"
+                    name="alias"
+                    type="text"
+                    value={values.alias}
+                    onChange={handleChange}
+                    disabled
+                />
             </div>
         </>
     );
@@ -90,11 +91,11 @@ const BankForm = () => {
     return (
         <>
             <Formik
-                initialValues={{ amount: '', currency: 'ARS', accountNumber: '' }}
+                initialValues={{ amount: '', currency: 'ARS', alias: '' }}
                 validationSchema={schema}
                 onSubmit={handleSubmit}
             >
-                {({ isSubmitting }) => (
+                {({ isSubmitting, values }) => (
                     <Form className="flex flex-col w-full items-center gap-5 mt-[10vh] md:mt-[2vh]">
                         <h3 className="text-center font-bold text-xl md:text-2xl">¿Cuánto estás enviando?</h3>
                         {/* Campo para el monto a enviar */}
@@ -140,10 +141,10 @@ const BankForm = () => {
                         </div>
                         <div className="flex flex-col gap-2 items-start">
                             <label className="font-semibold">Pagando con</label>
-                            <div className="flex input-container bg-white text-black text-xs md:text-m w-[90vw] md:w-[40vw] py-5 rounded-lg items-center justify-between px-3" style={{ zIndex: '2' }}>
+                            <div id="alias" name="alias" className="flex input-container bg-white text-black text-xs md:text-m w-[90vw] md:w-[40vw] py-5 rounded-lg items-center justify-between px-3">
                                 <BankAccountField />
                             </div>
-                            <ErrorMessage name="accountNumber" component="p" className='custom-error-message' />
+                            <ErrorMessage name="alias" component="p" className='custom-error-message' />
                         </div>
                         <div className="flex">
 
