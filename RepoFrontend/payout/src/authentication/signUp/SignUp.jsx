@@ -30,21 +30,9 @@ const urlSignUp = 'https://payout.redromsolutions.com/register'
 export const SignUp = () => { 
 
     let navigate = useNavigate()
-    // const [email, setEmail] = useState(null);
-    // const [rEmail, setREmail] = useState(null);
-    // const [password, setPassword] = useState(null);
 
-    const [showPassword, setShowPassword] = useState(false);
-/*     const [light, setLight] = useState(true); */
 
-    const togglePasswordVisibility = () => {
-      setShowPassword(!showPassword);
-    };
-
-/*     const toggleTheme = () => {
-        setLight(!light);
-      };
- */
+    
 
 
     const handleSubmit = async (values) => {   
@@ -61,11 +49,8 @@ export const SignUp = () => {
                       password: values.password
                     }),                    
                   })
-                    .then((res) => {res.json()
-                
-                    console.log('res.json', res.json)
-                }
-                )
+                    .then((res) => res.json()
+                  )
                     .then((data) => {
                       const token = data.token
                       localStorage.setItem('token', token)
@@ -80,8 +65,7 @@ export const SignUp = () => {
 
 
   return (
-    <>
-    {/* <button id='button-toggle-mode' onClick={toggleTheme} className="bg-primario w-[100px] rounded-md my-2 mx-2 text-white">Tema</button> */}
+    <>    
     <div className="md:py-8 lg:px-8 flex xl:gap-14 lg:gap-14 justify-center h-[90vh] dark:bg-dark">
         
         <div className="w-full md:w-[466px] h-[90vh] lg:h-[500px] xl:h-[614px] py-11 px-6 md:px-16 bg-white md:rounded-[15px] shadow-down-dark-md">
@@ -92,10 +76,7 @@ export const SignUp = () => {
                     email: '',
                     rEmail: '',
                     password: '',                    
-                }}
-                /* onSubmit={(values) => {
-                    console.log('Formulario enviado:', values);
-                }} */
+                }}                
                 onSubmit={handleSubmit}
                 validationSchema={schema}
             >
